@@ -425,9 +425,12 @@ cdef class RoverDomain:
                 and old_n_steps == new_n_steps
                 and old_n_rovers == new_n_rovers
         ):
-            # Reset, but avoid allocation.
-            self.m_current_state = (
-                <State?> setting_state.copy_via(self.m_current_state))
+            try:
+                # Reset, but avoid allocation.
+                self.m_current_state = (
+                    <State?> setting_state.copy_via(self.m_current_state))
+            except:
+                self.m_current_state = <State?> setting_state.copy()
         else:
             self.m_current_state = <State?> setting_state.copy()
             self.m_n_steps = new_n_steps
@@ -474,17 +477,27 @@ cdef class RoverDomain:
                 "Cannot step. Try resetting the domain."
                 .format(**locals()))
         
-        self.m_state_history_store[step_id] = (
-            <State?> self.m_current_state.copy_via(
-                self.m_state_history_store[step_id]))
+        try:
+            self.m_state_history_store[step_id] = (
+                <State?> self.m_current_state.copy_via(
+                    self.m_state_history_store[step_id]))
+        except:
+            self.m_state_history_store[step_id] = (
+                <State?> self.m_current_state.copy())
                 
         self.m_rover_actions_history_store[step_id, :, :] = rover_actions
-                
-        self.m_current_state = (
-            dynamics_processor.next_state_via(
-                self.m_current_state, 
-                self.m_current_state,
-                rover_actions))
+         
+        try:        
+            self.m_current_state = (
+                dynamics_processor.next_state_via(
+                    self.m_current_state, 
+                    self.m_current_state,
+                    rover_actions))
+        except:
+            self.m_current_state = (
+                dynamics_processor.next_state_copy(
+                    self.m_current_state,
+                    rover_actions))
         
         self.m_n_steps_elapsed += 1
         
