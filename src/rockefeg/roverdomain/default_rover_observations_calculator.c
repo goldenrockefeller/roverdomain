@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "rockefeg.rover_domain.default_rover_observations_calculator",
+        "name": "rockefeg.roverdomain.default_rover_observations_calculator",
         "sources": [
-            "src/rockefeg/rover_domain\\default_rover_observations_calculator.pyx"
+            "src/rockefeg/roverdomain\\default_rover_observations_calculator.pyx"
         ]
     },
-    "module_name": "rockefeg.rover_domain.default_rover_observations_calculator"
+    "module_name": "rockefeg.roverdomain.default_rover_observations_calculator"
 }
 END: Cython Metadata */
 
@@ -617,8 +617,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__rockefeg__rover_domain__default_rover_observations_calculator
-#define __PYX_HAVE_API__rockefeg__rover_domain__default_rover_observations_calculator
+#define __PYX_HAVE__rockefeg__roverdomain__default_rover_observations_calculator
+#define __PYX_HAVE_API__rockefeg__roverdomain__default_rover_observations_calculator
 /* Early includes */
 #include <math.h>
 #include "pythread.h"
@@ -833,10 +833,10 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "src\\rockefeg\\rover_domain\\default_rover_observations_calculator.pyx",
-  "src\\rockefeg\\rover_domain\\default_rover_observations_calculator.pxd",
+  "src\\rockefeg\\roverdomain\\default_rover_observations_calculator.pyx",
+  "src\\rockefeg\\roverdomain\\default_rover_observations_calculator.pxd",
   "stringsource",
-  "src\\rockefeg\\rover_domain\\state.pxd",
+  "src\\rockefeg\\roverdomain\\state.pxd",
 };
 /* MemviewSliceStruct.proto */
 struct __pyx_memoryview_obj;
@@ -948,9 +948,9 @@ typedef struct {
 
 
 /*--- Type declarations ---*/
-struct __pyx_obj_8rockefeg_12rover_domain_5state_State;
-struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator;
-struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
+struct __pyx_obj_8rockefeg_11roverdomain_5state_State;
+struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator;
+struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
 struct __pyx_array_obj;
 struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
@@ -963,9 +963,9 @@ struct __pyx_memoryviewslice_obj;
  *     cdef public Py_ssize_t m_n_rovers
  *     cdef public Py_ssize_t m_n_pois
  */
-struct __pyx_obj_8rockefeg_12rover_domain_5state_State {
+struct __pyx_obj_8rockefeg_11roverdomain_5state_State {
   PyObject_HEAD
-  struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *__pyx_vtab;
+  struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *__pyx_vtab;
   Py_ssize_t m_n_rovers;
   Py_ssize_t m_n_pois;
   __Pyx_memviewslice m_rover_positions;
@@ -982,21 +982,21 @@ struct __pyx_obj_8rockefeg_12rover_domain_5state_State {
  *     cpdef double[:, :] observations_copy(self, State state) except *
  *     # double[n_rovers, n_rover_observation_dims]
  */
-struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator {
+struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator {
   PyObject_HEAD
-  struct __pyx_vtabstruct_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *__pyx_vtab;
+  struct __pyx_vtabstruct_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *__pyx_vtab;
 };
 
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pxd":7
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pxd":7
  * from .base_rover_observations_calculator cimport BaseRoverObservationsCalculator
  * 
  * cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):             # <<<<<<<<<<<<<<
  *     cdef public Py_ssize_t m_n_observation_sections
  *     cdef public Py_ssize_t m_n_rovers
  */
-struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator {
-  struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator __pyx_base;
+struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator {
+  struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator __pyx_base;
   Py_ssize_t m_n_observation_sections;
   Py_ssize_t m_n_rovers;
   double m_min_dist;
@@ -1093,27 +1093,27 @@ struct __pyx_memoryviewslice_obj {
  *     cdef public Py_ssize_t m_n_pois
  */
 
-struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State {
-  Py_ssize_t (*n_rovers)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  void (*set_n_rovers)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
-  Py_ssize_t (*n_pois)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  void (*set_n_pois)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_positions_copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_positions_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  void (*set_rover_positions)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_orientations_copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_orientations_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  void (*set_rover_orientations)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_values_copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_values_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  void (*set_poi_values)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_positions_copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_positions_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  void (*set_poi_positions)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, PyObject *, int __pyx_skip_dispatch);
-  PyObject *(*copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
+struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State {
+  Py_ssize_t (*n_rovers)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  void (*set_n_rovers)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
+  Py_ssize_t (*n_pois)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  void (*set_n_pois)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_positions_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_positions_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  void (*set_rover_positions)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_orientations_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_orientations_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  void (*set_rover_orientations)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_values_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_values_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  void (*set_poi_values)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_positions_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_positions_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  void (*set_poi_positions)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, PyObject *, int __pyx_skip_dispatch);
+  PyObject *(*copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *__pyx_vtabptr_8rockefeg_12rover_domain_5state_State;
+static struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *__pyx_vtabptr_8rockefeg_11roverdomain_5state_State;
 
 
 /* "base_rover_observations_calculator.pxd":6
@@ -1124,16 +1124,16 @@ static struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *__pyx_vtab
  *     # double[n_rovers, n_rover_observation_dims]
  */
 
-struct __pyx_vtabstruct_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator {
-  __Pyx_memviewslice (*observations_copy)(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*observations_via)(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, __Pyx_memviewslice, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  PyObject *(*copy)(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, int __pyx_skip_dispatch);
-  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, PyObject *, int __pyx_skip_dispatch);
+struct __pyx_vtabstruct_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator {
+  __Pyx_memviewslice (*observations_copy)(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*observations_via)(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, __Pyx_memviewslice, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  PyObject *(*copy)(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, int __pyx_skip_dispatch);
+  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, PyObject *, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *__pyx_vtabptr_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator;
+static struct __pyx_vtabstruct_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *__pyx_vtabptr_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator;
 
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":7
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":7
  * 
  * @cython.warn.undeclared(True)
  * cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):             # <<<<<<<<<<<<<<
@@ -1141,17 +1141,17 @@ static struct __pyx_vtabstruct_8rockefeg_12rover_domain_34base_rover_observation
  *     def __init__(self):
  */
 
-struct __pyx_vtabstruct_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator {
-  struct __pyx_vtabstruct_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator __pyx_base;
-  Py_ssize_t (*n_observation_dims)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch);
-  double (*min_dist)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch);
-  void (*set_min_dist)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, double, int __pyx_skip_dispatch);
-  Py_ssize_t (*n_observation_sections)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch);
-  void (*set_n_observation_sections)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, Py_ssize_t, int __pyx_skip_dispatch);
-  Py_ssize_t (*n_rovers)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch);
-  void (*set_n_rovers)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, Py_ssize_t, int __pyx_skip_dispatch);
+struct __pyx_vtabstruct_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator {
+  struct __pyx_vtabstruct_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator __pyx_base;
+  Py_ssize_t (*n_observation_dims)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch);
+  double (*min_dist)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch);
+  void (*set_min_dist)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, double, int __pyx_skip_dispatch);
+  Py_ssize_t (*n_observation_sections)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch);
+  void (*set_n_observation_sections)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, Py_ssize_t, int __pyx_skip_dispatch);
+  Py_ssize_t (*n_rovers)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch);
+  void (*set_n_rovers)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, Py_ssize_t, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_vtabptr_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
+static struct __pyx_vtabstruct_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_vtabptr_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
 
 
 /* "View.MemoryView":105
@@ -1864,17 +1864,17 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_rovers(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_rovers(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_rovers, int __pyx_skip_dispatch); /* proto*/
-static double __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_min_dist(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_min_dist(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, double __pyx_v_min_dist, int __pyx_skip_dispatch); /* proto*/
-static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_sections(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_observation_sections(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_observation_sections, int __pyx_skip_dispatch); /* proto*/
-static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_dims(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_copy(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state, int __pyx_skip_dispatch); /* proto*/
-static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_via(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy_via(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_store, int __pyx_skip_dispatch); /* proto*/
+static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_rovers(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static void __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_rovers(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_rovers, int __pyx_skip_dispatch); /* proto*/
+static double __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_min_dist(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static void __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_min_dist(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, double __pyx_v_min_dist, int __pyx_skip_dispatch); /* proto*/
+static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_sections(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static void __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_observation_sections(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_observation_sections, int __pyx_skip_dispatch); /* proto*/
+static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_dims(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static __Pyx_memviewslice __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_copy(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, int __pyx_skip_dispatch); /* proto*/
+static __Pyx_memviewslice __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_via(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy_via(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_store, int __pyx_skip_dispatch); /* proto*/
 static PyObject *__pyx_array_get_memview(struct __pyx_array_obj *__pyx_v_self); /* proto*/
 static char *__pyx_memoryview_get_item_pointer(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index); /* proto*/
 static PyObject *__pyx_memoryview_is_slice(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_obj); /* proto*/
@@ -1886,11 +1886,11 @@ static PyObject *__pyx_memoryview_assign_item_from_object(struct __pyx_memoryvie
 static PyObject *__pyx_memoryviewslice_convert_item_to_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp); /* proto*/
 static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp, PyObject *__pyx_v_value); /* proto*/
 
-/* Module declarations from 'rockefeg.rover_domain.state' */
-static PyTypeObject *__pyx_ptype_8rockefeg_12rover_domain_5state_State = 0;
+/* Module declarations from 'rockefeg.roverdomain.state' */
+static PyTypeObject *__pyx_ptype_8rockefeg_11roverdomain_5state_State = 0;
 
-/* Module declarations from 'rockefeg.rover_domain.base_rover_observations_calculator' */
-static PyTypeObject *__pyx_ptype_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator = 0;
+/* Module declarations from 'rockefeg.roverdomain.base_rover_observations_calculator' */
+static PyTypeObject *__pyx_ptype_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator = 0;
 
 /* Module declarations from 'libc' */
 
@@ -1900,8 +1900,8 @@ static PyTypeObject *__pyx_ptype_8rockefeg_12rover_domain_34base_rover_observati
 
 /* Module declarations from 'cython' */
 
-/* Module declarations from 'rockefeg.rover_domain.default_rover_observations_calculator' */
-static PyTypeObject *__pyx_ptype_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator = 0;
+/* Module declarations from 'rockefeg.roverdomain.default_rover_observations_calculator' */
+static PyTypeObject *__pyx_ptype_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator = 0;
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -1947,11 +1947,11 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "rockefeg.rover_domain.default_rover_observations_calculator"
-extern int __pyx_module_is_main_rockefeg__rover_domain__default_rover_observations_calculator;
-int __pyx_module_is_main_rockefeg__rover_domain__default_rover_observations_calculator = 0;
+#define __Pyx_MODULE_NAME "rockefeg.roverdomain.default_rover_observations_calculator"
+extern int __pyx_module_is_main_rockefeg__roverdomain__default_rover_observations_calculator;
+int __pyx_module_is_main_rockefeg__roverdomain__default_rover_observations_calculator = 0;
 
-/* Implementation of 'rockefeg.rover_domain.default_rover_observations_calculator' */
+/* Implementation of 'rockefeg.roverdomain.default_rover_observations_calculator' */
 static PyObject *__pyx_builtin_AttributeError;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_range;
@@ -2203,26 +2203,26 @@ static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_zeros;
-static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator___init__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_2__setstate__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_state); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_4__reduce__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_6n_rovers(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_8set_n_rovers(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_rovers); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10min_dist(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_12set_min_dist(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, double __pyx_v_min_dist); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_14n_observation_sections(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_16set_n_observation_sections(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_observation_sections); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_18n_observation_dims(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_20observations_copy(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_22observations_via(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24copy(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_26copy_via(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_store); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections___get__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_2__set__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers___get__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_2__set__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist___get__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
-static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_2__set__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator___init__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_2__setstate__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_state); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_4__reduce__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_6n_rovers(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_8set_n_rovers(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_rovers); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10min_dist(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_12set_min_dist(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, double __pyx_v_min_dist); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_14n_observation_sections(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_16set_n_observation_sections(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_observation_sections); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_18n_observation_dims(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_20observations_copy(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_22observations_via(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24copy(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_26copy_via(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_store); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections___get__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static int __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_2__set__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers___get__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static int __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_2__set__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist___get__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self); /* proto */
+static int __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_2__set__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -2265,7 +2265,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_16_memoryviewslice_4base___get__
 static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -2305,7 +2305,7 @@ static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_codeobj__28;
 /* Late includes */
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":9
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":9
  * cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
  *     @cython.warn.undeclared(False)
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -2314,27 +2314,27 @@ static PyObject *__pyx_codeobj__28;
  */
 
 /* Python wrapper */
-static int __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   if (unlikely(PyTuple_GET_SIZE(__pyx_args) > 0)) {
     __Pyx_RaiseArgtupleInvalid("__init__", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); return -1;}
   if (unlikely(__pyx_kwds) && unlikely(PyDict_Size(__pyx_kwds) > 0) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__init__", 0))) return -1;
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator___init__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator___init__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator___init__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static int __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator___init__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":10
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":10
  *     @cython.warn.undeclared(False)
  *     def __init__(self):
  *         self.m_n_observation_sections = 1             # <<<<<<<<<<<<<<
@@ -2347,7 +2347,7 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
   }
   __pyx_v_self->m_n_observation_sections = 1;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":11
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":11
  *     def __init__(self):
  *         self.m_n_observation_sections = 1
  *         self.m_min_dist = 1.             # <<<<<<<<<<<<<<
@@ -2360,7 +2360,7 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
   }
   __pyx_v_self->m_min_dist = 1.;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":12
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":12
  *         self.m_n_observation_sections = 1
  *         self.m_min_dist = 1.
  *         self.m_n_rovers = 0             # <<<<<<<<<<<<<<
@@ -2373,7 +2373,7 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
   }
   __pyx_v_self->m_n_rovers = 0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":9
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":9
  * cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
  *     @cython.warn.undeclared(False)
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -2385,14 +2385,14 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":15
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":15
  * 
  *     @cython.warn.undeclared(False)
  *     def __setstate__(self, state):             # <<<<<<<<<<<<<<
@@ -2401,19 +2401,19 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_3__setstate__(PyObject *__pyx_v_self, PyObject *__pyx_v_state); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_3__setstate__(PyObject *__pyx_v_self, PyObject *__pyx_v_state) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_3__setstate__(PyObject *__pyx_v_self, PyObject *__pyx_v_state); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_3__setstate__(PyObject *__pyx_v_self, PyObject *__pyx_v_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_2__setstate__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_state));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_2__setstate__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_2__setstate__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_state) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_2__setstate__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_state) {
   PyObject *__pyx_v_attr = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2432,7 +2432,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   PyObject *__pyx_t_13 = NULL;
   __Pyx_RefNannySetupContext("__setstate__", 0);
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":17
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":17
  *     def __setstate__(self, state):
  * 
  *         for attr in state.keys():             # <<<<<<<<<<<<<<
@@ -2457,7 +2457,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
     __Pyx_XDECREF_SET(__pyx_v_attr, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":18
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":18
  * 
  *         for attr in state.keys():
  *             try:             # <<<<<<<<<<<<<<
@@ -2473,7 +2473,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
       __Pyx_XGOTREF(__pyx_t_9);
       /*try:*/ {
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":19
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":19
  *         for attr in state.keys():
  *             try:
  *                 self.__setattr__(attr, state[attr])             # <<<<<<<<<<<<<<
@@ -2537,7 +2537,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":18
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":18
  * 
  *         for attr in state.keys():
  *             try:             # <<<<<<<<<<<<<<
@@ -2556,7 +2556,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":20
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":20
  *             try:
  *                 self.__setattr__(attr, state[attr])
  *             except AttributeError:             # <<<<<<<<<<<<<<
@@ -2571,7 +2571,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
       goto __pyx_L7_except_error;
       __pyx_L7_except_error:;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":18
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":18
  * 
  *         for attr in state.keys():
  *             try:             # <<<<<<<<<<<<<<
@@ -2593,7 +2593,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":15
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":15
  * 
  *     @cython.warn.undeclared(False)
  *     def __setstate__(self, state):             # <<<<<<<<<<<<<<
@@ -2611,7 +2611,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.__setstate__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.__setstate__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_attr);
@@ -2620,7 +2620,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":24
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":24
  * 
  *     @cython.warn.undeclared(False)
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -2629,19 +2629,19 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_5__reduce__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_5__reduce__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_5__reduce__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_5__reduce__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_4__reduce__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_4__reduce__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_4__reduce__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_4__reduce__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   __Pyx_memviewslice __pyx_v_basic_memoryview = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_v_state = NULL;
   PyObject *__pyx_v_attr = NULL;
@@ -2664,7 +2664,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   int __pyx_t_14;
   __Pyx_RefNannySetupContext("__reduce__", 0);
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":25
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":25
  *     @cython.warn.undeclared(False)
  *     def __reduce__(self):
  *         cdef double[:] basic_memoryview = np.zeros(1)             # <<<<<<<<<<<<<<
@@ -2697,7 +2697,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   __pyx_t_4.memview = NULL;
   __pyx_t_4.data = NULL;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":27
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":27
  *         cdef double[:] basic_memoryview = np.zeros(1)
  * 
  *         state = {}             # <<<<<<<<<<<<<<
@@ -2709,7 +2709,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   __pyx_v_state = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":28
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":28
  * 
  *         state = {}
  *         for attr in dir(self):             # <<<<<<<<<<<<<<
@@ -2761,7 +2761,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
     __Pyx_XDECREF_SET(__pyx_v_attr, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":29
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":29
  *         state = {}
  *         for attr in dir(self):
  *             try:             # <<<<<<<<<<<<<<
@@ -2777,7 +2777,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
       __Pyx_XGOTREF(__pyx_t_9);
       /*try:*/ {
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":30
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":30
  *         for attr in dir(self):
  *             try:
  *                 val = self.__getattribute__(attr)             # <<<<<<<<<<<<<<
@@ -2804,7 +2804,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
         __Pyx_XDECREF_SET(__pyx_v_val, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":32
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":32
  *                 val = self.__getattribute__(attr)
  *                 if (
  *                         not (attr[:2] == "__" and attr[-2:] == "__")             # <<<<<<<<<<<<<<
@@ -2833,7 +2833,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
           goto __pyx_L14_bool_binop_done;
         }
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":33
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":33
  *                 if (
  *                         not (attr[:2] == "__" and attr[-2:] == "__")
  *                         and not inspect.isbuiltin(val)             # <<<<<<<<<<<<<<
@@ -2866,7 +2866,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
         __pyx_t_11 = __pyx_t_12;
         __pyx_L14_bool_binop_done:;
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":31
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":31
  *             try:
  *                 val = self.__getattribute__(attr)
  *                 if (             # <<<<<<<<<<<<<<
@@ -2875,7 +2875,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  */
         if (__pyx_t_11) {
 
-          /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":35
+          /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":35
  *                         and not inspect.isbuiltin(val)
  *                 ):
  *                     if type(val) is type(basic_memoryview):             # <<<<<<<<<<<<<<
@@ -2889,7 +2889,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
           __pyx_t_12 = (__pyx_t_11 != 0);
           if (__pyx_t_12) {
 
-            /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":36
+            /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":36
  *                 ):
  *                     if type(val) is type(basic_memoryview):
  *                         val = np.asarray(val)             # <<<<<<<<<<<<<<
@@ -2919,7 +2919,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
             __Pyx_DECREF_SET(__pyx_v_val, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":35
+            /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":35
  *                         and not inspect.isbuiltin(val)
  *                 ):
  *                     if type(val) is type(basic_memoryview):             # <<<<<<<<<<<<<<
@@ -2928,7 +2928,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  */
           }
 
-          /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":37
+          /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":37
  *                     if type(val) is type(basic_memoryview):
  *                         val = np.asarray(val)
  *                     state[attr] = val             # <<<<<<<<<<<<<<
@@ -2937,7 +2937,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  */
           if (unlikely(PyDict_SetItem(__pyx_v_state, __pyx_v_attr, __pyx_v_val) < 0)) __PYX_ERR(0, 37, __pyx_L5_error)
 
-          /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":31
+          /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":31
  *             try:
  *                 val = self.__getattribute__(attr)
  *                 if (             # <<<<<<<<<<<<<<
@@ -2946,7 +2946,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  */
         }
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":29
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":29
  *         state = {}
  *         for attr in dir(self):
  *             try:             # <<<<<<<<<<<<<<
@@ -2964,7 +2964,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":38
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":38
  *                         val = np.asarray(val)
  *                     state[attr] = val
  *             except AttributeError:             # <<<<<<<<<<<<<<
@@ -2979,7 +2979,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
       goto __pyx_L7_except_error;
       __pyx_L7_except_error:;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":29
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":29
  *         state = {}
  *         for attr in dir(self):
  *             try:             # <<<<<<<<<<<<<<
@@ -2999,7 +2999,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
       __pyx_L12_try_end:;
     }
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":28
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":28
  * 
  *         state = {}
  *         for attr in dir(self):             # <<<<<<<<<<<<<<
@@ -3009,7 +3009,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":41
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":41
  *                 pass
  * 
  *         return self.__class__, (),  state             # <<<<<<<<<<<<<<
@@ -3034,7 +3034,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":24
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":24
  * 
  *     @cython.warn.undeclared(False)
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -3049,7 +3049,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   __Pyx_XDECREF(__pyx_t_3);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
   __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.__reduce__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.__reduce__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_basic_memoryview, 1);
@@ -3061,7 +3061,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":43
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":43
  *         return self.__class__, (),  state
  * 
  *     cpdef Py_ssize_t n_rovers(self) except *:             # <<<<<<<<<<<<<<
@@ -3069,8 +3069,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  * 
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_rovers(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_rovers(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3091,7 +3091,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_n_rovers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3127,7 +3127,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":44
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":44
  * 
  *     cpdef Py_ssize_t n_rovers(self) except *:
  *         return self.m_n_rovers             # <<<<<<<<<<<<<<
@@ -3141,7 +3141,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
   __pyx_r = __pyx_v_self->m_n_rovers;
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":43
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":43
  *         return self.__class__, (),  state
  * 
  *     cpdef Py_ssize_t n_rovers(self) except *:             # <<<<<<<<<<<<<<
@@ -3155,7 +3155,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3163,26 +3163,26 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("n_rovers (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_6n_rovers(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_6n_rovers(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_6n_rovers(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_6n_rovers(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("n_rovers", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_rovers(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_rovers(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
   __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -3192,7 +3192,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3200,7 +3200,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":46
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":46
  *         return self.m_n_rovers
  * 
  *     cpdef void set_n_rovers(self, Py_ssize_t n_rovers) except *:             # <<<<<<<<<<<<<<
@@ -3208,8 +3208,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  *             raise ValueError(
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_rovers); /*proto*/
-static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_rovers(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_rovers, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_rovers); /*proto*/
+static void __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_rovers(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_rovers, int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -3230,7 +3230,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_set_n_rovers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers)) {
         __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_n_rovers); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
@@ -3267,7 +3267,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":47
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":47
  * 
  *     cpdef void set_n_rovers(self, Py_ssize_t n_rovers) except *:
  *         if n_rovers < 0:             # <<<<<<<<<<<<<<
@@ -3277,7 +3277,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __pyx_t_6 = ((__pyx_v_n_rovers < 0) != 0);
   if (unlikely(__pyx_t_6)) {
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":51
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":51
  *                 "The number of rovers (n_rovers) must be non-negative. "
  *                 + "The number of rovers received is %d."
  *                 % n_rovers)             # <<<<<<<<<<<<<<
@@ -3290,7 +3290,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":50
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":50
  *             raise ValueError(
  *                 "The number of rovers (n_rovers) must be non-negative. "
  *                 + "The number of rovers received is %d."             # <<<<<<<<<<<<<<
@@ -3301,7 +3301,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":48
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":48
  *     cpdef void set_n_rovers(self, Py_ssize_t n_rovers) except *:
  *         if n_rovers < 0:
  *             raise ValueError(             # <<<<<<<<<<<<<<
@@ -3315,7 +3315,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 48, __pyx_L1_error)
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":47
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":47
  * 
  *     cpdef void set_n_rovers(self, Py_ssize_t n_rovers) except *:
  *         if n_rovers < 0:             # <<<<<<<<<<<<<<
@@ -3324,7 +3324,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
  */
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":53
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":53
  *                 % n_rovers)
  * 
  *         self.m_n_rovers = n_rovers             # <<<<<<<<<<<<<<
@@ -3337,7 +3337,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   }
   __pyx_v_self->m_n_rovers = __pyx_v_n_rovers;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":46
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":46
  *         return self.m_n_rovers
  * 
  *     cpdef void set_n_rovers(self, Py_ssize_t n_rovers) except *:             # <<<<<<<<<<<<<<
@@ -3353,14 +3353,14 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_rovers); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_rovers) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_rovers); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_rovers) {
   Py_ssize_t __pyx_v_n_rovers;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3370,24 +3370,24 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_8set_n_rovers(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((Py_ssize_t)__pyx_v_n_rovers));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_8set_n_rovers(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((Py_ssize_t)__pyx_v_n_rovers));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_8set_n_rovers(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_rovers) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_8set_n_rovers(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_rovers) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("set_n_rovers", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_rovers(__pyx_v_self, __pyx_v_n_rovers, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_rovers(__pyx_v_self, __pyx_v_n_rovers, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
   __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
@@ -3397,7 +3397,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_rovers", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3405,7 +3405,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":56
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":56
  * 
  * 
  *     cpdef double min_dist(self) except *:             # <<<<<<<<<<<<<<
@@ -3413,8 +3413,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  * 
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static double __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_min_dist(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static double __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_min_dist(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3435,7 +3435,7 @@ static double __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calc
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_min_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3471,7 +3471,7 @@ static double __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calc
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":57
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":57
  * 
  *     cpdef double min_dist(self) except *:
  *         return self.m_min_dist             # <<<<<<<<<<<<<<
@@ -3485,7 +3485,7 @@ static double __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calc
   __pyx_r = __pyx_v_self->m_min_dist;
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":56
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":56
  * 
  * 
  *     cpdef double min_dist(self) except *:             # <<<<<<<<<<<<<<
@@ -3499,7 +3499,7 @@ static double __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calc
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3507,26 +3507,26 @@ static double __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calc
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("min_dist (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10min_dist(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10min_dist(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10min_dist(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10min_dist(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("min_dist", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_min_dist(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_min_dist(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -3536,7 +3536,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3544,7 +3544,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":59
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":59
  *         return self.m_min_dist
  * 
  *     cpdef void set_min_dist(self, double min_dist) except *:             # <<<<<<<<<<<<<<
@@ -3552,8 +3552,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  *             raise ValueError("Minimum distance (min_dist) must be positive. "
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist(PyObject *__pyx_v_self, PyObject *__pyx_arg_min_dist); /*proto*/
-static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_min_dist(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, double __pyx_v_min_dist, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist(PyObject *__pyx_v_self, PyObject *__pyx_arg_min_dist); /*proto*/
+static void __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_min_dist(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, double __pyx_v_min_dist, int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -3574,7 +3574,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_set_min_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist)) {
         __pyx_t_3 = PyFloat_FromDouble(__pyx_v_min_dist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
@@ -3611,7 +3611,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":60
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":60
  * 
  *     cpdef void set_min_dist(self, double min_dist) except *:
  *         if min_dist <= 0:             # <<<<<<<<<<<<<<
@@ -3621,7 +3621,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __pyx_t_6 = ((__pyx_v_min_dist <= 0.0) != 0);
   if (unlikely(__pyx_t_6)) {
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":63
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":63
  *             raise ValueError("Minimum distance (min_dist) must be positive. "
  *                 + "A value of %d was received"
  *                 % min_dist)             # <<<<<<<<<<<<<<
@@ -3634,7 +3634,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":62
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":62
  *         if min_dist <= 0:
  *             raise ValueError("Minimum distance (min_dist) must be positive. "
  *                 + "A value of %d was received"             # <<<<<<<<<<<<<<
@@ -3645,7 +3645,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":61
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":61
  *     cpdef void set_min_dist(self, double min_dist) except *:
  *         if min_dist <= 0:
  *             raise ValueError("Minimum distance (min_dist) must be positive. "             # <<<<<<<<<<<<<<
@@ -3659,7 +3659,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 61, __pyx_L1_error)
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":60
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":60
  * 
  *     cpdef void set_min_dist(self, double min_dist) except *:
  *         if min_dist <= 0:             # <<<<<<<<<<<<<<
@@ -3668,7 +3668,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
  */
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":65
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":65
  *                 % min_dist)
  * 
  *         self.m_min_dist = min_dist             # <<<<<<<<<<<<<<
@@ -3681,7 +3681,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   }
   __pyx_v_self->m_min_dist = __pyx_v_min_dist;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":59
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":59
  *         return self.m_min_dist
  * 
  *     cpdef void set_min_dist(self, double min_dist) except *:             # <<<<<<<<<<<<<<
@@ -3697,14 +3697,14 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist(PyObject *__pyx_v_self, PyObject *__pyx_arg_min_dist); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist(PyObject *__pyx_v_self, PyObject *__pyx_arg_min_dist) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist(PyObject *__pyx_v_self, PyObject *__pyx_arg_min_dist); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist(PyObject *__pyx_v_self, PyObject *__pyx_arg_min_dist) {
   double __pyx_v_min_dist;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3714,24 +3714,24 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_12set_min_dist(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((double)__pyx_v_min_dist));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_12set_min_dist(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((double)__pyx_v_min_dist));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_12set_min_dist(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, double __pyx_v_min_dist) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_12set_min_dist(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, double __pyx_v_min_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("set_min_dist", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_min_dist(__pyx_v_self, __pyx_v_min_dist, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_min_dist(__pyx_v_self, __pyx_v_min_dist, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 59, __pyx_L1_error)
   __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
@@ -3741,7 +3741,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_min_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3749,7 +3749,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":67
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":67
  *         self.m_min_dist = min_dist
  * 
  *     cpdef Py_ssize_t n_observation_sections(self) except *:             # <<<<<<<<<<<<<<
@@ -3757,8 +3757,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  * 
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_sections(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_sections(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3779,7 +3779,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_n_observation_sections); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3815,7 +3815,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":68
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":68
  * 
  *     cpdef Py_ssize_t n_observation_sections(self) except *:
  *         return self.m_n_observation_sections             # <<<<<<<<<<<<<<
@@ -3829,7 +3829,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
   __pyx_r = __pyx_v_self->m_n_observation_sections;
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":67
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":67
  *         self.m_min_dist = min_dist
  * 
  *     cpdef Py_ssize_t n_observation_sections(self) except *:             # <<<<<<<<<<<<<<
@@ -3843,7 +3843,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3851,26 +3851,26 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("n_observation_sections (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_14n_observation_sections(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_14n_observation_sections(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_14n_observation_sections(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_14n_observation_sections(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("n_observation_sections", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_sections(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_sections(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
   __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -3880,7 +3880,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3888,7 +3888,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":70
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":70
  *         return self.m_n_observation_sections
  * 
  *     cpdef void set_n_observation_sections(             # <<<<<<<<<<<<<<
@@ -3896,8 +3896,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  *             Py_ssize_t n_observation_sections
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_observation_sections); /*proto*/
-static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_observation_sections(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_observation_sections, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_observation_sections); /*proto*/
+static void __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_observation_sections(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_observation_sections, int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -3918,7 +3918,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_set_n_observation_sections); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections)) {
         __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_n_observation_sections); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
@@ -3955,7 +3955,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":74
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":74
  *             Py_ssize_t n_observation_sections
  *             ) except *:
  *         if n_observation_sections <= 0:             # <<<<<<<<<<<<<<
@@ -3965,7 +3965,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __pyx_t_6 = ((__pyx_v_n_observation_sections <= 0) != 0);
   if (unlikely(__pyx_t_6)) {
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":78
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":78
  *                 + "(n_observations_sections) must be "
  *                 + "positive. A value of %d was received"
  *                 % n_observation_sections)             # <<<<<<<<<<<<<<
@@ -3978,7 +3978,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":77
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":77
  *             raise ValueError("Number of rover_observation sections "
  *                 + "(n_observations_sections) must be "
  *                 + "positive. A value of %d was received"             # <<<<<<<<<<<<<<
@@ -3989,7 +3989,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":75
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":75
  *             ) except *:
  *         if n_observation_sections <= 0:
  *             raise ValueError("Number of rover_observation sections "             # <<<<<<<<<<<<<<
@@ -4003,7 +4003,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 75, __pyx_L1_error)
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":74
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":74
  *             Py_ssize_t n_observation_sections
  *             ) except *:
  *         if n_observation_sections <= 0:             # <<<<<<<<<<<<<<
@@ -4012,7 +4012,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
  */
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":80
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":80
  *                 % n_observation_sections)
  * 
  *         self.m_n_observation_sections = n_observation_sections             # <<<<<<<<<<<<<<
@@ -4025,7 +4025,7 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   }
   __pyx_v_self->m_n_observation_sections = __pyx_v_n_observation_sections;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":70
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":70
  *         return self.m_n_observation_sections
  * 
  *     cpdef void set_n_observation_sections(             # <<<<<<<<<<<<<<
@@ -4041,14 +4041,14 @@ static void __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_observation_sections); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_observation_sections) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_observation_sections); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections(PyObject *__pyx_v_self, PyObject *__pyx_arg_n_observation_sections) {
   Py_ssize_t __pyx_v_n_observation_sections;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4058,24 +4058,24 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_16set_n_observation_sections(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((Py_ssize_t)__pyx_v_n_observation_sections));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_16set_n_observation_sections(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((Py_ssize_t)__pyx_v_n_observation_sections));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_16set_n_observation_sections(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_observation_sections) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_16set_n_observation_sections(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, Py_ssize_t __pyx_v_n_observation_sections) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("set_n_observation_sections", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_observation_sections(__pyx_v_self, __pyx_v_n_observation_sections, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_observation_sections(__pyx_v_self, __pyx_v_n_observation_sections, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
   __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
@@ -4085,7 +4085,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.set_n_observation_sections", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4093,7 +4093,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":82
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":82
  *         self.m_n_observation_sections = n_observation_sections
  * 
  *     cpdef Py_ssize_t n_observation_dims(self) except *:             # <<<<<<<<<<<<<<
@@ -4101,8 +4101,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  * 
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_dims(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_dims(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4123,7 +4123,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_n_observation_dims); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -4159,7 +4159,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":83
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":83
  * 
  *     cpdef Py_ssize_t n_observation_dims(self) except *:
  *         return 2 * self.n_observation_sections()             # <<<<<<<<<<<<<<
@@ -4170,11 +4170,11 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "n_observation_sections");
     __PYX_ERR(0, 83, __pyx_L1_error)
   }
-  __pyx_t_5 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self->__pyx_base.__pyx_vtab)->n_observation_sections(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_5 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self->__pyx_base.__pyx_vtab)->n_observation_sections(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L1_error)
   __pyx_r = (2 * __pyx_t_5);
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":82
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":82
  *         self.m_n_observation_sections = n_observation_sections
  * 
  *     cpdef Py_ssize_t n_observation_dims(self) except *:             # <<<<<<<<<<<<<<
@@ -4188,7 +4188,7 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_observation_dims", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_observation_dims", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4196,26 +4196,26 @@ static Py_ssize_t __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("n_observation_dims (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_18n_observation_dims(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_18n_observation_dims(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_18n_observation_dims(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_18n_observation_dims(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("n_observation_dims", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_dims(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_dims(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
   __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -4225,7 +4225,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_observation_dims", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.n_observation_dims", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4233,7 +4233,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":85
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":85
  *         return 2 * self.n_observation_sections()
  * 
  *     cpdef double[:, :] observations_copy(self, State state) except *:             # <<<<<<<<<<<<<<
@@ -4241,8 +4241,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  *         cdef Py_ssize_t n_observation_dims
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy(PyObject *__pyx_v_self, PyObject *__pyx_v_state); /*proto*/
-static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_copy(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy(PyObject *__pyx_v_self, PyObject *__pyx_v_state); /*proto*/
+static __Pyx_memviewslice __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_copy(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_v_n_rovers;
   CYTHON_UNUSED Py_ssize_t __pyx_v_n_pois;
   Py_ssize_t __pyx_v_n_observation_dims;
@@ -4269,7 +4269,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_observations_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -4307,7 +4307,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":90
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":90
  *         cdef double[:, :] observations
  * 
  *         n_rovers = state.n_rovers()             # <<<<<<<<<<<<<<
@@ -4318,10 +4318,10 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "n_rovers");
     __PYX_ERR(0, 90, __pyx_L1_error)
   }
-  __pyx_t_6 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->n_rovers(__pyx_v_state, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_6 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->n_rovers(__pyx_v_state, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L1_error)
   __pyx_v_n_rovers = __pyx_t_6;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":91
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":91
  * 
  *         n_rovers = state.n_rovers()
  *         n_pois = state.n_pois()             # <<<<<<<<<<<<<<
@@ -4332,10 +4332,10 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "n_pois");
     __PYX_ERR(0, 91, __pyx_L1_error)
   }
-  __pyx_t_6 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->n_pois(__pyx_v_state, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_6 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->n_pois(__pyx_v_state, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 91, __pyx_L1_error)
   __pyx_v_n_pois = __pyx_t_6;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":92
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":92
  *         n_rovers = state.n_rovers()
  *         n_pois = state.n_pois()
  *         n_observation_dims = self.n_observation_dims()             # <<<<<<<<<<<<<<
@@ -4346,10 +4346,10 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "n_observation_dims");
     __PYX_ERR(0, 92, __pyx_L1_error)
   }
-  __pyx_t_6 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self->__pyx_base.__pyx_vtab)->n_observation_dims(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_6 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self->__pyx_base.__pyx_vtab)->n_observation_dims(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
   __pyx_v_n_observation_dims = __pyx_t_6;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":94
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":94
  *         n_observation_dims = self.n_observation_dims()
  * 
  *         observations = np.zeros((n_rovers, n_observation_dims))             # <<<<<<<<<<<<<<
@@ -4395,7 +4395,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":95
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":95
  * 
  *         observations = np.zeros((n_rovers, n_observation_dims))
  *         return self.observations_via(observations, state)             # <<<<<<<<<<<<<<
@@ -4406,13 +4406,13 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "observations_via");
     __PYX_ERR(0, 95, __pyx_L1_error)
   }
-  __pyx_t_5 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.observations_via(((struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *)__pyx_v_self), __pyx_v_observations, __pyx_v_state, 0); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_5 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.observations_via(((struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *)__pyx_v_self), __pyx_v_observations, __pyx_v_state, 0); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 95, __pyx_L1_error)
   __pyx_r = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":85
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":85
  *         return 2 * self.n_observation_sections()
  * 
  *     cpdef double[:, :] observations_copy(self, State state) except *:             # <<<<<<<<<<<<<<
@@ -4430,7 +4430,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
   __Pyx_XDECREF(__pyx_t_7);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -4443,13 +4443,13 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy(PyObject *__pyx_v_self, PyObject *__pyx_v_state); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy(PyObject *__pyx_v_self, PyObject *__pyx_v_state) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy(PyObject *__pyx_v_self, PyObject *__pyx_v_state); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy(PyObject *__pyx_v_self, PyObject *__pyx_v_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("observations_copy (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_8rockefeg_12rover_domain_5state_State, 1, "state", 0))) __PYX_ERR(0, 85, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_20observations_copy(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((struct __pyx_obj_8rockefeg_12rover_domain_5state_State *)__pyx_v_state));
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_8rockefeg_11roverdomain_5state_State, 1, "state", 0))) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_20observations_copy(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)__pyx_v_state));
 
   /* function exit code */
   goto __pyx_L0;
@@ -4460,14 +4460,14 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_20observations_copy(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_20observations_copy(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("observations_copy", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_copy(__pyx_v_self, __pyx_v_state, 1); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_copy(__pyx_v_self, __pyx_v_state, 1); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 85, __pyx_L1_error)
   __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_1, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
@@ -4481,7 +4481,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   __pyx_L1_error:;
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4489,7 +4489,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":97
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":97
  *         return self.observations_via(observations, state)
  * 
  *     cpdef double[:, :] observations_via(self,             # <<<<<<<<<<<<<<
@@ -4497,8 +4497,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  *             State state
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_via(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static __Pyx_memviewslice __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_via(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_v_rover_id;
   Py_ssize_t __pyx_v_poi_id;
   Py_ssize_t __pyx_v_other_rover_id;
@@ -4595,7 +4595,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_observations_via); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via)) {
         if (unlikely(!__pyx_v_store.memview)) { __Pyx_RaiseUnboundLocalError("store"); __PYX_ERR(0, 97, __pyx_L1_error) }
         __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_store, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
@@ -4668,7 +4668,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":115
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":115
  *         cdef double[:, :] observations
  * 
  *         n_rovers = state.n_rovers()             # <<<<<<<<<<<<<<
@@ -4679,10 +4679,10 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "n_rovers");
     __PYX_ERR(0, 115, __pyx_L1_error)
   }
-  __pyx_t_9 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->n_rovers(__pyx_v_state, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_9 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->n_rovers(__pyx_v_state, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L1_error)
   __pyx_v_n_rovers = __pyx_t_9;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":116
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":116
  * 
  *         n_rovers = state.n_rovers()
  *         n_pois = state.n_pois()             # <<<<<<<<<<<<<<
@@ -4693,10 +4693,10 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "n_pois");
     __PYX_ERR(0, 116, __pyx_L1_error)
   }
-  __pyx_t_9 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->n_pois(__pyx_v_state, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_9 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->n_pois(__pyx_v_state, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
   __pyx_v_n_pois = __pyx_t_9;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":117
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":117
  *         n_rovers = state.n_rovers()
  *         n_pois = state.n_pois()
  *         n_observation_dims = self.n_observation_dims()             # <<<<<<<<<<<<<<
@@ -4707,10 +4707,10 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_37default_rover_obser
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "n_observation_dims");
     __PYX_ERR(0, 117, __pyx_L1_error)
   }
-  __pyx_t_9 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self->__pyx_base.__pyx_vtab)->n_observation_dims(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_9 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self->__pyx_base.__pyx_vtab)->n_observation_dims(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
   __pyx_v_n_observation_dims = __pyx_t_9;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":119
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":119
  *         n_observation_dims = self.n_observation_dims()
  * 
  *         observations = store[:n_rovers, :n_observation_dims]             # <<<<<<<<<<<<<<
@@ -4763,7 +4763,7 @@ __pyx_v_observations = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":121
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":121
  *         observations = store[:n_rovers, :n_observation_dims]
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -4779,7 +4779,7 @@ __pyx_v_observations = __pyx_t_8;
     __Pyx_XGOTREF(__pyx_t_12);
     /*try:*/ {
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":123
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":123
  *         try:
  *             rover_positions = (
  *                 state.rover_positions_via(self.r_rover_positions_store))             # <<<<<<<<<<<<<<
@@ -4795,12 +4795,12 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 123, __pyx_L3_error)
       }
       if (unlikely(!__pyx_v_self->r_rover_positions_store.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 123, __pyx_L3_error)}
-      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->rover_positions_via(__pyx_v_state, __pyx_v_self->r_rover_positions_store, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 123, __pyx_L3_error)
+      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->rover_positions_via(__pyx_v_state, __pyx_v_self->r_rover_positions_store, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 123, __pyx_L3_error)
       __pyx_v_rover_positions = __pyx_t_8;
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":121
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":121
  *         observations = store[:n_rovers, :n_observation_dims]
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -4821,7 +4821,7 @@ __pyx_v_observations = __pyx_t_8;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":124
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":124
  *             rover_positions = (
  *                 state.rover_positions_via(self.r_rover_positions_store))
  *         except:             # <<<<<<<<<<<<<<
@@ -4829,13 +4829,13 @@ __pyx_v_observations = __pyx_t_8;
  *             rover_positions = self.r_rover_positions_store
  */
     /*except:*/ {
-      __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_4) < 0) __PYX_ERR(0, 124, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_4);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":125
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":125
  *                 state.rover_positions_via(self.r_rover_positions_store))
  *         except:
  *             self.r_rover_positions_store = state.rover_positions_copy()             # <<<<<<<<<<<<<<
@@ -4846,7 +4846,7 @@ __pyx_v_observations = __pyx_t_8;
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "rover_positions_copy");
         __PYX_ERR(0, 125, __pyx_L5_except_error)
       }
-      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->rover_positions_copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 125, __pyx_L5_except_error)
+      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->rover_positions_copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 125, __pyx_L5_except_error)
       if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions_store");
         __PYX_ERR(0, 125, __pyx_L5_except_error)
@@ -4856,7 +4856,7 @@ __pyx_v_observations = __pyx_t_8;
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":126
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":126
  *         except:
  *             self.r_rover_positions_store = state.rover_positions_copy()
  *             rover_positions = self.r_rover_positions_store             # <<<<<<<<<<<<<<
@@ -4881,7 +4881,7 @@ __pyx_v_observations = __pyx_t_8;
     }
     __pyx_L5_except_error:;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":121
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":121
  *         observations = store[:n_rovers, :n_observation_dims]
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -4901,7 +4901,7 @@ __pyx_v_observations = __pyx_t_8;
     __pyx_L8_try_end:;
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":128
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":128
  *             rover_positions = self.r_rover_positions_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -4917,7 +4917,7 @@ __pyx_v_observations = __pyx_t_8;
     __Pyx_XGOTREF(__pyx_t_10);
     /*try:*/ {
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":130
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":130
  *         try:
  *             rover_orientations = (
  *                 state.rover_orientations_via(self.r_rover_orientations_store))             # <<<<<<<<<<<<<<
@@ -4933,12 +4933,12 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 130, __pyx_L11_error)
       }
       if (unlikely(!__pyx_v_self->r_rover_orientations_store.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 130, __pyx_L11_error)}
-      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->rover_orientations_via(__pyx_v_state, __pyx_v_self->r_rover_orientations_store, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 130, __pyx_L11_error)
+      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->rover_orientations_via(__pyx_v_state, __pyx_v_self->r_rover_orientations_store, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 130, __pyx_L11_error)
       __pyx_v_rover_orientations = __pyx_t_8;
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":128
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":128
  *             rover_positions = self.r_rover_positions_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -4959,7 +4959,7 @@ __pyx_v_observations = __pyx_t_8;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":131
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":131
  *             rover_orientations = (
  *                 state.rover_orientations_via(self.r_rover_orientations_store))
  *         except:             # <<<<<<<<<<<<<<
@@ -4967,13 +4967,13 @@ __pyx_v_observations = __pyx_t_8;
  *             rover_orientations = self.r_rover_orientations_store
  */
     /*except:*/ {
-      __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 131, __pyx_L13_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":132
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":132
  *                 state.rover_orientations_via(self.r_rover_orientations_store))
  *         except:
  *             self.r_rover_orientations_store = state.rover_orientations_copy()             # <<<<<<<<<<<<<<
@@ -4984,7 +4984,7 @@ __pyx_v_observations = __pyx_t_8;
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "rover_orientations_copy");
         __PYX_ERR(0, 132, __pyx_L13_except_error)
       }
-      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->rover_orientations_copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 132, __pyx_L13_except_error)
+      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->rover_orientations_copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 132, __pyx_L13_except_error)
       if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations_store");
         __PYX_ERR(0, 132, __pyx_L13_except_error)
@@ -4994,7 +4994,7 @@ __pyx_v_observations = __pyx_t_8;
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":133
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":133
  *         except:
  *             self.r_rover_orientations_store = state.rover_orientations_copy()
  *             rover_orientations = self.r_rover_orientations_store             # <<<<<<<<<<<<<<
@@ -5019,7 +5019,7 @@ __pyx_v_observations = __pyx_t_8;
     }
     __pyx_L13_except_error:;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":128
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":128
  *             rover_positions = self.r_rover_positions_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -5039,7 +5039,7 @@ __pyx_v_observations = __pyx_t_8;
     __pyx_L16_try_end:;
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":135
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":135
  *             rover_orientations = self.r_rover_orientations_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -5055,7 +5055,7 @@ __pyx_v_observations = __pyx_t_8;
     __Pyx_XGOTREF(__pyx_t_12);
     /*try:*/ {
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":136
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":136
  * 
  *         try:
  *             poi_positions = state.poi_positions_via(self.r_poi_positions_store)             # <<<<<<<<<<<<<<
@@ -5071,12 +5071,12 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 136, __pyx_L19_error)
       }
       if (unlikely(!__pyx_v_self->r_poi_positions_store.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 136, __pyx_L19_error)}
-      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->poi_positions_via(__pyx_v_state, __pyx_v_self->r_poi_positions_store, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 136, __pyx_L19_error)
+      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->poi_positions_via(__pyx_v_state, __pyx_v_self->r_poi_positions_store, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 136, __pyx_L19_error)
       __pyx_v_poi_positions = __pyx_t_8;
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":135
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":135
  *             rover_orientations = self.r_rover_orientations_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -5097,7 +5097,7 @@ __pyx_v_observations = __pyx_t_8;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":137
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":137
  *         try:
  *             poi_positions = state.poi_positions_via(self.r_poi_positions_store)
  *         except:             # <<<<<<<<<<<<<<
@@ -5105,13 +5105,13 @@ __pyx_v_observations = __pyx_t_8;
  *             poi_positions = self.r_poi_positions_store
  */
     /*except:*/ {
-      __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_4) < 0) __PYX_ERR(0, 137, __pyx_L21_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_4);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":138
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":138
  *             poi_positions = state.poi_positions_via(self.r_poi_positions_store)
  *         except:
  *             self.r_poi_positions_store = state.poi_positions_copy()             # <<<<<<<<<<<<<<
@@ -5122,7 +5122,7 @@ __pyx_v_observations = __pyx_t_8;
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "poi_positions_copy");
         __PYX_ERR(0, 138, __pyx_L21_except_error)
       }
-      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->poi_positions_copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 138, __pyx_L21_except_error)
+      __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->poi_positions_copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 138, __pyx_L21_except_error)
       if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_poi_positions_store");
         __PYX_ERR(0, 138, __pyx_L21_except_error)
@@ -5132,7 +5132,7 @@ __pyx_v_observations = __pyx_t_8;
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":139
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":139
  *         except:
  *             self.r_poi_positions_store = state.poi_positions_copy()
  *             poi_positions = self.r_poi_positions_store             # <<<<<<<<<<<<<<
@@ -5157,7 +5157,7 @@ __pyx_v_observations = __pyx_t_8;
     }
     __pyx_L21_except_error:;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":135
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":135
  *             rover_orientations = self.r_rover_orientations_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -5177,7 +5177,7 @@ __pyx_v_observations = __pyx_t_8;
     __pyx_L24_try_end:;
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":141
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":141
  *             poi_positions = self.r_poi_positions_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -5193,7 +5193,7 @@ __pyx_v_observations = __pyx_t_8;
     __Pyx_XGOTREF(__pyx_t_10);
     /*try:*/ {
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":142
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":142
  * 
  *         try:
  *             poi_values = state.poi_values_via(self.r_poi_values_store)             # <<<<<<<<<<<<<<
@@ -5209,12 +5209,12 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 142, __pyx_L27_error)
       }
       if (unlikely(!__pyx_v_self->r_poi_values_store.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 142, __pyx_L27_error)}
-      __pyx_t_13 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->poi_values_via(__pyx_v_state, __pyx_v_self->r_poi_values_store, 0); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 142, __pyx_L27_error)
+      __pyx_t_13 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->poi_values_via(__pyx_v_state, __pyx_v_self->r_poi_values_store, 0); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 142, __pyx_L27_error)
       __pyx_v_poi_values = __pyx_t_13;
       __pyx_t_13.memview = NULL;
       __pyx_t_13.data = NULL;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":141
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":141
  *             poi_positions = self.r_poi_positions_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -5236,7 +5236,7 @@ __pyx_v_observations = __pyx_t_8;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":143
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":143
  *         try:
  *             poi_values = state.poi_values_via(self.r_poi_values_store)
  *         except:             # <<<<<<<<<<<<<<
@@ -5244,13 +5244,13 @@ __pyx_v_observations = __pyx_t_8;
  *             poi_values = self.r_poi_values_store
  */
     /*except:*/ {
-      __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 143, __pyx_L29_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":144
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":144
  *             poi_values = state.poi_values_via(self.r_poi_values_store)
  *         except:
  *             self.r_poi_values_store = state.poi_values_copy()             # <<<<<<<<<<<<<<
@@ -5261,7 +5261,7 @@ __pyx_v_observations = __pyx_t_8;
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "poi_values_copy");
         __PYX_ERR(0, 144, __pyx_L29_except_error)
       }
-      __pyx_t_13 = ((struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *)__pyx_v_state->__pyx_vtab)->poi_values_copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 144, __pyx_L29_except_error)
+      __pyx_t_13 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->poi_values_copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 144, __pyx_L29_except_error)
       if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_poi_values_store");
         __PYX_ERR(0, 144, __pyx_L29_except_error)
@@ -5271,7 +5271,7 @@ __pyx_v_observations = __pyx_t_8;
       __pyx_t_13.memview = NULL;
       __pyx_t_13.data = NULL;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":145
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":145
  *         except:
  *             self.r_poi_values_store = state.poi_values_copy()
  *             poi_values = self.r_poi_values_store             # <<<<<<<<<<<<<<
@@ -5296,7 +5296,7 @@ __pyx_v_observations = __pyx_t_8;
     }
     __pyx_L29_except_error:;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":141
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":141
  *             poi_positions = self.r_poi_positions_store
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -5316,7 +5316,7 @@ __pyx_v_observations = __pyx_t_8;
     __pyx_L32_try_end:;
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":148
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":148
  * 
  *         # Zero all observations.
  *         observations[...] = 0.             # <<<<<<<<<<<<<<
@@ -5350,7 +5350,7 @@ __pyx_v_observations = __pyx_t_8;
       }
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":151
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":151
  * 
  *         # Calculate observation for each rover.
  *         for rover_id in range(n_rovers):             # <<<<<<<<<<<<<<
@@ -5362,7 +5362,7 @@ __pyx_v_observations = __pyx_t_8;
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_rover_id = __pyx_t_15;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":154
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":154
  * 
  *             # Update rover type observations
  *             for other_rover_id in range(n_rovers):             # <<<<<<<<<<<<<<
@@ -5374,7 +5374,7 @@ __pyx_v_observations = __pyx_t_8;
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_other_rover_id = __pyx_t_18;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":156
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":156
  *             for other_rover_id in range(n_rovers):
  *                 # Agents should not sense self, ergo skip self comparison.
  *                 if rover_id == other_rover_id:             # <<<<<<<<<<<<<<
@@ -5384,7 +5384,7 @@ __pyx_v_observations = __pyx_t_8;
       __pyx_t_19 = ((__pyx_v_rover_id == __pyx_v_other_rover_id) != 0);
       if (__pyx_t_19) {
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":157
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":157
  *                 # Agents should not sense self, ergo skip self comparison.
  *                 if rover_id == other_rover_id:
  *                     continue             # <<<<<<<<<<<<<<
@@ -5393,7 +5393,7 @@ __pyx_v_observations = __pyx_t_8;
  */
         goto __pyx_L37_continue;
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":156
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":156
  *             for other_rover_id in range(n_rovers):
  *                 # Agents should not sense self, ergo skip self comparison.
  *                 if rover_id == other_rover_id:             # <<<<<<<<<<<<<<
@@ -5402,7 +5402,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":161
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":161
  *                 # Get global frame (gf) displacement.
  *                 gf_displ_x = (
  *                     rover_positions[other_rover_id, 0]             # <<<<<<<<<<<<<<
@@ -5429,7 +5429,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 161, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":162
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":162
  *                 gf_displ_x = (
  *                     rover_positions[other_rover_id, 0]
  *                     - rover_positions[rover_id, 0])             # <<<<<<<<<<<<<<
@@ -5457,7 +5457,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_v_gf_displ_x = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_positions.data + __pyx_t_20 * __pyx_v_rover_positions.strides[0]) ) + __pyx_t_21 * __pyx_v_rover_positions.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_positions.data + __pyx_t_22 * __pyx_v_rover_positions.strides[0]) ) + __pyx_t_23 * __pyx_v_rover_positions.strides[1]) ))));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":164
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":164
  *                     - rover_positions[rover_id, 0])
  *                 gf_displ_y = (
  *                     rover_positions[other_rover_id, 1]             # <<<<<<<<<<<<<<
@@ -5484,7 +5484,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 164, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":165
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":165
  *                 gf_displ_y = (
  *                     rover_positions[other_rover_id, 1]
  *                     - rover_positions[rover_id, 1])             # <<<<<<<<<<<<<<
@@ -5512,7 +5512,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_v_gf_displ_y = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_positions.data + __pyx_t_24 * __pyx_v_rover_positions.strides[0]) ) + __pyx_t_25 * __pyx_v_rover_positions.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_positions.data + __pyx_t_26 * __pyx_v_rover_positions.strides[0]) ) + __pyx_t_27 * __pyx_v_rover_positions.strides[1]) ))));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":169
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":169
  *                 # Get rover frame (rf) displacement.
  *                 rf_displ_x = (
  *                     rover_orientations[rover_id, 0]             # <<<<<<<<<<<<<<
@@ -5539,7 +5539,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 169, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":171
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":171
  *                     rover_orientations[rover_id, 0]
  *                     * gf_displ_x
  *                     + rover_orientations[rover_id, 1]             # <<<<<<<<<<<<<<
@@ -5566,7 +5566,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 171, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":172
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":172
  *                     * gf_displ_x
  *                     + rover_orientations[rover_id, 1]
  *                     * gf_displ_y)             # <<<<<<<<<<<<<<
@@ -5575,7 +5575,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_rf_displ_x = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_28 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_29 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_gf_displ_x) + ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_30 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_31 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_gf_displ_y));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":174
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":174
  *                     * gf_displ_y)
  *                 rf_displ_y = (
  *                     rover_orientations[rover_id, 0]             # <<<<<<<<<<<<<<
@@ -5602,7 +5602,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 174, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":176
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":176
  *                     rover_orientations[rover_id, 0]
  *                     * gf_displ_y
  *                     - rover_orientations[rover_id, 1]             # <<<<<<<<<<<<<<
@@ -5629,7 +5629,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 176, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":177
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":177
  *                     * gf_displ_y
  *                     - rover_orientations[rover_id, 1]
  *                     * gf_displ_x)             # <<<<<<<<<<<<<<
@@ -5638,7 +5638,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_rf_displ_y = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_32 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_33 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_gf_displ_y) - ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_34 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_35 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_gf_displ_x));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":179
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":179
  *                     * gf_displ_x)
  * 
  *                 dist = cmath.sqrt(rf_displ_x*rf_displ_x + rf_displ_y*rf_displ_y)             # <<<<<<<<<<<<<<
@@ -5647,7 +5647,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_dist = sqrt(((__pyx_v_rf_displ_x * __pyx_v_rf_displ_x) + (__pyx_v_rf_displ_y * __pyx_v_rf_displ_y)));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":184
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":184
  *                 # implicitly bound sensor values (1/dist^2) so that they
  *                 # don't explode when dist = 0.
  *                 if dist < self.m_min_dist:             # <<<<<<<<<<<<<<
@@ -5661,7 +5661,7 @@ __pyx_v_observations = __pyx_t_8;
       __pyx_t_19 = ((__pyx_v_dist < __pyx_v_self->m_min_dist) != 0);
       if (__pyx_t_19) {
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":185
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":185
  *                 # don't explode when dist = 0.
  *                 if dist < self.m_min_dist:
  *                     dist = self.m_min_dist             # <<<<<<<<<<<<<<
@@ -5675,7 +5675,7 @@ __pyx_v_observations = __pyx_t_8;
         __pyx_t_36 = __pyx_v_self->m_min_dist;
         __pyx_v_dist = __pyx_t_36;
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":184
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":184
  *                 # implicitly bound sensor values (1/dist^2) so that they
  *                 # don't explode when dist = 0.
  *                 if dist < self.m_min_dist:             # <<<<<<<<<<<<<<
@@ -5684,7 +5684,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":188
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":188
  * 
  *                 # Get arc tangent (angle) of displacement.
  *                 angle = cmath.atan2(rf_displ_y, rf_displ_x)             # <<<<<<<<<<<<<<
@@ -5693,7 +5693,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_angle = atan2(__pyx_v_rf_displ_y, __pyx_v_rf_displ_x);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":192
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":192
  *                 #  Get intermediate Section Index by discretizing angle.
  *                 sec_id = <Py_ssize_t>cmath.floor(
  *                     (angle + cmath.pi)             # <<<<<<<<<<<<<<
@@ -5702,7 +5702,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_t_36 = (__pyx_v_angle + M_PI);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":193
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":193
  *                 sec_id = <Py_ssize_t>cmath.floor(
  *                     (angle + cmath.pi)
  *                     / (2 * cmath.pi)             # <<<<<<<<<<<<<<
@@ -5715,7 +5715,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 193, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":194
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":194
  *                     (angle + cmath.pi)
  *                     / (2 * cmath.pi)
  *                     * self.m_n_observation_sections)             # <<<<<<<<<<<<<<
@@ -5727,7 +5727,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 194, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":191
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":191
  * 
  *                 #  Get intermediate Section Index by discretizing angle.
  *                 sec_id = <Py_ssize_t>cmath.floor(             # <<<<<<<<<<<<<<
@@ -5736,7 +5736,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_sec_id = ((Py_ssize_t)floor(((__pyx_t_36 / __pyx_t_37) * __pyx_v_self->m_n_observation_sections)));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":200
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":200
  *                     min(
  *                         max(0, sec_id),
  *                         self.m_n_observation_sections - 1))             # <<<<<<<<<<<<<<
@@ -5749,7 +5749,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_t_38 = (__pyx_v_self->m_n_observation_sections - 1);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":199
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":199
  *                 obs_id = (
  *                     min(
  *                         max(0, sec_id),             # <<<<<<<<<<<<<<
@@ -5765,7 +5765,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_t_39 = __pyx_t_41;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":200
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":200
  *                     min(
  *                         max(0, sec_id),
  *                         self.m_n_observation_sections - 1))             # <<<<<<<<<<<<<<
@@ -5779,7 +5779,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_v_obs_id = __pyx_t_41;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":202
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":202
  *                         self.m_n_observation_sections - 1))
  * 
  *                 observations[rover_id, obs_id] += 1. / (dist*dist)             # <<<<<<<<<<<<<<
@@ -5814,7 +5814,7 @@ __pyx_v_observations = __pyx_t_8;
       __pyx_L37_continue:;
     }
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":205
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":205
  * 
  *             # Update POI type observations.
  *             for poi_id in range(n_pois):             # <<<<<<<<<<<<<<
@@ -5826,7 +5826,7 @@ __pyx_v_observations = __pyx_t_8;
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_poi_id = __pyx_t_18;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":209
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":209
  *                 # Get global (gf) frame displacement.
  *                 gf_displ_x = (
  *                     poi_positions[poi_id, 0]             # <<<<<<<<<<<<<<
@@ -5853,7 +5853,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 209, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":210
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":210
  *                 gf_displ_x = (
  *                     poi_positions[poi_id, 0]
  *                     - rover_positions[rover_id, 0])             # <<<<<<<<<<<<<<
@@ -5881,7 +5881,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_v_gf_displ_x = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_poi_positions.data + __pyx_t_44 * __pyx_v_poi_positions.strides[0]) ) + __pyx_t_45 * __pyx_v_poi_positions.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_positions.data + __pyx_t_46 * __pyx_v_rover_positions.strides[0]) ) + __pyx_t_47 * __pyx_v_rover_positions.strides[1]) ))));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":212
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":212
  *                     - rover_positions[rover_id, 0])
  *                 gf_displ_y = (
  *                     poi_positions[poi_id, 1]             # <<<<<<<<<<<<<<
@@ -5908,7 +5908,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 212, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":213
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":213
  *                 gf_displ_y = (
  *                     poi_positions[poi_id, 1]
  *                     - rover_positions[rover_id, 1])             # <<<<<<<<<<<<<<
@@ -5936,7 +5936,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_v_gf_displ_y = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_poi_positions.data + __pyx_t_48 * __pyx_v_poi_positions.strides[0]) ) + __pyx_t_49 * __pyx_v_poi_positions.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_positions.data + __pyx_t_50 * __pyx_v_rover_positions.strides[0]) ) + __pyx_t_51 * __pyx_v_rover_positions.strides[1]) ))));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":217
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":217
  *                 # Get rover frame (rf) displacement.
  *                 rf_displ_x = (
  *                     rover_orientations[rover_id, 0]             # <<<<<<<<<<<<<<
@@ -5963,7 +5963,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 217, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":219
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":219
  *                     rover_orientations[rover_id, 0]
  *                     * gf_displ_x
  *                     + rover_orientations[rover_id, 1]             # <<<<<<<<<<<<<<
@@ -5990,7 +5990,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 219, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":220
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":220
  *                     * gf_displ_x
  *                     + rover_orientations[rover_id, 1]
  *                     * gf_displ_y)             # <<<<<<<<<<<<<<
@@ -5999,7 +5999,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_rf_displ_x = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_52 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_53 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_gf_displ_x) + ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_54 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_55 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_gf_displ_y));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":222
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":222
  *                     * gf_displ_y)
  *                 rf_displ_y = (
  *                     rover_orientations[rover_id, 0]             # <<<<<<<<<<<<<<
@@ -6026,7 +6026,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 222, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":224
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":224
  *                     rover_orientations[rover_id, 0]
  *                     * gf_displ_y
  *                     - rover_orientations[rover_id, 1]             # <<<<<<<<<<<<<<
@@ -6053,7 +6053,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 224, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":225
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":225
  *                     * gf_displ_y
  *                     - rover_orientations[rover_id, 1]
  *                     * gf_displ_x)             # <<<<<<<<<<<<<<
@@ -6062,7 +6062,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_rf_displ_y = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_56 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_57 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_gf_displ_y) - ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_58 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_59 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_gf_displ_x));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":227
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":227
  *                     * gf_displ_x)
  * 
  *                 dist = cmath.sqrt(rf_displ_x*rf_displ_x + rf_displ_y*rf_displ_y)             # <<<<<<<<<<<<<<
@@ -6071,7 +6071,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_dist = sqrt(((__pyx_v_rf_displ_x * __pyx_v_rf_displ_x) + (__pyx_v_rf_displ_y * __pyx_v_rf_displ_y)));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":232
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":232
  *                 # implicitly bound sensor values (1/dist^2) so that they
  *                 # don't explode when dist = 0.
  *                 if dist < self.m_min_dist:             # <<<<<<<<<<<<<<
@@ -6085,7 +6085,7 @@ __pyx_v_observations = __pyx_t_8;
       __pyx_t_19 = ((__pyx_v_dist < __pyx_v_self->m_min_dist) != 0);
       if (__pyx_t_19) {
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":233
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":233
  *                 # don't explode when dist = 0.
  *                 if dist < self.m_min_dist:
  *                     dist = self.m_min_dist             # <<<<<<<<<<<<<<
@@ -6099,7 +6099,7 @@ __pyx_v_observations = __pyx_t_8;
         __pyx_t_37 = __pyx_v_self->m_min_dist;
         __pyx_v_dist = __pyx_t_37;
 
-        /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":232
+        /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":232
  *                 # implicitly bound sensor values (1/dist^2) so that they
  *                 # don't explode when dist = 0.
  *                 if dist < self.m_min_dist:             # <<<<<<<<<<<<<<
@@ -6108,7 +6108,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":236
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":236
  * 
  *                 # Get arc tangent (angle) of displacement.
  *                 angle = cmath.atan2(rf_displ_y, rf_displ_x)             # <<<<<<<<<<<<<<
@@ -6117,7 +6117,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_angle = atan2(__pyx_v_rf_displ_y, __pyx_v_rf_displ_x);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":240
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":240
  *                 #  Get intermediate Section Index by discretizing angle.
  *                 sec_id = <Py_ssize_t>cmath.floor(
  *                     (angle + cmath.pi)             # <<<<<<<<<<<<<<
@@ -6126,7 +6126,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_t_37 = (__pyx_v_angle + M_PI);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":241
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":241
  *                 sec_id = <Py_ssize_t>cmath.floor(
  *                     (angle + cmath.pi)
  *                     / (2 * cmath.pi)             # <<<<<<<<<<<<<<
@@ -6139,7 +6139,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 241, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":242
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":242
  *                     (angle + cmath.pi)
  *                     / (2 * cmath.pi)
  *                     * self.m_n_observation_sections)             # <<<<<<<<<<<<<<
@@ -6151,7 +6151,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 242, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":239
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":239
  * 
  *                 #  Get intermediate Section Index by discretizing angle.
  *                 sec_id = <Py_ssize_t>cmath.floor(             # <<<<<<<<<<<<<<
@@ -6160,7 +6160,7 @@ __pyx_v_observations = __pyx_t_8;
  */
       __pyx_v_sec_id = ((Py_ssize_t)floor(((__pyx_t_37 / __pyx_t_36) * __pyx_v_self->m_n_observation_sections)));
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":249
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":249
  *                     min(
  *                         max(0, sec_id),
  *                         self.m_n_observation_sections - 1)             # <<<<<<<<<<<<<<
@@ -6173,7 +6173,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_t_41 = (__pyx_v_self->m_n_observation_sections - 1);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":248
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":248
  *                 obs_id = (
  *                     min(
  *                         max(0, sec_id),             # <<<<<<<<<<<<<<
@@ -6189,7 +6189,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_t_38 = __pyx_t_39;
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":249
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":249
  *                     min(
  *                         max(0, sec_id),
  *                         self.m_n_observation_sections - 1)             # <<<<<<<<<<<<<<
@@ -6202,7 +6202,7 @@ __pyx_v_observations = __pyx_t_8;
         __pyx_t_39 = __pyx_t_38;
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":250
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":250
  *                         max(0, sec_id),
  *                         self.m_n_observation_sections - 1)
  *                     + self.m_n_observation_sections)             # <<<<<<<<<<<<<<
@@ -6215,7 +6215,7 @@ __pyx_v_observations = __pyx_t_8;
       }
       __pyx_v_obs_id = (__pyx_t_39 + __pyx_v_self->m_n_observation_sections);
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":253
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":253
  * 
  *                 observations[rover_id, obs_id] += (
  *                     poi_values[poi_id] / (dist*dist))             # <<<<<<<<<<<<<<
@@ -6243,7 +6243,7 @@ __pyx_v_observations = __pyx_t_8;
         __PYX_ERR(0, 253, __pyx_L1_error)
       }
 
-      /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":252
+      /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":252
  *                     + self.m_n_observation_sections)
  * 
  *                 observations[rover_id, obs_id] += (             # <<<<<<<<<<<<<<
@@ -6273,7 +6273,7 @@ __pyx_v_observations = __pyx_t_8;
     }
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":255
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":255
  *                     poi_values[poi_id] / (dist*dist))
  * 
  *         return observations             # <<<<<<<<<<<<<<
@@ -6284,7 +6284,7 @@ __pyx_v_observations = __pyx_t_8;
   __pyx_r = __pyx_v_observations;
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":97
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":97
  *         return self.observations_via(observations, state)
  * 
  *     cpdef double[:, :] observations_via(self,             # <<<<<<<<<<<<<<
@@ -6304,7 +6304,7 @@ __pyx_v_observations = __pyx_t_8;
   __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -6321,10 +6321,10 @@ __pyx_v_observations = __pyx_t_8;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_store = { 0, 0, { 0 }, { 0 }, { 0 } };
-  struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state = 0;
+  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("observations_via (wrapper)", 0);
@@ -6364,18 +6364,18 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_store = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_store.memview)) __PYX_ERR(0, 98, __pyx_L3_error)
-    __pyx_v_state = ((struct __pyx_obj_8rockefeg_12rover_domain_5state_State *)values[1]);
+    __pyx_v_state = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)values[1]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("observations_via", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 97, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_8rockefeg_12rover_domain_5state_State, 1, "state", 0))) __PYX_ERR(0, 99, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_22observations_via(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), __pyx_v_store, __pyx_v_state);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_8rockefeg_11roverdomain_5state_State, 1, "state", 0))) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_22observations_via(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), __pyx_v_store, __pyx_v_state);
 
   /* function exit code */
   goto __pyx_L0;
@@ -6386,7 +6386,7 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_22observations_via(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *__pyx_v_state) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_22observations_via(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -6394,7 +6394,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   __Pyx_RefNannySetupContext("observations_via", 0);
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(!__pyx_v_store.memview)) { __Pyx_RaiseUnboundLocalError("store"); __PYX_ERR(0, 97, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_via(__pyx_v_self, __pyx_v_store, __pyx_v_state, 1); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_via(__pyx_v_self, __pyx_v_store, __pyx_v_state, 1); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 97, __pyx_L1_error)
   __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_1, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
@@ -6408,7 +6408,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   __pyx_L1_error:;
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.observations_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_store, 1);
@@ -6417,7 +6417,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":258
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":258
  * 
  * 
  *     cpdef object copy(self):             # <<<<<<<<<<<<<<
@@ -6425,8 +6425,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  * 
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6446,7 +6446,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -6482,7 +6482,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":259
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":259
  * 
  *     cpdef object copy(self):
  *         return DefaultRoverObservationsCalculator()             # <<<<<<<<<<<<<<
@@ -6490,13 +6490,13 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
  *     cpdef object copy_via(self, object store):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":258
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":258
  * 
  * 
  *     cpdef object copy(self):             # <<<<<<<<<<<<<<
@@ -6510,7 +6510,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6519,25 +6519,25 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("copy (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24copy(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24copy(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24copy(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24copy(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("copy", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6546,7 +6546,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6554,7 +6554,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":261
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":261
  *         return DefaultRoverObservationsCalculator()
  * 
  *     cpdef object copy_via(self, object store):             # <<<<<<<<<<<<<<
@@ -6562,9 +6562,9 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  *         cdef object store_type
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
-static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy_via(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_store, int __pyx_skip_dispatch) {
-  struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_new_calculator = 0;
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy_via(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_store, int __pyx_skip_dispatch) {
+  struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_new_calculator = 0;
   PyObject *__pyx_v_store_type = 0;
   PyObject *__pyx_v_self_type = 0;
   PyObject *__pyx_r = NULL;
@@ -6588,7 +6588,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy_via); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -6624,7 +6624,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
     #endif
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":266
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":266
  *         cdef object self_type
  * 
  *         if type(store) is not type(self):             # <<<<<<<<<<<<<<
@@ -6635,7 +6635,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (unlikely(__pyx_t_6)) {
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":267
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":267
  * 
  *         if type(store) is not type(self):
  *             store_type = type(store)             # <<<<<<<<<<<<<<
@@ -6645,7 +6645,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
     __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_v_store)));
     __pyx_v_store_type = ((PyObject *)Py_TYPE(__pyx_v_store));
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":268
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":268
  *         if type(store) is not type(self):
  *             store_type = type(store)
  *             self_type = type(self)             # <<<<<<<<<<<<<<
@@ -6655,7 +6655,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __pyx_v_self_type = ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self)));
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":272
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":272
  *                 "The type of the storage parameter "
  *                 "(type(store) = {store_type}) must be exactly {self_type}."
  *                 .format(**locals()))             # <<<<<<<<<<<<<<
@@ -6686,7 +6686,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":269
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":269
  *             store_type = type(store)
  *             self_type = type(self)
  *             raise TypeError(             # <<<<<<<<<<<<<<
@@ -6700,7 +6700,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 269, __pyx_L1_error)
 
-    /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":266
+    /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":266
  *         cdef object self_type
  * 
  *         if type(store) is not type(self):             # <<<<<<<<<<<<<<
@@ -6709,20 +6709,20 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
  */
   }
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":274
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":274
  *                 .format(**locals()))
  * 
  *         new_calculator = <DefaultRoverObservationsCalculator?> store             # <<<<<<<<<<<<<<
  * 
  *         return new_calculator
  */
-  if (!(likely(__Pyx_TypeTest(__pyx_v_store, __pyx_ptype_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator)))) __PYX_ERR(0, 274, __pyx_L1_error)
+  if (!(likely(__Pyx_TypeTest(__pyx_v_store, __pyx_ptype_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator)))) __PYX_ERR(0, 274, __pyx_L1_error)
   __pyx_t_2 = __pyx_v_store;
   __Pyx_INCREF(__pyx_t_2);
-  __pyx_v_new_calculator = ((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_t_2);
+  __pyx_v_new_calculator = ((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":276
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":276
  *         new_calculator = <DefaultRoverObservationsCalculator?> store
  * 
  *         return new_calculator             # <<<<<<<<<<<<<<
@@ -6733,7 +6733,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
   __pyx_r = ((PyObject *)__pyx_v_new_calculator);
   goto __pyx_L0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":261
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":261
  *         return DefaultRoverObservationsCalculator()
  * 
  *     cpdef object copy_via(self, object store):             # <<<<<<<<<<<<<<
@@ -6747,7 +6747,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_new_calculator);
@@ -6759,25 +6759,25 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_c
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("copy_via (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_26copy_via(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_store));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_26copy_via(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_store));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_26copy_via(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_store) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_26copy_via(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_store) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("copy_via", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy_via(__pyx_v_self, __pyx_v_store, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy_via(__pyx_v_self, __pyx_v_store, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6786,7 +6786,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6794,7 +6794,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pxd":8
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pxd":8
  * 
  * cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
  *     cdef public Py_ssize_t m_n_observation_sections             # <<<<<<<<<<<<<<
@@ -6803,19 +6803,19 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections___get__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections___get__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections___get__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections___get__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6834,7 +6834,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_n_observation_sections.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_n_observation_sections.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6843,19 +6843,19 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
 }
 
 /* Python wrapper */
-static int __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_2__set__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_2__set__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_2__set__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_2__set__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
@@ -6871,14 +6871,14 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_n_observation_sections.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_n_observation_sections.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pxd":9
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pxd":9
  * cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
  *     cdef public Py_ssize_t m_n_observation_sections
  *     cdef public Py_ssize_t m_n_rovers             # <<<<<<<<<<<<<<
@@ -6887,19 +6887,19 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers___get__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers___get__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers___get__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers___get__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6918,7 +6918,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_n_rovers.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_n_rovers.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6927,19 +6927,19 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
 }
 
 /* Python wrapper */
-static int __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_2__set__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_2__set__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_2__set__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_2__set__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
@@ -6955,14 +6955,14 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_n_rovers.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_n_rovers.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/default_rover_observations_calculator.pxd":10
+/* "rockefeg/roverdomain/default_rover_observations_calculator.pxd":10
  *     cdef public Py_ssize_t m_n_observation_sections
  *     cdef public Py_ssize_t m_n_rovers
  *     cdef public double m_min_dist             # <<<<<<<<<<<<<<
@@ -6971,19 +6971,19 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist___get__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist___get__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist___get__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist___get__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7002,7 +7002,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_min_dist.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_min_dist.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7011,19 +7011,19 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_
 }
 
 /* Python wrapper */
-static int __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_2__set__(((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_2__set__(((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_2__set__(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_2__set__(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -7039,7 +7039,7 @@ static int __pyx_pf_8rockefeg_12rover_domain_37default_rover_observations_calcul
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_min_dist.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator.m_min_dist.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -19819,14 +19819,14 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *__
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static struct __pyx_vtabstruct_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
+static struct __pyx_vtabstruct_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
 
-static PyObject *__pyx_tp_new_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *p;
-  PyObject *o = __pyx_ptype_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator->tp_new(t, a, k);
+static PyObject *__pyx_tp_new_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *p;
+  PyObject *o = __pyx_ptype_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator->tp_new(t, a, k);
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)o);
-  p->__pyx_base.__pyx_vtab = (struct __pyx_vtabstruct_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator*)__pyx_vtabptr_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
+  p = ((struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)o);
+  p->__pyx_base.__pyx_vtab = (struct __pyx_vtabstruct_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator*)__pyx_vtabptr_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
   p->r_rover_positions_store.data = NULL;
   p->r_rover_positions_store.memview = NULL;
   p->r_rover_orientations_store.data = NULL;
@@ -19838,8 +19838,8 @@ static PyObject *__pyx_tp_new_8rockefeg_12rover_domain_37default_rover_observati
   return o;
 }
 
-static void __pyx_tp_dealloc_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator(PyObject *o) {
-  struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *p = (struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)o;
+static void __pyx_tp_dealloc_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator(PyObject *o) {
+  struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *p = (struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -19849,16 +19849,16 @@ static void __pyx_tp_dealloc_8rockefeg_12rover_domain_37default_rover_observatio
   __PYX_XDEC_MEMVIEW(&p->r_rover_orientations_store, 1);
   __PYX_XDEC_MEMVIEW(&p->r_poi_positions_store, 1);
   __PYX_XDEC_MEMVIEW(&p->r_poi_values_store, 1);
-  if (likely(__pyx_ptype_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator)) __pyx_ptype_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator->tp_dealloc(o); else __Pyx_call_next_tp_dealloc(o, __pyx_tp_dealloc_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator);
+  if (likely(__pyx_ptype_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator)) __pyx_ptype_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator->tp_dealloc(o); else __Pyx_call_next_tp_dealloc(o, __pyx_tp_dealloc_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator);
 }
 
-static PyObject *__pyx_getprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_observation_sections(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_1__get__(o);
+static PyObject *__pyx_getprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_observation_sections(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_1__get__(o);
 }
 
-static int __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_observation_sections(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_observation_sections(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_3__set__(o, v);
+    return __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_24m_n_observation_sections_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -19866,13 +19866,13 @@ static int __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_c
   }
 }
 
-static PyObject *__pyx_getprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_rovers(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_1__get__(o);
+static PyObject *__pyx_getprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_rovers(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_1__get__(o);
 }
 
-static int __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_rovers(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_rovers(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_3__set__(o, v);
+    return __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_n_rovers_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -19880,13 +19880,13 @@ static int __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_c
   }
 }
 
-static PyObject *__pyx_getprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_min_dist(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_1__get__(o);
+static PyObject *__pyx_getprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_min_dist(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_1__get__(o);
 }
 
-static int __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_min_dist(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_min_dist(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_3__set__(o, v);
+    return __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_10m_min_dist_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -19894,36 +19894,36 @@ static int __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_c
   }
 }
 
-static PyMethodDef __pyx_methods_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator[] = {
-  {"__setstate__", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_3__setstate__, METH_O, 0},
-  {"__reduce__", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_5__reduce__, METH_NOARGS, 0},
-  {"n_rovers", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers, METH_NOARGS, 0},
-  {"set_n_rovers", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers, METH_O, 0},
-  {"min_dist", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist, METH_NOARGS, 0},
-  {"set_min_dist", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist, METH_O, 0},
-  {"n_observation_sections", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections, METH_NOARGS, 0},
-  {"set_n_observation_sections", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections, METH_O, 0},
-  {"n_observation_dims", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims, METH_NOARGS, 0},
-  {"observations_copy", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy, METH_O, 0},
-  {"observations_via", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via, METH_VARARGS|METH_KEYWORDS, 0},
-  {"copy", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy, METH_NOARGS, 0},
-  {"copy_via", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via, METH_O, 0},
+static PyMethodDef __pyx_methods_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator[] = {
+  {"__setstate__", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_3__setstate__, METH_O, 0},
+  {"__reduce__", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_5__reduce__, METH_NOARGS, 0},
+  {"n_rovers", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_7n_rovers, METH_NOARGS, 0},
+  {"set_n_rovers", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_9set_n_rovers, METH_O, 0},
+  {"min_dist", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_11min_dist, METH_NOARGS, 0},
+  {"set_min_dist", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_13set_min_dist, METH_O, 0},
+  {"n_observation_sections", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_15n_observation_sections, METH_NOARGS, 0},
+  {"set_n_observation_sections", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_17set_n_observation_sections, METH_O, 0},
+  {"n_observation_dims", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_19n_observation_dims, METH_NOARGS, 0},
+  {"observations_copy", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_21observations_copy, METH_O, 0},
+  {"observations_via", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_23observations_via, METH_VARARGS|METH_KEYWORDS, 0},
+  {"copy", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_25copy, METH_NOARGS, 0},
+  {"copy_via", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_27copy_via, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator[] = {
-  {(char *)"m_n_observation_sections", __pyx_getprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_observation_sections, __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_observation_sections, (char *)0, 0},
-  {(char *)"m_n_rovers", __pyx_getprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_rovers, __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_rovers, (char *)0, 0},
-  {(char *)"m_min_dist", __pyx_getprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_min_dist, __pyx_setprop_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_min_dist, (char *)0, 0},
+static struct PyGetSetDef __pyx_getsets_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator[] = {
+  {(char *)"m_n_observation_sections", __pyx_getprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_observation_sections, __pyx_setprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_observation_sections, (char *)0, 0},
+  {(char *)"m_n_rovers", __pyx_getprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_rovers, __pyx_setprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_n_rovers, (char *)0, 0},
+  {(char *)"m_min_dist", __pyx_getprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_min_dist, __pyx_setprop_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_m_min_dist, (char *)0, 0},
   {0, 0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator = {
+static PyTypeObject __pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.default_rover_observations_calculator.DefaultRoverObservationsCalculator", /*tp_name*/
-  sizeof(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator), /*tp_basicsize*/
+  "rockefeg.roverdomain.default_rover_observations_calculator.DefaultRoverObservationsCalculator", /*tp_name*/
+  sizeof(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator, /*tp_dealloc*/
+  __pyx_tp_dealloc_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -19951,17 +19951,17 @@ static PyTypeObject __pyx_type_8rockefeg_12rover_domain_37default_rover_observat
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator, /*tp_methods*/
+  __pyx_methods_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator, /*tp_getset*/
+  __pyx_getsets_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
   0, /*tp_descr_set*/
   0, /*tp_dictoffset*/
-  __pyx_pw_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_1__init__, /*tp_init*/
+  __pyx_pw_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_1__init__, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator, /*tp_new*/
+  __pyx_tp_new_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -20098,7 +20098,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.default_rover_observations_calculator.array", /*tp_name*/
+  "rockefeg.roverdomain.default_rover_observations_calculator.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -20206,7 +20206,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.default_rover_observations_calculator.Enum", /*tp_name*/
+  "rockefeg.roverdomain.default_rover_observations_calculator.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -20456,7 +20456,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.default_rover_observations_calculator.memoryview", /*tp_name*/
+  "rockefeg.roverdomain.default_rover_observations_calculator.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -20583,7 +20583,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.default_rover_observations_calculator._memoryviewslice", /*tp_name*/
+  "rockefeg.roverdomain.default_rover_observations_calculator._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -20836,7 +20836,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":32
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":32
  *                 val = self.__getattribute__(attr)
  *                 if (
  *                         not (attr[:2] == "__" and attr[-2:] == "__")             # <<<<<<<<<<<<<<
@@ -21168,33 +21168,33 @@ static int __Pyx_modinit_type_init_code(void) {
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  __pyx_t_1 = PyImport_ImportModule("rockefeg.rover_domain.base_rover_observations_calculator"); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule("rockefeg.roverdomain.base_rover_observations_calculator"); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_ptype_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator = __Pyx_ImportType(__pyx_t_1, "rockefeg.rover_domain.base_rover_observations_calculator", "BaseRoverObservationsCalculator", sizeof(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator), __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_vtabptr_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator = (struct __pyx_vtabstruct_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator*)__Pyx_GetVtable(__pyx_ptype_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator->tp_dict); if (unlikely(!__pyx_vtabptr_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_vtabptr_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator = &__pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base = *__pyx_vtabptr_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base.observations_copy = (__Pyx_memviewslice (*)(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_copy;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base.observations_via = (__Pyx_memviewslice (*)(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, __Pyx_memviewslice, struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_via;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base.copy = (PyObject *(*)(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base.copy_via = (PyObject *(*)(struct __pyx_obj_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, PyObject *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy_via;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.n_observation_dims = (Py_ssize_t (*)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_dims;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.min_dist = (double (*)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_min_dist;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.set_min_dist = (void (*)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, double, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_min_dist;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.n_observation_sections = (Py_ssize_t (*)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_sections;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.set_n_observation_sections = (void (*)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, Py_ssize_t, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_observation_sections;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.n_rovers = (Py_ssize_t (*)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_rovers;
-  __pyx_vtable_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.set_n_rovers = (void (*)(struct __pyx_obj_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, Py_ssize_t, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_rovers;
-  __pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_base = __pyx_ptype_8rockefeg_12rover_domain_34base_rover_observations_calculator_BaseRoverObservationsCalculator;
-  if (PyType_Ready(&__pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
-  __pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_dictoffset && __pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  __pyx_ptype_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator = __Pyx_ImportType(__pyx_t_1, "rockefeg.roverdomain.base_rover_observations_calculator", "BaseRoverObservationsCalculator", sizeof(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator), __Pyx_ImportType_CheckSize_Warn);
+   if (!__pyx_ptype_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_vtabptr_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator = (struct __pyx_vtabstruct_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator*)__Pyx_GetVtable(__pyx_ptype_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator->tp_dict); if (unlikely(!__pyx_vtabptr_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_vtabptr_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator = &__pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base = *__pyx_vtabptr_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base.observations_copy = (__Pyx_memviewslice (*)(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_copy;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base.observations_via = (__Pyx_memviewslice (*)(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, __Pyx_memviewslice, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_observations_via;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base.copy = (PyObject *(*)(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.__pyx_base.copy_via = (PyObject *(*)(struct __pyx_obj_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator *, PyObject *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_copy_via;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.n_observation_dims = (Py_ssize_t (*)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_dims;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.min_dist = (double (*)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_min_dist;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.set_min_dist = (void (*)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, double, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_min_dist;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.n_observation_sections = (Py_ssize_t (*)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_observation_sections;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.set_n_observation_sections = (void (*)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, Py_ssize_t, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_observation_sections;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.n_rovers = (Py_ssize_t (*)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_n_rovers;
+  __pyx_vtable_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.set_n_rovers = (void (*)(struct __pyx_obj_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator *, Py_ssize_t, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_37default_rover_observations_calculator_34DefaultRoverObservationsCalculator_set_n_rovers;
+  __pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_base = __pyx_ptype_8rockefeg_11roverdomain_34base_rover_observations_calculator_BaseRoverObservationsCalculator;
+  if (PyType_Ready(&__pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_dictoffset && __pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_dict, __pyx_vtabptr_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_DefaultRoverObservationsCalculat, (PyObject *)&__pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
-  __pyx_ptype_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator = &__pyx_type_8rockefeg_12rover_domain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
+  if (__Pyx_SetVtable(__pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator.tp_dict, __pyx_vtabptr_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_DefaultRoverObservationsCalculat, (PyObject *)&__pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_ptype_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator = &__pyx_type_8rockefeg_11roverdomain_37default_rover_observations_calculator_DefaultRoverObservationsCalculator;
   __pyx_vtabptr_array = &__pyx_vtable_array;
   __pyx_vtable_array.get_memview = (PyObject *(*)(struct __pyx_array_obj *))__pyx_array_get_memview;
   if (PyType_Ready(&__pyx_type___pyx_array) < 0) __PYX_ERR(2, 105, __pyx_L1_error)
@@ -21252,11 +21252,11 @@ static int __Pyx_modinit_type_import_code(void) {
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_t_1 = PyImport_ImportModule("rockefeg.rover_domain.state"); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 4, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule("rockefeg.roverdomain.state"); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_ptype_8rockefeg_12rover_domain_5state_State = __Pyx_ImportType(__pyx_t_1, "rockefeg.rover_domain.state", "State", sizeof(struct __pyx_obj_8rockefeg_12rover_domain_5state_State), __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_8rockefeg_12rover_domain_5state_State) __PYX_ERR(3, 4, __pyx_L1_error)
-  __pyx_vtabptr_8rockefeg_12rover_domain_5state_State = (struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State*)__Pyx_GetVtable(__pyx_ptype_8rockefeg_12rover_domain_5state_State->tp_dict); if (unlikely(!__pyx_vtabptr_8rockefeg_12rover_domain_5state_State)) __PYX_ERR(3, 4, __pyx_L1_error)
+  __pyx_ptype_8rockefeg_11roverdomain_5state_State = __Pyx_ImportType(__pyx_t_1, "rockefeg.roverdomain.state", "State", sizeof(struct __pyx_obj_8rockefeg_11roverdomain_5state_State), __Pyx_ImportType_CheckSize_Warn);
+   if (!__pyx_ptype_8rockefeg_11roverdomain_5state_State) __PYX_ERR(3, 4, __pyx_L1_error)
+  __pyx_vtabptr_8rockefeg_11roverdomain_5state_State = (struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State*)__Pyx_GetVtable(__pyx_ptype_8rockefeg_11roverdomain_5state_State->tp_dict); if (unlikely(!__pyx_vtabptr_8rockefeg_11roverdomain_5state_State)) __PYX_ERR(3, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -21453,14 +21453,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_rockefeg__rover_domain__default_rover_observations_calculator) {
+  if (__pyx_module_is_main_rockefeg__roverdomain__default_rover_observations_calculator) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "rockefeg.rover_domain.default_rover_observations_calculator")) {
-      if (unlikely(PyDict_SetItemString(modules, "rockefeg.rover_domain.default_rover_observations_calculator", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "rockefeg.roverdomain.default_rover_observations_calculator")) {
+      if (unlikely(PyDict_SetItemString(modules, "rockefeg.roverdomain.default_rover_observations_calculator", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -21481,7 +21481,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":2
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":2
  * from libc cimport math as cmath
  * import numpy as np             # <<<<<<<<<<<<<<
  * import inspect
@@ -21492,7 +21492,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":3
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":3
  * from libc cimport math as cmath
  * import numpy as np
  * import inspect             # <<<<<<<<<<<<<<
@@ -21504,7 +21504,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_inspect, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "rockefeg/rover_domain/default_rover_observations_calculator.pyx":1
+  /* "rockefeg/roverdomain/default_rover_observations_calculator.pyx":1
  * from libc cimport math as cmath             # <<<<<<<<<<<<<<
  * import numpy as np
  * import inspect
@@ -21674,11 +21674,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init rockefeg.rover_domain.default_rover_observations_calculator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init rockefeg.roverdomain.default_rover_observations_calculator", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init rockefeg.rover_domain.default_rover_observations_calculator");
+    PyErr_SetString(PyExc_ImportError, "init rockefeg.roverdomain.default_rover_observations_calculator");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

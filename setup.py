@@ -10,7 +10,7 @@ import numpy
 if __name__ == "__main__":
 
     namespace = "rockefeg"
-    pkg = "rover_domain"
+    pkg = "roverdomain"
     
     setup(
         name = "{namespace}.{pkg}".format(**locals()),

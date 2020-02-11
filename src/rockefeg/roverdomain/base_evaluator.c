@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "rockefeg.rover_domain.base_evaluator",
+        "name": "rockefeg.roverdomain.base_evaluator",
         "sources": [
-            "src/rockefeg/rover_domain\\base_evaluator.pyx"
+            "src/rockefeg/roverdomain\\base_evaluator.pyx"
         ]
     },
-    "module_name": "rockefeg.rover_domain.base_evaluator"
+    "module_name": "rockefeg.roverdomain.base_evaluator"
 }
 END: Cython Metadata */
 
@@ -617,8 +617,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__rockefeg__rover_domain__base_evaluator
-#define __PYX_HAVE_API__rockefeg__rover_domain__base_evaluator
+#define __PYX_HAVE__rockefeg__roverdomain__base_evaluator
+#define __PYX_HAVE_API__rockefeg__roverdomain__base_evaluator
 /* Early includes */
 #include "pythread.h"
 #include <string.h>
@@ -832,9 +832,9 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "src\\rockefeg\\rover_domain\\base_evaluator.pyx",
+  "src\\rockefeg\\roverdomain\\base_evaluator.pyx",
   "stringsource",
-  "src\\rockefeg\\rover_domain\\state.pxd",
+  "src\\rockefeg\\roverdomain\\state.pxd",
 };
 /* MemviewSliceStruct.proto */
 struct __pyx_memoryview_obj;
@@ -946,8 +946,8 @@ typedef struct {
 
 
 /*--- Type declarations ---*/
-struct __pyx_obj_8rockefeg_12rover_domain_5state_State;
-struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator;
+struct __pyx_obj_8rockefeg_11roverdomain_5state_State;
+struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator;
 struct __pyx_array_obj;
 struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
@@ -960,9 +960,9 @@ struct __pyx_memoryviewslice_obj;
  *     cdef public Py_ssize_t m_n_rovers
  *     cdef public Py_ssize_t m_n_pois
  */
-struct __pyx_obj_8rockefeg_12rover_domain_5state_State {
+struct __pyx_obj_8rockefeg_11roverdomain_5state_State {
   PyObject_HEAD
-  struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *__pyx_vtab;
+  struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *__pyx_vtab;
   Py_ssize_t m_n_rovers;
   Py_ssize_t m_n_pois;
   __Pyx_memviewslice m_rover_positions;
@@ -972,16 +972,16 @@ struct __pyx_obj_8rockefeg_12rover_domain_5state_State {
 };
 
 
-/* "rockefeg/rover_domain/base_evaluator.pxd":6
+/* "rockefeg/roverdomain/base_evaluator.pxd":6
  * from .state cimport State
  * 
  * cdef class BaseEvaluator:             # <<<<<<<<<<<<<<
  *     cpdef double eval(
  *         self,
  */
-struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator {
+struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator {
   PyObject_HEAD
-  struct __pyx_vtabstruct_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_vtab;
+  struct __pyx_vtabstruct_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_vtab;
 };
 
 
@@ -1071,30 +1071,30 @@ struct __pyx_memoryviewslice_obj {
  *     cdef public Py_ssize_t m_n_pois
  */
 
-struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State {
-  Py_ssize_t (*n_rovers)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  void (*set_n_rovers)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
-  Py_ssize_t (*n_pois)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  void (*set_n_pois)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_positions_copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_positions_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  void (*set_rover_positions)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_orientations_copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_orientations_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  void (*set_rover_orientations)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_values_copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_values_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  void (*set_poi_values)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_positions_copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_positions_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  void (*set_poi_positions)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, PyObject *, int __pyx_skip_dispatch);
-  PyObject *(*copy)(struct __pyx_obj_8rockefeg_12rover_domain_5state_State *, int __pyx_skip_dispatch);
+struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State {
+  Py_ssize_t (*n_rovers)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  void (*set_n_rovers)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
+  Py_ssize_t (*n_pois)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  void (*set_n_pois)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_positions_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_positions_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  void (*set_rover_positions)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_orientations_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_orientations_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  void (*set_rover_orientations)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_values_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_values_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  void (*set_poi_values)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_positions_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_positions_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  void (*set_poi_positions)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, PyObject *, int __pyx_skip_dispatch);
+  PyObject *(*copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *__pyx_vtabptr_8rockefeg_12rover_domain_5state_State;
+static struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *__pyx_vtabptr_8rockefeg_11roverdomain_5state_State;
 
 
-/* "rockefeg/rover_domain/base_evaluator.pyx":4
+/* "rockefeg/roverdomain/base_evaluator.pyx":4
  * 
  * @cython.auto_pickle(True)
  * cdef class BaseEvaluator:             # <<<<<<<<<<<<<<
@@ -1102,14 +1102,14 @@ static struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State *__pyx_vtab
  *             self,
  */
 
-struct __pyx_vtabstruct_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator {
-  double (*eval)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_evals_copy)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_evals_via)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch);
-  PyObject *(*copy)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, int __pyx_skip_dispatch);
-  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, PyObject *, int __pyx_skip_dispatch);
+struct __pyx_vtabstruct_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator {
+  double (*eval)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_evals_copy)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_evals_via)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch);
+  PyObject *(*copy)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, int __pyx_skip_dispatch);
+  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, PyObject *, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_vtabptr_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator;
+static struct __pyx_vtabstruct_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_vtabptr_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator;
 
 
 /* "View.MemoryView":105
@@ -1778,11 +1778,11 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-static double __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_eval(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch); /* proto*/
-static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_rover_evals_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch); /* proto*/
-static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_rover_evals_via(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_store, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_copy_via(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_store, int __pyx_skip_dispatch); /* proto*/
+static double __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_eval(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch); /* proto*/
+static __Pyx_memviewslice __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_rover_evals_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch); /* proto*/
+static __Pyx_memviewslice __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_rover_evals_via(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_store, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_copy_via(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_store, int __pyx_skip_dispatch); /* proto*/
 static PyObject *__pyx_array_get_memview(struct __pyx_array_obj *__pyx_v_self); /* proto*/
 static char *__pyx_memoryview_get_item_pointer(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index); /* proto*/
 static PyObject *__pyx_memoryview_is_slice(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_obj); /* proto*/
@@ -1794,15 +1794,15 @@ static PyObject *__pyx_memoryview_assign_item_from_object(struct __pyx_memoryvie
 static PyObject *__pyx_memoryviewslice_convert_item_to_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp); /* proto*/
 static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp, PyObject *__pyx_v_value); /* proto*/
 
-/* Module declarations from 'rockefeg.rover_domain.state' */
-static PyTypeObject *__pyx_ptype_8rockefeg_12rover_domain_5state_State = 0;
+/* Module declarations from 'rockefeg.roverdomain.state' */
+static PyTypeObject *__pyx_ptype_8rockefeg_11roverdomain_5state_State = 0;
 
 /* Module declarations from 'cython.view' */
 
 /* Module declarations from 'cython' */
 
-/* Module declarations from 'rockefeg.rover_domain.base_evaluator' */
-static PyTypeObject *__pyx_ptype_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator = 0;
+/* Module declarations from 'rockefeg.roverdomain.base_evaluator' */
+static PyTypeObject *__pyx_ptype_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator = 0;
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -1814,7 +1814,7 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator___pyx_unpickle_BaseEvaluator__set_state(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, PyObject *); /*proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_14base_evaluator___pyx_unpickle_BaseEvaluator__set_state(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, PyObject *); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -1851,11 +1851,11 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, 
 static __Pyx_TypeInfo __Pyx_TypeInfo_object = { "Python object", NULL, sizeof(PyObject *), { 0 }, 0, 'O', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_double__const__ = { "const double", NULL, sizeof(double const ), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "rockefeg.rover_domain.base_evaluator"
-extern int __pyx_module_is_main_rockefeg__rover_domain__base_evaluator;
-int __pyx_module_is_main_rockefeg__rover_domain__base_evaluator = 0;
+#define __Pyx_MODULE_NAME "rockefeg.roverdomain.base_evaluator"
+extern int __pyx_module_is_main_rockefeg__roverdomain__base_evaluator;
+int __pyx_module_is_main_rockefeg__roverdomain__base_evaluator = 0;
 
-/* Implementation of 'rockefeg.rover_domain.base_evaluator' */
+/* Implementation of 'rockefeg.roverdomain.base_evaluator' */
 static PyObject *__pyx_builtin_NotImplementedError;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_MemoryError;
@@ -1961,7 +1961,7 @@ static const char __pyx_k_Out_of_bounds_on_buffer_access_a[] = "Out of bounds on
 static const char __pyx_k_Unable_to_convert_item_to_object[] = "Unable to convert item to object";
 static const char __pyx_k_got_differing_extents_in_dimensi[] = "got differing extents in dimension %d (got %d and %d)";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
-static const char __pyx_k_rockefeg_rover_domain_base_evalu[] = "rockefeg.rover_domain.base_evaluator";
+static const char __pyx_k_rockefeg_roverdomain_base_evalua[] = "rockefeg.roverdomain.base_evaluator";
 static const char __pyx_k_unable_to_allocate_shape_and_str[] = "unable to allocate shape and strides.";
 static PyObject *__pyx_n_s_ASCII;
 static PyObject *__pyx_n_s_BaseEvaluator;
@@ -2040,7 +2040,7 @@ static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
-static PyObject *__pyx_n_s_rockefeg_rover_domain_base_evalu;
+static PyObject *__pyx_n_s_rockefeg_roverdomain_base_evalua;
 static PyObject *__pyx_n_s_rover_actions_history;
 static PyObject *__pyx_n_s_rover_evals_copy;
 static PyObject *__pyx_n_s_rover_evals_via;
@@ -2063,14 +2063,14 @@ static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
 static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_eval(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_2rover_evals_copy(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_4rover_evals_via(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_6copy(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_8copy_via(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, PyObject *__pyx_v_store); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_10__reduce_cython__(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_12__setstate_cython__(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator___pyx_unpickle_BaseEvaluator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_eval(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_2rover_evals_copy(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_4rover_evals_via(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_6copy(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_8copy_via(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, PyObject *__pyx_v_store); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_10__reduce_cython__(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_12__setstate_cython__(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator___pyx_unpickle_BaseEvaluator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -2113,7 +2113,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_16_memoryviewslice_4base___get__
 static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -2152,7 +2152,7 @@ static PyObject *__pyx_codeobj__20;
 static PyObject *__pyx_codeobj__27;
 /* Late includes */
 
-/* "rockefeg/rover_domain/base_evaluator.pyx":5
+/* "rockefeg/roverdomain/base_evaluator.pyx":5
  * @cython.auto_pickle(True)
  * cdef class BaseEvaluator:
  *     cpdef double eval(             # <<<<<<<<<<<<<<
@@ -2160,8 +2160,8 @@ static PyObject *__pyx_codeobj__27;
  *             object[:] state_history,
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_1eval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static double __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_eval(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_1eval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static double __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_eval(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2187,7 +2187,7 @@ static double __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_eval); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_1eval)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_1eval)) {
         if (unlikely(!__pyx_v_state_history.memview)) { __Pyx_RaiseUnboundLocalError("state_history"); __PYX_ERR(0, 5, __pyx_L1_error) }
         __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_state_history, 1, (PyObject *(*)(char *)) __pyx_memview_get_object, (int (*)(char *, PyObject *)) __pyx_memview_set_object, 1);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
@@ -2270,7 +2270,7 @@ static double __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_
     #endif
   }
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":11
+  /* "rockefeg/roverdomain/base_evaluator.pyx":11
  *             bint domain_is_done
  *             ) except *:
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
@@ -2283,7 +2283,7 @@ static double __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":5
+  /* "rockefeg/roverdomain/base_evaluator.pyx":5
  * @cython.auto_pickle(True)
  * cdef class BaseEvaluator:
  *     cpdef double eval(             # <<<<<<<<<<<<<<
@@ -2301,7 +2301,7 @@ static double __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.eval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.eval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2309,8 +2309,8 @@ static double __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_1eval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_1eval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_1eval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_1eval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_state_history = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_rover_actions_history = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_domain_is_done;
@@ -2369,18 +2369,18 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("eval", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 5, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.eval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.eval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_eval(((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)__pyx_v_self), __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done);
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_eval(((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)__pyx_v_self), __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_eval(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_eval(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -2389,7 +2389,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(!__pyx_v_state_history.memview)) { __Pyx_RaiseUnboundLocalError("state_history"); __PYX_ERR(0, 5, __pyx_L1_error) }
   if (unlikely(!__pyx_v_rover_actions_history.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions_history"); __PYX_ERR(0, 5, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_eval(__pyx_v_self, __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_eval(__pyx_v_self, __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 5, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -2399,7 +2399,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.eval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.eval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_state_history, 1);
@@ -2409,7 +2409,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/base_evaluator.pyx":13
+/* "rockefeg/roverdomain/base_evaluator.pyx":13
  *         raise NotImplementedError()
  * 
  *     cpdef double[:] rover_evals_copy(             # <<<<<<<<<<<<<<
@@ -2417,8 +2417,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
  *             object[:] state_history,
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_3rover_evals_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_rover_evals_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_3rover_evals_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static __Pyx_memviewslice __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_rover_evals_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch) {
   __Pyx_memviewslice __pyx_r = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2444,7 +2444,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rover_evals_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_3rover_evals_copy)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_3rover_evals_copy)) {
         if (unlikely(!__pyx_v_state_history.memview)) { __Pyx_RaiseUnboundLocalError("state_history"); __PYX_ERR(0, 13, __pyx_L1_error) }
         __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_state_history, 1, (PyObject *(*)(char *)) __pyx_memview_get_object, (int (*)(char *, PyObject *)) __pyx_memview_set_object, 1);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
@@ -2529,7 +2529,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
     #endif
   }
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":19
+  /* "rockefeg/roverdomain/base_evaluator.pyx":19
  *             bint domain_is_done
  *             ) except *:
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
@@ -2542,7 +2542,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __PYX_ERR(0, 19, __pyx_L1_error)
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":13
+  /* "rockefeg/roverdomain/base_evaluator.pyx":13
  *         raise NotImplementedError()
  * 
  *     cpdef double[:] rover_evals_copy(             # <<<<<<<<<<<<<<
@@ -2563,7 +2563,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
   __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.rover_evals_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.rover_evals_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -2575,8 +2575,8 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_3rover_evals_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_3rover_evals_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_3rover_evals_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_3rover_evals_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_state_history = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_rover_actions_history = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_domain_is_done;
@@ -2635,18 +2635,18 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("rover_evals_copy", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 13, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.rover_evals_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.rover_evals_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_2rover_evals_copy(((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)__pyx_v_self), __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done);
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_2rover_evals_copy(((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)__pyx_v_self), __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_2rover_evals_copy(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_2rover_evals_copy(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -2655,7 +2655,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(!__pyx_v_state_history.memview)) { __Pyx_RaiseUnboundLocalError("state_history"); __PYX_ERR(0, 13, __pyx_L1_error) }
   if (unlikely(!__pyx_v_rover_actions_history.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions_history"); __PYX_ERR(0, 13, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_rover_evals_copy(__pyx_v_self, __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done, 1); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_rover_evals_copy(__pyx_v_self, __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done, 1); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 13, __pyx_L1_error)
   __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_1, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
@@ -2669,7 +2669,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   __pyx_L1_error:;
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.rover_evals_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.rover_evals_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_state_history, 1);
@@ -2679,7 +2679,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/base_evaluator.pyx":21
+/* "rockefeg/roverdomain/base_evaluator.pyx":21
  *         raise NotImplementedError()
  * 
  *     cpdef double[:] rover_evals_via(             # <<<<<<<<<<<<<<
@@ -2687,8 +2687,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
  *             double[:] store,
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_5rover_evals_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_rover_evals_via(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_store, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_5rover_evals_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static __Pyx_memviewslice __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_rover_evals_via(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_store, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_state_history, CYTHON_UNUSED __Pyx_memviewslice __pyx_v_rover_actions_history, CYTHON_UNUSED int __pyx_v_domain_is_done, int __pyx_skip_dispatch) {
   __Pyx_memviewslice __pyx_r = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2715,7 +2715,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rover_evals_via); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_5rover_evals_via)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_5rover_evals_via)) {
         if (unlikely(!__pyx_v_store.memview)) { __Pyx_RaiseUnboundLocalError("store"); __PYX_ERR(0, 21, __pyx_L1_error) }
         __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_store, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
@@ -2808,7 +2808,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
     #endif
   }
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":28
+  /* "rockefeg/roverdomain/base_evaluator.pyx":28
  *             bint domain_is_done
  *             ) except *:
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
@@ -2821,7 +2821,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __PYX_ERR(0, 28, __pyx_L1_error)
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":21
+  /* "rockefeg/roverdomain/base_evaluator.pyx":21
  *         raise NotImplementedError()
  * 
  *     cpdef double[:] rover_evals_via(             # <<<<<<<<<<<<<<
@@ -2843,7 +2843,7 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
   __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.rover_evals_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.rover_evals_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -2855,8 +2855,8 @@ static __Pyx_memviewslice __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13Ba
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_5rover_evals_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_5rover_evals_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_5rover_evals_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_5rover_evals_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_store = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_state_history = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_rover_actions_history = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -2926,18 +2926,18 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("rover_evals_via", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 21, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.rover_evals_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.rover_evals_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_4rover_evals_via(((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)__pyx_v_self), __pyx_v_store, __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done);
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_4rover_evals_via(((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)__pyx_v_self), __pyx_v_store, __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_4rover_evals_via(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_4rover_evals_via(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, __Pyx_memviewslice __pyx_v_store, __Pyx_memviewslice __pyx_v_state_history, __Pyx_memviewslice __pyx_v_rover_actions_history, int __pyx_v_domain_is_done) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -2947,7 +2947,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   if (unlikely(!__pyx_v_store.memview)) { __Pyx_RaiseUnboundLocalError("store"); __PYX_ERR(0, 21, __pyx_L1_error) }
   if (unlikely(!__pyx_v_state_history.memview)) { __Pyx_RaiseUnboundLocalError("state_history"); __PYX_ERR(0, 21, __pyx_L1_error) }
   if (unlikely(!__pyx_v_rover_actions_history.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions_history"); __PYX_ERR(0, 21, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_rover_evals_via(__pyx_v_self, __pyx_v_store, __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done, 1); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_rover_evals_via(__pyx_v_self, __pyx_v_store, __pyx_v_state_history, __pyx_v_rover_actions_history, __pyx_v_domain_is_done, 1); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 21, __pyx_L1_error)
   __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_t_1, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
@@ -2961,7 +2961,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   __pyx_L1_error:;
   __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.rover_evals_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.rover_evals_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_store, 1);
@@ -2972,7 +2972,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/base_evaluator.pyx":30
+/* "rockefeg/roverdomain/base_evaluator.pyx":30
  *         raise NotImplementedError()
  * 
  *     cpdef object copy(self):             # <<<<<<<<<<<<<<
@@ -2980,8 +2980,8 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
  * 
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_7copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_7copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3001,7 +3001,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_7copy)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_7copy)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -3037,7 +3037,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
     #endif
   }
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":31
+  /* "rockefeg/roverdomain/base_evaluator.pyx":31
  * 
  *     cpdef object copy(self):
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
@@ -3050,7 +3050,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __PYX_ERR(0, 31, __pyx_L1_error)
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":30
+  /* "rockefeg/roverdomain/base_evaluator.pyx":30
  *         raise NotImplementedError()
  * 
  *     cpdef object copy(self):             # <<<<<<<<<<<<<<
@@ -3064,7 +3064,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3073,25 +3073,25 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_7copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_7copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_7copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_7copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("copy (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_6copy(((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_6copy(((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_6copy(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_6copy(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("copy", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_copy(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_copy(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3100,7 +3100,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3108,15 +3108,15 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   return __pyx_r;
 }
 
-/* "rockefeg/rover_domain/base_evaluator.pyx":33
+/* "rockefeg/roverdomain/base_evaluator.pyx":33
  *         raise NotImplementedError()
  * 
  *     cpdef object copy_via(self, object store):             # <<<<<<<<<<<<<<
  *         raise NotImplementedError()
  */
 
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_9copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
-static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_copy_via(CYTHON_UNUSED struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_store, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_9copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_copy_via(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_store, int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3136,7 +3136,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy_via); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_9copy_via)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_9copy_via)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -3172,7 +3172,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
     #endif
   }
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":34
+  /* "rockefeg/roverdomain/base_evaluator.pyx":34
  * 
  *     cpdef object copy_via(self, object store):
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
@@ -3183,7 +3183,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __PYX_ERR(0, 34, __pyx_L1_error)
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":33
+  /* "rockefeg/roverdomain/base_evaluator.pyx":33
  *         raise NotImplementedError()
  * 
  *     cpdef object copy_via(self, object store):             # <<<<<<<<<<<<<<
@@ -3196,7 +3196,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3205,25 +3205,25 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluat
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_9copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_9copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_9copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_9copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("copy_via (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_8copy_via(((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)__pyx_v_self), ((PyObject *)__pyx_v_store));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_8copy_via(((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)__pyx_v_self), ((PyObject *)__pyx_v_store));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_8copy_via(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, PyObject *__pyx_v_store) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_8copy_via(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, PyObject *__pyx_v_store) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("copy_via", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_copy_via(__pyx_v_self, __pyx_v_store, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_copy_via(__pyx_v_self, __pyx_v_store, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3232,7 +3232,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3247,19 +3247,19 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_10__reduce_cython__(((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_10__reduce_cython__(((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_10__reduce_cython__(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_10__reduce_cython__(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self) {
   PyObject *__pyx_v_state = 0;
   PyObject *__pyx_v__dict = 0;
   int __pyx_v_use_setstate;
@@ -3455,7 +3455,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_state);
@@ -3473,19 +3473,19 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_12__setstate_cython__(((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_12__setstate_cython__(((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_12__setstate_cython__(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_12__setstate_cython__(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3497,7 +3497,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
  *     __pyx_unpickle_BaseEvaluator__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
   if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(1, 17, __pyx_L1_error)
-  __pyx_t_1 = __pyx_f_8rockefeg_12rover_domain_14base_evaluator___pyx_unpickle_BaseEvaluator__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 17, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_14base_evaluator___pyx_unpickle_BaseEvaluator__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
@@ -3513,7 +3513,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.BaseEvaluator.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.BaseEvaluator.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3528,9 +3528,9 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator_13BaseEvalua
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_1__pyx_unpickle_BaseEvaluator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_8rockefeg_12rover_domain_14base_evaluator_1__pyx_unpickle_BaseEvaluator = {"__pyx_unpickle_BaseEvaluator", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_1__pyx_unpickle_BaseEvaluator, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_1__pyx_unpickle_BaseEvaluator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_1__pyx_unpickle_BaseEvaluator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_8rockefeg_11roverdomain_14base_evaluator_1__pyx_unpickle_BaseEvaluator = {"__pyx_unpickle_BaseEvaluator", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_1__pyx_unpickle_BaseEvaluator, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_1__pyx_unpickle_BaseEvaluator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v___pyx_type = 0;
   long __pyx_v___pyx_checksum;
   PyObject *__pyx_v___pyx_state = 0;
@@ -3589,18 +3589,18 @@ static PyObject *__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_1__pyx_unpic
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_BaseEvaluator", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.__pyx_unpickle_BaseEvaluator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.__pyx_unpickle_BaseEvaluator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8rockefeg_12rover_domain_14base_evaluator___pyx_unpickle_BaseEvaluator(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_14base_evaluator___pyx_unpickle_BaseEvaluator(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator___pyx_unpickle_BaseEvaluator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_14base_evaluator___pyx_unpickle_BaseEvaluator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_v___pyx_PickleError = 0;
   PyObject *__pyx_v___pyx_result = 0;
   PyObject *__pyx_r = NULL;
@@ -3694,7 +3694,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator___pyx_unpick
  *     if __pyx_state is not None:
  *         __pyx_unpickle_BaseEvaluator__set_state(<BaseEvaluator> __pyx_result, __pyx_state)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator), __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 7, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator), __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3733,7 +3733,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator___pyx_unpick
  * cdef __pyx_unpickle_BaseEvaluator__set_state(BaseEvaluator __pyx_result, tuple __pyx_state):
  */
     if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(1, 9, __pyx_L1_error)
-    __pyx_t_3 = __pyx_f_8rockefeg_12rover_domain_14base_evaluator___pyx_unpickle_BaseEvaluator__set_state(((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 9, __pyx_L1_error)
+    __pyx_t_3 = __pyx_f_8rockefeg_11roverdomain_14base_evaluator___pyx_unpickle_BaseEvaluator__set_state(((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 9, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
@@ -3770,7 +3770,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator___pyx_unpick
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.__pyx_unpickle_BaseEvaluator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.__pyx_unpickle_BaseEvaluator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v___pyx_PickleError);
@@ -3788,7 +3788,7 @@ static PyObject *__pyx_pf_8rockefeg_12rover_domain_14base_evaluator___pyx_unpick
  *         __pyx_result.__dict__.update(__pyx_state[0])
  */
 
-static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator___pyx_unpickle_BaseEvaluator__set_state(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_f_8rockefeg_11roverdomain_14base_evaluator___pyx_unpickle_BaseEvaluator__set_state(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -3882,7 +3882,7 @@ static PyObject *__pyx_f_8rockefeg_12rover_domain_14base_evaluator___pyx_unpickl
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("rockefeg.rover_domain.base_evaluator.__pyx_unpickle_BaseEvaluator__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.base_evaluator.__pyx_unpickle_BaseEvaluator__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -16663,10 +16663,10 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *__
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static struct __pyx_vtabstruct_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator __pyx_vtable_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator;
+static struct __pyx_vtabstruct_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator __pyx_vtable_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator;
 
-static PyObject *__pyx_tp_new_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *p;
+static PyObject *__pyx_tp_new_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -16674,12 +16674,12 @@ static PyObject *__pyx_tp_new_8rockefeg_12rover_domain_14base_evaluator_BaseEval
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *)o);
-  p->__pyx_vtab = __pyx_vtabptr_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator;
+  p = ((struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *)o);
+  p->__pyx_vtab = __pyx_vtabptr_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator;
   return o;
 }
 
-static void __pyx_tp_dealloc_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator(PyObject *o) {
+static void __pyx_tp_dealloc_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -16688,23 +16688,23 @@ static void __pyx_tp_dealloc_8rockefeg_12rover_domain_14base_evaluator_BaseEvalu
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyMethodDef __pyx_methods_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator[] = {
-  {"eval", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_1eval, METH_VARARGS|METH_KEYWORDS, 0},
-  {"rover_evals_copy", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_3rover_evals_copy, METH_VARARGS|METH_KEYWORDS, 0},
-  {"rover_evals_via", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_5rover_evals_via, METH_VARARGS|METH_KEYWORDS, 0},
-  {"copy", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_7copy, METH_NOARGS, 0},
-  {"copy_via", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_9copy_via, METH_O, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_11__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_13__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator[] = {
+  {"eval", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_1eval, METH_VARARGS|METH_KEYWORDS, 0},
+  {"rover_evals_copy", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_3rover_evals_copy, METH_VARARGS|METH_KEYWORDS, 0},
+  {"rover_evals_via", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_5rover_evals_via, METH_VARARGS|METH_KEYWORDS, 0},
+  {"copy", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_7copy, METH_NOARGS, 0},
+  {"copy_via", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_9copy_via, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_11__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_13__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator = {
+static PyTypeObject __pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.base_evaluator.BaseEvaluator", /*tp_name*/
-  sizeof(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator), /*tp_basicsize*/
+  "rockefeg.roverdomain.base_evaluator.BaseEvaluator", /*tp_name*/
+  sizeof(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator, /*tp_dealloc*/
+  __pyx_tp_dealloc_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -16732,7 +16732,7 @@ static PyTypeObject __pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEva
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator, /*tp_methods*/
+  __pyx_methods_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -16742,7 +16742,7 @@ static PyTypeObject __pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEva
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator, /*tp_new*/
+  __pyx_tp_new_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -16879,7 +16879,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.base_evaluator.array", /*tp_name*/
+  "rockefeg.roverdomain.base_evaluator.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -16987,7 +16987,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.base_evaluator.Enum", /*tp_name*/
+  "rockefeg.roverdomain.base_evaluator.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -17237,7 +17237,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.base_evaluator.memoryview", /*tp_name*/
+  "rockefeg.roverdomain.base_evaluator.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -17364,7 +17364,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "rockefeg.rover_domain.base_evaluator._memoryviewslice", /*tp_name*/
+  "rockefeg.roverdomain.base_evaluator._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -17551,7 +17551,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
-  {&__pyx_n_s_rockefeg_rover_domain_base_evalu, __pyx_k_rockefeg_rover_domain_base_evalu, sizeof(__pyx_k_rockefeg_rover_domain_base_evalu), 0, 0, 1, 1},
+  {&__pyx_n_s_rockefeg_roverdomain_base_evalua, __pyx_k_rockefeg_roverdomain_base_evalua, sizeof(__pyx_k_rockefeg_roverdomain_base_evalua), 0, 0, 1, 1},
   {&__pyx_n_s_rover_actions_history, __pyx_k_rover_actions_history, sizeof(__pyx_k_rover_actions_history), 0, 0, 1, 1},
   {&__pyx_n_s_rover_evals_copy, __pyx_k_rover_evals_copy, sizeof(__pyx_k_rover_evals_copy), 0, 0, 1, 1},
   {&__pyx_n_s_rover_evals_via, __pyx_k_rover_evals_via, sizeof(__pyx_k_rover_evals_via), 0, 0, 1, 1},
@@ -17921,21 +17921,21 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  __pyx_vtabptr_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator = &__pyx_vtable_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator;
-  __pyx_vtable_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.eval = (double (*)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_eval;
-  __pyx_vtable_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.rover_evals_copy = (__Pyx_memviewslice (*)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_rover_evals_copy;
-  __pyx_vtable_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.rover_evals_via = (__Pyx_memviewslice (*)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_rover_evals_via;
-  __pyx_vtable_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.copy = (PyObject *(*)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_copy;
-  __pyx_vtable_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.copy_via = (PyObject *(*)(struct __pyx_obj_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator *, PyObject *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_12rover_domain_14base_evaluator_13BaseEvaluator_copy_via;
-  if (PyType_Ready(&__pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  __pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.tp_dictoffset && __pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  __pyx_vtabptr_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator = &__pyx_vtable_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator;
+  __pyx_vtable_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.eval = (double (*)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_eval;
+  __pyx_vtable_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.rover_evals_copy = (__Pyx_memviewslice (*)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_rover_evals_copy;
+  __pyx_vtable_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.rover_evals_via = (__Pyx_memviewslice (*)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_rover_evals_via;
+  __pyx_vtable_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.copy = (PyObject *(*)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_copy;
+  __pyx_vtable_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.copy_via = (PyObject *(*)(struct __pyx_obj_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator *, PyObject *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_14base_evaluator_13BaseEvaluator_copy_via;
+  if (PyType_Ready(&__pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.tp_dictoffset && __pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator.tp_dict, __pyx_vtabptr_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_BaseEvaluator, (PyObject *)&__pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  __pyx_ptype_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator = &__pyx_type_8rockefeg_12rover_domain_14base_evaluator_BaseEvaluator;
+  if (__Pyx_SetVtable(__pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator.tp_dict, __pyx_vtabptr_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_BaseEvaluator, (PyObject *)&__pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_ptype_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator = &__pyx_type_8rockefeg_11roverdomain_14base_evaluator_BaseEvaluator;
   __pyx_vtabptr_array = &__pyx_vtable_array;
   __pyx_vtable_array.get_memview = (PyObject *(*)(struct __pyx_array_obj *))__pyx_array_get_memview;
   if (PyType_Ready(&__pyx_type___pyx_array) < 0) __PYX_ERR(1, 105, __pyx_L1_error)
@@ -17991,11 +17991,11 @@ static int __Pyx_modinit_type_import_code(void) {
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_t_1 = PyImport_ImportModule("rockefeg.rover_domain.state"); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule("rockefeg.roverdomain.state"); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_ptype_8rockefeg_12rover_domain_5state_State = __Pyx_ImportType(__pyx_t_1, "rockefeg.rover_domain.state", "State", sizeof(struct __pyx_obj_8rockefeg_12rover_domain_5state_State), __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_8rockefeg_12rover_domain_5state_State) __PYX_ERR(2, 4, __pyx_L1_error)
-  __pyx_vtabptr_8rockefeg_12rover_domain_5state_State = (struct __pyx_vtabstruct_8rockefeg_12rover_domain_5state_State*)__Pyx_GetVtable(__pyx_ptype_8rockefeg_12rover_domain_5state_State->tp_dict); if (unlikely(!__pyx_vtabptr_8rockefeg_12rover_domain_5state_State)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __pyx_ptype_8rockefeg_11roverdomain_5state_State = __Pyx_ImportType(__pyx_t_1, "rockefeg.roverdomain.state", "State", sizeof(struct __pyx_obj_8rockefeg_11roverdomain_5state_State), __Pyx_ImportType_CheckSize_Warn);
+   if (!__pyx_ptype_8rockefeg_11roverdomain_5state_State) __PYX_ERR(2, 4, __pyx_L1_error)
+  __pyx_vtabptr_8rockefeg_11roverdomain_5state_State = (struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State*)__Pyx_GetVtable(__pyx_ptype_8rockefeg_11roverdomain_5state_State->tp_dict); if (unlikely(!__pyx_vtabptr_8rockefeg_11roverdomain_5state_State)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -18192,14 +18192,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_rockefeg__rover_domain__base_evaluator) {
+  if (__pyx_module_is_main_rockefeg__roverdomain__base_evaluator) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "rockefeg.rover_domain.base_evaluator")) {
-      if (unlikely(PyDict_SetItemString(modules, "rockefeg.rover_domain.base_evaluator", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "rockefeg.roverdomain.base_evaluator")) {
+      if (unlikely(PyDict_SetItemString(modules, "rockefeg.roverdomain.base_evaluator", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -18225,12 +18225,12 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8rockefeg_12rover_domain_14base_evaluator_1__pyx_unpickle_BaseEvaluator, NULL, __pyx_n_s_rockefeg_rover_domain_base_evalu); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8rockefeg_11roverdomain_14base_evaluator_1__pyx_unpickle_BaseEvaluator, NULL, __pyx_n_s_rockefeg_roverdomain_base_evalua); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_BaseEvaluator, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "rockefeg/rover_domain/base_evaluator.pyx":1
+  /* "rockefeg/roverdomain/base_evaluator.pyx":1
  * cimport cython             # <<<<<<<<<<<<<<
  * 
  * @cython.auto_pickle(True)
@@ -18400,11 +18400,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init rockefeg.rover_domain.base_evaluator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init rockefeg.roverdomain.base_evaluator", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init rockefeg.rover_domain.base_evaluator");
+    PyErr_SetString(PyExc_ImportError, "init rockefeg.roverdomain.base_evaluator");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
