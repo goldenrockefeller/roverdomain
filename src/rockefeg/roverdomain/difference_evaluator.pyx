@@ -206,6 +206,24 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         
         return cfact_eval      
         
+    cpdef double[:] rover_evals_copy(
+            self,
+            object[:] state_history,
+            const double[:, :, :] rover_actions_history, 
+            bint domain_is_done
+            ) except *:   
+        cdef double[:] rover_evals  
+        cdef Py_ssize_t n_rovers  
+        
+        n_rovers = rover_actions_history.shape[1]
+        rover_evals = np.zeros(n_rovers)
+        
+        return (
+            self.rover_evals_via(
+                rover_evals, 
+                state_history, 
+                rover_actions_history, 
+                domain_is_done))
        
     cpdef double[:] rover_evals_via(
             self,
