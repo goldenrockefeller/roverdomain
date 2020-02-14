@@ -146,7 +146,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
             self, 
             object[:] state_history, 
             const double[:, :, :] rover_actions_history,
-            bint domain_is_done,
+            bint episode_is_done,
             Py_ssize_t excluded_rover_id
             ) except *:
         """
@@ -175,7 +175,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
             return 0.
             
         # Give no reward until state is done.
-        if not domain_is_done:
+        if not episode_is_done:
             return 0.
         
         # Reallocate buffers for efficiency if necessary.
@@ -210,7 +210,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
             self,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint domain_is_done
+            bint episode_is_done
             ) except *:   
         cdef double[:] rover_evals  
         cdef Py_ssize_t n_rovers  
@@ -223,14 +223,14 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                 rover_evals, 
                 state_history, 
                 rover_actions_history, 
-                domain_is_done))
+                episode_is_done))
        
     cpdef double[:] rover_evals_via(
             self,
             double[:] store,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint domain_is_done
+            bint episode_is_done
             ) except *:
                 
         cdef State state
@@ -247,7 +247,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
             self.eval(
                 state_history,
                 rover_actions_history,
-                domain_is_done))
+                episode_is_done))
         
         # Subtract counterfactual evalution to get difference evaluation.
         for rover_id in range(n_rovers):
@@ -255,7 +255,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                 self.cfact_eval(
                     state_history,
                     rover_actions_history,
-                    domain_is_done,
+                    episode_is_done,
                     rover_id))
                     
         return rover_evals

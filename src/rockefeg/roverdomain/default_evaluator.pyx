@@ -151,7 +151,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
             self,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint domain_is_done
+            bint episode_is_done
             ) except *:   
         cdef double[:] rover_evals  
         cdef Py_ssize_t n_rovers  
@@ -164,14 +164,14 @@ cdef class DefaultEvaluator(BaseEvaluator):
                 rover_evals, 
                 state_history, 
                 rover_actions_history, 
-                domain_is_done))
+                episode_is_done))
         
     cpdef double[:] rover_evals_via(
             self,
             double[:] store,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint domain_is_done
+            bint episode_is_done
             ) except *:
         cdef double[:] rover_evals  
         cdef Py_ssize_t n_rovers  
@@ -183,7 +183,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
             self.eval(
                 state_history,
                 rover_actions_history,
-                domain_is_done))
+                episode_is_done))
                 
         return rover_evals
         
@@ -191,7 +191,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
             self,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint domain_is_done
+            bint episode_is_done
             ) except *:
         
         cdef State state
@@ -216,7 +216,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
                 .format(**locals()))
             
         # Return reward only at the end of the episode
-        if not domain_is_done:
+        if not episode_is_done:
             return 0.
         
         # Reallocate buffers for efficiency if necessary.

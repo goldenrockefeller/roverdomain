@@ -6,7 +6,7 @@ cdef class BaseEvaluator:
             self,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint domain_is_done
+            bint episode_is_done
             ) except *:
         raise NotImplementedError()
             
@@ -14,7 +14,7 @@ cdef class BaseEvaluator:
             self,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint domain_is_done
+            bint episode_is_done
             ) except *:
         raise NotImplementedError()
         
@@ -23,7 +23,7 @@ cdef class BaseEvaluator:
             double[:] store,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint domain_is_done
+            bint episode_is_done
             ) except *:
         raise NotImplementedError()
         

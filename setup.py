@@ -14,7 +14,7 @@ if __name__ == "__main__":
     
     setup(
         name = "{namespace}.{pkg}".format(**locals()),
-        version='0.0.2',
+        version='0.0.3',
         ext_modules =  (
             cythonize(
                 "src/{namespace}/{pkg}/*.pyx".format(**locals()), 

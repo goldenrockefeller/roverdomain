@@ -8,7 +8,7 @@ cdef class BaseEvaluator:
         self,
         object[:] state_history,
         const double[:, :, :] rover_actions_history, 
-        bint domain_is_done
+        bint episode_is_done
         ) except *
     # double[n_rovers]
     # State[n_steps_elapsed]
@@ -18,7 +18,7 @@ cdef class BaseEvaluator:
         self,
         object[:] state_history,
         const double[:, :, :] rover_actions_history, 
-        bint domain_is_done
+        bint episode_is_done
         ) except *
         
     cpdef double[:] rover_evals_via(
@@ -26,7 +26,7 @@ cdef class BaseEvaluator:
         double[:] store,
         object[:] state_history,
         const double[:, :, :] rover_actions_history, 
-        bint domain_is_done
+        bint episode_is_done
         ) except *
     # double[n_rovers]
     # State[n_steps_elapsed]

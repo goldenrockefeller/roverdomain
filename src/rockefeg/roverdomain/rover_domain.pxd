@@ -94,7 +94,7 @@ cdef class RoverDomain:
         const double[:, :] poi_positions
         ) except *
     
-    cpdef bint done(self) except *
+    cpdef bint episode_is_done(self) except *
         
     cpdef double[:, :, :] rover_actions_history_copy(self) except *
     cpdef double[:, :, :] rover_actions_history_via(

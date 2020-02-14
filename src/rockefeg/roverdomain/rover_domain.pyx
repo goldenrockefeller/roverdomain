@@ -297,7 +297,7 @@ cdef class RoverDomain:
             ) except *:
         self.m_current_state.set_poi_positions(poi_positions)
         
-    cpdef bint done(self) except *:
+    cpdef bint episode_is_done(self) except *:
         return self.n_steps_elapsed() >= self.n_steps()
         
     cpdef double[:, :, :] rover_actions_history_copy(self) except *:
@@ -366,7 +366,7 @@ cdef class RoverDomain:
             self.evaluator_ref().eval(
                 state_history, 
                 rover_actions_history,
-                self.done()))
+                self.episode_is_done()))
         
     
     cpdef double[:] rover_evals_copy(self) except *:
@@ -381,7 +381,7 @@ cdef class RoverDomain:
             self.evaluator_ref().rover_evals_copy(
                 state_history, 
                 rover_actions_history,
-                self.done()))
+                self.episode_is_done()))
         
     cpdef double[:] rover_evals_via(self, double[:] rover_evals) except *:
         cdef object[:] state_history
@@ -396,7 +396,7 @@ cdef class RoverDomain:
                 rover_evals,
                 state_history, 
                 rover_actions_history,
-                self.done()))
+                self.episode_is_done()))
     
     
     cpdef void reset(self) except *:
@@ -458,9 +458,9 @@ cdef class RoverDomain:
         dynamics_processor = self.dynamics_processor_ref()
         step_id = self.m_n_steps_elapsed
         
-        if self.done():
+        if self.episode_is_done():
             raise ValueError(
-                "The rover domain is done, so it cannot step. Try "
+                "The rover domain's episode is done, so it cannot step. Try "
                 "resetting the domain.")
         
         if (

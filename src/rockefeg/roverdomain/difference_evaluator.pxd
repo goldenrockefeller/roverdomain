@@ -18,7 +18,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         self, 
         object[:] state_history, 
         const double[:, :, :] rover_actions_history,
-        bint domain_is_done,
+        bint episode_is_done,
         Py_ssize_t excluded_rover_id
         ) except *
     # State[n_steps_elapsed]
