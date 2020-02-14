@@ -2140,7 +2140,6 @@ static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_rover_orientations[] = "rover_orientations";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_n_rover_action_dims[] = "n_rover_action_dims";
-static const char __pyx_k_rrover_orientations[] = "rrover_orientations";
 static const char __pyx_k_set_rover_positions[] = "set_rover_positions";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
@@ -2255,7 +2254,6 @@ static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_rover_actions;
 static PyObject *__pyx_n_s_rover_orientations;
 static PyObject *__pyx_n_s_rover_positions;
-static PyObject *__pyx_n_s_rrover_orientations;
 static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_self_type;
 static PyObject *__pyx_n_s_set_rover_orientations;
@@ -3972,7 +3970,7 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
  *                 self.r_rover_orientations[rover_id, 1] = dy / norm
  * 
  *         next_state.set_rover_positions(self.r_rover_positions)             # <<<<<<<<<<<<<<
- *         next_state.set_rover_orientations(self.rrover_orientations)
+ *         next_state.set_rover_orientations(self.r_rover_orientations)
  *         return next_state
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_next_state, __pyx_n_s_set_rover_positions); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
@@ -4005,13 +4003,18 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
   /* "rockefeg/roverdomain/default_dynamics_processor.pyx":95
  * 
  *         next_state.set_rover_positions(self.r_rover_positions)
- *         next_state.set_rover_orientations(self.rrover_orientations)             # <<<<<<<<<<<<<<
+ *         next_state.set_rover_orientations(self.r_rover_orientations)             # <<<<<<<<<<<<<<
  *         return next_state
  * 
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_next_state, __pyx_n_s_set_rover_orientations); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rrover_orientations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+    __PYX_ERR(0, 95, __pyx_L1_error)
+  }
+  if (unlikely(!__pyx_v_self->r_rover_orientations.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 95, __pyx_L1_error)}
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_self->r_rover_orientations, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -4033,7 +4036,7 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
 
   /* "rockefeg/roverdomain/default_dynamics_processor.pyx":96
  *         next_state.set_rover_positions(self.r_rover_positions)
- *         next_state.set_rover_orientations(self.rrover_orientations)
+ *         next_state.set_rover_orientations(self.r_rover_orientations)
  *         return next_state             # <<<<<<<<<<<<<<
  * 
  *     cpdef object copy(self, object store = None):
@@ -18249,7 +18252,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_rover_actions, __pyx_k_rover_actions, sizeof(__pyx_k_rover_actions), 0, 0, 1, 1},
   {&__pyx_n_s_rover_orientations, __pyx_k_rover_orientations, sizeof(__pyx_k_rover_orientations), 0, 0, 1, 1},
   {&__pyx_n_s_rover_positions, __pyx_k_rover_positions, sizeof(__pyx_k_rover_positions), 0, 0, 1, 1},
-  {&__pyx_n_s_rrover_orientations, __pyx_k_rrover_orientations, sizeof(__pyx_k_rrover_orientations), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_self_type, __pyx_k_self_type, sizeof(__pyx_k_self_type), 0, 0, 1, 1},
   {&__pyx_n_s_set_rover_orientations, __pyx_k_set_rover_orientations, sizeof(__pyx_k_set_rover_orientations), 0, 0, 1, 1},

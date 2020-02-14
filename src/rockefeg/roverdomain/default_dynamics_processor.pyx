@@ -92,7 +92,7 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
                 self.r_rover_orientations[rover_id, 1] = dy / norm
         
         next_state.set_rover_positions(self.r_rover_positions)
-        next_state.set_rover_orientations(self.rrover_orientations)
+        next_state.set_rover_orientations(self.r_rover_orientations)
         return next_state
     
     cpdef object copy(self, object store = None):
