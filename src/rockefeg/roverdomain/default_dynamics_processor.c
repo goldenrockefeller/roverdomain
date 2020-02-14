@@ -954,6 +954,121 @@ struct __pyx_array_obj;
 struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_rover_positions;
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_rover_orientations;
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_poi_values;
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_poi_positions;
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_copy;
+
+/* "state.pxd":22
+ *     cpdef void set_n_pois(self, Py_ssize_t n_pois) except *
+ * 
+ *     cpdef double[:, :] rover_positions(self, double[:, :] store = ?) except *             # <<<<<<<<<<<<<<
+ *     cpdef void set_rover_positions(
+ *         self,
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_rover_positions {
+  int __pyx_n;
+  __Pyx_memviewslice store;
+};
+
+/* "state.pxd":28
+ *         ) except *
+ * 
+ *     cpdef double[:, :] rover_orientations(             # <<<<<<<<<<<<<<
+ *         self,
+ *         double[:, :] store = ?
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_rover_orientations {
+  int __pyx_n;
+  __Pyx_memviewslice store;
+};
+
+/* "state.pxd":37
+ *         ) except *
+ * 
+ *     cpdef double[:] poi_values(self, double[:] store = ?) except *             # <<<<<<<<<<<<<<
+ *     cpdef void set_poi_values(self, const double[:] poi_values) except *
+ * 
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_poi_values {
+  int __pyx_n;
+  __Pyx_memviewslice store;
+};
+
+/* "state.pxd":40
+ *     cpdef void set_poi_values(self, const double[:] poi_values) except *
+ * 
+ *     cpdef double[:, :] poi_positions(self, double[:, :] store = ?) except *             # <<<<<<<<<<<<<<
+ *     cpdef void set_poi_positions(
+ *         self,
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_poi_positions {
+  int __pyx_n;
+  __Pyx_memviewslice store;
+};
+
+/* "state.pxd":46
+ *         ) except *
+ * 
+ *     cpdef object copy(self, object store = ?)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_copy {
+  int __pyx_n;
+  PyObject *store;
+};
+struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_next_state;
+struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_copy;
+
+/* "base_dynamics_processor.pxd":10
+ * 
+ * 
+ *     cpdef State next_state(             # <<<<<<<<<<<<<<
+ *         self,
+ *         State state,
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_next_state {
+  int __pyx_n;
+  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *store;
+};
+
+/* "base_dynamics_processor.pxd":18
+ *     # double[n_rovers, n_rover_action_dims]
+ * 
+ *     cpdef object copy(self, object store = ?)             # <<<<<<<<<<<<<<
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_copy {
+  int __pyx_n;
+  PyObject *store;
+};
+struct __pyx_opt_args_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state;
+struct __pyx_opt_args_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy;
+
+/* "rockefeg/roverdomain/default_dynamics_processor.pyx":45
+ *         return 2
+ * 
+ *     cpdef State next_state(             # <<<<<<<<<<<<<<
+ *             self,
+ *             State state,
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state {
+  int __pyx_n;
+  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *store;
+};
+
+/* "rockefeg/roverdomain/default_dynamics_processor.pyx":98
+ *         return next_state
+ * 
+ *     cpdef object copy(self, object store = None):             # <<<<<<<<<<<<<<
+ *         cdef DefaultDynamicsProcessor new_processor
+ *         cdef object store_type
+ */
+struct __pyx_opt_args_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy {
+  int __pyx_n;
+  PyObject *store;
+};
 
 /* "state.pxd":4
  * 
@@ -991,13 +1106,13 @@ struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsP
  * 
  * 
  * cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):             # <<<<<<<<<<<<<<
- *     cdef double[:, :] r_rover_positions_store
- *     cdef double[:, :] r_rover_orientations_store
+ *     cdef double[:, :] r_rover_positions
+ *     cdef double[:, :] r_rover_orientations
  */
 struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor {
   struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor __pyx_base;
-  __Pyx_memviewslice r_rover_positions_store;
-  __Pyx_memviewslice r_rover_orientations_store;
+  __Pyx_memviewslice r_rover_positions;
+  __Pyx_memviewslice r_rover_orientations;
 };
 
 
@@ -1092,20 +1207,15 @@ struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State {
   void (*set_n_rovers)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
   Py_ssize_t (*n_pois)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
   void (*set_n_pois)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, Py_ssize_t, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_positions_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_positions_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_positions)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_rover_positions *__pyx_optional_args);
   void (*set_rover_positions)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_orientations_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*rover_orientations_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*rover_orientations)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_rover_orientations *__pyx_optional_args);
   void (*set_rover_orientations)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_values_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_values_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_values)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_poi_values *__pyx_optional_args);
   void (*set_poi_values)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_positions_copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
-  __Pyx_memviewslice (*poi_positions_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
+  __Pyx_memviewslice (*poi_positions)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_poi_positions *__pyx_optional_args);
   void (*set_poi_positions)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, PyObject *, int __pyx_skip_dispatch);
-  PyObject *(*copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch);
+  PyObject *(*copy)(struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_copy *__pyx_optional_args);
 };
 static struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *__pyx_vtabptr_8rockefeg_11roverdomain_5state_State;
 
@@ -1120,10 +1230,8 @@ static struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *__pyx_vtabp
 
 struct __pyx_vtabstruct_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor {
   Py_ssize_t (*n_rover_action_dims)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, int __pyx_skip_dispatch);
-  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *(*next_state_copy)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *(*next_state_via)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch);
-  PyObject *(*copy)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, int __pyx_skip_dispatch);
-  PyObject *(*copy_via)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, PyObject *, int __pyx_skip_dispatch);
+  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *(*next_state)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_next_state *__pyx_optional_args);
+  PyObject *(*copy)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_copy *__pyx_optional_args);
 };
 static struct __pyx_vtabstruct_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *__pyx_vtabptr_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor;
 
@@ -1133,7 +1241,7 @@ static struct __pyx_vtabstruct_8rockefeg_11roverdomain_23base_dynamics_processor
  * @cython.warn.undeclared(True)
  * cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):             # <<<<<<<<<<<<<<
  *     @cython.warn.undeclared(False)
- *     def __setstate__(self, state):
+ *     def __init__(self):
  */
 
 struct __pyx_vtabstruct_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor {
@@ -1262,6 +1370,39 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 
 /* GetBuiltinName.proto */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
+
+/* RaiseArgTupleInvalid.proto */
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
+/* KeywordStringCheck.proto */
+static int __Pyx_CheckKeywordStrings(PyObject *kwdict, const char* function_name, int kw_allowed);
+
+/* MemviewSliceInit.proto */
+#define __Pyx_BUF_MAX_NDIMS %(BUF_MAX_NDIMS)d
+#define __Pyx_MEMVIEW_DIRECT   1
+#define __Pyx_MEMVIEW_PTR      2
+#define __Pyx_MEMVIEW_FULL     4
+#define __Pyx_MEMVIEW_CONTIG   8
+#define __Pyx_MEMVIEW_STRIDED  16
+#define __Pyx_MEMVIEW_FOLLOW   32
+#define __Pyx_IS_C_CONTIG 1
+#define __Pyx_IS_F_CONTIG 2
+static int __Pyx_init_memviewslice(
+                struct __pyx_memoryview_obj *memview,
+                int ndim,
+                __Pyx_memviewslice *memviewslice,
+                int memview_is_new_reference);
+static CYTHON_INLINE int __pyx_add_acquisition_count_locked(
+    __pyx_atomic_int *acquisition_count, PyThread_type_lock lock);
+static CYTHON_INLINE int __pyx_sub_acquisition_count_locked(
+    __pyx_atomic_int *acquisition_count, PyThread_type_lock lock);
+#define __pyx_get_slice_count_pointer(memview) (memview->acquisition_count_aligned_p)
+#define __pyx_get_slice_count(memview) (*__pyx_get_slice_count_pointer(memview))
+#define __PYX_INC_MEMVIEW(slice, have_gil) __Pyx_INC_MEMVIEW(slice, have_gil, __LINE__)
+#define __PYX_XDEC_MEMVIEW(slice, have_gil) __Pyx_XDEC_MEMVIEW(slice, have_gil, __LINE__)
+static CYTHON_INLINE void __Pyx_INC_MEMVIEW(__Pyx_memviewslice *, int, int);
+static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *, int, int);
 
 /* IterFinish.proto */
 static CYTHON_INLINE int __Pyx_IterFinish(void);
@@ -1485,41 +1626,14 @@ static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int eq
 /* UnicodeEquals.proto */
 static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals);
 
-/* MemviewSliceInit.proto */
-#define __Pyx_BUF_MAX_NDIMS %(BUF_MAX_NDIMS)d
-#define __Pyx_MEMVIEW_DIRECT   1
-#define __Pyx_MEMVIEW_PTR      2
-#define __Pyx_MEMVIEW_FULL     4
-#define __Pyx_MEMVIEW_CONTIG   8
-#define __Pyx_MEMVIEW_STRIDED  16
-#define __Pyx_MEMVIEW_FOLLOW   32
-#define __Pyx_IS_C_CONTIG 1
-#define __Pyx_IS_F_CONTIG 2
-static int __Pyx_init_memviewslice(
-                struct __pyx_memoryview_obj *memview,
-                int ndim,
-                __Pyx_memviewslice *memviewslice,
-                int memview_is_new_reference);
-static CYTHON_INLINE int __pyx_add_acquisition_count_locked(
-    __pyx_atomic_int *acquisition_count, PyThread_type_lock lock);
-static CYTHON_INLINE int __pyx_sub_acquisition_count_locked(
-    __pyx_atomic_int *acquisition_count, PyThread_type_lock lock);
-#define __pyx_get_slice_count_pointer(memview) (memview->acquisition_count_aligned_p)
-#define __pyx_get_slice_count(memview) (*__pyx_get_slice_count_pointer(memview))
-#define __PYX_INC_MEMVIEW(slice, have_gil) __Pyx_INC_MEMVIEW(slice, have_gil, __LINE__)
-#define __PYX_XDEC_MEMVIEW(slice, have_gil) __Pyx_XDEC_MEMVIEW(slice, have_gil, __LINE__)
-static CYTHON_INLINE void __Pyx_INC_MEMVIEW(__Pyx_memviewslice *, int, int);
-static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *, int, int);
-
 /* None.proto */
 static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname);
 
 /* ExtTypeTest.proto */
 static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type);
 
-/* RaiseArgTupleInvalid.proto */
-static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
-    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+/* BufferIndexError.proto */
+static void __Pyx_RaiseBufferIndexError(int axis);
 
 /* RaiseDoubleKeywords.proto */
 static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
@@ -1535,6 +1649,9 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
         __Pyx__ArgTypeTest(obj, type, name, exact))
 static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
 
+/* RaiseException.proto */
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
+
 /* GetException.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
@@ -1542,12 +1659,6 @@ static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject 
 #else
 static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
 #endif
-
-/* BufferIndexError.proto */
-static void __Pyx_RaiseBufferIndexError(int axis);
-
-/* RaiseException.proto */
-static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
 
 /* StrEquals.proto */
 #if PY_MAJOR_VERSION >= 3
@@ -1844,10 +1955,10 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 static CYTHON_INLINE char __Pyx_PyInt_As_char(PyObject *);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_double(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dsds_double(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dsds_double(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_double(PyObject *, int writable_flag);
 
 /* CheckBinaryVersion.proto */
 static int __Pyx_check_binary_version(void);
@@ -1856,10 +1967,8 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_n_rover_action_dims(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state_copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions, int __pyx_skip_dispatch); /* proto*/
-static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state_via(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy_via(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_store, int __pyx_skip_dispatch); /* proto*/
+static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state *__pyx_optional_args); /* proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy *__pyx_optional_args); /* proto*/
 static PyObject *__pyx_array_get_memview(struct __pyx_array_obj *__pyx_v_self); /* proto*/
 static char *__pyx_memoryview_get_item_pointer(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index); /* proto*/
 static PyObject *__pyx_memoryview_is_slice(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_obj); /* proto*/
@@ -1994,7 +2103,6 @@ static const char __pyx_k_inspect[] = "inspect";
 static const char __pyx_k_memview[] = "memview";
 static const char __pyx_k_setattr[] = "__setattr__";
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
-static const char __pyx_k_copy_via[] = "copy_via";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_itemsize[] = "itemsize";
 static const char __pyx_k_pyx_type[] = "__pyx_type";
@@ -2007,6 +2115,7 @@ static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_self_type[] = "self_type";
 static const char __pyx_k_IndexError[] = "IndexError";
 static const char __pyx_k_ValueError[] = "ValueError";
+static const char __pyx_k_next_state[] = "next_state";
 static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_store_type[] = "store_type";
@@ -2020,21 +2129,23 @@ static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_rover_actions[] = "rover_actions";
 static const char __pyx_k_AttributeError[] = "AttributeError";
-static const char __pyx_k_next_state_via[] = "next_state_via";
 static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
 static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static const char __pyx_k_dtype_is_object[] = "dtype_is_object";
-static const char __pyx_k_next_state_copy[] = "next_state_copy";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
+static const char __pyx_k_rover_positions[] = "rover_positions";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
-static const char __pyx_k_r_rover_positions[] = "r_rover_positions";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_rover_orientations[] = "rover_orientations";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_n_rover_action_dims[] = "n_rover_action_dims";
+static const char __pyx_k_rrover_orientations[] = "rrover_orientations";
+static const char __pyx_k_set_rover_positions[] = "set_rover_positions";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
+static const char __pyx_k_set_rover_orientations[] = "set_rover_orientations";
 static const char __pyx_k_MemoryView_of_r_at_0x_x[] = "<MemoryView of %r at 0x%x>";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
 static const char __pyx_k_Cannot_index_with_type_s[] = "Cannot index with type '%s'";
@@ -2094,7 +2205,6 @@ static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
 static PyObject *__pyx_n_s_copy;
-static PyObject *__pyx_n_s_copy_via;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_s_dtype_is_object;
 static PyObject *__pyx_n_s_encode;
@@ -2123,8 +2233,7 @@ static PyObject *__pyx_n_s_name_2;
 static PyObject *__pyx_n_s_ndim;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_n_s_new_processor;
-static PyObject *__pyx_n_s_next_state_copy;
-static PyObject *__pyx_n_s_next_state_via;
+static PyObject *__pyx_n_s_next_state;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_numpy;
@@ -2139,14 +2248,18 @@ static PyObject *__pyx_n_s_pyx_state;
 static PyObject *__pyx_n_s_pyx_type;
 static PyObject *__pyx_n_s_pyx_unpickle_Enum;
 static PyObject *__pyx_n_s_pyx_vtable;
-static PyObject *__pyx_n_s_r_rover_positions;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_rover_actions;
+static PyObject *__pyx_n_s_rover_orientations;
+static PyObject *__pyx_n_s_rover_positions;
+static PyObject *__pyx_n_s_rrover_orientations;
 static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_self_type;
+static PyObject *__pyx_n_s_set_rover_orientations;
+static PyObject *__pyx_n_s_set_rover_positions;
 static PyObject *__pyx_n_s_setattr;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
@@ -2169,13 +2282,12 @@ static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor___setstate__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_state); /* proto */
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_2__reduce__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_4n_rover_action_dims(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_6next_state_copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions); /* proto */
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_8next_state_via(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions); /* proto */
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_10copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_12copy_via(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_store); /* proto */
+static int __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor___init__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_2__setstate__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_state); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_4__reduce__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_6n_rover_action_dims(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_8next_state(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store); /* proto */
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_10copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_store); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -2261,25 +2373,109 @@ static PyObject *__pyx_codeobj__28;
 /* "rockefeg/roverdomain/default_dynamics_processor.pyx":9
  * cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
  *     @cython.warn.undeclared(False)
- *     def __setstate__(self, state):             # <<<<<<<<<<<<<<
- * 
- *         for attr in state.keys():
+ *     def __init__(self):             # <<<<<<<<<<<<<<
+ *         self.r_rover_positions = None
+ *         self.r_rover_orientations = None
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_1__setstate__(PyObject *__pyx_v_self, PyObject *__pyx_v_state); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_1__setstate__(PyObject *__pyx_v_self, PyObject *__pyx_v_state) {
-  PyObject *__pyx_r = 0;
+static int __pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  int __pyx_r;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__setstate__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor___setstate__(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self), ((PyObject *)__pyx_v_state));
+  __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
+  if (unlikely(PyTuple_GET_SIZE(__pyx_args) > 0)) {
+    __Pyx_RaiseArgtupleInvalid("__init__", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); return -1;}
+  if (unlikely(__pyx_kwds) && unlikely(PyDict_Size(__pyx_kwds) > 0) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__init__", 0))) return -1;
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor___init__(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor___setstate__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_state) {
+static int __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor___init__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_memviewslice __pyx_t_1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_RefNannySetupContext("__init__", 0);
+
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":10
+ *     @cython.warn.undeclared(False)
+ *     def __init__(self):
+ *         self.r_rover_positions = None             # <<<<<<<<<<<<<<
+ *         self.r_rover_orientations = None
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(Py_None, PyBUF_WRITABLE); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions");
+    __PYX_ERR(0, 10, __pyx_L1_error)
+  }
+  __PYX_XDEC_MEMVIEW(&__pyx_v_self->r_rover_positions, 0);
+  __pyx_v_self->r_rover_positions = __pyx_t_1;
+  __pyx_t_1.memview = NULL;
+  __pyx_t_1.data = NULL;
+
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":11
+ *     def __init__(self):
+ *         self.r_rover_positions = None
+ *         self.r_rover_orientations = None             # <<<<<<<<<<<<<<
+ * 
+ *     @cython.warn.undeclared(False)
+ */
+  __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(Py_None, PyBUF_WRITABLE); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+    __PYX_ERR(0, 11, __pyx_L1_error)
+  }
+  __PYX_XDEC_MEMVIEW(&__pyx_v_self->r_rover_orientations, 0);
+  __pyx_v_self->r_rover_orientations = __pyx_t_1;
+  __pyx_t_1.memview = NULL;
+  __pyx_t_1.data = NULL;
+
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":9
+ * cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
+ *     @cython.warn.undeclared(False)
+ *     def __init__(self):             # <<<<<<<<<<<<<<
+ *         self.r_rover_positions = None
+ *         self.r_rover_orientations = None
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __PYX_XDEC_MEMVIEW(&__pyx_t_1, 1);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "rockefeg/roverdomain/default_dynamics_processor.pyx":14
+ * 
+ *     @cython.warn.undeclared(False)
+ *     def __setstate__(self, state):             # <<<<<<<<<<<<<<
+ * 
+ *         for attr in state.keys():
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_3__setstate__(PyObject *__pyx_v_self, PyObject *__pyx_v_state); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_3__setstate__(PyObject *__pyx_v_self, PyObject *__pyx_v_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_2__setstate__(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self), ((PyObject *)__pyx_v_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_2__setstate__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_state) {
   PyObject *__pyx_v_attr = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2298,7 +2494,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   PyObject *__pyx_t_13 = NULL;
   __Pyx_RefNannySetupContext("__setstate__", 0);
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":11
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":16
  *     def __setstate__(self, state):
  * 
  *         for attr in state.keys():             # <<<<<<<<<<<<<<
@@ -2308,9 +2504,9 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   __pyx_t_2 = 0;
   if (unlikely(__pyx_v_state == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 11, __pyx_L1_error)
+    __PYX_ERR(0, 16, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_dict_iterator(__pyx_v_state, 0, __pyx_n_s_keys, (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_dict_iterator(__pyx_v_state, 0, __pyx_n_s_keys, (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_1);
   __pyx_t_1 = __pyx_t_5;
@@ -2318,12 +2514,12 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   while (1) {
     __pyx_t_6 = __Pyx_dict_iter_next(__pyx_t_1, __pyx_t_3, &__pyx_t_2, &__pyx_t_5, NULL, NULL, __pyx_t_4);
     if (unlikely(__pyx_t_6 == 0)) break;
-    if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 11, __pyx_L1_error)
+    if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 16, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XDECREF_SET(__pyx_v_attr, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":12
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":17
  * 
  *         for attr in state.keys():
  *             try:             # <<<<<<<<<<<<<<
@@ -2339,20 +2535,20 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
       __Pyx_XGOTREF(__pyx_t_9);
       /*try:*/ {
 
-        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":13
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":18
  *         for attr in state.keys():
  *             try:
  *                 self.__setattr__(attr, state[attr])             # <<<<<<<<<<<<<<
  *             except AttributeError:
  *                 pass
  */
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setattr); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 13, __pyx_L5_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setattr); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 18, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (unlikely(__pyx_v_state == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 13, __pyx_L5_error)
+          __PYX_ERR(0, 18, __pyx_L5_error)
         }
-        __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_state, __pyx_v_attr); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 13, __pyx_L5_error)
+        __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_state, __pyx_v_attr); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 18, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_12 = NULL;
         __pyx_t_6 = 0;
@@ -2369,7 +2565,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_v_attr, __pyx_t_11};
-          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 13, __pyx_L5_error)
+          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 18, __pyx_L5_error)
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -2378,14 +2574,14 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_v_attr, __pyx_t_11};
-          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 13, __pyx_L5_error)
+          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 18, __pyx_L5_error)
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         } else
         #endif
         {
-          __pyx_t_13 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 13, __pyx_L5_error)
+          __pyx_t_13 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 18, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_13);
           if (__pyx_t_12) {
             __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -2396,14 +2592,14 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
           __Pyx_GIVEREF(__pyx_t_11);
           PyTuple_SET_ITEM(__pyx_t_13, 1+__pyx_t_6, __pyx_t_11);
           __pyx_t_11 = 0;
-          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_13, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 13, __pyx_L5_error)
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_13, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 18, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         }
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":12
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":17
  * 
  *         for attr in state.keys():
  *             try:             # <<<<<<<<<<<<<<
@@ -2422,7 +2618,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":14
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":19
  *             try:
  *                 self.__setattr__(attr, state[attr])
  *             except AttributeError:             # <<<<<<<<<<<<<<
@@ -2437,7 +2633,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
       goto __pyx_L7_except_error;
       __pyx_L7_except_error:;
 
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":12
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":17
  * 
  *         for attr in state.keys():
  *             try:             # <<<<<<<<<<<<<<
@@ -2459,8 +2655,8 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":9
- * cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":14
+ * 
  *     @cython.warn.undeclared(False)
  *     def __setstate__(self, state):             # <<<<<<<<<<<<<<
  * 
@@ -2486,7 +2682,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   return __pyx_r;
 }
 
-/* "rockefeg/roverdomain/default_dynamics_processor.pyx":18
+/* "rockefeg/roverdomain/default_dynamics_processor.pyx":23
  * 
  *     @cython.warn.undeclared(False)
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -2495,19 +2691,19 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_3__reduce__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_3__reduce__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_5__reduce__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_5__reduce__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_2__reduce__(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_4__reduce__(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_2__reduce__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_4__reduce__(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self) {
   __Pyx_memviewslice __pyx_v_basic_memoryview = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_v_state = NULL;
   PyObject *__pyx_v_attr = NULL;
@@ -2530,16 +2726,16 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   int __pyx_t_14;
   __Pyx_RefNannySetupContext("__reduce__", 0);
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":19
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":24
  *     @cython.warn.undeclared(False)
  *     def __reduce__(self):
  *         cdef double[:] basic_memoryview = np.zeros(1)             # <<<<<<<<<<<<<<
  * 
  *         state = {}
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -2554,43 +2750,43 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_int_1) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_1);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_basic_memoryview = __pyx_t_4;
   __pyx_t_4.memview = NULL;
   __pyx_t_4.data = NULL;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":21
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":26
  *         cdef double[:] basic_memoryview = np.zeros(1)
  * 
  *         state = {}             # <<<<<<<<<<<<<<
  *         for attr in dir(self):
  *             try:
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_state = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":22
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":27
  * 
  *         state = {}
  *         for attr in dir(self):             # <<<<<<<<<<<<<<
  *             try:
  *                 val = self.__getattribute__(attr)
  */
-  __pyx_t_1 = PyObject_Dir(((PyObject *)__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Dir(((PyObject *)__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 27, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -2598,17 +2794,17 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -2618,7 +2814,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 22, __pyx_L1_error)
+          else __PYX_ERR(0, 27, __pyx_L1_error)
         }
         break;
       }
@@ -2627,7 +2823,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
     __Pyx_XDECREF_SET(__pyx_v_attr, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":23
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":28
  *         state = {}
  *         for attr in dir(self):
  *             try:             # <<<<<<<<<<<<<<
@@ -2643,14 +2839,14 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
       __Pyx_XGOTREF(__pyx_t_9);
       /*try:*/ {
 
-        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":24
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":29
  *         for attr in dir(self):
  *             try:
  *                 val = self.__getattribute__(attr)             # <<<<<<<<<<<<<<
  *                 if (
  *                         not (attr[:2] == "__" and attr[-2:] == "__")
  */
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getattribute); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L5_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getattribute); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_10 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2664,31 +2860,31 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
         }
         __pyx_t_1 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_10, __pyx_v_attr) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_attr);
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L5_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_XDECREF_SET(__pyx_v_val, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":26
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":31
  *                 val = self.__getattribute__(attr)
  *                 if (
  *                         not (attr[:2] == "__" and attr[-2:] == "__")             # <<<<<<<<<<<<<<
  *                         and not inspect.isbuiltin(val)
  *                 ):
  */
-        __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_attr, 0, 2, NULL, NULL, &__pyx_slice_, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L5_error)
+        __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_attr, 0, 2, NULL, NULL, &__pyx_slice_, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_13 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u__2, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 26, __pyx_L5_error)
+        __pyx_t_13 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u__2, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 31, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (__pyx_t_13) {
         } else {
           __pyx_t_12 = __pyx_t_13;
           goto __pyx_L16_bool_binop_done;
         }
-        __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_attr, -2L, 0, NULL, NULL, &__pyx_slice__3, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L5_error)
+        __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_attr, -2L, 0, NULL, NULL, &__pyx_slice__3, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_13 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u__2, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 26, __pyx_L5_error)
+        __pyx_t_13 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u__2, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 31, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_12 = __pyx_t_13;
         __pyx_L16_bool_binop_done:;
@@ -2699,16 +2895,16 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
           goto __pyx_L14_bool_binop_done;
         }
 
-        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":27
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":32
  *                 if (
  *                         not (attr[:2] == "__" and attr[-2:] == "__")
  *                         and not inspect.isbuiltin(val)             # <<<<<<<<<<<<<<
  *                 ):
  *                     if type(val) is type(basic_memoryview):
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_inspect); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L5_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_inspect); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isbuiltin); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 27, __pyx_L5_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isbuiltin); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 32, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_2 = NULL;
@@ -2723,16 +2919,16 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
         }
         __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_2, __pyx_v_val) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_val);
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L5_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 27, __pyx_L5_error)
+        __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 32, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_12 = ((!__pyx_t_13) != 0);
         __pyx_t_11 = __pyx_t_12;
         __pyx_L14_bool_binop_done:;
 
-        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":25
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":30
  *             try:
  *                 val = self.__getattribute__(attr)
  *                 if (             # <<<<<<<<<<<<<<
@@ -2741,30 +2937,30 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
  */
         if (__pyx_t_11) {
 
-          /* "rockefeg/roverdomain/default_dynamics_processor.pyx":29
+          /* "rockefeg/roverdomain/default_dynamics_processor.pyx":34
  *                         and not inspect.isbuiltin(val)
  *                 ):
  *                     if type(val) is type(basic_memoryview):             # <<<<<<<<<<<<<<
  *                         val = np.asarray(val)
  *                     state[attr] = val
  */
-          __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_basic_memoryview, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L5_error)
+          __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_basic_memoryview, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_1);
           __pyx_t_11 = (((PyObject *)Py_TYPE(__pyx_v_val)) == ((PyObject *)Py_TYPE(__pyx_t_1)));
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_t_12 = (__pyx_t_11 != 0);
           if (__pyx_t_12) {
 
-            /* "rockefeg/roverdomain/default_dynamics_processor.pyx":30
+            /* "rockefeg/roverdomain/default_dynamics_processor.pyx":35
  *                 ):
  *                     if type(val) is type(basic_memoryview):
  *                         val = np.asarray(val)             # <<<<<<<<<<<<<<
  *                     state[attr] = val
  *             except AttributeError:
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 30, __pyx_L5_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 35, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L5_error)
+            __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_10 = NULL;
@@ -2779,13 +2975,13 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
             }
             __pyx_t_1 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_10, __pyx_v_val) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_val);
             __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-            if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L5_error)
+            if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_DECREF_SET(__pyx_v_val, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "rockefeg/roverdomain/default_dynamics_processor.pyx":29
+            /* "rockefeg/roverdomain/default_dynamics_processor.pyx":34
  *                         and not inspect.isbuiltin(val)
  *                 ):
  *                     if type(val) is type(basic_memoryview):             # <<<<<<<<<<<<<<
@@ -2794,16 +2990,16 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
  */
           }
 
-          /* "rockefeg/roverdomain/default_dynamics_processor.pyx":31
+          /* "rockefeg/roverdomain/default_dynamics_processor.pyx":36
  *                     if type(val) is type(basic_memoryview):
  *                         val = np.asarray(val)
  *                     state[attr] = val             # <<<<<<<<<<<<<<
  *             except AttributeError:
  *                 pass
  */
-          if (unlikely(PyDict_SetItem(__pyx_v_state, __pyx_v_attr, __pyx_v_val) < 0)) __PYX_ERR(0, 31, __pyx_L5_error)
+          if (unlikely(PyDict_SetItem(__pyx_v_state, __pyx_v_attr, __pyx_v_val) < 0)) __PYX_ERR(0, 36, __pyx_L5_error)
 
-          /* "rockefeg/roverdomain/default_dynamics_processor.pyx":25
+          /* "rockefeg/roverdomain/default_dynamics_processor.pyx":30
  *             try:
  *                 val = self.__getattribute__(attr)
  *                 if (             # <<<<<<<<<<<<<<
@@ -2812,7 +3008,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
  */
         }
 
-        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":23
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":28
  *         state = {}
  *         for attr in dir(self):
  *             try:             # <<<<<<<<<<<<<<
@@ -2830,7 +3026,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
 
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":32
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":37
  *                         val = np.asarray(val)
  *                     state[attr] = val
  *             except AttributeError:             # <<<<<<<<<<<<<<
@@ -2845,7 +3041,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
       goto __pyx_L7_except_error;
       __pyx_L7_except_error:;
 
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":23
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":28
  *         state = {}
  *         for attr in dir(self):
  *             try:             # <<<<<<<<<<<<<<
@@ -2865,7 +3061,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
       __pyx_L12_try_end:;
     }
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":22
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":27
  * 
  *         state = {}
  *         for attr in dir(self):             # <<<<<<<<<<<<<<
@@ -2875,7 +3071,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":35
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":40
  *                 pass
  * 
  *         return self.__class__, (),  state             # <<<<<<<<<<<<<<
@@ -2883,9 +3079,9 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
  *     cpdef Py_ssize_t n_rover_action_dims(self) except *:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
@@ -2900,7 +3096,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":18
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":23
  * 
  *     @cython.warn.undeclared(False)
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -2927,7 +3123,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   return __pyx_r;
 }
 
-/* "rockefeg/roverdomain/default_dynamics_processor.pyx":37
+/* "rockefeg/roverdomain/default_dynamics_processor.pyx":42
  *         return self.__class__, (),  state
  * 
  *     cpdef Py_ssize_t n_rover_action_dims(self) except *:             # <<<<<<<<<<<<<<
@@ -2935,7 +3131,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
  * 
  */
 
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_5n_rover_action_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7n_rover_action_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
 static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_n_rover_action_dims(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
@@ -2955,9 +3151,9 @@ static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_2
     else {
       PY_UINT64_T type_dict_guard = (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict)) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_n_rover_action_dims); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_n_rover_action_dims); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_5n_rover_action_dims)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7n_rover_action_dims)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -2971,10 +3167,10 @@ static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_2
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_5 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_5 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_5 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_5;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2993,17 +3189,17 @@ static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_2
     #endif
   }
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":38
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":43
  * 
  *     cpdef Py_ssize_t n_rover_action_dims(self) except *:
  *         return 2             # <<<<<<<<<<<<<<
  * 
- *     cpdef State next_state_copy(
+ *     cpdef State next_state(
  */
   __pyx_r = 2;
   goto __pyx_L0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":37
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":42
  *         return self.__class__, (),  state
  * 
  *     cpdef Py_ssize_t n_rover_action_dims(self) except *:             # <<<<<<<<<<<<<<
@@ -3025,27 +3221,27 @@ static Py_ssize_t __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_2
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_5n_rover_action_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_5n_rover_action_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7n_rover_action_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7n_rover_action_dims(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("n_rover_action_dims (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_4n_rover_action_dims(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self));
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_6n_rover_action_dims(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_4n_rover_action_dims(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_6n_rover_action_dims(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("n_rover_action_dims", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_n_rover_action_dims(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L1_error)
-  __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_n_rover_action_dims(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -3062,284 +3258,33 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   return __pyx_r;
 }
 
-/* "rockefeg/roverdomain/default_dynamics_processor.pyx":40
+/* "rockefeg/roverdomain/default_dynamics_processor.pyx":45
  *         return 2
  * 
- *     cpdef State next_state_copy(             # <<<<<<<<<<<<<<
+ *     cpdef State next_state(             # <<<<<<<<<<<<<<
  *             self,
  *             State state,
  */
 
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7next_state_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state_copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions, int __pyx_skip_dispatch) {
-  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_next_state = 0;
-  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  __Pyx_RefNannySetupContext("next_state_copy", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP
-    static PY_UINT64_T tp_dict_version = 0, obj_dict_version = 0;
-    if (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict && tp_dict_version == __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) && (!Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset || obj_dict_version == __PYX_GET_DICT_VERSION(_PyObject_GetDictPtr(((PyObject *)__pyx_v_self))))));
-    else {
-      PY_UINT64_T type_dict_guard = (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict)) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_next_state_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7next_state_copy)) {
-        __Pyx_XDECREF(((PyObject *)__pyx_r));
-        if (unlikely(!__pyx_v_rover_actions.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions"); __PYX_ERR(0, 40, __pyx_L1_error) }
-        __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_rover_actions, 2, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
-        __pyx_t_6 = 0;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-          if (likely(__pyx_t_5)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-            __Pyx_INCREF(__pyx_t_5);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_4, function);
-            __pyx_t_6 = 1;
-          }
-        }
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_4)) {
-          PyObject *__pyx_temp[3] = {__pyx_t_5, ((PyObject *)__pyx_v_state), __pyx_t_3};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-          PyObject *__pyx_temp[3] = {__pyx_t_5, ((PyObject *)__pyx_v_state), __pyx_t_3};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        } else
-        #endif
-        {
-          __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 40, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_7);
-          if (__pyx_t_5) {
-            __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
-          }
-          __Pyx_INCREF(((PyObject *)__pyx_v_state));
-          __Pyx_GIVEREF(((PyObject *)__pyx_v_state));
-          PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, ((PyObject *)__pyx_v_state));
-          __Pyx_GIVEREF(__pyx_t_3);
-          PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_3);
-          __pyx_t_3 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        }
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_8rockefeg_11roverdomain_5state_State))))) __PYX_ERR(0, 40, __pyx_L1_error)
-        __pyx_r = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)__pyx_t_2);
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP
-      tp_dict_version = likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
-      obj_dict_version = likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset) ? __PYX_GET_DICT_VERSION(_PyObject_GetDictPtr(((PyObject *)__pyx_v_self))) : 0;
-      if (unlikely(type_dict_guard != tp_dict_version)) {
-        tp_dict_version = obj_dict_version = 0;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP
-    }
-    #endif
-  }
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state *__pyx_optional_args) {
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":45
- *             const double[:, :] rover_actions):
- *         cdef State next_state
- *         next_state = <State?> state.copy()             # <<<<<<<<<<<<<<
- *         return self.next_state_via(next_state, state, rover_actions)
- * 
- */
-  if (unlikely(((PyObject *)__pyx_v_state) == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
-    __PYX_ERR(0, 45, __pyx_L1_error)
-  }
-  __pyx_t_1 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->copy(__pyx_v_state, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_8rockefeg_11roverdomain_5state_State)))) __PYX_ERR(0, 45, __pyx_L1_error)
-  __pyx_t_2 = __pyx_t_1;
-  __Pyx_INCREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_next_state = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)__pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":46
- *         cdef State next_state
- *         next_state = <State?> state.copy()
- *         return self.next_state_via(next_state, state, rover_actions)             # <<<<<<<<<<<<<<
- * 
- *     cpdef State next_state_via(
- */
-  __Pyx_XDECREF(((PyObject *)__pyx_r));
-  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "next_state_via");
-    __PYX_ERR(0, 46, __pyx_L1_error)
-  }
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.next_state_via(((struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *)__pyx_v_self), __pyx_v_next_state, __pyx_v_state, __pyx_v_rover_actions, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)__pyx_t_2);
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":40
- *         return 2
- * 
- *     cpdef State next_state_copy(             # <<<<<<<<<<<<<<
- *             self,
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":49
  *             State state,
+ *             const double[:, :] rover_actions,
+ *             State store = None):             # <<<<<<<<<<<<<<
+ *         cdef Py_ssize_t rover_id, n_rovers
+ *         cdef next_state
  */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF((PyObject *)__pyx_v_next_state);
-  __Pyx_XGIVEREF((PyObject *)__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7next_state_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7next_state_copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state = 0;
-  __Pyx_memviewslice __pyx_v_rover_actions = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("next_state_copy (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_state,&__pyx_n_s_rover_actions,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_state)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_rover_actions)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("next_state_copy", 1, 2, 2, 1); __PYX_ERR(0, 40, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "next_state_copy") < 0)) __PYX_ERR(0, 40, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_state = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)values[0]);
-    __pyx_v_rover_actions = __Pyx_PyObject_to_MemoryviewSlice_dsds_double__const__(values[1], 0); if (unlikely(!__pyx_v_rover_actions.memview)) __PYX_ERR(0, 43, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("next_state_copy", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 40, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_8rockefeg_11roverdomain_5state_State, 1, "state", 0))) __PYX_ERR(0, 42, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_6next_state_copy(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self), __pyx_v_state, __pyx_v_rover_actions);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_6next_state_copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("next_state_copy", 0);
-  __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_rover_actions.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions"); __PYX_ERR(0, 40, __pyx_L1_error) }
-  __pyx_t_1 = ((PyObject *)__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state_copy(__pyx_v_self, __pyx_v_state, __pyx_v_rover_actions, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state_copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_rover_actions, 1);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "rockefeg/roverdomain/default_dynamics_processor.pyx":48
- *         return self.next_state_via(next_state, state, rover_actions)
- * 
- *     cpdef State next_state_via(             # <<<<<<<<<<<<<<
- *             self,
- *             State store,
- */
-
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state_via(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions, int __pyx_skip_dispatch) {
+  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)Py_None);
   Py_ssize_t __pyx_v_rover_id;
   Py_ssize_t __pyx_v_n_rovers;
+  PyObject *__pyx_v_next_state = 0;
   double __pyx_v_dx;
   double __pyx_v_dy;
   double __pyx_v_norm;
   double __pyx_v_clipped_action_x;
   double __pyx_v_clipped_action_y;
-  __Pyx_memviewslice __pyx_v_rover_orientations = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_rover_positions = { 0, 0, { 0 }, { 0 }, { 0 } };
   struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3349,20 +3294,20 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
   PyObject *__pyx_t_5 = NULL;
   int __pyx_t_6;
   PyObject *__pyx_t_7 = NULL;
-  Py_ssize_t __pyx_t_8;
-  PyObject *__pyx_t_9 = NULL;
-  PyObject *__pyx_t_10 = NULL;
-  PyObject *__pyx_t_11 = NULL;
-  __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  struct __pyx_opt_args_8rockefeg_11roverdomain_5state_5State_copy __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
+  __Pyx_memviewslice __pyx_t_10 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_11;
+  Py_ssize_t __pyx_t_12;
+  long __pyx_t_13;
   Py_ssize_t __pyx_t_14;
   Py_ssize_t __pyx_t_15;
-  long __pyx_t_16;
-  Py_ssize_t __pyx_t_17;
-  Py_ssize_t __pyx_t_18;
-  double __pyx_t_19;
-  long __pyx_t_20;
-  double __pyx_t_21;
+  double __pyx_t_16;
+  long __pyx_t_17;
+  double __pyx_t_18;
+  Py_ssize_t __pyx_t_19;
+  Py_ssize_t __pyx_t_20;
+  Py_ssize_t __pyx_t_21;
   Py_ssize_t __pyx_t_22;
   Py_ssize_t __pyx_t_23;
   Py_ssize_t __pyx_t_24;
@@ -3374,17 +3319,26 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
   Py_ssize_t __pyx_t_30;
   Py_ssize_t __pyx_t_31;
   Py_ssize_t __pyx_t_32;
-  Py_ssize_t __pyx_t_33;
-  Py_ssize_t __pyx_t_34;
+  int __pyx_t_33;
+  int __pyx_t_34;
   Py_ssize_t __pyx_t_35;
-  int __pyx_t_36;
-  int __pyx_t_37;
+  Py_ssize_t __pyx_t_36;
+  Py_ssize_t __pyx_t_37;
   Py_ssize_t __pyx_t_38;
-  Py_ssize_t __pyx_t_39;
-  Py_ssize_t __pyx_t_40;
-  Py_ssize_t __pyx_t_41;
-  __Pyx_RefNannySetupContext("next_state_via", 0);
-  __Pyx_INCREF((PyObject *)__pyx_v_store);
+  __Pyx_RefNannySetupContext("next_state", 0);
+  if (__pyx_optional_args) {
+    if (__pyx_optional_args->__pyx_n > 0) {
+      __pyx_v_store = __pyx_optional_args->store;
+    }
+  }
+
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":45
+ *         return 2
+ * 
+ *     cpdef State next_state(             # <<<<<<<<<<<<<<
+ *             self,
+ *             State state,
+ */
   /* Check if called by wrapper */
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
@@ -3395,12 +3349,12 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
     else {
       PY_UINT64_T type_dict_guard = (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict)) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_next_state_via); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_next_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state_via)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state)) {
         __Pyx_XDECREF(((PyObject *)__pyx_r));
-        if (unlikely(!__pyx_v_rover_actions.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions"); __PYX_ERR(0, 48, __pyx_L1_error) }
-        __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_rover_actions, 2, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
+        if (unlikely(!__pyx_v_rover_actions.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions"); __PYX_ERR(0, 45, __pyx_L1_error) }
+        __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_rover_actions, 2, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
@@ -3417,8 +3371,8 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
         }
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
-          PyObject *__pyx_temp[4] = {__pyx_t_5, ((PyObject *)__pyx_v_store), ((PyObject *)__pyx_v_state), __pyx_t_3};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+          PyObject *__pyx_temp[4] = {__pyx_t_5, ((PyObject *)__pyx_v_state), __pyx_t_3, ((PyObject *)__pyx_v_store)};
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3426,34 +3380,34 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-          PyObject *__pyx_temp[4] = {__pyx_t_5, ((PyObject *)__pyx_v_store), ((PyObject *)__pyx_v_state), __pyx_t_3};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+          PyObject *__pyx_temp[4] = {__pyx_t_5, ((PyObject *)__pyx_v_state), __pyx_t_3, ((PyObject *)__pyx_v_store)};
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else
         #endif
         {
-          __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 48, __pyx_L1_error)
+          __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           if (__pyx_t_5) {
             __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
           }
-          __Pyx_INCREF(((PyObject *)__pyx_v_store));
-          __Pyx_GIVEREF(((PyObject *)__pyx_v_store));
-          PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, ((PyObject *)__pyx_v_store));
           __Pyx_INCREF(((PyObject *)__pyx_v_state));
           __Pyx_GIVEREF(((PyObject *)__pyx_v_state));
-          PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, ((PyObject *)__pyx_v_state));
+          PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, ((PyObject *)__pyx_v_state));
           __Pyx_GIVEREF(__pyx_t_3);
-          PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, __pyx_t_3);
+          PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_3);
+          __Pyx_INCREF(((PyObject *)__pyx_v_store));
+          __Pyx_GIVEREF(((PyObject *)__pyx_v_store));
+          PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, ((PyObject *)__pyx_v_store));
           __pyx_t_3 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_8rockefeg_11roverdomain_5state_State))))) __PYX_ERR(0, 48, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_8rockefeg_11roverdomain_5state_State))))) __PYX_ERR(0, 45, __pyx_L1_error)
         __pyx_r = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3472,743 +3426,630 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
     #endif
   }
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":58
- *         cdef double[:, :] rover_positions
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":54
+ *         cdef double dx, dy, norm, clipped_action_x, clipped_action_y
  * 
- *         store = <State?> state.copy_via(store)             # <<<<<<<<<<<<<<
+ *         next_state = <State?> state.copy(store = store)             # <<<<<<<<<<<<<<
  * 
  *         n_rovers = store.n_rovers()
  */
   if (unlikely(((PyObject *)__pyx_v_state) == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy_via");
-    __PYX_ERR(0, 58, __pyx_L1_error)
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
+    __PYX_ERR(0, 54, __pyx_L1_error)
   }
-  __pyx_t_1 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->copy_via(__pyx_v_state, ((PyObject *)__pyx_v_store), 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_8.__pyx_n = 1;
+  __pyx_t_8.store = ((PyObject *)__pyx_v_store);
+  __pyx_t_1 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_state->__pyx_vtab)->copy(__pyx_v_state, 0, &__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_8rockefeg_11roverdomain_5state_State)))) __PYX_ERR(0, 58, __pyx_L1_error)
+  if (!(likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_8rockefeg_11roverdomain_5state_State)))) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   __Pyx_INCREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF_SET(__pyx_v_store, ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)__pyx_t_2));
+  __pyx_v_next_state = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":60
- *         store = <State?> state.copy_via(store)
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":56
+ *         next_state = <State?> state.copy(store = store)
  * 
  *         n_rovers = store.n_rovers()             # <<<<<<<<<<<<<<
  * 
- *         try:
+ *         self.r_rover_orientations = (
  */
   if (unlikely(((PyObject *)__pyx_v_store) == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "n_rovers");
-    __PYX_ERR(0, 60, __pyx_L1_error)
+    __PYX_ERR(0, 56, __pyx_L1_error)
   }
-  __pyx_t_8 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_store->__pyx_vtab)->n_rovers(__pyx_v_store, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L1_error)
-  __pyx_v_n_rovers = __pyx_t_8;
+  __pyx_t_9 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_store->__pyx_vtab)->n_rovers(__pyx_v_store, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_v_n_rovers = __pyx_t_9;
+
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":59
+ * 
+ *         self.r_rover_orientations = (
+ *             next_state.rover_orientations(store = self.r_rover_orientations))             # <<<<<<<<<<<<<<
+ * 
+ *         self.r_rover_positions = (
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_next_state, __pyx_n_s_rover_orientations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+    __PYX_ERR(0, 59, __pyx_L1_error)
+  }
+  if (unlikely(!__pyx_v_self->r_rover_orientations.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 59, __pyx_L1_error)}
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_self->r_rover_orientations, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_store, __pyx_t_4) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":58
+ *         n_rovers = store.n_rovers()
+ * 
+ *         self.r_rover_orientations = (             # <<<<<<<<<<<<<<
+ *             next_state.rover_orientations(store = self.r_rover_orientations))
+ * 
+ */
+  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+    __PYX_ERR(0, 58, __pyx_L1_error)
+  }
+  __PYX_XDEC_MEMVIEW(&__pyx_v_self->r_rover_orientations, 0);
+  __pyx_v_self->r_rover_orientations = __pyx_t_10;
+  __pyx_t_10.memview = NULL;
+  __pyx_t_10.data = NULL;
 
   /* "rockefeg/roverdomain/default_dynamics_processor.pyx":62
- *         n_rovers = store.n_rovers()
  * 
- *         try:             # <<<<<<<<<<<<<<
- *             rover_orientations = (
- *                 store.rover_orientations_via(self.r_rover_orientations_store))
- */
-  {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_9, &__pyx_t_10, &__pyx_t_11);
-    __Pyx_XGOTREF(__pyx_t_9);
-    __Pyx_XGOTREF(__pyx_t_10);
-    __Pyx_XGOTREF(__pyx_t_11);
-    /*try:*/ {
-
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":64
- *         try:
- *             rover_orientations = (
- *                 store.rover_orientations_via(self.r_rover_orientations_store))             # <<<<<<<<<<<<<<
- *         except:
- *             self.r_rover_orientations_store = store.rover_orientations_copy()
- */
-      if (unlikely(((PyObject *)__pyx_v_store) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "rover_orientations_via");
-        __PYX_ERR(0, 64, __pyx_L3_error)
-      }
-      if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations_store");
-        __PYX_ERR(0, 64, __pyx_L3_error)
-      }
-      if (unlikely(!__pyx_v_self->r_rover_orientations_store.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 64, __pyx_L3_error)}
-      __pyx_t_12 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_store->__pyx_vtab)->rover_orientations_via(__pyx_v_store, __pyx_v_self->r_rover_orientations_store, 0); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 64, __pyx_L3_error)
-      __pyx_v_rover_orientations = __pyx_t_12;
-      __pyx_t_12.memview = NULL;
-      __pyx_t_12.data = NULL;
-
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":62
- *         n_rovers = store.n_rovers()
+ *         self.r_rover_positions = (
+ *             next_state.rover_positions(store = self.r_rover_positions))             # <<<<<<<<<<<<<<
  * 
- *         try:             # <<<<<<<<<<<<<<
- *             rover_orientations = (
- *                 store.rover_orientations_via(self.r_rover_orientations_store))
+ *         # Translate and Reorient all rovers based on their actions
  */
-    }
-    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-    goto __pyx_L8_try_end;
-    __pyx_L3_error:;
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":65
- *             rover_orientations = (
- *                 store.rover_orientations_via(self.r_rover_orientations_store))
- *         except:             # <<<<<<<<<<<<<<
- *             self.r_rover_orientations_store = store.rover_orientations_copy()
- *             rover_orientations = self.r_rover_orientations_store
- */
-    /*except:*/ {
-      __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_1, &__pyx_t_4) < 0) __PYX_ERR(0, 65, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GOTREF(__pyx_t_4);
-
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":66
- *                 store.rover_orientations_via(self.r_rover_orientations_store))
- *         except:
- *             self.r_rover_orientations_store = store.rover_orientations_copy()             # <<<<<<<<<<<<<<
- *             rover_orientations = self.r_rover_orientations_store
- * 
- */
-      if (unlikely(((PyObject *)__pyx_v_store) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "rover_orientations_copy");
-        __PYX_ERR(0, 66, __pyx_L5_except_error)
-      }
-      __pyx_t_12 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_store->__pyx_vtab)->rover_orientations_copy(__pyx_v_store, 0); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 66, __pyx_L5_except_error)
-      if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations_store");
-        __PYX_ERR(0, 66, __pyx_L5_except_error)
-      }
-      __PYX_XDEC_MEMVIEW(&__pyx_v_self->r_rover_orientations_store, 0);
-      __pyx_v_self->r_rover_orientations_store = __pyx_t_12;
-      __pyx_t_12.memview = NULL;
-      __pyx_t_12.data = NULL;
-
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":67
- *         except:
- *             self.r_rover_orientations_store = store.rover_orientations_copy()
- *             rover_orientations = self.r_rover_orientations_store             # <<<<<<<<<<<<<<
- * 
- *         try:
- */
-      if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations_store");
-        __PYX_ERR(0, 67, __pyx_L5_except_error)
-      }
-      if (unlikely(!__pyx_v_self->r_rover_orientations_store.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 67, __pyx_L5_except_error)}
-      __pyx_t_12 = __pyx_v_self->r_rover_orientations_store;
-      __PYX_INC_MEMVIEW(&__pyx_t_12, 1);
-      __PYX_XDEC_MEMVIEW(&__pyx_v_rover_orientations, 1);
-      __pyx_v_rover_orientations = __pyx_t_12;
-      __pyx_t_12.memview = NULL;
-      __pyx_t_12.data = NULL;
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      goto __pyx_L4_exception_handled;
-    }
-    __pyx_L5_except_error:;
-
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":62
- *         n_rovers = store.n_rovers()
- * 
- *         try:             # <<<<<<<<<<<<<<
- *             rover_orientations = (
- *                 store.rover_orientations_via(self.r_rover_orientations_store))
- */
-    __Pyx_XGIVEREF(__pyx_t_9);
-    __Pyx_XGIVEREF(__pyx_t_10);
-    __Pyx_XGIVEREF(__pyx_t_11);
-    __Pyx_ExceptionReset(__pyx_t_9, __pyx_t_10, __pyx_t_11);
-    goto __pyx_L1_error;
-    __pyx_L4_exception_handled:;
-    __Pyx_XGIVEREF(__pyx_t_9);
-    __Pyx_XGIVEREF(__pyx_t_10);
-    __Pyx_XGIVEREF(__pyx_t_11);
-    __Pyx_ExceptionReset(__pyx_t_9, __pyx_t_10, __pyx_t_11);
-    __pyx_L8_try_end:;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_next_state, __pyx_n_s_rover_positions); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions");
+    __PYX_ERR(0, 62, __pyx_L1_error)
   }
+  if (unlikely(!__pyx_v_self->r_rover_positions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 62, __pyx_L1_error)}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_self->r_rover_positions, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_store, __pyx_t_2) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":69
- *             rover_orientations = self.r_rover_orientations_store
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":61
+ *             next_state.rover_orientations(store = self.r_rover_orientations))
  * 
- *         try:             # <<<<<<<<<<<<<<
- *             rover_positions = (
- *                 store.rover_positions_via(self.r_rover_positions))
- */
-  {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_11, &__pyx_t_10, &__pyx_t_9);
-    __Pyx_XGOTREF(__pyx_t_11);
-    __Pyx_XGOTREF(__pyx_t_10);
-    __Pyx_XGOTREF(__pyx_t_9);
-    /*try:*/ {
-
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":71
- *         try:
- *             rover_positions = (
- *                 store.rover_positions_via(self.r_rover_positions))             # <<<<<<<<<<<<<<
- *         except:
- *             self.r_rover_positions_store = store.rover_positions_copy()
- */
-      if (unlikely(((PyObject *)__pyx_v_store) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "rover_positions_via");
-        __PYX_ERR(0, 71, __pyx_L11_error)
-      }
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r_rover_positions); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L11_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 71, __pyx_L11_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_13 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_store->__pyx_vtab)->rover_positions_via(__pyx_v_store, __pyx_t_12, 0); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 71, __pyx_L11_error)
-      __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
-      __pyx_t_12.memview = NULL;
-      __pyx_t_12.data = NULL;
-      __pyx_v_rover_positions = __pyx_t_13;
-      __pyx_t_13.memview = NULL;
-      __pyx_t_13.data = NULL;
-
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":69
- *             rover_orientations = self.r_rover_orientations_store
- * 
- *         try:             # <<<<<<<<<<<<<<
- *             rover_positions = (
- *                 store.rover_positions_via(self.r_rover_positions))
- */
-    }
-    __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    goto __pyx_L16_try_end;
-    __pyx_L11_error:;
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
-    __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":72
- *             rover_positions = (
- *                 store.rover_positions_via(self.r_rover_positions))
- *         except:             # <<<<<<<<<<<<<<
- *             self.r_rover_positions_store = store.rover_positions_copy()
- *             rover_positions = self.r_rover_positions_store
- */
-    /*except:*/ {
-      __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_1, &__pyx_t_2) < 0) __PYX_ERR(0, 72, __pyx_L13_except_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GOTREF(__pyx_t_2);
-
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":73
- *                 store.rover_positions_via(self.r_rover_positions))
- *         except:
- *             self.r_rover_positions_store = store.rover_positions_copy()             # <<<<<<<<<<<<<<
- *             rover_positions = self.r_rover_positions_store
+ *         self.r_rover_positions = (             # <<<<<<<<<<<<<<
+ *             next_state.rover_positions(store = self.r_rover_positions))
  * 
  */
-      if (unlikely(((PyObject *)__pyx_v_store) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "rover_positions_copy");
-        __PYX_ERR(0, 73, __pyx_L13_except_error)
-      }
-      __pyx_t_13 = ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_store->__pyx_vtab)->rover_positions_copy(__pyx_v_store, 0); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 73, __pyx_L13_except_error)
-      if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions_store");
-        __PYX_ERR(0, 73, __pyx_L13_except_error)
-      }
-      __PYX_XDEC_MEMVIEW(&__pyx_v_self->r_rover_positions_store, 0);
-      __pyx_v_self->r_rover_positions_store = __pyx_t_13;
-      __pyx_t_13.memview = NULL;
-      __pyx_t_13.data = NULL;
-
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":74
- *         except:
- *             self.r_rover_positions_store = store.rover_positions_copy()
- *             rover_positions = self.r_rover_positions_store             # <<<<<<<<<<<<<<
- * 
- * 
- */
-      if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions_store");
-        __PYX_ERR(0, 74, __pyx_L13_except_error)
-      }
-      if (unlikely(!__pyx_v_self->r_rover_positions_store.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 74, __pyx_L13_except_error)}
-      __pyx_t_13 = __pyx_v_self->r_rover_positions_store;
-      __PYX_INC_MEMVIEW(&__pyx_t_13, 1);
-      __PYX_XDEC_MEMVIEW(&__pyx_v_rover_positions, 1);
-      __pyx_v_rover_positions = __pyx_t_13;
-      __pyx_t_13.memview = NULL;
-      __pyx_t_13.data = NULL;
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      goto __pyx_L12_exception_handled;
-    }
-    __pyx_L13_except_error:;
-
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":69
- *             rover_orientations = self.r_rover_orientations_store
- * 
- *         try:             # <<<<<<<<<<<<<<
- *             rover_positions = (
- *                 store.rover_positions_via(self.r_rover_positions))
- */
-    __Pyx_XGIVEREF(__pyx_t_11);
-    __Pyx_XGIVEREF(__pyx_t_10);
-    __Pyx_XGIVEREF(__pyx_t_9);
-    __Pyx_ExceptionReset(__pyx_t_11, __pyx_t_10, __pyx_t_9);
-    goto __pyx_L1_error;
-    __pyx_L12_exception_handled:;
-    __Pyx_XGIVEREF(__pyx_t_11);
-    __Pyx_XGIVEREF(__pyx_t_10);
-    __Pyx_XGIVEREF(__pyx_t_9);
-    __Pyx_ExceptionReset(__pyx_t_11, __pyx_t_10, __pyx_t_9);
-    __pyx_L16_try_end:;
+  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions");
+    __PYX_ERR(0, 61, __pyx_L1_error)
   }
+  __PYX_XDEC_MEMVIEW(&__pyx_v_self->r_rover_positions, 0);
+  __pyx_v_self->r_rover_positions = __pyx_t_10;
+  __pyx_t_10.memview = NULL;
+  __pyx_t_10.data = NULL;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":79
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":65
  * 
  *         # Translate and Reorient all rovers based on their actions
  *         for rover_id in range(n_rovers):             # <<<<<<<<<<<<<<
  * 
  *             # clip actions
  */
-  __pyx_t_8 = __pyx_v_n_rovers;
-  __pyx_t_14 = __pyx_t_8;
-  for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
-    __pyx_v_rover_id = __pyx_t_15;
+  __pyx_t_9 = __pyx_v_n_rovers;
+  __pyx_t_11 = __pyx_t_9;
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_rover_id = __pyx_t_12;
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":82
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":68
  * 
  *             # clip actions
  *             clipped_action_x = min(max(-1, rover_actions[rover_id, 0]), 1)             # <<<<<<<<<<<<<<
  *             clipped_action_y = min(max(-1, rover_actions[rover_id, 1]), 1)
  * 
  */
-    __pyx_t_16 = 1;
+    __pyx_t_13 = 1;
     if (unlikely(((PyObject *) __pyx_v_rover_actions.memview) == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-      __PYX_ERR(0, 82, __pyx_L1_error)
+      __PYX_ERR(0, 68, __pyx_L1_error)
     }
-    __pyx_t_17 = __pyx_v_rover_id;
-    __pyx_t_18 = 0;
+    __pyx_t_14 = __pyx_v_rover_id;
+    __pyx_t_15 = 0;
     __pyx_t_6 = -1;
-    if (__pyx_t_17 < 0) {
-      __pyx_t_17 += __pyx_v_rover_actions.shape[0];
-      if (unlikely(__pyx_t_17 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_17 >= __pyx_v_rover_actions.shape[0])) __pyx_t_6 = 0;
-    if (__pyx_t_18 < 0) {
-      __pyx_t_18 += __pyx_v_rover_actions.shape[1];
-      if (unlikely(__pyx_t_18 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_18 >= __pyx_v_rover_actions.shape[1])) __pyx_t_6 = 1;
+    if (__pyx_t_14 < 0) {
+      __pyx_t_14 += __pyx_v_rover_actions.shape[0];
+      if (unlikely(__pyx_t_14 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_14 >= __pyx_v_rover_actions.shape[0])) __pyx_t_6 = 0;
+    if (__pyx_t_15 < 0) {
+      __pyx_t_15 += __pyx_v_rover_actions.shape[1];
+      if (unlikely(__pyx_t_15 < 0)) __pyx_t_6 = 1;
+    } else if (unlikely(__pyx_t_15 >= __pyx_v_rover_actions.shape[1])) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 82, __pyx_L1_error)
+      __PYX_ERR(0, 68, __pyx_L1_error)
     }
-    __pyx_t_19 = (*((double const  *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_actions.data + __pyx_t_17 * __pyx_v_rover_actions.strides[0]) ) + __pyx_t_18 * __pyx_v_rover_actions.strides[1]) )));
-    __pyx_t_20 = -1L;
-    if (((__pyx_t_19 > __pyx_t_20) != 0)) {
-      __pyx_t_21 = __pyx_t_19;
+    __pyx_t_16 = (*((double const  *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_actions.data + __pyx_t_14 * __pyx_v_rover_actions.strides[0]) ) + __pyx_t_15 * __pyx_v_rover_actions.strides[1]) )));
+    __pyx_t_17 = -1L;
+    if (((__pyx_t_16 > __pyx_t_17) != 0)) {
+      __pyx_t_18 = __pyx_t_16;
     } else {
-      __pyx_t_21 = __pyx_t_20;
+      __pyx_t_18 = __pyx_t_17;
     }
-    __pyx_t_19 = __pyx_t_21;
-    if (((__pyx_t_16 < __pyx_t_19) != 0)) {
-      __pyx_t_21 = __pyx_t_16;
+    __pyx_t_16 = __pyx_t_18;
+    if (((__pyx_t_13 < __pyx_t_16) != 0)) {
+      __pyx_t_18 = __pyx_t_13;
     } else {
-      __pyx_t_21 = __pyx_t_19;
+      __pyx_t_18 = __pyx_t_16;
     }
-    __pyx_v_clipped_action_x = __pyx_t_21;
+    __pyx_v_clipped_action_x = __pyx_t_18;
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":83
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":69
  *             # clip actions
  *             clipped_action_x = min(max(-1, rover_actions[rover_id, 0]), 1)
  *             clipped_action_y = min(max(-1, rover_actions[rover_id, 1]), 1)             # <<<<<<<<<<<<<<
  * 
  *             # turn action into global frame motion
  */
-    __pyx_t_16 = 1;
+    __pyx_t_13 = 1;
     if (unlikely(((PyObject *) __pyx_v_rover_actions.memview) == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-      __PYX_ERR(0, 83, __pyx_L1_error)
+      __PYX_ERR(0, 69, __pyx_L1_error)
     }
-    __pyx_t_22 = __pyx_v_rover_id;
-    __pyx_t_23 = 1;
+    __pyx_t_19 = __pyx_v_rover_id;
+    __pyx_t_20 = 1;
     __pyx_t_6 = -1;
-    if (__pyx_t_22 < 0) {
-      __pyx_t_22 += __pyx_v_rover_actions.shape[0];
-      if (unlikely(__pyx_t_22 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_22 >= __pyx_v_rover_actions.shape[0])) __pyx_t_6 = 0;
-    if (__pyx_t_23 < 0) {
-      __pyx_t_23 += __pyx_v_rover_actions.shape[1];
-      if (unlikely(__pyx_t_23 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_23 >= __pyx_v_rover_actions.shape[1])) __pyx_t_6 = 1;
+    if (__pyx_t_19 < 0) {
+      __pyx_t_19 += __pyx_v_rover_actions.shape[0];
+      if (unlikely(__pyx_t_19 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_19 >= __pyx_v_rover_actions.shape[0])) __pyx_t_6 = 0;
+    if (__pyx_t_20 < 0) {
+      __pyx_t_20 += __pyx_v_rover_actions.shape[1];
+      if (unlikely(__pyx_t_20 < 0)) __pyx_t_6 = 1;
+    } else if (unlikely(__pyx_t_20 >= __pyx_v_rover_actions.shape[1])) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 83, __pyx_L1_error)
+      __PYX_ERR(0, 69, __pyx_L1_error)
     }
-    __pyx_t_21 = (*((double const  *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_actions.data + __pyx_t_22 * __pyx_v_rover_actions.strides[0]) ) + __pyx_t_23 * __pyx_v_rover_actions.strides[1]) )));
-    __pyx_t_20 = -1L;
-    if (((__pyx_t_21 > __pyx_t_20) != 0)) {
-      __pyx_t_19 = __pyx_t_21;
+    __pyx_t_18 = (*((double const  *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_actions.data + __pyx_t_19 * __pyx_v_rover_actions.strides[0]) ) + __pyx_t_20 * __pyx_v_rover_actions.strides[1]) )));
+    __pyx_t_17 = -1L;
+    if (((__pyx_t_18 > __pyx_t_17) != 0)) {
+      __pyx_t_16 = __pyx_t_18;
     } else {
-      __pyx_t_19 = __pyx_t_20;
+      __pyx_t_16 = __pyx_t_17;
     }
-    __pyx_t_21 = __pyx_t_19;
-    if (((__pyx_t_16 < __pyx_t_21) != 0)) {
-      __pyx_t_19 = __pyx_t_16;
+    __pyx_t_18 = __pyx_t_16;
+    if (((__pyx_t_13 < __pyx_t_18) != 0)) {
+      __pyx_t_16 = __pyx_t_13;
     } else {
-      __pyx_t_19 = __pyx_t_21;
+      __pyx_t_16 = __pyx_t_18;
     }
-    __pyx_v_clipped_action_y = __pyx_t_19;
+    __pyx_v_clipped_action_y = __pyx_t_16;
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":86
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":72
  * 
  *             # turn action into global frame motion
- *             dx = (rover_orientations[rover_id, 0]             # <<<<<<<<<<<<<<
+ *             dx = (self.r_rover_orientations[rover_id, 0]             # <<<<<<<<<<<<<<
  *                 * clipped_action_x
- *                 - rover_orientations[rover_id, 1]
+ *                 - self.r_rover_orientations[rover_id, 1]
  */
-    if (unlikely(((PyObject *) __pyx_v_rover_orientations.memview) == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-      __PYX_ERR(0, 86, __pyx_L1_error)
+    if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+      __PYX_ERR(0, 72, __pyx_L1_error)
     }
-    __pyx_t_24 = __pyx_v_rover_id;
-    __pyx_t_25 = 0;
+    if (unlikely(!__pyx_v_self->r_rover_orientations.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 72, __pyx_L1_error)}
+    if (unlikely(((PyObject *) __pyx_v_self->r_rover_orientations.memview) == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
+      __PYX_ERR(0, 72, __pyx_L1_error)
+    }
+    __pyx_t_21 = __pyx_v_rover_id;
+    __pyx_t_22 = 0;
     __pyx_t_6 = -1;
+    if (__pyx_t_21 < 0) {
+      __pyx_t_21 += __pyx_v_self->r_rover_orientations.shape[0];
+      if (unlikely(__pyx_t_21 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_21 >= __pyx_v_self->r_rover_orientations.shape[0])) __pyx_t_6 = 0;
+    if (__pyx_t_22 < 0) {
+      __pyx_t_22 += __pyx_v_self->r_rover_orientations.shape[1];
+      if (unlikely(__pyx_t_22 < 0)) __pyx_t_6 = 1;
+    } else if (unlikely(__pyx_t_22 >= __pyx_v_self->r_rover_orientations.shape[1])) __pyx_t_6 = 1;
+    if (unlikely(__pyx_t_6 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      __PYX_ERR(0, 72, __pyx_L1_error)
+    }
+
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":74
+ *             dx = (self.r_rover_orientations[rover_id, 0]
+ *                 * clipped_action_x
+ *                 - self.r_rover_orientations[rover_id, 1]             # <<<<<<<<<<<<<<
+ *                 * clipped_action_y)
+ *             dy = (self.r_rover_orientations[rover_id, 0]
+ */
+    if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+      __PYX_ERR(0, 74, __pyx_L1_error)
+    }
+    if (unlikely(!__pyx_v_self->r_rover_orientations.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 74, __pyx_L1_error)}
+    if (unlikely(((PyObject *) __pyx_v_self->r_rover_orientations.memview) == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
+      __PYX_ERR(0, 74, __pyx_L1_error)
+    }
+    __pyx_t_23 = __pyx_v_rover_id;
+    __pyx_t_24 = 1;
+    __pyx_t_6 = -1;
+    if (__pyx_t_23 < 0) {
+      __pyx_t_23 += __pyx_v_self->r_rover_orientations.shape[0];
+      if (unlikely(__pyx_t_23 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_23 >= __pyx_v_self->r_rover_orientations.shape[0])) __pyx_t_6 = 0;
     if (__pyx_t_24 < 0) {
-      __pyx_t_24 += __pyx_v_rover_orientations.shape[0];
-      if (unlikely(__pyx_t_24 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_24 >= __pyx_v_rover_orientations.shape[0])) __pyx_t_6 = 0;
-    if (__pyx_t_25 < 0) {
-      __pyx_t_25 += __pyx_v_rover_orientations.shape[1];
-      if (unlikely(__pyx_t_25 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_25 >= __pyx_v_rover_orientations.shape[1])) __pyx_t_6 = 1;
+      __pyx_t_24 += __pyx_v_self->r_rover_orientations.shape[1];
+      if (unlikely(__pyx_t_24 < 0)) __pyx_t_6 = 1;
+    } else if (unlikely(__pyx_t_24 >= __pyx_v_self->r_rover_orientations.shape[1])) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 86, __pyx_L1_error)
+      __PYX_ERR(0, 74, __pyx_L1_error)
     }
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":88
- *             dx = (rover_orientations[rover_id, 0]
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":75
  *                 * clipped_action_x
- *                 - rover_orientations[rover_id, 1]             # <<<<<<<<<<<<<<
- *                 * clipped_action_y)
- *             dy = (rover_orientations[rover_id, 0]
- */
-    if (unlikely(((PyObject *) __pyx_v_rover_orientations.memview) == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-      __PYX_ERR(0, 88, __pyx_L1_error)
-    }
-    __pyx_t_26 = __pyx_v_rover_id;
-    __pyx_t_27 = 1;
-    __pyx_t_6 = -1;
-    if (__pyx_t_26 < 0) {
-      __pyx_t_26 += __pyx_v_rover_orientations.shape[0];
-      if (unlikely(__pyx_t_26 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_26 >= __pyx_v_rover_orientations.shape[0])) __pyx_t_6 = 0;
-    if (__pyx_t_27 < 0) {
-      __pyx_t_27 += __pyx_v_rover_orientations.shape[1];
-      if (unlikely(__pyx_t_27 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_27 >= __pyx_v_rover_orientations.shape[1])) __pyx_t_6 = 1;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 88, __pyx_L1_error)
-    }
-
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":89
- *                 * clipped_action_x
- *                 - rover_orientations[rover_id, 1]
+ *                 - self.r_rover_orientations[rover_id, 1]
  *                 * clipped_action_y)             # <<<<<<<<<<<<<<
- *             dy = (rover_orientations[rover_id, 0]
+ *             dy = (self.r_rover_orientations[rover_id, 0]
  *                 * clipped_action_y
  */
-    __pyx_v_dx = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_24 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_25 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_clipped_action_x) - ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_26 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_27 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_clipped_action_y));
+    __pyx_v_dx = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->r_rover_orientations.data + __pyx_t_21 * __pyx_v_self->r_rover_orientations.strides[0]) ) + __pyx_t_22 * __pyx_v_self->r_rover_orientations.strides[1]) ))) * __pyx_v_clipped_action_x) - ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->r_rover_orientations.data + __pyx_t_23 * __pyx_v_self->r_rover_orientations.strides[0]) ) + __pyx_t_24 * __pyx_v_self->r_rover_orientations.strides[1]) ))) * __pyx_v_clipped_action_y));
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":90
- *                 - rover_orientations[rover_id, 1]
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":76
+ *                 - self.r_rover_orientations[rover_id, 1]
  *                 * clipped_action_y)
- *             dy = (rover_orientations[rover_id, 0]             # <<<<<<<<<<<<<<
+ *             dy = (self.r_rover_orientations[rover_id, 0]             # <<<<<<<<<<<<<<
  *                 * clipped_action_y
- *                 + rover_orientations[rover_id, 1]
+ *                 + self.r_rover_orientations[rover_id, 1]
  */
-    if (unlikely(((PyObject *) __pyx_v_rover_orientations.memview) == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-      __PYX_ERR(0, 90, __pyx_L1_error)
+    if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+      __PYX_ERR(0, 76, __pyx_L1_error)
     }
-    __pyx_t_28 = __pyx_v_rover_id;
-    __pyx_t_29 = 0;
+    if (unlikely(!__pyx_v_self->r_rover_orientations.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 76, __pyx_L1_error)}
+    if (unlikely(((PyObject *) __pyx_v_self->r_rover_orientations.memview) == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
+      __PYX_ERR(0, 76, __pyx_L1_error)
+    }
+    __pyx_t_25 = __pyx_v_rover_id;
+    __pyx_t_26 = 0;
     __pyx_t_6 = -1;
-    if (__pyx_t_28 < 0) {
-      __pyx_t_28 += __pyx_v_rover_orientations.shape[0];
-      if (unlikely(__pyx_t_28 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_28 >= __pyx_v_rover_orientations.shape[0])) __pyx_t_6 = 0;
-    if (__pyx_t_29 < 0) {
-      __pyx_t_29 += __pyx_v_rover_orientations.shape[1];
-      if (unlikely(__pyx_t_29 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_29 >= __pyx_v_rover_orientations.shape[1])) __pyx_t_6 = 1;
+    if (__pyx_t_25 < 0) {
+      __pyx_t_25 += __pyx_v_self->r_rover_orientations.shape[0];
+      if (unlikely(__pyx_t_25 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_25 >= __pyx_v_self->r_rover_orientations.shape[0])) __pyx_t_6 = 0;
+    if (__pyx_t_26 < 0) {
+      __pyx_t_26 += __pyx_v_self->r_rover_orientations.shape[1];
+      if (unlikely(__pyx_t_26 < 0)) __pyx_t_6 = 1;
+    } else if (unlikely(__pyx_t_26 >= __pyx_v_self->r_rover_orientations.shape[1])) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 90, __pyx_L1_error)
+      __PYX_ERR(0, 76, __pyx_L1_error)
     }
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":92
- *             dy = (rover_orientations[rover_id, 0]
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":78
+ *             dy = (self.r_rover_orientations[rover_id, 0]
  *                 * clipped_action_y
- *                 + rover_orientations[rover_id, 1]             # <<<<<<<<<<<<<<
+ *                 + self.r_rover_orientations[rover_id, 1]             # <<<<<<<<<<<<<<
  *                 * clipped_action_x)
  * 
  */
-    if (unlikely(((PyObject *) __pyx_v_rover_orientations.memview) == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-      __PYX_ERR(0, 92, __pyx_L1_error)
+    if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+      __PYX_ERR(0, 78, __pyx_L1_error)
     }
-    __pyx_t_30 = __pyx_v_rover_id;
-    __pyx_t_31 = 1;
+    if (unlikely(!__pyx_v_self->r_rover_orientations.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 78, __pyx_L1_error)}
+    if (unlikely(((PyObject *) __pyx_v_self->r_rover_orientations.memview) == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
+      __PYX_ERR(0, 78, __pyx_L1_error)
+    }
+    __pyx_t_27 = __pyx_v_rover_id;
+    __pyx_t_28 = 1;
     __pyx_t_6 = -1;
-    if (__pyx_t_30 < 0) {
-      __pyx_t_30 += __pyx_v_rover_orientations.shape[0];
-      if (unlikely(__pyx_t_30 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_30 >= __pyx_v_rover_orientations.shape[0])) __pyx_t_6 = 0;
-    if (__pyx_t_31 < 0) {
-      __pyx_t_31 += __pyx_v_rover_orientations.shape[1];
-      if (unlikely(__pyx_t_31 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_31 >= __pyx_v_rover_orientations.shape[1])) __pyx_t_6 = 1;
+    if (__pyx_t_27 < 0) {
+      __pyx_t_27 += __pyx_v_self->r_rover_orientations.shape[0];
+      if (unlikely(__pyx_t_27 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_27 >= __pyx_v_self->r_rover_orientations.shape[0])) __pyx_t_6 = 0;
+    if (__pyx_t_28 < 0) {
+      __pyx_t_28 += __pyx_v_self->r_rover_orientations.shape[1];
+      if (unlikely(__pyx_t_28 < 0)) __pyx_t_6 = 1;
+    } else if (unlikely(__pyx_t_28 >= __pyx_v_self->r_rover_orientations.shape[1])) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 92, __pyx_L1_error)
+      __PYX_ERR(0, 78, __pyx_L1_error)
     }
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":93
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":79
  *                 * clipped_action_y
- *                 + rover_orientations[rover_id, 1]
+ *                 + self.r_rover_orientations[rover_id, 1]
  *                 * clipped_action_x)             # <<<<<<<<<<<<<<
  * 
  *             # globally move and reorient agent
  */
-    __pyx_v_dy = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_28 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_29 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_clipped_action_y) + ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_30 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_31 * __pyx_v_rover_orientations.strides[1]) ))) * __pyx_v_clipped_action_x));
+    __pyx_v_dy = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->r_rover_orientations.data + __pyx_t_25 * __pyx_v_self->r_rover_orientations.strides[0]) ) + __pyx_t_26 * __pyx_v_self->r_rover_orientations.strides[1]) ))) * __pyx_v_clipped_action_y) + ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->r_rover_orientations.data + __pyx_t_27 * __pyx_v_self->r_rover_orientations.strides[0]) ) + __pyx_t_28 * __pyx_v_self->r_rover_orientations.strides[1]) ))) * __pyx_v_clipped_action_x));
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":96
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":82
  * 
  *             # globally move and reorient agent
- *             rover_positions[rover_id, 0] += dx             # <<<<<<<<<<<<<<
- *             rover_positions[rover_id, 1] += dy
+ *             self.r_rover_positions[rover_id, 0] += dx             # <<<<<<<<<<<<<<
+ *             self.r_rover_positions[rover_id, 1] += dy
  * 
  */
-    if (unlikely(((PyObject *) __pyx_v_rover_positions.memview) == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-      __PYX_ERR(0, 96, __pyx_L1_error)
+    if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions");
+      __PYX_ERR(0, 82, __pyx_L1_error)
     }
-    __pyx_t_32 = __pyx_v_rover_id;
-    __pyx_t_33 = 0;
+    if (unlikely(!__pyx_v_self->r_rover_positions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 82, __pyx_L1_error)}
+    if (unlikely(((PyObject *) __pyx_v_self->r_rover_positions.memview) == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
+      __PYX_ERR(0, 82, __pyx_L1_error)
+    }
+    __pyx_t_29 = __pyx_v_rover_id;
+    __pyx_t_30 = 0;
     __pyx_t_6 = -1;
+    if (__pyx_t_29 < 0) {
+      __pyx_t_29 += __pyx_v_self->r_rover_positions.shape[0];
+      if (unlikely(__pyx_t_29 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_29 >= __pyx_v_self->r_rover_positions.shape[0])) __pyx_t_6 = 0;
+    if (__pyx_t_30 < 0) {
+      __pyx_t_30 += __pyx_v_self->r_rover_positions.shape[1];
+      if (unlikely(__pyx_t_30 < 0)) __pyx_t_6 = 1;
+    } else if (unlikely(__pyx_t_30 >= __pyx_v_self->r_rover_positions.shape[1])) __pyx_t_6 = 1;
+    if (unlikely(__pyx_t_6 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      __PYX_ERR(0, 82, __pyx_L1_error)
+    }
+    *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->r_rover_positions.data + __pyx_t_29 * __pyx_v_self->r_rover_positions.strides[0]) ) + __pyx_t_30 * __pyx_v_self->r_rover_positions.strides[1]) )) += __pyx_v_dx;
+
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":83
+ *             # globally move and reorient agent
+ *             self.r_rover_positions[rover_id, 0] += dx
+ *             self.r_rover_positions[rover_id, 1] += dy             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+    if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions");
+      __PYX_ERR(0, 83, __pyx_L1_error)
+    }
+    if (unlikely(!__pyx_v_self->r_rover_positions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 83, __pyx_L1_error)}
+    if (unlikely(((PyObject *) __pyx_v_self->r_rover_positions.memview) == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
+      __PYX_ERR(0, 83, __pyx_L1_error)
+    }
+    __pyx_t_31 = __pyx_v_rover_id;
+    __pyx_t_32 = 1;
+    __pyx_t_6 = -1;
+    if (__pyx_t_31 < 0) {
+      __pyx_t_31 += __pyx_v_self->r_rover_positions.shape[0];
+      if (unlikely(__pyx_t_31 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_31 >= __pyx_v_self->r_rover_positions.shape[0])) __pyx_t_6 = 0;
     if (__pyx_t_32 < 0) {
-      __pyx_t_32 += __pyx_v_rover_positions.shape[0];
-      if (unlikely(__pyx_t_32 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_32 >= __pyx_v_rover_positions.shape[0])) __pyx_t_6 = 0;
-    if (__pyx_t_33 < 0) {
-      __pyx_t_33 += __pyx_v_rover_positions.shape[1];
-      if (unlikely(__pyx_t_33 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_33 >= __pyx_v_rover_positions.shape[1])) __pyx_t_6 = 1;
+      __pyx_t_32 += __pyx_v_self->r_rover_positions.shape[1];
+      if (unlikely(__pyx_t_32 < 0)) __pyx_t_6 = 1;
+    } else if (unlikely(__pyx_t_32 >= __pyx_v_self->r_rover_positions.shape[1])) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 96, __pyx_L1_error)
+      __PYX_ERR(0, 83, __pyx_L1_error)
     }
-    *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_positions.data + __pyx_t_32 * __pyx_v_rover_positions.strides[0]) ) + __pyx_t_33 * __pyx_v_rover_positions.strides[1]) )) += __pyx_v_dx;
+    *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->r_rover_positions.data + __pyx_t_31 * __pyx_v_self->r_rover_positions.strides[0]) ) + __pyx_t_32 * __pyx_v_self->r_rover_positions.strides[1]) )) += __pyx_v_dy;
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":97
- *             # globally move and reorient agent
- *             rover_positions[rover_id, 0] += dx
- *             rover_positions[rover_id, 1] += dy             # <<<<<<<<<<<<<<
- * 
- * 
- */
-    if (unlikely(((PyObject *) __pyx_v_rover_positions.memview) == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-      __PYX_ERR(0, 97, __pyx_L1_error)
-    }
-    __pyx_t_34 = __pyx_v_rover_id;
-    __pyx_t_35 = 1;
-    __pyx_t_6 = -1;
-    if (__pyx_t_34 < 0) {
-      __pyx_t_34 += __pyx_v_rover_positions.shape[0];
-      if (unlikely(__pyx_t_34 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_34 >= __pyx_v_rover_positions.shape[0])) __pyx_t_6 = 0;
-    if (__pyx_t_35 < 0) {
-      __pyx_t_35 += __pyx_v_rover_positions.shape[1];
-      if (unlikely(__pyx_t_35 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_35 >= __pyx_v_rover_positions.shape[1])) __pyx_t_6 = 1;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 97, __pyx_L1_error)
-    }
-    *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_positions.data + __pyx_t_34 * __pyx_v_rover_positions.strides[0]) ) + __pyx_t_35 * __pyx_v_rover_positions.strides[1]) )) += __pyx_v_dy;
-
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":103
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":89
  *             # the global frame.  Avoid divide by 0
  *             # (by skipping the reorientation step entirely).
  *             if not (dx == 0. and dy == 0.):             # <<<<<<<<<<<<<<
  *                 norm = cmath.sqrt(dx*dx +  dy*dy)
- *                 rover_orientations[rover_id, 0] = dx / norm
+ *                 self.r_rover_orientations[rover_id, 0] = dx / norm
  */
-    __pyx_t_37 = ((__pyx_v_dx == 0.) != 0);
-    if (__pyx_t_37) {
+    __pyx_t_34 = ((__pyx_v_dx == 0.) != 0);
+    if (__pyx_t_34) {
     } else {
-      __pyx_t_36 = __pyx_t_37;
-      goto __pyx_L22_bool_binop_done;
+      __pyx_t_33 = __pyx_t_34;
+      goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_37 = ((__pyx_v_dy == 0.) != 0);
-    __pyx_t_36 = __pyx_t_37;
-    __pyx_L22_bool_binop_done:;
-    __pyx_t_37 = ((!__pyx_t_36) != 0);
-    if (__pyx_t_37) {
+    __pyx_t_34 = ((__pyx_v_dy == 0.) != 0);
+    __pyx_t_33 = __pyx_t_34;
+    __pyx_L6_bool_binop_done:;
+    __pyx_t_34 = ((!__pyx_t_33) != 0);
+    if (__pyx_t_34) {
 
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":104
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":90
  *             # (by skipping the reorientation step entirely).
  *             if not (dx == 0. and dy == 0.):
  *                 norm = cmath.sqrt(dx*dx +  dy*dy)             # <<<<<<<<<<<<<<
- *                 rover_orientations[rover_id, 0] = dx / norm
- *                 rover_orientations[rover_id, 1] = dy / norm
+ *                 self.r_rover_orientations[rover_id, 0] = dx / norm
+ *                 self.r_rover_orientations[rover_id, 1] = dy / norm
  */
       __pyx_v_norm = sqrt(((__pyx_v_dx * __pyx_v_dx) + (__pyx_v_dy * __pyx_v_dy)));
 
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":105
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":91
  *             if not (dx == 0. and dy == 0.):
  *                 norm = cmath.sqrt(dx*dx +  dy*dy)
- *                 rover_orientations[rover_id, 0] = dx / norm             # <<<<<<<<<<<<<<
- *                 rover_orientations[rover_id, 1] = dy / norm
+ *                 self.r_rover_orientations[rover_id, 0] = dx / norm             # <<<<<<<<<<<<<<
+ *                 self.r_rover_orientations[rover_id, 1] = dy / norm
  * 
  */
       if (unlikely(__pyx_v_norm == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 105, __pyx_L1_error)
+        __PYX_ERR(0, 91, __pyx_L1_error)
       }
-      if (unlikely(((PyObject *) __pyx_v_rover_orientations.memview) == Py_None)) {
+      if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+        __PYX_ERR(0, 91, __pyx_L1_error)
+      }
+      if (unlikely(!__pyx_v_self->r_rover_orientations.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 91, __pyx_L1_error)}
+      if (unlikely(((PyObject *) __pyx_v_self->r_rover_orientations.memview) == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-        __PYX_ERR(0, 105, __pyx_L1_error)
+        __PYX_ERR(0, 91, __pyx_L1_error)
       }
-      __pyx_t_38 = __pyx_v_rover_id;
-      __pyx_t_39 = 0;
+      __pyx_t_35 = __pyx_v_rover_id;
+      __pyx_t_36 = 0;
       __pyx_t_6 = -1;
-      if (__pyx_t_38 < 0) {
-        __pyx_t_38 += __pyx_v_rover_orientations.shape[0];
-        if (unlikely(__pyx_t_38 < 0)) __pyx_t_6 = 0;
-      } else if (unlikely(__pyx_t_38 >= __pyx_v_rover_orientations.shape[0])) __pyx_t_6 = 0;
-      if (__pyx_t_39 < 0) {
-        __pyx_t_39 += __pyx_v_rover_orientations.shape[1];
-        if (unlikely(__pyx_t_39 < 0)) __pyx_t_6 = 1;
-      } else if (unlikely(__pyx_t_39 >= __pyx_v_rover_orientations.shape[1])) __pyx_t_6 = 1;
+      if (__pyx_t_35 < 0) {
+        __pyx_t_35 += __pyx_v_self->r_rover_orientations.shape[0];
+        if (unlikely(__pyx_t_35 < 0)) __pyx_t_6 = 0;
+      } else if (unlikely(__pyx_t_35 >= __pyx_v_self->r_rover_orientations.shape[0])) __pyx_t_6 = 0;
+      if (__pyx_t_36 < 0) {
+        __pyx_t_36 += __pyx_v_self->r_rover_orientations.shape[1];
+        if (unlikely(__pyx_t_36 < 0)) __pyx_t_6 = 1;
+      } else if (unlikely(__pyx_t_36 >= __pyx_v_self->r_rover_orientations.shape[1])) __pyx_t_6 = 1;
       if (unlikely(__pyx_t_6 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_6);
-        __PYX_ERR(0, 105, __pyx_L1_error)
+        __PYX_ERR(0, 91, __pyx_L1_error)
       }
-      *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_38 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_39 * __pyx_v_rover_orientations.strides[1]) )) = (__pyx_v_dx / __pyx_v_norm);
+      *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->r_rover_orientations.data + __pyx_t_35 * __pyx_v_self->r_rover_orientations.strides[0]) ) + __pyx_t_36 * __pyx_v_self->r_rover_orientations.strides[1]) )) = (__pyx_v_dx / __pyx_v_norm);
 
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":106
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":92
  *                 norm = cmath.sqrt(dx*dx +  dy*dy)
- *                 rover_orientations[rover_id, 0] = dx / norm
- *                 rover_orientations[rover_id, 1] = dy / norm             # <<<<<<<<<<<<<<
+ *                 self.r_rover_orientations[rover_id, 0] = dx / norm
+ *                 self.r_rover_orientations[rover_id, 1] = dy / norm             # <<<<<<<<<<<<<<
  * 
- *         store.set_rover_positions(rover_positions)
+ *         next_state.set_rover_positions(self.r_rover_positions)
  */
       if (unlikely(__pyx_v_norm == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 106, __pyx_L1_error)
+        __PYX_ERR(0, 92, __pyx_L1_error)
       }
-      if (unlikely(((PyObject *) __pyx_v_rover_orientations.memview) == Py_None)) {
+      if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_orientations");
+        __PYX_ERR(0, 92, __pyx_L1_error)
+      }
+      if (unlikely(!__pyx_v_self->r_rover_orientations.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 92, __pyx_L1_error)}
+      if (unlikely(((PyObject *) __pyx_v_self->r_rover_orientations.memview) == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "Cannot index None memoryview slice");
-        __PYX_ERR(0, 106, __pyx_L1_error)
+        __PYX_ERR(0, 92, __pyx_L1_error)
       }
-      __pyx_t_40 = __pyx_v_rover_id;
-      __pyx_t_41 = 1;
+      __pyx_t_37 = __pyx_v_rover_id;
+      __pyx_t_38 = 1;
       __pyx_t_6 = -1;
-      if (__pyx_t_40 < 0) {
-        __pyx_t_40 += __pyx_v_rover_orientations.shape[0];
-        if (unlikely(__pyx_t_40 < 0)) __pyx_t_6 = 0;
-      } else if (unlikely(__pyx_t_40 >= __pyx_v_rover_orientations.shape[0])) __pyx_t_6 = 0;
-      if (__pyx_t_41 < 0) {
-        __pyx_t_41 += __pyx_v_rover_orientations.shape[1];
-        if (unlikely(__pyx_t_41 < 0)) __pyx_t_6 = 1;
-      } else if (unlikely(__pyx_t_41 >= __pyx_v_rover_orientations.shape[1])) __pyx_t_6 = 1;
+      if (__pyx_t_37 < 0) {
+        __pyx_t_37 += __pyx_v_self->r_rover_orientations.shape[0];
+        if (unlikely(__pyx_t_37 < 0)) __pyx_t_6 = 0;
+      } else if (unlikely(__pyx_t_37 >= __pyx_v_self->r_rover_orientations.shape[0])) __pyx_t_6 = 0;
+      if (__pyx_t_38 < 0) {
+        __pyx_t_38 += __pyx_v_self->r_rover_orientations.shape[1];
+        if (unlikely(__pyx_t_38 < 0)) __pyx_t_6 = 1;
+      } else if (unlikely(__pyx_t_38 >= __pyx_v_self->r_rover_orientations.shape[1])) __pyx_t_6 = 1;
       if (unlikely(__pyx_t_6 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_6);
-        __PYX_ERR(0, 106, __pyx_L1_error)
+        __PYX_ERR(0, 92, __pyx_L1_error)
       }
-      *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_rover_orientations.data + __pyx_t_40 * __pyx_v_rover_orientations.strides[0]) ) + __pyx_t_41 * __pyx_v_rover_orientations.strides[1]) )) = (__pyx_v_dy / __pyx_v_norm);
+      *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->r_rover_orientations.data + __pyx_t_37 * __pyx_v_self->r_rover_orientations.strides[0]) ) + __pyx_t_38 * __pyx_v_self->r_rover_orientations.strides[1]) )) = (__pyx_v_dy / __pyx_v_norm);
 
-      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":103
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":89
  *             # the global frame.  Avoid divide by 0
  *             # (by skipping the reorientation step entirely).
  *             if not (dx == 0. and dy == 0.):             # <<<<<<<<<<<<<<
  *                 norm = cmath.sqrt(dx*dx +  dy*dy)
- *                 rover_orientations[rover_id, 0] = dx / norm
+ *                 self.r_rover_orientations[rover_id, 0] = dx / norm
  */
     }
   }
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":108
- *                 rover_orientations[rover_id, 1] = dy / norm
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":94
+ *                 self.r_rover_orientations[rover_id, 1] = dy / norm
  * 
- *         store.set_rover_positions(rover_positions)             # <<<<<<<<<<<<<<
- *         store.set_rover_orientations(rover_orientations)
- *         return store
+ *         next_state.set_rover_positions(self.r_rover_positions)             # <<<<<<<<<<<<<<
+ *         next_state.set_rover_orientations(self.rrover_orientations)
+ *         return next_state
  */
-  if (unlikely(((PyObject *)__pyx_v_store) == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "set_rover_positions");
-    __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_next_state, __pyx_n_s_set_rover_positions); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (unlikely(((PyObject *)__pyx_v_self) == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "r_rover_positions");
+    __PYX_ERR(0, 94, __pyx_L1_error)
   }
-  ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_store->__pyx_vtab)->set_rover_positions(__pyx_v_store, __pyx_v_rover_positions, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L1_error)
+  if (unlikely(!__pyx_v_self->r_rover_positions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 94, __pyx_L1_error)}
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_self->r_rover_positions, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_7 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_7)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_7);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
+    }
+  }
+  __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_7, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":109
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":95
  * 
- *         store.set_rover_positions(rover_positions)
- *         store.set_rover_orientations(rover_orientations)             # <<<<<<<<<<<<<<
- *         return store
+ *         next_state.set_rover_positions(self.r_rover_positions)
+ *         next_state.set_rover_orientations(self.rrover_orientations)             # <<<<<<<<<<<<<<
+ *         return next_state
  * 
  */
-  if (unlikely(((PyObject *)__pyx_v_store) == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "set_rover_orientations");
-    __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_next_state, __pyx_n_s_set_rover_orientations); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rrover_orientations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_7 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_7)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_7);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
+    }
   }
-  ((struct __pyx_vtabstruct_8rockefeg_11roverdomain_5state_State *)__pyx_v_store->__pyx_vtab)->set_rover_orientations(__pyx_v_store, __pyx_v_rover_orientations, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_7, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":110
- *         store.set_rover_positions(rover_positions)
- *         store.set_rover_orientations(rover_orientations)
- *         return store             # <<<<<<<<<<<<<<
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":96
+ *         next_state.set_rover_positions(self.r_rover_positions)
+ *         next_state.set_rover_orientations(self.rrover_orientations)
+ *         return next_state             # <<<<<<<<<<<<<<
  * 
- *     cpdef object copy(self):
+ *     cpdef object copy(self, object store = None):
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __Pyx_INCREF(((PyObject *)__pyx_v_store));
-  __pyx_r = __pyx_v_store;
+  if (!(likely(((__pyx_v_next_state) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_next_state, __pyx_ptype_8rockefeg_11roverdomain_5state_State))))) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_v_next_state);
+  __pyx_r = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)__pyx_v_next_state);
   goto __pyx_L0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":48
- *         return self.next_state_via(next_state, state, rover_actions)
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":45
+ *         return 2
  * 
- *     cpdef State next_state_via(             # <<<<<<<<<<<<<<
+ *     cpdef State next_state(             # <<<<<<<<<<<<<<
  *             self,
- *             State store,
+ *             State state,
  */
 
   /* function exit code */
@@ -4219,31 +4060,37 @@ static struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_f_8rockefeg_
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_rover_orientations, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_rover_positions, 1);
-  __Pyx_XDECREF((PyObject *)__pyx_v_store);
+  __Pyx_XDECREF(__pyx_v_next_state);
   __Pyx_XGIVEREF((PyObject *)__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state_via(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store = 0;
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state = 0;
   __Pyx_memviewslice __pyx_v_rover_actions = { 0, 0, { 0 }, { 0 }, { 0 } };
+  struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("next_state_via (wrapper)", 0);
+  __Pyx_RefNannySetupContext("next_state (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_store,&__pyx_n_s_state,&__pyx_n_s_rover_actions,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_state,&__pyx_n_s_rover_actions,&__pyx_n_s_store,0};
     PyObject* values[3] = {0,0,0};
+
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":49
+ *             State state,
+ *             const double[:, :] rover_actions,
+ *             State store = None):             # <<<<<<<<<<<<<<
+ *         cdef Py_ssize_t rover_id, n_rovers
+ *         cdef next_state
+ */
+    values[2] = (PyObject *)((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)Py_None);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -4260,46 +4107,57 @@ static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_2
       kw_args = PyDict_Size(__pyx_kwds);
       switch (pos_args) {
         case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_store)) != 0)) kw_args--;
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_state)) != 0)) kw_args--;
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_state)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_rover_actions)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("next_state_via", 1, 3, 3, 1); __PYX_ERR(0, 48, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("next_state", 0, 2, 3, 1); __PYX_ERR(0, 45, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_rover_actions)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("next_state_via", 1, 3, 3, 2); __PYX_ERR(0, 48, __pyx_L3_error)
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_store);
+          if (value) { values[2] = value; kw_args--; }
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "next_state_via") < 0)) __PYX_ERR(0, 48, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "next_state") < 0)) __PYX_ERR(0, 45, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
-      goto __pyx_L5_argtuple_error;
     } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
     }
-    __pyx_v_store = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)values[0]);
-    __pyx_v_state = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)values[1]);
-    __pyx_v_rover_actions = __Pyx_PyObject_to_MemoryviewSlice_dsds_double__const__(values[2], 0); if (unlikely(!__pyx_v_rover_actions.memview)) __PYX_ERR(0, 52, __pyx_L3_error)
+    __pyx_v_state = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)values[0]);
+    __pyx_v_rover_actions = __Pyx_PyObject_to_MemoryviewSlice_dsds_double__const__(values[1], 0); if (unlikely(!__pyx_v_rover_actions.memview)) __PYX_ERR(0, 48, __pyx_L3_error)
+    __pyx_v_store = ((struct __pyx_obj_8rockefeg_11roverdomain_5state_State *)values[2]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("next_state_via", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 48, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("next_state", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 45, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_store), __pyx_ptype_8rockefeg_11roverdomain_5state_State, 1, "store", 0))) __PYX_ERR(0, 50, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_8rockefeg_11roverdomain_5state_State, 1, "state", 0))) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_8next_state_via(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self), __pyx_v_store, __pyx_v_state, __pyx_v_rover_actions);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_8rockefeg_11roverdomain_5state_State, 1, "state", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_store), __pyx_ptype_8rockefeg_11roverdomain_5state_State, 1, "store", 0))) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_8next_state(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self), __pyx_v_state, __pyx_v_rover_actions, __pyx_v_store);
+
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":45
+ *         return 2
+ * 
+ *     cpdef State next_state(             # <<<<<<<<<<<<<<
+ *             self,
+ *             State state,
+ */
 
   /* function exit code */
   goto __pyx_L0;
@@ -4310,14 +4168,17 @@ static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_2
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_8next_state_via(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_8next_state(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_state, __Pyx_memviewslice __pyx_v_rover_actions, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *__pyx_v_store) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("next_state_via", 0);
+  struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_next_state __pyx_t_2;
+  __Pyx_RefNannySetupContext("next_state", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_rover_actions.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions"); __PYX_ERR(0, 48, __pyx_L1_error) }
-  __pyx_t_1 = ((PyObject *)__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state_via(__pyx_v_self, __pyx_v_store, __pyx_v_state, __pyx_v_rover_actions, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__pyx_v_rover_actions.memview)) { __Pyx_RaiseUnboundLocalError("rover_actions"); __PYX_ERR(0, 45, __pyx_L1_error) }
+  __pyx_t_2.__pyx_n = 1;
+  __pyx_t_2.store = __pyx_v_store;
+  __pyx_t_1 = ((PyObject *)__pyx_vtabptr_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor->__pyx_base.next_state(((struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *)__pyx_v_self), __pyx_v_state, __pyx_v_rover_actions, 1, &__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4326,7 +4187,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.next_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_rover_actions, 1);
@@ -4335,23 +4196,37 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   return __pyx_r;
 }
 
-/* "rockefeg/roverdomain/default_dynamics_processor.pyx":112
- *         return store
+/* "rockefeg/roverdomain/default_dynamics_processor.pyx":98
+ *         return next_state
  * 
- *     cpdef object copy(self):             # <<<<<<<<<<<<<<
- *         return DefaultDynamicsProcessor()
- * 
+ *     cpdef object copy(self, object store = None):             # <<<<<<<<<<<<<<
+ *         cdef DefaultDynamicsProcessor new_processor
+ *         cdef object store_type
  */
 
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy(CYTHON_UNUSED struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy *__pyx_optional_args) {
+  PyObject *__pyx_v_store = ((PyObject *)Py_None);
+  struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_new_processor = 0;
+  PyObject *__pyx_v_store_type = 0;
+  PyObject *__pyx_v_self_type = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
+  int __pyx_t_9;
   __Pyx_RefNannySetupContext("copy", 0);
+  if (__pyx_optional_args) {
+    if (__pyx_optional_args->__pyx_n > 0) {
+      __pyx_v_store = __pyx_optional_args->store;
+    }
+  }
   /* Check if called by wrapper */
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
@@ -4362,7 +4237,7 @@ static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24
     else {
       PY_UINT64_T type_dict_guard = (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict)) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy)) {
         __Pyx_XDECREF(__pyx_r);
@@ -4377,151 +4252,9 @@ static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24
             __Pyx_DECREF_SET(__pyx_t_3, function);
           }
         }
-        __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
-        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_r = __pyx_t_2;
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP
-      tp_dict_version = likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
-      obj_dict_version = likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset) ? __PYX_GET_DICT_VERSION(_PyObject_GetDictPtr(((PyObject *)__pyx_v_self))) : 0;
-      if (unlikely(type_dict_guard != tp_dict_version)) {
-        tp_dict_version = obj_dict_version = 0;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP
-    }
-    #endif
-  }
-
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":113
- * 
- *     cpdef object copy(self):
- *         return DefaultDynamicsProcessor()             # <<<<<<<<<<<<<<
- * 
- *     cpdef object copy_via(self, object store):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":112
- *         return store
- * 
- *     cpdef object copy(self):             # <<<<<<<<<<<<<<
- *         return DefaultDynamicsProcessor()
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("copy (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_10copy(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_10copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("copy", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "rockefeg/roverdomain/default_dynamics_processor.pyx":115
- *         return DefaultDynamicsProcessor()
- * 
- *     cpdef object copy_via(self, object store):             # <<<<<<<<<<<<<<
- *         cdef DefaultDynamicsProcessor new_processor
- *         cdef object store_type
- */
-
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_13copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
-static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy_via(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_store, int __pyx_skip_dispatch) {
-  struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_new_processor = 0;
-  PyObject *__pyx_v_store_type = 0;
-  PyObject *__pyx_v_self_type = 0;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
-  int __pyx_t_6;
-  __Pyx_RefNannySetupContext("copy_via", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP
-    static PY_UINT64_T tp_dict_version = 0, obj_dict_version = 0;
-    if (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict && tp_dict_version == __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) && (!Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset || obj_dict_version == __PYX_GET_DICT_VERSION(_PyObject_GetDictPtr(((PyObject *)__pyx_v_self))))));
-    else {
-      PY_UINT64_T type_dict_guard = (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict)) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy_via); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_13copy_via)) {
-        __Pyx_XDECREF(__pyx_r);
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-          if (likely(__pyx_t_4)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-            __Pyx_INCREF(__pyx_t_4);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_3, function);
-          }
-        }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_store) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_store);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -4542,106 +4275,192 @@ static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24
     #endif
   }
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":121
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":103
+ *         cdef object self_type
  * 
- * 
- *         if type(store) is not type(self):             # <<<<<<<<<<<<<<
- *             store_type = type(store)
- *             self_type = type(self)
+ *         try:             # <<<<<<<<<<<<<<
+ *             if type(store) is not type(self):
+ *                 store_type = type(store)
  */
-  __pyx_t_5 = (((PyObject *)Py_TYPE(__pyx_v_store)) != ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-  __pyx_t_6 = (__pyx_t_5 != 0);
-  if (unlikely(__pyx_t_6)) {
+  {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ExceptionSave(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7);
+    __Pyx_XGOTREF(__pyx_t_5);
+    __Pyx_XGOTREF(__pyx_t_6);
+    __Pyx_XGOTREF(__pyx_t_7);
+    /*try:*/ {
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":122
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":104
  * 
- *         if type(store) is not type(self):
- *             store_type = type(store)             # <<<<<<<<<<<<<<
- *             self_type = type(self)
- *             raise TypeError(
+ *         try:
+ *             if type(store) is not type(self):             # <<<<<<<<<<<<<<
+ *                 store_type = type(store)
+ *                 self_type = type(self)
  */
-    __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_v_store)));
-    __pyx_v_store_type = ((PyObject *)Py_TYPE(__pyx_v_store));
+      __pyx_t_8 = (((PyObject *)Py_TYPE(__pyx_v_store)) != ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+      __pyx_t_9 = (__pyx_t_8 != 0);
+      if (unlikely(__pyx_t_9)) {
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":123
- *         if type(store) is not type(self):
- *             store_type = type(store)
- *             self_type = type(self)             # <<<<<<<<<<<<<<
- *             raise TypeError(
- *                 "The type of the storage parameter "
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":105
+ *         try:
+ *             if type(store) is not type(self):
+ *                 store_type = type(store)             # <<<<<<<<<<<<<<
+ *                 self_type = type(self)
+ *                 raise TypeError(
  */
-    __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __pyx_v_self_type = ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self)));
+        __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_v_store)));
+        __pyx_v_store_type = ((PyObject *)Py_TYPE(__pyx_v_store));
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":127
- *                 "The type of the storage parameter "
- *                 "(type(store) = {store_type}) must be exactly {self_type}."
- *                 .format(**locals()))             # <<<<<<<<<<<<<<
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":106
+ *             if type(store) is not type(self):
+ *                 store_type = type(store)
+ *                 self_type = type(self)             # <<<<<<<<<<<<<<
+ *                 raise TypeError(
+ *                     "The type of the storage parameter "
+ */
+        __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+        __pyx_v_self_type = ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self)));
+
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":110
+ *                     "The type of the storage parameter "
+ *                     "(type(store) = {store_type}) must be exactly {self_type}."
+ *                     .format(**locals()))             # <<<<<<<<<<<<<<
  * 
- *         new_processor = <DefaultDynamicsProcessor?> store
+ *             new_processor = <DefaultDynamicsProcessor?> store
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_The_type_of_the_storage_paramete, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    if (((PyObject *)__pyx_v_new_processor)) {
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_new_processor, ((PyObject *)__pyx_v_new_processor)) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_The_type_of_the_storage_paramete, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_2 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        if (((PyObject *)__pyx_v_new_processor)) {
+          if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_new_processor, ((PyObject *)__pyx_v_new_processor)) < 0) __PYX_ERR(0, 110, __pyx_L3_error)
+        }
+        if (((PyObject *)__pyx_v_self)) {
+          if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_self, ((PyObject *)__pyx_v_self)) < 0) __PYX_ERR(0, 110, __pyx_L3_error)
+        }
+        if (__pyx_v_self_type) {
+          if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_self_type, __pyx_v_self_type) < 0) __PYX_ERR(0, 110, __pyx_L3_error)
+        }
+        if (__pyx_v_store) {
+          if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_store, __pyx_v_store) < 0) __PYX_ERR(0, 110, __pyx_L3_error)
+        }
+        if (__pyx_v_store_type) {
+          if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_store_type, __pyx_v_store_type) < 0) __PYX_ERR(0, 110, __pyx_L3_error)
+        }
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":107
+ *                 store_type = type(store)
+ *                 self_type = type(self)
+ *                 raise TypeError(             # <<<<<<<<<<<<<<
+ *                     "The type of the storage parameter "
+ *                     "(type(store) = {store_type}) must be exactly {self_type}."
+ */
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_TypeError, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __PYX_ERR(0, 107, __pyx_L3_error)
+
+        /* "rockefeg/roverdomain/default_dynamics_processor.pyx":104
+ * 
+ *         try:
+ *             if type(store) is not type(self):             # <<<<<<<<<<<<<<
+ *                 store_type = type(store)
+ *                 self_type = type(self)
+ */
+      }
+
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":112
+ *                     .format(**locals()))
+ * 
+ *             new_processor = <DefaultDynamicsProcessor?> store             # <<<<<<<<<<<<<<
+ *         except:
+ *             new_processor = DefaultDynamicsProcessor()
+ */
+      if (!(likely(__Pyx_TypeTest(__pyx_v_store, __pyx_ptype_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor)))) __PYX_ERR(0, 112, __pyx_L3_error)
+      __pyx_t_2 = __pyx_v_store;
+      __Pyx_INCREF(__pyx_t_2);
+      __pyx_v_new_processor = ((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_t_2);
+      __pyx_t_2 = 0;
+
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":103
+ *         cdef object self_type
+ * 
+ *         try:             # <<<<<<<<<<<<<<
+ *             if type(store) is not type(self):
+ *                 store_type = type(store)
+ */
     }
-    if (((PyObject *)__pyx_v_self)) {
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_self, ((PyObject *)__pyx_v_self)) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
-    }
-    if (__pyx_v_self_type) {
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_self_type, __pyx_v_self_type) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
-    }
-    if (__pyx_v_store) {
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_store, __pyx_v_store) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
-    }
-    if (__pyx_v_store_type) {
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_store_type, __pyx_v_store_type) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
-    }
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+    goto __pyx_L8_try_end;
+    __pyx_L3_error:;
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":124
- *             store_type = type(store)
- *             self_type = type(self)
- *             raise TypeError(             # <<<<<<<<<<<<<<
- *                 "The type of the storage parameter "
- *                 "(type(store) = {store_type}) must be exactly {self_type}."
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":113
+ * 
+ *             new_processor = <DefaultDynamicsProcessor?> store
+ *         except:             # <<<<<<<<<<<<<<
+ *             new_processor = DefaultDynamicsProcessor()
+ * 
  */
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_TypeError, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 124, __pyx_L1_error)
+    /*except:*/ {
+      __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_1) < 0) __PYX_ERR(0, 113, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_GOTREF(__pyx_t_1);
 
-    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":121
- * 
- * 
- *         if type(store) is not type(self):             # <<<<<<<<<<<<<<
- *             store_type = type(store)
- *             self_type = type(self)
- */
-  }
-
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":129
- *                 .format(**locals()))
- * 
- *         new_processor = <DefaultDynamicsProcessor?> store             # <<<<<<<<<<<<<<
+      /* "rockefeg/roverdomain/default_dynamics_processor.pyx":114
+ *             new_processor = <DefaultDynamicsProcessor?> store
+ *         except:
+ *             new_processor = DefaultDynamicsProcessor()             # <<<<<<<<<<<<<<
  * 
  *         return new_processor
  */
-  if (!(likely(__Pyx_TypeTest(__pyx_v_store, __pyx_ptype_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor)))) __PYX_ERR(0, 129, __pyx_L1_error)
-  __pyx_t_2 = __pyx_v_store;
-  __Pyx_INCREF(__pyx_t_2);
-  __pyx_v_new_processor = ((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_t_2);
-  __pyx_t_2 = 0;
+      __pyx_t_4 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_XDECREF_SET(__pyx_v_new_processor, ((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_t_4));
+      __pyx_t_4 = 0;
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      goto __pyx_L4_exception_handled;
+    }
+    __pyx_L5_except_error:;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":131
- *         new_processor = <DefaultDynamicsProcessor?> store
+    /* "rockefeg/roverdomain/default_dynamics_processor.pyx":103
+ *         cdef object self_type
+ * 
+ *         try:             # <<<<<<<<<<<<<<
+ *             if type(store) is not type(self):
+ *                 store_type = type(store)
+ */
+    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_XGIVEREF(__pyx_t_6);
+    __Pyx_XGIVEREF(__pyx_t_7);
+    __Pyx_ExceptionReset(__pyx_t_5, __pyx_t_6, __pyx_t_7);
+    goto __pyx_L1_error;
+    __pyx_L4_exception_handled:;
+    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_XGIVEREF(__pyx_t_6);
+    __Pyx_XGIVEREF(__pyx_t_7);
+    __Pyx_ExceptionReset(__pyx_t_5, __pyx_t_6, __pyx_t_7);
+    __pyx_L8_try_end:;
+  }
+
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":116
+ *             new_processor = DefaultDynamicsProcessor()
  * 
  *         return new_processor             # <<<<<<<<<<<<<<
  * 
@@ -4652,10 +4471,10 @@ static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24
   __pyx_r = ((PyObject *)__pyx_v_new_processor);
   goto __pyx_L0;
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":115
- *         return DefaultDynamicsProcessor()
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":98
+ *         return next_state
  * 
- *     cpdef object copy_via(self, object store):             # <<<<<<<<<<<<<<
+ *     cpdef object copy(self, object store = None):             # <<<<<<<<<<<<<<
  *         cdef DefaultDynamicsProcessor new_processor
  *         cdef object store_type
  */
@@ -4666,7 +4485,7 @@ static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_new_processor);
@@ -4678,25 +4497,71 @@ static PyObject *__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_13copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store); /*proto*/
-static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_13copy_via(PyObject *__pyx_v_self, PyObject *__pyx_v_store) {
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_store = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("copy_via (wrapper)", 0);
-  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_12copy_via(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self), ((PyObject *)__pyx_v_store));
+  __Pyx_RefNannySetupContext("copy (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_store,0};
+    PyObject* values[1] = {0};
+    values[0] = ((PyObject *)Py_None);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_store);
+          if (value) { values[0] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "copy") < 0)) __PYX_ERR(0, 98, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_store = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("copy", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 98, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_10copy(((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)__pyx_v_self), __pyx_v_store);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_12copy_via(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_store) {
+static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_10copy(struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *__pyx_v_self, PyObject *__pyx_v_store) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("copy_via", 0);
+  struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_copy __pyx_t_2;
+  __Pyx_RefNannySetupContext("copy", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy_via(__pyx_v_self, __pyx_v_store, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_2.__pyx_n = 1;
+  __pyx_t_2.store = __pyx_v_store;
+  __pyx_t_1 = __pyx_vtabptr_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor->__pyx_base.copy(((struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *)__pyx_v_self), 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4705,7 +4570,7 @@ static PyObject *__pyx_pf_8rockefeg_11roverdomain_26default_dynamics_processor_2
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.copy_via", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("rockefeg.roverdomain.default_dynamics_processor.DefaultDynamicsProcessor.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -17494,10 +17359,10 @@ static PyObject *__pyx_tp_new_8rockefeg_11roverdomain_26default_dynamics_process
   if (unlikely(!o)) return 0;
   p = ((struct __pyx_obj_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor *)o);
   p->__pyx_base.__pyx_vtab = (struct __pyx_vtabstruct_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor*)__pyx_vtabptr_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor;
-  p->r_rover_positions_store.data = NULL;
-  p->r_rover_positions_store.memview = NULL;
-  p->r_rover_orientations_store.data = NULL;
-  p->r_rover_orientations_store.memview = NULL;
+  p->r_rover_positions.data = NULL;
+  p->r_rover_positions.memview = NULL;
+  p->r_rover_orientations.data = NULL;
+  p->r_rover_orientations.memview = NULL;
   return o;
 }
 
@@ -17508,19 +17373,17 @@ static void __pyx_tp_dealloc_8rockefeg_11roverdomain_26default_dynamics_processo
     if (PyObject_CallFinalizerFromDealloc(o)) return;
   }
   #endif
-  __PYX_XDEC_MEMVIEW(&p->r_rover_positions_store, 1);
-  __PYX_XDEC_MEMVIEW(&p->r_rover_orientations_store, 1);
+  __PYX_XDEC_MEMVIEW(&p->r_rover_positions, 1);
+  __PYX_XDEC_MEMVIEW(&p->r_rover_orientations, 1);
   if (likely(__pyx_ptype_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor)) __pyx_ptype_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor->tp_dealloc(o); else __Pyx_call_next_tp_dealloc(o, __pyx_tp_dealloc_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor);
 }
 
 static PyMethodDef __pyx_methods_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor[] = {
-  {"__setstate__", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_1__setstate__, METH_O, 0},
-  {"__reduce__", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_3__reduce__, METH_NOARGS, 0},
-  {"n_rover_action_dims", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_5n_rover_action_dims, METH_NOARGS, 0},
-  {"next_state_copy", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7next_state_copy, METH_VARARGS|METH_KEYWORDS, 0},
-  {"next_state_via", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state_via, METH_VARARGS|METH_KEYWORDS, 0},
-  {"copy", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy, METH_NOARGS, 0},
-  {"copy_via", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_13copy_via, METH_O, 0},
+  {"__setstate__", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_3__setstate__, METH_O, 0},
+  {"__reduce__", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_5__reduce__, METH_NOARGS, 0},
+  {"n_rover_action_dims", (PyCFunction)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_7n_rover_action_dims, METH_NOARGS, 0},
+  {"next_state", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_9next_state, METH_VARARGS|METH_KEYWORDS, 0},
+  {"copy", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_11copy, METH_VARARGS|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
@@ -17565,7 +17428,7 @@ static PyTypeObject __pyx_type_8rockefeg_11roverdomain_26default_dynamics_proces
   0, /*tp_descr_get*/
   0, /*tp_descr_set*/
   0, /*tp_dictoffset*/
-  0, /*tp_init*/
+  __pyx_pw_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_1__init__, /*tp_init*/
   0, /*tp_alloc*/
   __pyx_tp_new_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor, /*tp_new*/
   0, /*tp_free*/
@@ -18336,7 +18199,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
   {&__pyx_n_s_copy, __pyx_k_copy, sizeof(__pyx_k_copy), 0, 0, 1, 1},
-  {&__pyx_n_s_copy_via, __pyx_k_copy_via, sizeof(__pyx_k_copy_via), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_n_s_dtype_is_object, __pyx_k_dtype_is_object, sizeof(__pyx_k_dtype_is_object), 0, 0, 1, 1},
   {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
@@ -18365,8 +18227,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ndim, __pyx_k_ndim, sizeof(__pyx_k_ndim), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_n_s_new_processor, __pyx_k_new_processor, sizeof(__pyx_k_new_processor), 0, 0, 1, 1},
-  {&__pyx_n_s_next_state_copy, __pyx_k_next_state_copy, sizeof(__pyx_k_next_state_copy), 0, 0, 1, 1},
-  {&__pyx_n_s_next_state_via, __pyx_k_next_state_via, sizeof(__pyx_k_next_state_via), 0, 0, 1, 1},
+  {&__pyx_n_s_next_state, __pyx_k_next_state, sizeof(__pyx_k_next_state), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
@@ -18381,14 +18242,18 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pyx_type, __pyx_k_pyx_type, sizeof(__pyx_k_pyx_type), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_unpickle_Enum, __pyx_k_pyx_unpickle_Enum, sizeof(__pyx_k_pyx_unpickle_Enum), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
-  {&__pyx_n_s_r_rover_positions, __pyx_k_r_rover_positions, sizeof(__pyx_k_r_rover_positions), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
   {&__pyx_n_s_rover_actions, __pyx_k_rover_actions, sizeof(__pyx_k_rover_actions), 0, 0, 1, 1},
+  {&__pyx_n_s_rover_orientations, __pyx_k_rover_orientations, sizeof(__pyx_k_rover_orientations), 0, 0, 1, 1},
+  {&__pyx_n_s_rover_positions, __pyx_k_rover_positions, sizeof(__pyx_k_rover_positions), 0, 0, 1, 1},
+  {&__pyx_n_s_rrover_orientations, __pyx_k_rrover_orientations, sizeof(__pyx_k_rrover_orientations), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_self_type, __pyx_k_self_type, sizeof(__pyx_k_self_type), 0, 0, 1, 1},
+  {&__pyx_n_s_set_rover_orientations, __pyx_k_set_rover_orientations, sizeof(__pyx_k_set_rover_orientations), 0, 0, 1, 1},
+  {&__pyx_n_s_set_rover_positions, __pyx_k_set_rover_positions, sizeof(__pyx_k_set_rover_positions), 0, 0, 1, 1},
   {&__pyx_n_s_setattr, __pyx_k_setattr, sizeof(__pyx_k_setattr), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
@@ -18414,9 +18279,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_AttributeError = __Pyx_GetBuiltinName(__pyx_n_s_AttributeError); if (!__pyx_builtin_AttributeError) __PYX_ERR(0, 14, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 79, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_builtin_AttributeError = __Pyx_GetBuiltinName(__pyx_n_s_AttributeError); if (!__pyx_builtin_AttributeError) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 107, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 133, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(1, 148, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(1, 151, __pyx_L1_error)
@@ -18432,17 +18297,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":26
+  /* "rockefeg/roverdomain/default_dynamics_processor.pyx":31
  *                 val = self.__getattribute__(attr)
  *                 if (
  *                         not (attr[:2] == "__" and attr[-2:] == "__")             # <<<<<<<<<<<<<<
  *                         and not inspect.isbuiltin(val)
  *                 ):
  */
-  __pyx_slice_ = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_slice_ = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice_);
   __Pyx_GIVEREF(__pyx_slice_);
-  __pyx_slice__3 = PySlice_New(__pyx_int_neg_2, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_slice__3 = PySlice_New(__pyx_int_neg_2, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 
@@ -18772,10 +18637,8 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtabptr_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor = &__pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor;
   __pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.__pyx_base = *__pyx_vtabptr_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor;
   __pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.__pyx_base.n_rover_action_dims = (Py_ssize_t (*)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_n_rover_action_dims;
-  __pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.__pyx_base.next_state_copy = (struct __pyx_obj_8rockefeg_11roverdomain_5state_State *(*)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state_copy;
-  __pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.__pyx_base.next_state_via = (struct __pyx_obj_8rockefeg_11roverdomain_5state_State *(*)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state_via;
-  __pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.__pyx_base.copy = (PyObject *(*)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy;
-  __pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.__pyx_base.copy_via = (PyObject *(*)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, PyObject *, int __pyx_skip_dispatch))__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy_via;
+  __pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.__pyx_base.next_state = (struct __pyx_obj_8rockefeg_11roverdomain_5state_State *(*)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, struct __pyx_obj_8rockefeg_11roverdomain_5state_State *, __Pyx_memviewslice, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_next_state *__pyx_optional_args))__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_next_state;
+  __pyx_vtable_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.__pyx_base.copy = (PyObject *(*)(struct __pyx_obj_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor *, int __pyx_skip_dispatch, struct __pyx_opt_args_8rockefeg_11roverdomain_23base_dynamics_processor_21BaseDynamicsProcessor_copy *__pyx_optional_args))__pyx_f_8rockefeg_11roverdomain_26default_dynamics_processor_24DefaultDynamicsProcessor_copy;
   __pyx_type_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.tp_base = __pyx_ptype_8rockefeg_11roverdomain_23base_dynamics_processor_BaseDynamicsProcessor;
   if (PyType_Ready(&__pyx_type_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __pyx_type_8rockefeg_11roverdomain_26default_dynamics_processor_DefaultDynamicsProcessor.tp_print = 0;
@@ -19326,6 +19189,210 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
 #endif
     }
     return result;
+}
+
+/* RaiseArgTupleInvalid */
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* KeywordStringCheck */
+static int __Pyx_CheckKeywordStrings(
+    PyObject *kwdict,
+    const char* function_name,
+    int kw_allowed)
+{
+    PyObject* key = 0;
+    Py_ssize_t pos = 0;
+#if CYTHON_COMPILING_IN_PYPY
+    if (!kw_allowed && PyDict_Next(kwdict, &pos, &key, 0))
+        goto invalid_keyword;
+    return 1;
+#else
+    while (PyDict_Next(kwdict, &pos, &key, 0)) {
+        #if PY_MAJOR_VERSION < 3
+        if (unlikely(!PyString_Check(key)))
+        #endif
+            if (unlikely(!PyUnicode_Check(key)))
+                goto invalid_keyword_type;
+    }
+    if ((!kw_allowed) && unlikely(key))
+        goto invalid_keyword;
+    return 1;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    return 0;
+#endif
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+    return 0;
+}
+
+/* MemviewSliceInit */
+static int
+__Pyx_init_memviewslice(struct __pyx_memoryview_obj *memview,
+                        int ndim,
+                        __Pyx_memviewslice *memviewslice,
+                        int memview_is_new_reference)
+{
+    __Pyx_RefNannyDeclarations
+    int i, retval=-1;
+    Py_buffer *buf = &memview->view;
+    __Pyx_RefNannySetupContext("init_memviewslice", 0);
+    if (!buf) {
+        PyErr_SetString(PyExc_ValueError,
+            "buf is NULL.");
+        goto fail;
+    } else if (memviewslice->memview || memviewslice->data) {
+        PyErr_SetString(PyExc_ValueError,
+            "memviewslice is already initialized!");
+        goto fail;
+    }
+    if (buf->strides) {
+        for (i = 0; i < ndim; i++) {
+            memviewslice->strides[i] = buf->strides[i];
+        }
+    } else {
+        Py_ssize_t stride = buf->itemsize;
+        for (i = ndim - 1; i >= 0; i--) {
+            memviewslice->strides[i] = stride;
+            stride *= buf->shape[i];
+        }
+    }
+    for (i = 0; i < ndim; i++) {
+        memviewslice->shape[i]   = buf->shape[i];
+        if (buf->suboffsets) {
+            memviewslice->suboffsets[i] = buf->suboffsets[i];
+        } else {
+            memviewslice->suboffsets[i] = -1;
+        }
+    }
+    memviewslice->memview = memview;
+    memviewslice->data = (char *)buf->buf;
+    if (__pyx_add_acquisition_count(memview) == 0 && !memview_is_new_reference) {
+        Py_INCREF(memview);
+    }
+    retval = 0;
+    goto no_fail;
+fail:
+    memviewslice->memview = 0;
+    memviewslice->data = 0;
+    retval = -1;
+no_fail:
+    __Pyx_RefNannyFinishContext();
+    return retval;
+}
+#ifndef Py_NO_RETURN
+#define Py_NO_RETURN
+#endif
+static void __pyx_fatalerror(const char *fmt, ...) Py_NO_RETURN {
+    va_list vargs;
+    char msg[200];
+#ifdef HAVE_STDARG_PROTOTYPES
+    va_start(vargs, fmt);
+#else
+    va_start(vargs);
+#endif
+    vsnprintf(msg, 200, fmt, vargs);
+    va_end(vargs);
+    Py_FatalError(msg);
+}
+static CYTHON_INLINE int
+__pyx_add_acquisition_count_locked(__pyx_atomic_int *acquisition_count,
+                                   PyThread_type_lock lock)
+{
+    int result;
+    PyThread_acquire_lock(lock, 1);
+    result = (*acquisition_count)++;
+    PyThread_release_lock(lock);
+    return result;
+}
+static CYTHON_INLINE int
+__pyx_sub_acquisition_count_locked(__pyx_atomic_int *acquisition_count,
+                                   PyThread_type_lock lock)
+{
+    int result;
+    PyThread_acquire_lock(lock, 1);
+    result = (*acquisition_count)--;
+    PyThread_release_lock(lock);
+    return result;
+}
+static CYTHON_INLINE void
+__Pyx_INC_MEMVIEW(__Pyx_memviewslice *memslice, int have_gil, int lineno)
+{
+    int first_time;
+    struct __pyx_memoryview_obj *memview = memslice->memview;
+    if (!memview || (PyObject *) memview == Py_None)
+        return;
+    if (__pyx_get_slice_count(memview) < 0)
+        __pyx_fatalerror("Acquisition count is %d (line %d)",
+                         __pyx_get_slice_count(memview), lineno);
+    first_time = __pyx_add_acquisition_count(memview) == 0;
+    if (first_time) {
+        if (have_gil) {
+            Py_INCREF((PyObject *) memview);
+        } else {
+            PyGILState_STATE _gilstate = PyGILState_Ensure();
+            Py_INCREF((PyObject *) memview);
+            PyGILState_Release(_gilstate);
+        }
+    }
+}
+static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *memslice,
+                                             int have_gil, int lineno) {
+    int last_time;
+    struct __pyx_memoryview_obj *memview = memslice->memview;
+    if (!memview ) {
+        return;
+    } else if ((PyObject *) memview == Py_None) {
+        memslice->memview = NULL;
+        return;
+    }
+    if (__pyx_get_slice_count(memview) <= 0)
+        __pyx_fatalerror("Acquisition count is %d (line %d)",
+                         __pyx_get_slice_count(memview), lineno);
+    last_time = __pyx_sub_acquisition_count(memview) == 1;
+    memslice->data = NULL;
+    if (last_time) {
+        if (have_gil) {
+            Py_CLEAR(memslice->memview);
+        } else {
+            PyGILState_STATE _gilstate = PyGILState_Ensure();
+            Py_CLEAR(memslice->memview);
+            PyGILState_Release(_gilstate);
+        }
+    } else {
+        memslice->memview = NULL;
+    }
 }
 
 /* IterFinish */
@@ -20456,144 +20523,6 @@ return_ne:
 #endif
 }
 
-/* MemviewSliceInit */
-static int
-__Pyx_init_memviewslice(struct __pyx_memoryview_obj *memview,
-                        int ndim,
-                        __Pyx_memviewslice *memviewslice,
-                        int memview_is_new_reference)
-{
-    __Pyx_RefNannyDeclarations
-    int i, retval=-1;
-    Py_buffer *buf = &memview->view;
-    __Pyx_RefNannySetupContext("init_memviewslice", 0);
-    if (!buf) {
-        PyErr_SetString(PyExc_ValueError,
-            "buf is NULL.");
-        goto fail;
-    } else if (memviewslice->memview || memviewslice->data) {
-        PyErr_SetString(PyExc_ValueError,
-            "memviewslice is already initialized!");
-        goto fail;
-    }
-    if (buf->strides) {
-        for (i = 0; i < ndim; i++) {
-            memviewslice->strides[i] = buf->strides[i];
-        }
-    } else {
-        Py_ssize_t stride = buf->itemsize;
-        for (i = ndim - 1; i >= 0; i--) {
-            memviewslice->strides[i] = stride;
-            stride *= buf->shape[i];
-        }
-    }
-    for (i = 0; i < ndim; i++) {
-        memviewslice->shape[i]   = buf->shape[i];
-        if (buf->suboffsets) {
-            memviewslice->suboffsets[i] = buf->suboffsets[i];
-        } else {
-            memviewslice->suboffsets[i] = -1;
-        }
-    }
-    memviewslice->memview = memview;
-    memviewslice->data = (char *)buf->buf;
-    if (__pyx_add_acquisition_count(memview) == 0 && !memview_is_new_reference) {
-        Py_INCREF(memview);
-    }
-    retval = 0;
-    goto no_fail;
-fail:
-    memviewslice->memview = 0;
-    memviewslice->data = 0;
-    retval = -1;
-no_fail:
-    __Pyx_RefNannyFinishContext();
-    return retval;
-}
-#ifndef Py_NO_RETURN
-#define Py_NO_RETURN
-#endif
-static void __pyx_fatalerror(const char *fmt, ...) Py_NO_RETURN {
-    va_list vargs;
-    char msg[200];
-#ifdef HAVE_STDARG_PROTOTYPES
-    va_start(vargs, fmt);
-#else
-    va_start(vargs);
-#endif
-    vsnprintf(msg, 200, fmt, vargs);
-    va_end(vargs);
-    Py_FatalError(msg);
-}
-static CYTHON_INLINE int
-__pyx_add_acquisition_count_locked(__pyx_atomic_int *acquisition_count,
-                                   PyThread_type_lock lock)
-{
-    int result;
-    PyThread_acquire_lock(lock, 1);
-    result = (*acquisition_count)++;
-    PyThread_release_lock(lock);
-    return result;
-}
-static CYTHON_INLINE int
-__pyx_sub_acquisition_count_locked(__pyx_atomic_int *acquisition_count,
-                                   PyThread_type_lock lock)
-{
-    int result;
-    PyThread_acquire_lock(lock, 1);
-    result = (*acquisition_count)--;
-    PyThread_release_lock(lock);
-    return result;
-}
-static CYTHON_INLINE void
-__Pyx_INC_MEMVIEW(__Pyx_memviewslice *memslice, int have_gil, int lineno)
-{
-    int first_time;
-    struct __pyx_memoryview_obj *memview = memslice->memview;
-    if (!memview || (PyObject *) memview == Py_None)
-        return;
-    if (__pyx_get_slice_count(memview) < 0)
-        __pyx_fatalerror("Acquisition count is %d (line %d)",
-                         __pyx_get_slice_count(memview), lineno);
-    first_time = __pyx_add_acquisition_count(memview) == 0;
-    if (first_time) {
-        if (have_gil) {
-            Py_INCREF((PyObject *) memview);
-        } else {
-            PyGILState_STATE _gilstate = PyGILState_Ensure();
-            Py_INCREF((PyObject *) memview);
-            PyGILState_Release(_gilstate);
-        }
-    }
-}
-static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *memslice,
-                                             int have_gil, int lineno) {
-    int last_time;
-    struct __pyx_memoryview_obj *memview = memslice->memview;
-    if (!memview ) {
-        return;
-    } else if ((PyObject *) memview == Py_None) {
-        memslice->memview = NULL;
-        return;
-    }
-    if (__pyx_get_slice_count(memview) <= 0)
-        __pyx_fatalerror("Acquisition count is %d (line %d)",
-                         __pyx_get_slice_count(memview), lineno);
-    last_time = __pyx_sub_acquisition_count(memview) == 1;
-    memslice->data = NULL;
-    if (last_time) {
-        if (have_gil) {
-            Py_CLEAR(memslice->memview);
-        } else {
-            PyGILState_STATE _gilstate = PyGILState_Ensure();
-            Py_CLEAR(memslice->memview);
-            PyGILState_Release(_gilstate);
-        }
-    } else {
-        memslice->memview = NULL;
-    }
-}
-
 /* None */
 static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname) {
     PyErr_Format(PyExc_UnboundLocalError, "local variable '%s' referenced before assignment", varname);
@@ -20612,30 +20541,10 @@ static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
     return 0;
 }
 
-/* RaiseArgTupleInvalid */
-static void __Pyx_RaiseArgtupleInvalid(
-    const char* func_name,
-    int exact,
-    Py_ssize_t num_min,
-    Py_ssize_t num_max,
-    Py_ssize_t num_found)
-{
-    Py_ssize_t num_expected;
-    const char *more_or_less;
-    if (num_found < num_min) {
-        num_expected = num_min;
-        more_or_less = "at least";
-    } else {
-        num_expected = num_max;
-        more_or_less = "at most";
-    }
-    if (exact) {
-        more_or_less = "exactly";
-    }
-    PyErr_Format(PyExc_TypeError,
-                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                 func_name, more_or_less, num_expected,
-                 (num_expected == 1) ? "" : "s", num_found);
+/* BufferIndexError */
+static void __Pyx_RaiseBufferIndexError(int axis) {
+  PyErr_Format(PyExc_IndexError,
+     "Out of bounds on buffer access (axis %d)", axis);
 }
 
 /* RaiseDoubleKeywords */
@@ -20773,86 +20682,6 @@ static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *nam
         "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
         name, type->tp_name, Py_TYPE(obj)->tp_name);
     return 0;
-}
-
-/* GetException */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb)
-#else
-static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb)
-#endif
-{
-    PyObject *local_type, *local_value, *local_tb;
-#if CYTHON_FAST_THREAD_STATE
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    local_type = tstate->curexc_type;
-    local_value = tstate->curexc_value;
-    local_tb = tstate->curexc_traceback;
-    tstate->curexc_type = 0;
-    tstate->curexc_value = 0;
-    tstate->curexc_traceback = 0;
-#else
-    PyErr_Fetch(&local_type, &local_value, &local_tb);
-#endif
-    PyErr_NormalizeException(&local_type, &local_value, &local_tb);
-#if CYTHON_FAST_THREAD_STATE
-    if (unlikely(tstate->curexc_type))
-#else
-    if (unlikely(PyErr_Occurred()))
-#endif
-        goto bad;
-    #if PY_MAJOR_VERSION >= 3
-    if (local_tb) {
-        if (unlikely(PyException_SetTraceback(local_value, local_tb) < 0))
-            goto bad;
-    }
-    #endif
-    Py_XINCREF(local_tb);
-    Py_XINCREF(local_type);
-    Py_XINCREF(local_value);
-    *type = local_type;
-    *value = local_value;
-    *tb = local_tb;
-#if CYTHON_FAST_THREAD_STATE
-    #if CYTHON_USE_EXC_INFO_STACK
-    {
-        _PyErr_StackItem *exc_info = tstate->exc_info;
-        tmp_type = exc_info->exc_type;
-        tmp_value = exc_info->exc_value;
-        tmp_tb = exc_info->exc_traceback;
-        exc_info->exc_type = local_type;
-        exc_info->exc_value = local_value;
-        exc_info->exc_traceback = local_tb;
-    }
-    #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = local_type;
-    tstate->exc_value = local_value;
-    tstate->exc_traceback = local_tb;
-    #endif
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-#else
-    PyErr_SetExcInfo(local_type, local_value, local_tb);
-#endif
-    return 0;
-bad:
-    *type = 0;
-    *value = 0;
-    *tb = 0;
-    Py_XDECREF(local_type);
-    Py_XDECREF(local_value);
-    Py_XDECREF(local_tb);
-    return -1;
-}
-
-/* BufferIndexError */
-static void __Pyx_RaiseBufferIndexError(int axis) {
-  PyErr_Format(PyExc_IndexError,
-     "Out of bounds on buffer access (axis %d)", axis);
 }
 
 /* RaiseException */
@@ -21013,6 +20842,80 @@ bad:
     return;
 }
 #endif
+
+/* GetException */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb)
+#else
+static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb)
+#endif
+{
+    PyObject *local_type, *local_value, *local_tb;
+#if CYTHON_FAST_THREAD_STATE
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    local_type = tstate->curexc_type;
+    local_value = tstate->curexc_value;
+    local_tb = tstate->curexc_traceback;
+    tstate->curexc_type = 0;
+    tstate->curexc_value = 0;
+    tstate->curexc_traceback = 0;
+#else
+    PyErr_Fetch(&local_type, &local_value, &local_tb);
+#endif
+    PyErr_NormalizeException(&local_type, &local_value, &local_tb);
+#if CYTHON_FAST_THREAD_STATE
+    if (unlikely(tstate->curexc_type))
+#else
+    if (unlikely(PyErr_Occurred()))
+#endif
+        goto bad;
+    #if PY_MAJOR_VERSION >= 3
+    if (local_tb) {
+        if (unlikely(PyException_SetTraceback(local_value, local_tb) < 0))
+            goto bad;
+    }
+    #endif
+    Py_XINCREF(local_tb);
+    Py_XINCREF(local_type);
+    Py_XINCREF(local_value);
+    *type = local_type;
+    *value = local_value;
+    *tb = local_tb;
+#if CYTHON_FAST_THREAD_STATE
+    #if CYTHON_USE_EXC_INFO_STACK
+    {
+        _PyErr_StackItem *exc_info = tstate->exc_info;
+        tmp_type = exc_info->exc_type;
+        tmp_value = exc_info->exc_value;
+        tmp_tb = exc_info->exc_traceback;
+        exc_info->exc_type = local_type;
+        exc_info->exc_value = local_value;
+        exc_info->exc_traceback = local_tb;
+    }
+    #else
+    tmp_type = tstate->exc_type;
+    tmp_value = tstate->exc_value;
+    tmp_tb = tstate->exc_traceback;
+    tstate->exc_type = local_type;
+    tstate->exc_value = local_value;
+    tstate->exc_traceback = local_tb;
+    #endif
+    Py_XDECREF(tmp_type);
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(tmp_tb);
+#else
+    PyErr_SetExcInfo(local_type, local_value, local_tb);
+#endif
+    return 0;
+bad:
+    *type = 0;
+    *value = 0;
+    *tb = 0;
+    Py_XDECREF(local_type);
+    Py_XDECREF(local_value);
+    Py_XDECREF(local_tb);
+    return -1;
+}
 
 /* None */
 static CYTHON_INLINE Py_ssize_t __Pyx_div_Py_ssize_t(Py_ssize_t a, Py_ssize_t b) {
@@ -23583,17 +23486,17 @@ raise_neg_overflow:
 }
 
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_double(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dsds_double(PyObject *obj, int writable_flag) {
     __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
     __Pyx_BufFmt_StackElem stack[1];
-    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_STRIDED) };
+    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_STRIDED), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_STRIDED) };
     int retcode;
     if (obj == Py_None) {
         result.memview = (struct __pyx_memoryview_obj *) Py_None;
         return result;
     }
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, 0,
-                                                 PyBUF_RECORDS_RO | writable_flag, 1,
+                                                 PyBUF_RECORDS_RO | writable_flag, 2,
                                                  &__Pyx_TypeInfo_double, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
@@ -23606,17 +23509,17 @@ __pyx_fail:
 }
 
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dsds_double(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_double(PyObject *obj, int writable_flag) {
     __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
     __Pyx_BufFmt_StackElem stack[1];
-    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_STRIDED), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_STRIDED) };
+    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_STRIDED) };
     int retcode;
     if (obj == Py_None) {
         result.memview = (struct __pyx_memoryview_obj *) Py_None;
         return result;
     }
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, 0,
-                                                 PyBUF_RECORDS_RO | writable_flag, 2,
+                                                 PyBUF_RECORDS_RO | writable_flag, 1,
                                                  &__Pyx_TypeInfo_double, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))

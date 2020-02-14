@@ -50,9 +50,6 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         cdef double displ_x, displ_y
         cdef double capture_dist
         cdef double excluded_rover_sqr_dist
-        cdef const double[:, :] rover_positions
-        cdef const double[:, :] poi_positions
-        cdef const double[:] poi_values
         cdef Py_ssize_t n_rovers
         cdef Py_ssize_t n_pois
         cdef Py_ssize_t n_req
@@ -63,24 +60,11 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         n_req = self.n_req()
         capture_dist = self.capture_dist()
         
-        try:
-            poi_positions = state.poi_positions_via(self.r_poi_positions_store)
-        except:
-            self.r_poi_positions_store = state.poi_positions_copy()
-            poi_positions = self.r_poi_positions_store
         
-        try:
-            poi_values = state.poi_values_via(self.r_poi_values_store)
-        except:
-            self.r_poi_values_store = state.poi_values_copy()
-            poi_values = self.r_poi_values_store
-            
-        try:
-            rover_positions = (
-                state.rover_positions_via(self.r_rover_positions_store))
-        except:
-            self.r_rover_positions_store = state.rover_positions_copy()
-            rover_positions = self.r_rover_positions_store
+        self.r_poi_positions = state.poi_positions(store = self.r_poi_positions)
+        self.r_poi_values = state.poi_values(store = self.r_poi_values)
+        self.r_rover_positions = (
+            state.rover_positions(store = self.r_rover_positions))
         
         
         self.r_sqr_rover_dists_to_poi.resize(n_rovers)
@@ -93,11 +77,11 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         # Get the rover square distances to POIs.
         for rover_id in range(n_rovers):
             displ_x = (
-                rover_positions[rover_id, 0]
-                - poi_positions[poi_id, 0])
+                self.r_rover_positions[rover_id, 0]
+                - self.r_poi_positions[poi_id, 0])
             displ_y = (
-                rover_positions[rover_id, 1]
-                - poi_positions[poi_id, 1])
+                self.r_rover_positions[rover_id, 1]
+                - self.r_poi_positions[poi_id, 1])
             self.r_sqr_rover_dists_to_poi[rover_id] = (
                 displ_x*displ_x + displ_y*displ_y)
             
@@ -122,11 +106,11 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         # Check (n_req + 1)th closest rover instead if excluded rover would 
         # otherwise also be capturing if not exluded.
         displ_x = (
-            rover_positions[excluded_rover_id, 0]
-            - poi_positions[poi_id, 0])
+            self.r_rover_positions[excluded_rover_id, 0]
+            - self.r_poi_positions[poi_id, 0])
         displ_y = (
-            rover_positions[excluded_rover_id, 1]
-            - poi_positions[poi_id, 1])
+            self.r_rover_positions[excluded_rover_id, 1]
+            - self.r_poi_positions[poi_id, 1])
         excluded_rover_sqr_dist = displ_x*displ_x + displ_y*displ_y
         if (
                 excluded_rover_sqr_dist 
@@ -140,7 +124,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                 return 0.
                 
         # Close enough! Return evaluation.
-        return poi_values[poi_id]    
+        return self.r_poi_values[poi_id]    
 
     cpdef double cfact_eval(
             self, 
@@ -206,31 +190,13 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         
         return cfact_eval      
         
-    cpdef double[:] rover_evals_copy(
+
+    cpdef double[:] rover_evals(
             self,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint episode_is_done
-            ) except *:   
-        cdef double[:] rover_evals  
-        cdef Py_ssize_t n_rovers  
-        
-        n_rovers = rover_actions_history.shape[1]
-        rover_evals = np.zeros(n_rovers)
-        
-        return (
-            self.rover_evals_via(
-                rover_evals, 
-                state_history, 
-                rover_actions_history, 
-                episode_is_done))
-       
-    cpdef double[:] rover_evals_via(
-            self,
-            double[:] store,
-            object[:] state_history,
-            const double[:, :, :] rover_actions_history, 
-            bint episode_is_done
+            bint episode_is_done,
+            double[:] store = None
             ) except *:
                 
         cdef State state
@@ -240,7 +206,11 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         
         state = <State?>state_history[0]
         n_rovers = state.n_rovers()
-        rover_evals = store[:n_rovers]
+        
+        try:
+            rover_evals = store[:n_rovers]
+        except:
+            rover_evals = np.zeros(n_rovers)
         
         # Get global evaluation first.
         rover_evals[...] =  (
@@ -259,30 +229,25 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                     rover_id))
                     
         return rover_evals
-        
-         
-    cpdef object copy(self):
-        cdef DifferenceEvaluator new_evaluator
-        
-        new_evaluator = DifferenceEvaluator()
-        
-        return self.copy_via(new_evaluator)
-    
-    cpdef object copy_via(self, object store):
+
+    cpdef object copy(self, object store = None):
         cdef DifferenceEvaluator new_evaluator
         cdef object store_type
         cdef object self_type
-    
-        if type(store) is not type(self):
-            store_type = type(store)
-            self_type = type(self)
-            raise TypeError(
-                "The type of the storage parameter "
-                "(type(store) = {store_type}) must be exactly {self_type}."
-                .format(**locals()))
         
-        new_evaluator = <DifferenceEvaluator?> store
-        
+        try:
+            if type(store) is not type(self):
+                store_type = type(store)
+                self_type = type(self)
+                raise TypeError(
+                    "The type of the storage parameter "
+                    "(type(store) = {store_type}) must be exactly {self_type}."
+                    .format(**locals()))
+            
+            new_evaluator = <DifferenceEvaluator?> store
+        except:
+            new_evaluator = DifferenceEvaluator()
+            
         new_evaluator.m_capture_dist = self.m_capture_dist
         new_evaluator.m_n_req = self.m_n_req
         

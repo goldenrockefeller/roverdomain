@@ -9,10 +9,10 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     cdef public Py_ssize_t m_n_rovers
     cdef public double m_min_dist
     
-    cdef double[:, :] r_rover_positions_store
-    cdef double[:, :] r_rover_orientations_store
-    cdef double[:, :] r_poi_positions_store
-    cdef double[:] r_poi_values_store
+    cdef double[:, :] r_rover_positions
+    cdef double[:, :] r_rover_orientations
+    cdef double[:, :] r_poi_positions
+    cdef double[:] r_poi_values
     
     cpdef Py_ssize_t n_observation_dims(self) except *
 

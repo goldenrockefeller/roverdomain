@@ -78,18 +78,17 @@ cdef class State:
             self.m_n_pois = n_pois
             self.m_poi_positions = np.zeros((n_pois, 2))
             self.m_poi_values = np.zeros(n_pois)
-
-   
-    cpdef double[:, :] rover_positions_copy(self) except *:
+        
+    cpdef double[:, :] rover_positions(
+            self, 
+            double[:, :] store = None
+            ) except *: 
         cdef double[:, :] rover_positions
         
-        rover_positions = np.zeros((self.n_rovers(), 2))
-        return self.rover_positions_via(rover_positions)
-        
-    cpdef double[:, :] rover_positions_via(self, double[:, :] store) except *: 
-        cdef double[:, :] rover_positions
-        
-        rover_positions = store[:self.n_rovers(), :2]
+        try:
+            rover_positions = store[:self.n_rovers(), :2]
+        except:
+            rover_positions = np.zeros((self.n_rovers(), 2))
         rover_positions[...] = self.m_rover_positions
         return rover_positions
         
@@ -99,20 +98,16 @@ cdef class State:
             ) except * :
         self.m_rover_positions[...] = rover_positions    
         
-        
-    cpdef double[:, :] rover_orientations_copy(self) except *:
-        cdef double[:, :] rover_orientations
-        
-        rover_orientations = np.zeros((self.n_rovers(), 2))
-        return self.rover_orientations_via(rover_orientations)
-        
-    cpdef double[:, :] rover_orientations_via(
+    cpdef double[:, :] rover_orientations(
             self, 
-            double[:, :] store
+            double[:, :] store = None
             ) except *: 
         cdef double[:, :] rover_orientations
         
-        rover_orientations = store[:self.n_rovers(), :2]
+        try:
+            rover_orientations = store[:self.n_rovers(), :2]
+        except:
+            rover_orientations = np.zeros((self.n_rovers(), 2))
         rover_orientations[...] = self.m_rover_orientations
         return rover_orientations
         
@@ -138,35 +133,30 @@ cdef class State:
                 self.m_rover_orientations[rover_id, 1] = 0.
         self.m_rover_orientations[...] = rover_orientations    
         
-     
-    cpdef double[:] poi_values_copy(self) except *:
+    
+    cpdef double[:] poi_values(self, double[:] store = None) except *:
         cdef double[:] poi_values 
         
-        poi_values = np.zeros(self.n_pois())
-        return self.poi_values_via(poi_values)
-        
-        
-    cpdef double[:] poi_values_via(self, double[:] store) except *:
-        cdef double[:] poi_values 
-        
-        poi_values = store[:self.n_pois()]
+        try:
+            poi_values = store[:self.n_pois()]
+        except:
+            poi_values = np.zeros(self.n_pois())
         poi_values[...] = self.m_poi_values
         return poi_values
         
     cpdef void set_poi_values(self, const double[:] poi_values) except *:
         self.m_poi_values[...] = poi_values
-    
-    
-    cpdef double[:, :] poi_positions_copy(self) except *:
+        
+    cpdef double[:, :] poi_positions(
+            self, 
+            double[:, :] store = None
+            ) except *: 
         cdef double[:, :] poi_positions
         
-        poi_positions = np.zeros((self.n_pois(), 2))
-        return self.poi_positions_via(poi_positions)
-        
-    cpdef double[:, :] poi_positions_via(self, double[:, :] store) except *: 
-        cdef double[:, :] poi_positions
-        
-        poi_positions = store[:self.n_pois(), :2]
+        try:    
+            poi_positions = store[:self.n_pois(), :2]
+        except:
+            poi_positions = np.zeros((self.n_pois(), 2))
         poi_positions[...] = self.m_poi_positions
         return poi_positions
         
@@ -176,45 +166,42 @@ cdef class State:
             ) except * :
         self.m_poi_positions[...] = poi_positions    
 
-    cpdef object copy_via(self, object store):
+    cpdef object copy(self, object store = None):
         cdef State new_state
         cdef object store_type
         cdef object self_type
         
-        if type(store) is not type(self):
-            store_type = type(store)
-            self_type = type(self)
-            raise TypeError(
-                "The type of the storage parameter "
-                "(type(store) = {store_type}) must be exactly {self_type}."
-                .format(**locals()))
+        try:
+            if type(store) is not type(self):
+                store_type = type(store)
+                self_type = type(self)
+                raise TypeError(
+                    "The type of the storage parameter "
+                    "(type(store) = {store_type}) must be exactly {self_type}."
+                    .format(**locals()))
         
-        new_state = <State?> store
-        
+            new_state = <State?> store
+            new_state.m_rover_positions[...] = self.m_rover_positions
+            new_state.m_rover_orientations[...] = self.m_rover_orientations
+            new_state.m_poi_positions[...] = self.m_poi_positions
+            new_state.m_poi_values[...] = self.m_poi_values
+        except:
+            new_state = State()
+            new_state.m_rover_positions = np.zeros(( self.m_n_rovers, 2))
+            new_state.m_rover_orientations = np.zeros(( self.m_n_rovers, 2)) 
+            new_state.m_poi_positions = np.zeros((self.m_n_pois, 2))
+            new_state.m_poi_values = np.zeros(self.m_n_pois)
+            new_state.m_rover_positions[...] = self.m_rover_positions
+            new_state.m_rover_orientations[...] = self.m_rover_orientations
+            new_state.m_poi_positions[...] = self.m_poi_positions
+            new_state.m_poi_values[...] = self.m_poi_values
+            
         new_state.m_n_rovers = self.m_n_rovers
         new_state.m_n_pois = self.m_n_pois
-        new_state.m_rover_positions[...] = self.m_rover_positions
-        new_state.m_rover_orientations[...] = self.m_rover_orientations
-        new_state.m_poi_positions[...] = self.m_poi_positions
-        new_state.m_poi_values[...] = self.m_poi_values
         
         return new_state
         
-    
-    cpdef object copy(self):
-        cdef State new_state
-        cdef Py_ssize_t n_rovers
-        cdef Py_ssize_t n_pois
-        
-        n_rovers = self.n_rovers()
-        n_pois = self.n_pois()
-        
-        new_state = State()
-        new_state.m_rover_positions = np.zeros((n_rovers, 2))
-        new_state.m_rover_orientations = np.zeros((n_rovers, 2)) 
-        new_state.m_poi_positions = np.zeros((n_pois, 2))
-        new_state.m_poi_values = np.zeros(n_pois)
-        return self.copy_via(new_state)
+
         
         
         

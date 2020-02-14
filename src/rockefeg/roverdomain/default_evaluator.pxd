@@ -13,9 +13,9 @@ cdef class DefaultEvaluator(BaseEvaluator):
     
     cdef vector[double] r_sqr_rover_dists_to_poi
     cdef double[:] r_sub_evals_given_poi_store
-    cdef double[:, :] r_rover_positions_store
-    cdef double[:, :] r_poi_positions_store
-    cdef double[:] r_poi_values_store
+    cdef double[:, :] r_rover_positions
+    cdef double[:, :] r_poi_positions
+    cdef double[:] r_poi_values
     
     
     cpdef Py_ssize_t n_req(self) except *

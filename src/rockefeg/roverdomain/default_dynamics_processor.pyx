@@ -5,6 +5,11 @@ import inspect
 
 @cython.warn.undeclared(True)
 cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
+    @cython.warn.undeclared(False)
+    def __init__(self):
+        self.r_rover_positions = None
+        self.r_rover_orientations = None
+    
     @cython.warn.undeclared(False)     
     def __setstate__(self, state):
         
@@ -36,44 +41,25 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
     
     cpdef Py_ssize_t n_rover_action_dims(self) except *:
         return 2
-    
-    cpdef State next_state_copy(
-            self, 
-            State state, 
-            const double[:, :] rover_actions):
-        cdef State next_state
-        next_state = <State?> state.copy()
-        return self.next_state_via(next_state, state, rover_actions)
         
-    cpdef State next_state_via(
+    cpdef State next_state(
             self, 
-            State store, 
             State state, 
-            const double[:, :] rover_actions):
+            const double[:, :] rover_actions,
+            State store = None):
         cdef Py_ssize_t rover_id, n_rovers
+        cdef next_state
         cdef double dx, dy, norm, clipped_action_x, clipped_action_y
-        cdef double[:, :] rover_orientations
-        cdef double[:, :] rover_positions
         
-        store = <State?> state.copy_via(store)
+        next_state = <State?> state.copy(store = store)
         
         n_rovers = store.n_rovers()            
         
-        try:
-            rover_orientations = (
-                store.rover_orientations_via(self.r_rover_orientations_store))
-        except:
-            self.r_rover_orientations_store = store.rover_orientations_copy()
-            rover_orientations = self.r_rover_orientations_store
-        
-        try:
-            rover_positions = (
-                store.rover_positions_via(self.r_rover_positions))
-        except:
-            self.r_rover_positions_store = store.rover_positions_copy()
-            rover_positions = self.r_rover_positions_store
-            
-        
+        self.r_rover_orientations = (
+            next_state.rover_orientations(store = self.r_rover_orientations))
+                
+        self.r_rover_positions = (
+            next_state.rover_positions(store = self.r_rover_positions))
         
         # Translate and Reorient all rovers based on their actions
         for rover_id in range(n_rovers):
@@ -83,18 +69,18 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
             clipped_action_y = min(max(-1, rover_actions[rover_id, 1]), 1)
     
             # turn action into global frame motion
-            dx = (rover_orientations[rover_id, 0]
+            dx = (self.r_rover_orientations[rover_id, 0]
                 * clipped_action_x
-                - rover_orientations[rover_id, 1] 
+                - self.r_rover_orientations[rover_id, 1] 
                 * clipped_action_y)
-            dy = (rover_orientations[rover_id, 0] 
+            dy = (self.r_rover_orientations[rover_id, 0] 
                 * clipped_action_y
-                + rover_orientations[rover_id, 1] 
+                + self.r_rover_orientations[rover_id, 1] 
                 * clipped_action_x)
             
             # globally move and reorient agent
-            rover_positions[rover_id, 0] += dx
-            rover_positions[rover_id, 1] += dy
+            self.r_rover_positions[rover_id, 0] += dx
+            self.r_rover_positions[rover_id, 1] += dy
             
             
             # Reorient agent in the direction of movement in
@@ -102,31 +88,30 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
             # (by skipping the reorientation step entirely).
             if not (dx == 0. and dy == 0.): 
                 norm = cmath.sqrt(dx*dx +  dy*dy)
-                rover_orientations[rover_id, 0] = dx / norm
-                rover_orientations[rover_id, 1] = dy / norm
+                self.r_rover_orientations[rover_id, 0] = dx / norm
+                self.r_rover_orientations[rover_id, 1] = dy / norm
         
-        store.set_rover_positions(rover_positions)
-        store.set_rover_orientations(rover_orientations)
-        return store
-        
-    cpdef object copy(self):
-        return DefaultDynamicsProcessor()
+        next_state.set_rover_positions(self.r_rover_positions)
+        next_state.set_rover_orientations(self.rrover_orientations)
+        return next_state
     
-    cpdef object copy_via(self, object store):
+    cpdef object copy(self, object store = None):
         cdef DefaultDynamicsProcessor new_processor
         cdef object store_type
         cdef object self_type
         
-    
-        if type(store) is not type(self):
-            store_type = type(store)
-            self_type = type(self)
-            raise TypeError(
-                "The type of the storage parameter "
-                "(type(store) = {store_type}) must be exactly {self_type}."
-                .format(**locals()))
-        
-        new_processor = <DefaultDynamicsProcessor?> store
+        try:
+            if type(store) is not type(self):
+                store_type = type(store)
+                self_type = type(self)
+                raise TypeError(
+                    "The type of the storage parameter "
+                    "(type(store) = {store_type}) must be exactly {self_type}."
+                    .format(**locals()))
+            
+            new_processor = <DefaultDynamicsProcessor?> store
+        except:
+            new_processor = DefaultDynamicsProcessor()
         
         return new_processor
     

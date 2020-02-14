@@ -9,26 +9,15 @@ cdef class BaseEvaluator:
             bint episode_is_done
             ) except *:
         raise NotImplementedError()
-            
-    cpdef double[:] rover_evals_copy(
+        
+    cpdef double[:] rover_evals(
             self,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint episode_is_done
+            bint episode_is_done,
+            double[:] store = None
             ) except *:
         raise NotImplementedError()
-        
-    cpdef double[:] rover_evals_via(
-            self,
-            double[:] store,
-            object[:] state_history,
-            const double[:, :, :] rover_actions_history, 
-            bint episode_is_done
-            ) except *:
-        raise NotImplementedError()
-        
-    cpdef object copy(self):
-        raise NotImplementedError()
-        
-    cpdef object copy_via(self, object store):
+    
+    cpdef object copy(self, object store = None):
         raise NotImplementedError()

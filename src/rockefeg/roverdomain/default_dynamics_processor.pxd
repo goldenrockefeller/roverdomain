@@ -5,7 +5,7 @@ from .base_dynamics_processor cimport BaseDynamicsProcessor
 
 
 cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
-    cdef double[:, :] r_rover_positions_store
-    cdef double[:, :] r_rover_orientations_store
+    cdef double[:, :] r_rover_positions
+    cdef double[:, :] r_rover_orientations
 
     

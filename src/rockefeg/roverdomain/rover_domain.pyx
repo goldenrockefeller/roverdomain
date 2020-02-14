@@ -73,50 +73,61 @@ cdef class RoverDomain:
 
         return self.__class__, (),  state
         
-    @cython.warn.undeclared(False)        
-    cpdef object copy(self):
-        cdef RoverDomain new_domain
-        
-        new_domain = RoverDomain()
-        new_domain.m_current_state = <State?> self.m_current_state.copy()
-        
-        
-        new_domain.m_state_history_store = (
-            np.array([
-                <State?> self.m_current_state.copy() 
-                for step_id 
-                in range(self.m_n_steps)]))
-                
-        
-        self.m_rover_actions_history_store = (
-            np.zeros(
-                (
-                self.m_n_steps, 
-                self.n_rovers(), 
-                self.m_n_rover_action_dims)))
-        
-        return self.copy_via(new_domain)
-        
-    cpdef object copy_via(self, object store):
+
+    cpdef object copy(self, object store = None):
         cdef Py_ssize_t step_id
         cdef State state_in_history_store
         cdef RoverDomain new_domain
         cdef object store_type
         cdef object self_type
         
-        if type(store) is not type(self):
-            store_type = type(store)
-            self_type = type(self)
-            raise TypeError(
-                "The type of the storage parameter "
-                "(type(store) = {store_type}) must be exactly {self_type}."
-                .format(**locals()))
+        try:
+            if type(store) is not type(self):
+                store_type = type(store)
+                self_type = type(self)
+                raise TypeError(
+                    "The type of the storage parameter "
+                    "(type(store) = {store_type}) must be exactly {self_type}."
+                    .format(**locals()))
                 
-        new_domain = <RoverDomain?> store
-                
+        
+            new_domain = <RoverDomain?> store
+            for step_id in range(self.m_n_steps):
+                # Assign (and implicit convert) indexed object to a cdef State 
+                # before calling its functions to allow optimization.
+                state_in_history_store = (
+                    <State?> self.m_state_history_store[step_id])
+                new_domain.m_state_history_store[step_id] = (
+                    <State?> state_in_history_store.copy(
+                        store = new_domain.m_state_history_store[step_id]))
+            new_domain.m_rover_actions_history_store[...] = (
+                self.m_rover_actions_history_store)
+        except:
+            new_domain = RoverDomain()
+            
+            new_domain.m_state_history_store = np.array([None] * self.m_n_steps)
+            new_domain.m_rover_actions_history_store = (
+                np.zeros(
+                    (
+                    self.m_n_steps, 
+                    self.n_rovers(), 
+                    self.m_n_rover_action_dims)))
+            
+            for step_id in range(self.m_n_steps):
+                # Assign (and implicit convert) indexed object to a cdef State 
+                # before calling its functions to allow optimization.
+                state_in_history_store = (
+                    <State?> self.m_state_history_store[step_id])
+                new_domain.m_state_history_store[step_id] = (
+                    <State?> state_in_history_store.copy(
+                        store = new_domain.m_state_history_store[step_id]))
+            new_domain.m_rover_actions_history_store[...] = (
+                self.m_rover_actions_history_store)
+                    
         new_domain.m_setting_state_ref = self.m_setting_state_ref
         new_domain.m_current_state = (
-            <State?> self.m_current_state.copy_via(new_domain.m_current_state))
+            <State?> self.m_current_state.copy(
+                store = new_domain.m_current_state))
         new_domain.m_dynamics_processor_ref = self.m_dynamics_processor_ref
         new_domain.m_evaluator_ref = self.m_evaluator_ref
         new_domain.m_rover_observations_calculator_ref = (
@@ -124,30 +135,14 @@ cdef class RoverDomain:
         new_domain.m_n_steps = self.m_n_steps 
         new_domain.m_setting_n_steps = self.m_setting_n_steps
         new_domain.m_n_steps_elapsed = self.m_n_steps_elapsed 
+        new_domain.m_n_rover_action_dims =  self.m_n_rover_action_dims            
         
-        new_domain.m_n_rover_action_dims =  self.m_n_rover_action_dims
-        
-
-        for step_id in range(self.m_n_steps):
-            # Assign (and implicit convert) indexed object to a cdef State 
-            # before calling its functions to allow optimization.
-            state_in_history_store = (
-                <State?> self.m_state_history_store[step_id])
-            new_domain.m_state_history_store[step_id] = (
-                <State?> state_in_history_store.copy_via(
-                    new_domain.m_state_history_store[step_id]))
-         
-        new_domain.m_rover_actions_history_store[...] = (
-            self.m_rover_actions_history_store)
-        
-        return store
+        return new_domain
     
         
-    cpdef State current_state_copy(self):
-        return <State?> self.m_current_state.copy()
-        
-    cpdef State current_state_via(self, State store):
-        return <State?> self.m_current_state.copy_via(store)
+
+    cpdef State current_state(self, State store = None):
+        return <State?> self.m_current_state.copy(store = store)
         
     cpdef State setting_state_ref(self):
         return self.m_setting_state_ref
@@ -197,20 +192,7 @@ cdef class RoverDomain:
     cpdef Py_ssize_t n_rover_action_dims(self) except *:
         return self.m_n_rover_action_dims
         
-    @cython.warn.undeclared(False)
-    cpdef object[:] state_history_copy(self) except *:
-        cdef object[:] state_history
-        
-        state_history = (
-            np.array([
-                <State?> self.m_state_history_store[step_id].copy() 
-                for step_id 
-                in range(self.n_steps_elapsed())]))
-        
-        return state_history
-        
-        
-    cpdef object[:] state_history_via(self, object[:] store) except *:
+    cpdef object[:] state_history(self, object[:] store = None) except *:
         cdef Py_ssize_t step_id
         cdef Py_ssize_t n_steps_elapsed
         cdef object[:] state_history
@@ -218,15 +200,21 @@ cdef class RoverDomain:
         
         n_steps_elapsed = self.n_steps_elapsed()
         
-        state_history = store[:n_steps_elapsed]
-        for step_id in range(n_steps_elapsed):
-            # Assign (and implicit convert) indexed object to a cdef State 
-            # before calling its functions to allow optimization.
-            state_in_history = <State?> self.m_state_history_store[step_id]
-            state_history[step_id] = (
-                <State?> self.m_state_in_history_store.copy_via(
-                    state_history[step_id]))
-        
+        try:
+            state_history = store[:n_steps_elapsed]
+            for step_id in range(n_steps_elapsed):
+                # Assign (and implicit convert) indexed object to a cdef State 
+                # before calling its functions to allow optimization.
+                state_in_history = <State?> self.m_state_history_store[step_id]
+                state_history[step_id] = (
+                    <State?> self.m_state_in_history_store.copy(
+                        store = state_history[step_id]))
+        except:
+            state_history = np.array([None] * n_steps_elapsed)
+            for step_id in range(n_steps_elapsed):
+                state_history[step_id] = (
+                    <State?> self.m_state_history_store[step_id].copy())
+                        
         return state_history
     
     cpdef Py_ssize_t n_steps(self) except *:
@@ -249,47 +237,38 @@ cdef class RoverDomain:
     cpdef Py_ssize_t n_pois(self) except *:
         return self.m_current_state.n_pois()
         
-    cpdef double[:, :] rover_positions_copy(self) except *:
-        return self.m_current_state.rover_positions_copy()
-        
-    cpdef double[:, :] rover_positions_via(self, double[:, :] store) except *:
-        return self.m_current_state.rover_positions_via(store)
+    cpdef double[:, :] rover_positions(
+            self, 
+            double[:, :] store = None
+            ) except *:
+        return self.m_current_state.rover_positions(store = store)
         
     cpdef void set_rover_positions(
             self, 
             const double[:, :] rover_positions
             ) except *:
         self.m_current_state.set_rover_positions(rover_positions)
-        
-    cpdef double[:, :] rover_orientations_copy(self) except *:
-        return self.m_current_state.rover_orientations_copy()
-        
-    cpdef double[:, :] rover_orientations_via(
+
+    cpdef double[:, :] rover_orientations(
             self, 
-            double[:, :] store
+            double[:, :] store = None
             ) except *:
-        return self.m_current_state.rover_orientations_via(store)
+        return self.m_current_state.rover_orientations(store = store)
         
     cpdef void set_rover_orientations(
             self, 
             const double[:, :] rover_orientations
             ) except *:
         self.m_current_state.set_rover_orientations(rover_orientations)
-        
-    cpdef double[:] poi_values_copy(self) except *:
-        return self.m_current_state.poi_values_copy()
-        
-    cpdef double[:] poi_values_via(self, double[:] store) except *:
-        return self.m_current_state.poi_values_via(store)
+
+    cpdef double[:] poi_values(self, double[:] store = None) except *:
+        return self.m_current_state.poi_values(store = store)
         
     cpdef void set_poi_values(self, const double[:] poi_values) except *:
         self.m_current_state.set_poi_values(poi_values)
         
-    cpdef double[:, :] poi_positions_copy(self) except *:
-        return self.m_current_state.poi_positions_copy()
-        
-    cpdef double[:, :] poi_positions_via(self, double[:, :] store) except *:
-        return self.m_current_state.poi_positions_via(store)
+    cpdef double[:, :] poi_positions(self, double[:, :] store = None) except *:
+        return self.m_current_state.poi_positions(store = store)
         
     cpdef void set_poi_positions(
             self, 
@@ -299,59 +278,46 @@ cdef class RoverDomain:
         
     cpdef bint episode_is_done(self) except *:
         return self.n_steps_elapsed() >= self.n_steps()
-        
-    cpdef double[:, :, :] rover_actions_history_copy(self) except *:
-        cdef double[:, :, :] rover_actions_history
-        
-        rover_actions_history = (
-            np.zeros(
-                (
-                self.n_steps_elapsed(), 
-                self.n_rovers(), 
-                self.n_rover_action_dims()
-                )))
-                
-        return self.rover_actions_history_via(rover_actions_history)
-        
-        
-    cpdef double[:, :, :] rover_actions_history_via(
+
+    cpdef double[:, :, :] rover_actions_history(
             self, 
-            double[:, :, :] store
+            double[:, :, :] store = None
             ) except *:
         cdef double[:, :, :] rover_actions_history
         cdef Py_ssize_t n_rovers
         cdef Py_ssize_t n_steps_elapsed
-        cdef Py_ssize_t n_rover_actions_dims
+        cdef Py_ssize_t n_rover_action_dims
         
         n_rovers = self.n_rovers()
         n_steps_elapsed = self.n_steps_elapsed()
-        n_rover_actions_dims = self.n_rover_action_dims()
+        n_rover_action_dims = self.n_rover_action_dims()
         
-        rover_actions_history = (
-            store[:n_steps_elapsed,:n_rovers, :n_rover_actions_dims])
+        try:
+            rover_actions_history = (
+                store[:n_steps_elapsed,:n_rovers, :n_rover_action_dims])
+        except:
+            rover_actions_history = (
+                np.zeros(
+                    (n_steps_elapsed, n_rovers, n_rover_action_dims)))
                 
         rover_actions_history[...] = (
             self.m_rover_actions_history_store[
                 :n_steps_elapsed,
                 :n_rovers,
-                :n_rover_actions_dims])
+                :n_rover_action_dims])
                 
         return rover_actions_history
         
      
-    cpdef double[:, :] rover_observations_copy(self) except *:
-        return (
-            self.rover_observations_calculator_ref().observations_copy(
-                self.m_current_state))
-        
-    cpdef double[:, :] rover_observations_via(
+
+    cpdef double[:, :] rover_observations(
             self,
-            double[:, :] store
+            double[:, :] store = None
             ) except *:
         return (
-            self.rover_observations_calculator_ref().observations_via(
-                store, 
-                self.m_current_state))
+            self.rover_observations_calculator_ref().observations(
+                self.m_current_state,
+                store = store))
                 
                 
     cpdef double eval(self) except *:
@@ -369,39 +335,25 @@ cdef class RoverDomain:
                 self.episode_is_done()))
         
     
-    cpdef double[:] rover_evals_copy(self) except *:
+    cpdef double[:] rover_evals(self, double[:] store = None) except *:
         cdef object[:] state_history
         cdef double[:, :, :] rover_actions_history
+        
         
         state_history = self.m_state_history_store[:self.n_steps_elapsed()]
         rover_actions_history = (
             self.m_rover_actions_history_store[:self.n_steps_elapsed(), :, :])
         
         return (
-            self.evaluator_ref().rover_evals_copy(
+            self.evaluator_ref().rover_evals(
                 state_history, 
                 rover_actions_history,
-                self.episode_is_done()))
-        
-    cpdef double[:] rover_evals_via(self, double[:] rover_evals) except *:
-        cdef object[:] state_history
-        cdef double[:, :, :] rover_actions_history
-        
-        state_history = self.m_state_history_store[:self.n_steps_elapsed()]
-        rover_actions_history = (
-            self.m_rover_actions_history_store[:self.n_steps_elapsed(), :, :])
-        
-        return (
-            self.evaluator_ref().rover_evals_via(
-                rover_evals,
-                state_history, 
-                rover_actions_history,
-                self.episode_is_done()))
+                self.episode_is_done(),
+                store = store))
     
     
     cpdef void reset(self) except *:
         cdef State setting_state
-        cdef list state_history_store_list
         cdef Py_ssize_t step_id
         cdef Py_ssize_t old_n_rover_action_dims, new_n_rover_action_dims
         cdef Py_ssize_t old_n_steps, new_n_steps
@@ -425,22 +377,19 @@ cdef class RoverDomain:
                 and old_n_steps == new_n_steps
                 and old_n_rovers == new_n_rovers
         ):
-            try:
-                # Reset, but avoid allocation.
-                self.m_current_state = (
-                    <State?> setting_state.copy_via(self.m_current_state))
-            except:
-                self.m_current_state = <State?> setting_state.copy()
+            # Try to reset the domain without allocation.
+            self.m_current_state = (
+                    <State?> setting_state.copy(store = self.m_current_state))
+
         else:
             self.m_current_state = <State?> setting_state.copy()
             self.m_n_steps = new_n_steps
             self.m_n_rover_action_dims = new_n_rover_action_dims
             
-            state_history_store_list = [None] * new_n_steps
+            self.m_state_history_store = np.array([None] * new_n_steps)
             for step_id in range(new_n_steps):
-                state_history_store_list[step_id] = (
+                self.m_state_history_store[step_id] = (
                     <State?> self.m_current_state.copy())
-            self.m_state_history_store = np.array(state_history_store_list)
             
             self.m_rover_actions_history_store = (
                 np.zeros(
@@ -477,27 +426,18 @@ cdef class RoverDomain:
                 "Cannot step. Try resetting the domain."
                 .format(**locals()))
         
-        try:
-            self.m_state_history_store[step_id] = (
-                <State?> self.m_current_state.copy_via(
-                    self.m_state_history_store[step_id]))
-        except:
-            self.m_state_history_store[step_id] = (
-                <State?> self.m_current_state.copy())
+        self.m_state_history_store[step_id] = (
+            <State?> self.m_current_state.copy(
+                store = self.m_state_history_store[step_id]))
+
                 
         self.m_rover_actions_history_store[step_id, :, :] = rover_actions
-         
-        try:        
-            self.m_current_state = (
-                dynamics_processor.next_state_via(
-                    self.m_current_state, 
-                    self.m_current_state,
-                    rover_actions))
-        except:
-            self.m_current_state = (
-                dynamics_processor.next_state_copy(
-                    self.m_current_state,
-                    rover_actions))
+
+        self.m_current_state = (
+            dynamics_processor.next_state(
+                self.m_current_state,
+                rover_actions,
+                store = self.m_current_state))
         
         self.m_n_steps_elapsed += 1
         

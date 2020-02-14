@@ -24,12 +24,9 @@ cdef class RoverDomain:
     cdef public double[:, :, ::1] m_rover_actions_history_store
     # double[n_steps, n_rovers, n_rover_action_dims]
         
-    
-    cpdef object copy(self)
-    cpdef object copy_via(self, object store)
+    cpdef object copy(self, object store = ?)
         
-    cpdef State current_state_copy(self)
-    cpdef State current_state_via(self, State store)
+    cpdef State current_state(self, State store = ?)
     
     cpdef State setting_state_ref(self)
     cpdef void set_setting_state_ref(self, State state) except *
@@ -55,8 +52,7 @@ cdef class RoverDomain:
     
     cpdef Py_ssize_t n_rover_action_dims(self) except *
     
-    cpdef object[:] state_history_copy(self) except *
-    cpdef object[:] state_history_via(self, object[:] store) except *
+    cpdef object[:] state_history(self, object[:] store = ?) except *
     # State[n_steps_elapsed]
         
     cpdef Py_ssize_t n_steps(self) except *
@@ -68,27 +64,26 @@ cdef class RoverDomain:
     
     cpdef Py_ssize_t n_pois(self) except *
 
-    cpdef double[:, :] rover_positions_copy(self) except *
-    cpdef double[:, :] rover_positions_via(self, double[:, :] store) except *
+    cpdef double[:, :] rover_positions(self, double[:, :] store = ?) except *
     cpdef void set_rover_positions(
         self, 
         const double[:, :] rover_positions
         ) except *
         
         
-    cpdef double[:, :] rover_orientations_copy(self) except *
-    cpdef double[:, :] rover_orientations_via(self, double[:, :] store) except *
+    cpdef double[:, :] rover_orientations(
+        self, 
+        double[:, :] store = ?
+        ) except *
     cpdef void set_rover_orientations(
         self, 
         const double[:, :] rover_orientations
         ) except *
         
-    cpdef double[:] poi_values_copy(self) except *
-    cpdef double[:] poi_values_via(self, double[:] store) except *
+    cpdef double[:] poi_values(self, double[:] store = ?) except *
     cpdef void set_poi_values(self, const double[:] poi_values) except *
     
-    cpdef double[:, :] poi_positions_copy(self) except *
-    cpdef double[:, :] poi_positions_via(self, double[:, :] store) except *
+    cpdef double[:, :] poi_positions(self, double[:, :] store = ?) except *
     cpdef void set_poi_positions(
         self, 
         const double[:, :] poi_positions
@@ -96,21 +91,18 @@ cdef class RoverDomain:
     
     cpdef bint episode_is_done(self) except *
         
-    cpdef double[:, :, :] rover_actions_history_copy(self) except *
-    cpdef double[:, :, :] rover_actions_history_via(
+    cpdef double[:, :, :] rover_actions_history(
         self, 
-        double[:, :, :] store
+        double[:, :, :] store = ?
         ) except *
     # double[n_steps_elapsed, n_rovers, n_rover_action_dims]
      
-    cpdef double[:, :] rover_observations_copy(self) except *
-    cpdef double[:, :] rover_observations_via(self, double[:, :] store) except *
+    cpdef double[:, :] rover_observations(self, double[:, :] store = ?) except *
     # double[n_rovers, n_rover_observation_dims]
     
     cpdef double eval(self) except *
     
-    cpdef double[:] rover_evals_copy(self) except *
-    cpdef double[:] rover_evals_via(self, double[:] rover_evals) except *
+    cpdef double[:] rover_evals(self, double[:] store = ?) except *
     # double[n_rovers]
     
     cpdef void reset(self) except *

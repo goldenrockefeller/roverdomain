@@ -15,6 +15,11 @@ cdef class DefaultEvaluator(BaseEvaluator):
         self.m_capture_dist = 1.
         self.m_n_req = 1
         
+
+        self.r_rover_positions = None
+        self.r_poi_positions = None
+        self.r_poi_values = None
+        
     @cython.warn.undeclared(False)     
     def __setstate__(self, state):
         
@@ -88,26 +93,11 @@ cdef class DefaultEvaluator(BaseEvaluator):
         n_req = self.n_req()
         capture_dist = self.capture_dist()
         
-        try:
-            poi_positions = state.poi_positions_via(self.r_poi_positions_store)
-        except:
-            self.r_poi_positions_store = state.poi_positions_copy()
-            poi_positions = self.r_poi_positions_store
-        
-        try:
-            poi_values = state.poi_values_via(self.r_poi_values_store)
-        except:
-            self.r_poi_values_store = state.poi_values_copy()
-            poi_values = self.r_poi_values_store
-            
-        try:
-            rover_positions = (
-                state.rover_positions_via(self.r_rover_positions_store))
-        except:
-            self.r_rover_positions_store = state.rover_positions_copy()
-            rover_positions = self.r_rover_positions_store
-        
-        
+        self.r_poi_positions = state.poi_positions(store = self.r_poi_positions)
+        self.r_poi_values = state.poi_values(store = self.r_poi_values)
+        self.r_rover_positions = (
+            state.rover_positions(store = self.r_rover_positions))
+
         self.r_sqr_rover_dists_to_poi.resize(n_rovers)
         
         # If there isn't enough rovers to satify the coupling constraint 
@@ -118,11 +108,11 @@ cdef class DefaultEvaluator(BaseEvaluator):
         # Get the rover square distances to POI.
         for rover_id in range(n_rovers):
             displ_x = (
-                rover_positions[rover_id, 0]
-                - poi_positions[poi_id, 0])
+                self.r_rover_positions[rover_id, 0]
+                - self.r_poi_positions[poi_id, 0])
             displ_y = (
-                rover_positions[rover_id, 1]
-                - poi_positions[poi_id, 1])
+                self.r_rover_positions[rover_id, 1]
+                - self.r_poi_positions[poi_id, 1])
             self.r_sqr_rover_dists_to_poi[rover_id] = (
                 displ_x*displ_x + displ_y*displ_y)
             
@@ -145,39 +135,23 @@ cdef class DefaultEvaluator(BaseEvaluator):
             return 0.
         
         # Close enough! Return evaluation.
-        return poi_values[poi_id]    
-    
-    cpdef double[:] rover_evals_copy(
+        return self.r_poi_values[poi_id]    
+
+    cpdef double[:] rover_evals(
             self,
             object[:] state_history,
             const double[:, :, :] rover_actions_history, 
-            bint episode_is_done
-            ) except *:   
-        cdef double[:] rover_evals  
-        cdef Py_ssize_t n_rovers  
-        
-        n_rovers = rover_actions_history.shape[1]
-        rover_evals = np.zeros(n_rovers)
-        
-        return (
-            self.rover_evals_via(
-                rover_evals, 
-                state_history, 
-                rover_actions_history, 
-                episode_is_done))
-        
-    cpdef double[:] rover_evals_via(
-            self,
-            double[:] store,
-            object[:] state_history,
-            const double[:, :, :] rover_actions_history, 
-            bint episode_is_done
+            bint episode_is_done,
+            double[:] store = None
             ) except *:
         cdef double[:] rover_evals  
         cdef Py_ssize_t n_rovers  
         
         n_rovers = rover_actions_history.shape[1]
-        rover_evals = store[:n_rovers]
+        try:
+            rover_evals = store[:n_rovers]
+        except:
+            rover_evals = np.zeros(n_rovers)
         
         rover_evals[...] = (
             self.eval(
@@ -243,28 +217,24 @@ cdef class DefaultEvaluator(BaseEvaluator):
             eval += sub_evals_given_poi[poi_id]
         
         return eval     
-         
-    cpdef object copy(self):
-        cdef DefaultEvaluator new_evaluator
         
-        new_evaluator = DefaultEvaluator()
-        
-        return self.copy_via(new_evaluator)
-    
-    cpdef object copy_via(self, object store):
+    cpdef object copy(self, object store = None):
         cdef DefaultEvaluator new_evaluator
         cdef object store_type
         cdef object self_type
-    
-        if type(store) is not type(self):
-            store_type = type(store)
-            self_type = type(self)
-            raise TypeError(
-                "The type of the storage parameter "
-                "(type(store) = {store_type}) must be exactly {self_type}."
-                .format(**locals()))
         
-        new_evaluator = <DefaultEvaluator?> store
+        try:
+            if type(store) is not type(self):
+                store_type = type(store)
+                self_type = type(self)
+                raise TypeError(
+                    "The type of the storage parameter "
+                    "(type(store) = {store_type}) must be exactly {self_type}."
+                    .format(**locals()))
+        
+            new_evaluator = <DefaultEvaluator?> store
+        except:
+            new_evaluator = DefaultEvaluator()
         
         new_evaluator.m_capture_dist = self.m_capture_dist
         new_evaluator.m_n_req = self.m_n_req
