@@ -21,8 +21,7 @@ if __name__ == "__main__":
                 force=False,
                 include_path = ["src/"],
                 compiler_directives={
-                    'language_level': 3,
-                    'nonecheck': True},)),
+                    'language_level': 3,},)),
         zip_safe=False,
         packages=find_namespace_packages("src"),
         package_dir={'': 'src'}, 
