@@ -6,8 +6,10 @@ cimport cython
 
 @cython.warn.undeclared(True)
 cdef class State:
-    @cython.warn.undeclared(False)
     def __init__(self):
+        cdef Py_ssize_t n_rovers
+        cdef Py_ssize_t n_pois
+        
         n_rovers = 1
         n_pois = 1
         

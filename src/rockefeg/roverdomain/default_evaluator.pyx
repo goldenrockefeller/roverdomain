@@ -8,7 +8,7 @@ from numpy.math cimport INFINITY
 cimport cython
 @cython.warn.undeclared(True)
 cdef class DefaultEvaluator(BaseEvaluator):
-    @cython.warn.undeclared(False)    
+        
     def __init__(self):
         self.r_sub_evals_given_poi_store = np.zeros((1))
         self.r_sqr_rover_dists_to_poi.resize(1)

@@ -5,7 +5,7 @@ cimport cython
 
 @cython.warn.undeclared(True)    
 cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
-    @cython.warn.undeclared(False)
+    
     def __init__(self):
         self.m_n_observation_sections = 1
         self.m_min_dist = 1.

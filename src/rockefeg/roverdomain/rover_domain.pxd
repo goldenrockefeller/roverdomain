@@ -27,6 +27,7 @@ cdef class RoverDomain:
     cpdef object copy(self, object store = ?)
         
     cpdef State current_state(self, State store = ?)
+    cpdef void set_current_state(self, State state) except *
     
     cpdef State setting_state_ref(self)
     cpdef void set_setting_state_ref(self, State state) except *
@@ -59,35 +60,6 @@ cdef class RoverDomain:
     
     cpdef Py_ssize_t setting_n_steps(self) except *
     cpdef void set_setting_n_steps(self, Py_ssize_t n_steps) except *
-
-    cpdef Py_ssize_t n_rovers(self) except *
-    
-    cpdef Py_ssize_t n_pois(self) except *
-
-    cpdef double[:, :] rover_positions(self, double[:, :] store = ?) except *
-    cpdef void set_rover_positions(
-        self, 
-        const double[:, :] rover_positions
-        ) except *
-        
-        
-    cpdef double[:, :] rover_orientations(
-        self, 
-        double[:, :] store = ?
-        ) except *
-    cpdef void set_rover_orientations(
-        self, 
-        const double[:, :] rover_orientations
-        ) except *
-        
-    cpdef double[:] poi_values(self, double[:] store = ?) except *
-    cpdef void set_poi_values(self, const double[:] poi_values) except *
-    
-    cpdef double[:, :] poi_positions(self, double[:, :] store = ?) except *
-    cpdef void set_poi_positions(
-        self, 
-        const double[:, :] poi_positions
-        ) except *
     
     cpdef bint episode_is_done(self) except *
         

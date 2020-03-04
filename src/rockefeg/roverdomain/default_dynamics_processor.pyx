@@ -5,7 +5,7 @@ import inspect
 
 @cython.warn.undeclared(True)
 cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
-    @cython.warn.undeclared(False)
+    
     def __init__(self):
         self.r_rover_positions = None
         self.r_rover_orientations = None

@@ -15,8 +15,9 @@ cimport cython
 
 @cython.warn.undeclared(True)
 cdef class RoverDomain:
-    @cython.warn.undeclared(False)
     def __init__(self):
+        cdef Py_ssize_t n_rover_action_dims, step_id
+        
         self.m_setting_state_ref = State()
         self.m_current_state = <State?> self.m_setting_state_ref.copy()
         self.m_dynamics_processor_ref = DefaultDynamicsProcessor()
@@ -31,11 +32,11 @@ cdef class RoverDomain:
             self.m_dynamics_processor_ref.n_rover_action_dims())
         self.m_n_rover_action_dims =  n_rover_action_dims
         
-        self.m_state_history_store = (
-            np.array([
-                <State?> self.m_current_state.copy() 
-                for step_id 
-                in range(self.m_n_steps)]))
+        self.m_state_history_store = np.array([None] * self.m_n_steps)
+            
+        for step_id in range(self.m_n_steps):
+            self.m_state_history_store[step_id] = self.m_current_state.copy()
+         
            
         self.m_rover_actions_history_store = (
             np.zeros(
@@ -144,6 +145,9 @@ cdef class RoverDomain:
     cpdef State current_state(self, State store = None):
         return <State?> self.m_current_state.copy(store = store)
         
+    cpdef void set_current_state(self, State state) except *:
+        self.m_current_state = state.copy(store = self.m_current_state)
+        
     cpdef State setting_state_ref(self):
         return self.m_setting_state_ref
         
@@ -230,51 +234,6 @@ cdef class RoverDomain:
                 .format(**locals()))
                 
         self.m_setting_n_steps = n_steps
-        
-    cpdef Py_ssize_t n_rovers(self) except *:
-        return self.m_current_state.n_rovers()
-        
-    cpdef Py_ssize_t n_pois(self) except *:
-        return self.m_current_state.n_pois()
-        
-    cpdef double[:, :] rover_positions(
-            self, 
-            double[:, :] store = None
-            ) except *:
-        return self.m_current_state.rover_positions(store = store)
-        
-    cpdef void set_rover_positions(
-            self, 
-            const double[:, :] rover_positions
-            ) except *:
-        self.m_current_state.set_rover_positions(rover_positions)
-
-    cpdef double[:, :] rover_orientations(
-            self, 
-            double[:, :] store = None
-            ) except *:
-        return self.m_current_state.rover_orientations(store = store)
-        
-    cpdef void set_rover_orientations(
-            self, 
-            const double[:, :] rover_orientations
-            ) except *:
-        self.m_current_state.set_rover_orientations(rover_orientations)
-
-    cpdef double[:] poi_values(self, double[:] store = None) except *:
-        return self.m_current_state.poi_values(store = store)
-        
-    cpdef void set_poi_values(self, const double[:] poi_values) except *:
-        self.m_current_state.set_poi_values(poi_values)
-        
-    cpdef double[:, :] poi_positions(self, double[:, :] store = None) except *:
-        return self.m_current_state.poi_positions(store = store)
-        
-    cpdef void set_poi_positions(
-            self, 
-            const double[:, :] poi_positions
-            ) except *:
-        self.m_current_state.set_poi_positions(poi_positions)
         
     cpdef bint episode_is_done(self) except *:
         return self.n_steps_elapsed() >= self.n_steps()
@@ -423,6 +382,7 @@ cdef class RoverDomain:
                 "the dynamics processor's number of rover action dimensions "
                 "(dynamics_processor_ref.n_rover_action_dims() "
                 "= {dynamics_processor.n_rover_action_dims()}). "
+                "Probably the dynamics processor has changed."
                 "Cannot step. Try resetting the domain."
                 .format(**locals()))
         
