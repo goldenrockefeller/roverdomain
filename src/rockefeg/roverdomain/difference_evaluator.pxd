@@ -1,8 +1,9 @@
 # distutils: language = c++
 # cython: language_level=3
 
-from .default_evaluator cimport DefaultEvaluator
 from .state cimport State
+from .default_evaluator cimport DefaultEvaluator
+from rockefeg.ndarray.object_array_1 cimport ObjectArray1
 
 cdef class DifferenceEvaluator(DefaultEvaluator):
     
@@ -16,8 +17,8 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
 
     cpdef double cfact_eval(
         self, 
-        object[:] state_history, 
-        const double[:, :, :] rover_actions_history,
+        ObjectArray1 state_history, 
+        ObjectArray1 rover_actions_history,
         bint episode_is_done,
         Py_ssize_t excluded_rover_id
         ) except *

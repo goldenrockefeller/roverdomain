@@ -1,18 +1,20 @@
 # cython: language_level=3
 
 from .state cimport State
-
 from .base_rover_observations_calculator cimport BaseRoverObservationsCalculator
+
+from rockefeg.ndarray.double_array_1 cimport DoubleArray1
+from rockefeg.ndarray.double_array_2 cimport DoubleArray2
 
 cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     cdef public Py_ssize_t m_n_observation_sections
     cdef public Py_ssize_t m_n_rovers
     cdef public double m_min_dist
     
-    cdef double[:, :] r_rover_positions
-    cdef double[:, :] r_rover_orientations
-    cdef double[:, :] r_poi_positions
-    cdef double[:] r_poi_values
+    cdef DoubleArray2 r_rover_positions
+    cdef DoubleArray2 r_rover_orientations
+    cdef DoubleArray2 r_poi_positions
+    cdef DoubleArray1 r_poi_values
     
     cpdef Py_ssize_t n_observation_dims(self) except *
 

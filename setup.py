@@ -6,7 +6,6 @@ import os
 import sys
 import numpy
 
-
 if __name__ == "__main__":
 
     namespace = "rockefeg"
@@ -14,7 +13,7 @@ if __name__ == "__main__":
     
     setup(
         name = "{namespace}.{pkg}".format(**locals()),
-        version='0.0.4',
+        version='0.0.5',
         ext_modules =  (
             cythonize(
                 "src/{namespace}/{pkg}/*.pyx".format(**locals()), 
@@ -26,8 +25,9 @@ if __name__ == "__main__":
         packages=find_namespace_packages("src"),
         package_dir={'': 'src'}, 
         package_data={"": ["*.pxd"]},
-        install_requires=['setuptools', 'cython', 'numpy'],
-        setup_requires = ['cython', 'numpy'],
+        install_requires=['setuptools', 'cython', 'numpy', 'rockefeg.ndarray'],
+        include_dirs=[numpy.get_include()],
+        setup_requires = ['cython', 'numpy', 'rockefeg.ndarray'],
         script_args = ["build_ext",  "install"],
         namespace_packages = [namespace],
         python_requires = ">=3.5")

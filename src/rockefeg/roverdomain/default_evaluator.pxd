@@ -7,15 +7,17 @@ from libcpp.vector cimport vector
 
 from .base_evaluator cimport BaseEvaluator
 
+from rockefeg.ndarray.double_array_1 cimport DoubleArray1
+from rockefeg.ndarray.double_array_2 cimport DoubleArray2
+
+
 cdef class DefaultEvaluator(BaseEvaluator):
     cdef public double m_capture_dist
     cdef public Py_ssize_t m_n_req
     
     cdef vector[double] r_sqr_rover_dists_to_poi
-    cdef double[:] r_sub_evals_given_poi_store
-    cdef double[:, :] r_rover_positions
-    cdef double[:, :] r_poi_positions
-    cdef double[:] r_poi_values
+    cdef DoubleArray1 r_sub_evals_given_poi
+    cdef DoubleArray2 r_rover_positions
     
     
     cpdef Py_ssize_t n_req(self) except *

@@ -4,20 +4,19 @@ cimport cython
 cdef class BaseEvaluator:
     cpdef double eval(
             self,
-            object[:] state_history,
-            const double[:, :, :] rover_actions_history, 
+            ObjectArray1 state_history,
+            ObjectArray1 rover_actions_history, 
             bint episode_is_done
             ) except *:
         raise NotImplementedError()
         
-    cpdef double[:] rover_evals(
+    cpdef DoubleArray1 rover_evals(
             self,
-            object[:] state_history,
-            const double[:, :, :] rover_actions_history, 
+            ObjectArray1 state_history,
+            ObjectArray1 rover_actions_history, 
             bint episode_is_done,
-            double[:] store = None
-            ) except *:
+            object store):
         raise NotImplementedError()
     
-    cpdef object copy(self, object store = None):
+    cpdef object copy(self, object store):
         raise NotImplementedError()

@@ -3,27 +3,29 @@
 
 from .state cimport State
 
+from rockefeg.ndarray.double_array_1 cimport DoubleArray1
+from rockefeg.ndarray.object_array_1 cimport ObjectArray1
+
 cdef class BaseEvaluator:
     cpdef double eval(
         self,
-        object[:] state_history,
-        const double[:, :, :] rover_actions_history, 
+        ObjectArray1 state_history,
+        ObjectArray1 rover_actions_history, 
         bint episode_is_done
         ) except *
     # double[n_rovers]
     # State[n_steps_elapsed]
     # double[n_steps_elapsed, n_rovers, n_rover_actions_history]
     
-    cpdef double[:] rover_evals(
+    cpdef DoubleArray1 rover_evals(
         self,
-        object[:] state_history,
-        const double[:, :, :] rover_actions_history, 
+        ObjectArray1 state_history,
+        ObjectArray1 rover_actions_history, 
         bint episode_is_done,
-        double[:] store = ?
-        ) except *
+        object store)
     # double[n_rovers]
     # State[n_steps_elapsed]
     # double[n_steps_elapsed, n_rovers, n_rover_actions_history]
     
-    cpdef object copy(self, object store = ?)
+    cpdef object copy(self, object store)
     

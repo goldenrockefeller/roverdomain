@@ -9,8 +9,3 @@ from .default_rover_observations_calculator \
     import DefaultRoverObservationsCalculator
 from .state import State
 
-import os
-
-def get_include():
-    return os.path.abspath(
-        os.path.join(os.path.dirname(__file__), os.pardir, os.pardir))

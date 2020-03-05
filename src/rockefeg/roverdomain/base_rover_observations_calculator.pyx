@@ -2,13 +2,9 @@ cimport cython
 
 @cython.auto_pickle(True)
 cdef class BaseRoverObservationsCalculator:
-    cpdef double[:, :] observations(
-            self,  
-            State state,
-            double[:, :] store = None
-            ) except *:
+    cpdef DoubleArray2 observations(self, State state, object store):
         raise NotImplementedError()
         
         
-    cpdef object copy(self, object store = None):
+    cpdef object copy(self, object store):
         raise NotImplementedError()

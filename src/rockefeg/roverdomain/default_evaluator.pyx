@@ -1,54 +1,46 @@
 from libcpp.algorithm cimport partial_sort
-import numpy as np
-import inspect
-
 from numpy.math cimport INFINITY
+from rockefeg.ndarray.object_array_1 cimport ObjectArray1
 
+from rockefeg.ndarray.double_array_1 import DoubleArray1
+from rockefeg.ndarray.double_array_2 import DoubleArray2
+import numpy as np
 
 cimport cython
 @cython.warn.undeclared(True)
 cdef class DefaultEvaluator(BaseEvaluator):
         
     def __init__(self):
-        self.r_sub_evals_given_poi_store = np.zeros((1))
-        self.r_sqr_rover_dists_to_poi.resize(1)
         self.m_capture_dist = 1.
         self.m_n_req = 1
-        
 
-        self.r_rover_positions = None
-        self.r_poi_positions = None
-        self.r_poi_values = None
+        self.r_sqr_rover_dists_to_poi.resize(1)
         
-    @cython.warn.undeclared(False)     
-    def __setstate__(self, state):
+        self.r_sub_evals_given_poi = DoubleArray1(None)
+        self.r_rover_positions = DoubleArray2(None)
         
-        for attr in state.keys():
-            try:
-                self.__setattr__(attr, state[attr])
-            except AttributeError:
-                pass
-
-    @cython.warn.undeclared(False) 
-    def __reduce__(self):
-        cdef double[:] basic_memoryview = np.zeros(1)
+    cpdef object copy(self, object store):
+        cdef DefaultEvaluator new_evaluator
+        cdef object store_type
         
-        state = {}
-        for attr in dir(self):
-            try:
-                val = self.__getattribute__(attr)
-                if (
-                        not (attr[:2] == "__" and attr[-2:] == "__")
-                        and not inspect.isbuiltin(val)
-                ):
-                    if type(val) is type(basic_memoryview):
-                        val = np.asarray(val)
-                    state[attr] = val
-            except AttributeError:
-                pass
-
-        return self.__class__, (),  state
-       
+        if store is None or store is ...:
+            new_evaluator = DefaultEvaluator() 
+        elif type(store) is not self.__class__:
+            store_type = type(store)
+            raise (
+                TypeError(
+                    "The type of the store object "
+                    "(store_type = {store_type}) is not "
+                    "{self.__class__}, None, or Ellipsis ('...')."
+                    .format(**locals())))
+        else:
+            new_evaluator = <DefaultEvaluator?> store
+        
+        new_evaluator.m_capture_dist = self.m_capture_dist
+        new_evaluator.m_n_req = self.m_n_req
+        
+        return new_evaluator
+        
     cpdef Py_ssize_t n_req(self) except *:
         return self.m_n_req
         
@@ -80,9 +72,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
             ) except *:
         cdef double displ_x, displ_y
         cdef double capture_dist
-        cdef double[:, :] rover_positions
-        cdef double[:, :] poi_positions
-        cdef double[:] poi_values
+        cdef DoubleArray2 rover_positions
         cdef Py_ssize_t n_rovers
         cdef Py_ssize_t n_pois
         cdef Py_ssize_t n_req
@@ -93,10 +83,9 @@ cdef class DefaultEvaluator(BaseEvaluator):
         n_req = self.n_req()
         capture_dist = self.capture_dist()
         
-        self.r_poi_positions = state.poi_positions(store = self.r_poi_positions)
-        self.r_poi_values = state.poi_values(store = self.r_poi_values)
         self.r_rover_positions = (
-            state.rover_positions(store = self.r_rover_positions))
+            state.rover_positions(
+                self.r_rover_positions)) #store
 
         self.r_sqr_rover_dists_to_poi.resize(n_rovers)
         
@@ -108,11 +97,11 @@ cdef class DefaultEvaluator(BaseEvaluator):
         # Get the rover square distances to POI.
         for rover_id in range(n_rovers):
             displ_x = (
-                self.r_rover_positions[rover_id, 0]
-                - self.r_poi_positions[poi_id, 0])
+                self.r_rover_positions.view[rover_id, 0]
+                - state.m_poi_positions.view[poi_id, 0]) # Direct read
             displ_y = (
-                self.r_rover_positions[rover_id, 1]
-                - self.r_poi_positions[poi_id, 1])
+                self.r_rover_positions.view[rover_id, 1]
+                - state.m_poi_positions.view[poi_id, 1])  # Direct read
             self.r_sqr_rover_dists_to_poi[rover_id] = (
                 displ_x*displ_x + displ_y*displ_y)
             
@@ -135,25 +124,36 @@ cdef class DefaultEvaluator(BaseEvaluator):
             return 0.
         
         # Close enough! Return evaluation.
-        return self.r_poi_values[poi_id]    
+        return state.m_poi_values.view[poi_id]  # Direct read 
 
-    cpdef double[:] rover_evals(
+    cpdef DoubleArray1 rover_evals(
             self,
-            object[:] state_history,
-            const double[:, :, :] rover_actions_history, 
+            ObjectArray1 state_history,
+            ObjectArray1 rover_actions_history, 
             bint episode_is_done,
-            double[:] store = None
-            ) except *:
-        cdef double[:] rover_evals  
+            object store):
+        cdef DoubleArray1 rover_evals  
         cdef Py_ssize_t n_rovers  
         
-        n_rovers = rover_actions_history.shape[1]
-        try:
-            rover_evals = store[:n_rovers]
-        except:
-            rover_evals = np.zeros(n_rovers)
+        if state_history is None:
+            raise (
+                TypeError(
+                    "(state_history) can not be None"))    
+                    
+        if rover_actions_history is None:
+            raise (
+                TypeError(
+                    "(rover_actions_history) can not be None"))  
         
-        rover_evals[...] = (
+        n_rovers = rover_actions_history.view.shape[1]
+        
+        if store is None or store is ...:
+            rover_evals = DoubleArray1(np.zeros(n_rovers))
+        else:
+            rover_evals = <DoubleArray1?> store
+            rover_evals.repurpose(n_rovers)
+        
+        rover_evals.set_all_to(
             self.eval(
                 state_history,
                 rover_actions_history,
@@ -163,8 +163,8 @@ cdef class DefaultEvaluator(BaseEvaluator):
         
     cpdef double eval(
             self,
-            object[:] state_history,
-            const double[:, :, :] rover_actions_history, 
+            ObjectArray1 state_history,
+            ObjectArray1 rover_actions_history, 
             bint episode_is_done
             ) except *:
         
@@ -174,13 +174,22 @@ cdef class DefaultEvaluator(BaseEvaluator):
         cdef Py_ssize_t n_rovers
         cdef Py_ssize_t n_pois
         cdef double eval
-        cdef double[:] sub_evals_given_poi
+        cdef DoubleArray1 sub_evals_given_poi
         
+        if state_history is None:
+            raise (
+                TypeError(
+                    "(state_history) can not be None"))    
+                    
+        if rover_actions_history is None:
+            raise (
+                TypeError(
+                    "(rover_actions_history) can not be None"))  
         
-        state = <State?> state_history[0]
+        state = <State?> state_history.view[0]
         n_rovers = state.n_rovers()
         n_pois = state.n_pois()
-        n_steps = state_history.shape[0]
+        n_steps = state_history.view.shape[0]
         
                 
         if n_pois < 0:
@@ -193,53 +202,29 @@ cdef class DefaultEvaluator(BaseEvaluator):
         if not episode_is_done:
             return 0.
         
-        # Reallocate buffers for efficiency if necessary.
-        if self.r_sub_evals_given_poi_store.shape[0] < n_pois:
-            self.r_sub_evals_given_poi_store = np.zeros(n_pois)
-        sub_evals_given_poi = self.r_sub_evals_given_poi_store[:n_pois]
+        self.r_sub_evals_given_poi.repurpose(n_pois)
+        self.r_sub_evals_given_poi.set_all_to(-INFINITY)
 
         # Initialize evaluations.
         eval = 0.
-        sub_evals_given_poi[...] = -INFINITY
         
         # Get evaluation for poi, for each step, storing the max.
         for step_id in range(n_steps):
-            state = <State?> state_history[step_id]
+            state = <State?> state_history.view[step_id]
             # Keep best step evaluation for each poi.
             for poi_id in range(n_pois):
-                sub_evals_given_poi[poi_id] = (
+                self.r_sub_evals_given_poi.view[poi_id] = (
                     max(
-                        sub_evals_given_poi[poi_id],
+                        self.r_sub_evals_given_poi.view[poi_id],
                         self.step_eval_from_poi(state,poi_id)))
         
         # Set evaluation to the sum of all POI-specific evaluations.
         for poi_id in range(n_pois):
-            eval += sub_evals_given_poi[poi_id]
+            eval += self.r_sub_evals_given_poi.view[poi_id]
         
         return eval     
         
-    cpdef object copy(self, object store = None):
-        cdef DefaultEvaluator new_evaluator
-        cdef object store_type
-        cdef object self_type
-        
-        try:
-            if type(store) is not type(self):
-                store_type = type(store)
-                self_type = type(self)
-                raise TypeError(
-                    "The type of the storage parameter "
-                    "(type(store) = {store_type}) must be exactly {self_type}."
-                    .format(**locals()))
-        
-            new_evaluator = <DefaultEvaluator?> store
-        except:
-            new_evaluator = DefaultEvaluator()
-        
-        new_evaluator.m_capture_dist = self.m_capture_dist
-        new_evaluator.m_n_req = self.m_n_req
-        
-        return new_evaluator
+
         
         
 

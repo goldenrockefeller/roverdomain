@@ -1,7 +1,9 @@
 from libc cimport math as cmath
-import numpy as np
-import inspect
 cimport cython
+
+from rockefeg.ndarray.double_array_1 import DoubleArray1
+from rockefeg.ndarray.double_array_2 import DoubleArray2
+import numpy as np
 
 @cython.warn.undeclared(True)    
 cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
@@ -11,39 +13,29 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         self.m_min_dist = 1.
         self.m_n_rovers = 0
         
-        self.r_rover_positions = None
-        self.r_rover_orientations = None
-        self.r_poi_positions = None
-        self.r_poi_values = None
-    
-    @cython.warn.undeclared(False)     
-    def __setstate__(self, state):
+        self.r_rover_positions = DoubleArray2(None)
+        self.r_rover_orientations = DoubleArray2(None)
+        self.r_poi_positions = DoubleArray2(None)
+        self.r_poi_values = DoubleArray1(None)
         
-        for attr in state.keys():
-            try:
-                self.__setattr__(attr, state[attr])
-            except AttributeError:
-                pass
-
-    @cython.warn.undeclared(False) 
-    def __reduce__(self):
-        cdef double[:] basic_memoryview = np.zeros(1)
+    cpdef object copy(self, object store):
+        cdef DefaultRoverObservationsCalculator new_calculator
+        cdef object store_type
         
-        state = {}
-        for attr in dir(self):
-            try:
-                val = self.__getattribute__(attr)
-                if (
-                        not (attr[:2] == "__" and attr[-2:] == "__")
-                        and not inspect.isbuiltin(val)
-                ):
-                    if type(val) is type(basic_memoryview):
-                        val = np.asarray(val)
-                    state[attr] = val
-            except AttributeError:
-                pass
-
-        return self.__class__, (),  state
+        if store is None or store is ...:
+            new_calculator = DefaultRoverObservationsCalculator() 
+        elif type(store) is not self.__class__:
+            store_type = type(store)
+            raise (
+                TypeError(
+                    "The type of the store object "
+                    "(store_type = {store_type}) is not "
+                    "{self.__class__}, None, or Ellipsis ('...')."
+                    .format(**locals())))
+        else:
+            new_calculator = <DefaultRoverObservationsCalculator?> store
+        
+        return new_calculator
         
     cpdef Py_ssize_t n_rovers(self) except *:
         return self.m_n_rovers
@@ -87,10 +79,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     cpdef Py_ssize_t n_observation_dims(self) except *:
         return 2 * self.n_observation_sections()
     
-    cpdef double[:, :] observations(self, 
-            State state,
-            double [:, :] store = None
-            ) except *:
+    cpdef DoubleArray2 observations(self, State state, object store):
                 
         # abbreviation: global frame (gf)
         # abbreviation: rover frame (rf)
@@ -99,30 +88,39 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         cdef Py_ssize_t n_observation_dims
         cdef double gf_displ_x, gf_displ_y
         cdef double rf_displ_x, rf_displ_y, dist, angle
-        cdef double[:, :] observations
+        cdef DoubleArray2 observations
+        
+        if state is None:
+            raise (
+                TypeError(
+                    "(state) can not be None"))    
         
         n_rovers = state.n_rovers()
         n_pois = state.n_pois()
         n_observation_dims = self.n_observation_dims()
         
-        try:
-            observations = store[:n_rovers, :n_observation_dims]
-        except:
-            observations = np.zeros((n_rovers, n_observation_dims))
+        if store is None or store is ...:
+            observations = (
+                DoubleArray2(np.zeros((n_rovers, n_observation_dims))) )
+        else:
+            observations = <DoubleArray2?> store
+            observations.repurpose(n_rovers, n_observation_dims)
         
         self.r_rover_positions = (
-            state.rover_positions(store = self.r_rover_positions))
+            state.rover_positions(
+                self.r_rover_positions)) # store
 
         self.r_rover_orientations = (
-            state.rover_orientations(store = self.r_rover_orientations))
+            state.rover_orientations(
+                self.r_rover_orientations)) # store
 
-        self.r_poi_positions = state.poi_positions(store = self.r_poi_positions)
+        self.r_poi_positions = state.poi_positions(self.r_poi_positions) # store
         
-        self.r_poi_values = state.poi_values(store = self.r_poi_values)
+        self.r_poi_values = state.poi_values(self.r_poi_values) # store
         
         
         # Zero all observations.
-        observations[...] = 0.
+        observations.set_all_to(0.)
         
         # Calculate observation for each rover.
         for rover_id in range(n_rovers):
@@ -135,22 +133,22 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                     
                 # Get global frame (gf) displacement.
                 gf_displ_x = (
-                    self.r_rover_positions[other_rover_id, 0]
-                    - self.r_rover_positions[rover_id, 0])
+                    self.r_rover_positions.view[other_rover_id, 0]
+                    - self.r_rover_positions.view[rover_id, 0])
                 gf_displ_y = (
-                    self.r_rover_positions[other_rover_id, 1] 
-                    - self.r_rover_positions[rover_id, 1])
+                    self.r_rover_positions.view[other_rover_id, 1] 
+                    - self.r_rover_positions.view[rover_id, 1])
                     
                 # Get rover frame (rf) displacement.
                 rf_displ_x = (
-                    self.r_rover_orientations[rover_id, 0] 
+                    self.r_rover_orientations.view[rover_id, 0] 
                     * gf_displ_x
-                    + self.r_rover_orientations[rover_id, 1]
+                    + self.r_rover_orientations.view[rover_id, 1]
                     * gf_displ_y)
                 rf_displ_y = (
-                    self.r_rover_orientations[rover_id, 0]
+                    self.r_rover_orientations.view[rover_id, 0]
                     * gf_displ_y
-                    - self.r_rover_orientations[rover_id, 1]
+                    - self.r_rover_orientations.view[rover_id, 1]
                     * gf_displ_x)
                     
                 dist = cmath.sqrt(rf_displ_x*rf_displ_x + rf_displ_y*rf_displ_y)
@@ -176,29 +174,29 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                         max(0, sec_id), 
                         self.m_n_observation_sections - 1))
                     
-                observations[rover_id, obs_id] += 1. / (dist*dist)
+                observations.view[rover_id, obs_id] += 1. / (dist*dist)
 
             # Update POI type observations.
             for poi_id in range(n_pois):
             
                 # Get global (gf) frame displacement.
                 gf_displ_x = (
-                    self.r_poi_positions[poi_id, 0]
-                    - self.r_rover_positions[rover_id, 0])
+                    self.r_poi_positions.view[poi_id, 0]
+                    - self.r_rover_positions.view[rover_id, 0])
                 gf_displ_y = (
-                    self.r_poi_positions[poi_id, 1] 
-                    - self.r_rover_positions[rover_id, 1])
+                    self.r_poi_positions.view[poi_id, 1] 
+                    - self.r_rover_positions.view[rover_id, 1])
                     
                 # Get rover frame (rf) displacement.
                 rf_displ_x = (
-                    self.r_rover_orientations[rover_id, 0] 
+                    self.r_rover_orientations.view[rover_id, 0] 
                     * gf_displ_x
-                    + self.r_rover_orientations[rover_id, 1]
+                    + self.r_rover_orientations.view[rover_id, 1]
                     * gf_displ_y)
                 rf_displ_y = (
-                    self.r_rover_orientations[rover_id, 0]
+                    self.r_rover_orientations.view[rover_id, 0]
                     * gf_displ_y
-                    - self.r_rover_orientations[rover_id, 1]
+                    - self.r_rover_orientations.view[rover_id, 1]
                     * gf_displ_x)
                     
                 dist = cmath.sqrt(rf_displ_x*rf_displ_x + rf_displ_y*rf_displ_y)
@@ -226,28 +224,10 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                         self.m_n_observation_sections - 1)
                     + self.m_n_observation_sections)
                     
-                observations[rover_id, obs_id] += (
-                    self.r_poi_values[poi_id] / (dist*dist))
+                observations.view[rover_id, obs_id] += (
+                    self.r_poi_values.view[poi_id] / (dist*dist))
                     
         return observations
         
-    cpdef object copy(self, object store = None):
-        cdef DefaultRoverObservationsCalculator new_calculator
-        cdef object store_type
-        cdef object self_type
-        
-        try:
-            if type(store) is not type(self):
-                store_type = type(store)
-                self_type = type(self)
-                raise TypeError(
-                    "The type of the storage parameter "
-                    "(type(store) = {store_type}) must be exactly {self_type}."
-                    .format(**locals()))
-        
-            new_calculator = <DefaultRoverObservationsCalculator?> store
-        except:
-            new_calculator = DefaultRoverObservationsCalculator()
-        
-        return new_calculator
+
         
