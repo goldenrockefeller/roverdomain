@@ -14,7 +14,7 @@ from rockefeg.ndarray.object_array_1 import ObjectArray1
 cdef class RoverDomain:
     def __init__(self):
         self.m_setting_state = State()
-        self.m_current_state = self.m_setting_state.copy()
+        self.m_current_state = <State?> self.m_setting_state.copy()
         self.m_dynamics_processor = DefaultDynamicsProcessor()
         self.m_evaluator = DefaultEvaluator()
         self.m_rover_observations_calculator = (
@@ -96,7 +96,7 @@ cdef class RoverDomain:
                 state[...] = self.m_state_history.view[state_id]
             except (TypeError, NotImplementedError):
                 other.m_state_history.view[state_id] = (
-                    self.m_state_history.view[state_id].copy())
+                    <State?> self.m_state_history.view[state_id].copy())
         
         
         other.m_rover_actions_history.repurpose_like(
@@ -113,7 +113,8 @@ cdef class RoverDomain:
                     
             except (TypeError, NotImplementedError):
                 other.m_rover_actions_history.view[actions_id] = (
-                    self.m_rover_actions_history.view[actions_id].copy())
+                    <DoubleArray2?> (
+                        self.m_rover_actions_history.view[actions_id].copy()))
                     
         return other
                 
@@ -128,7 +129,7 @@ cdef class RoverDomain:
         try:
             self.m_current_state[...] = state
         except (TypeError, NotImplementedError):
-            self.m_current_state = state.copy()
+            self.m_current_state = <State?> state.copy()
         
     cpdef State setting_state(self):
         return self.m_setting_state
@@ -141,7 +142,7 @@ cdef class RoverDomain:
         try:
             self.m_setting_state[...] = state
         except (TypeError, NotImplementedError):
-            self.m_setting_state = state.copy()
+            self.m_setting_state = <State?> state.copy()
         
     cpdef BaseEvaluator evaluator(self):
         return self.m_evaluator
@@ -155,7 +156,7 @@ cdef class RoverDomain:
         try:
             self.m_evaluator[...] = evaluator
         except (TypeError, NotImplementedError):
-            self.m_evaluator = evaluator.copy()
+            self.m_evaluator = <BaseEvaluator?> evaluator.copy()
     
     cpdef BaseDynamicsProcessor dynamics_processor(self):
         return self.m_dynamics_processor
@@ -171,7 +172,8 @@ cdef class RoverDomain:
         try:
             self.m_dynamics_processor[...] = dynamics_processor
         except (TypeError, NotImplementedError):
-            self.m_dynamics_processor = dynamics_processor.copy()
+            self.m_dynamics_processor = (
+                <BaseDynamicsProcessor?> dynamics_processor.copy())
         
         
         
@@ -193,7 +195,8 @@ cdef class RoverDomain:
                 rover_observations_calculator)
         except (TypeError, NotImplementedError):
             self.m_rover_observations_calculator = (
-                rover_observations_calculator.copy())
+                <BaseRoverObservationsCalculator?> (
+                    rover_observations_calculator.copy()))
         
     cpdef Py_ssize_t n_steps_elapsed(self) except *:
         return self.m_n_steps_elapsed
@@ -248,7 +251,7 @@ cdef class RoverDomain:
         try:
             self.m_current_state[...] = self.setting_state()
         except (TypeError, NotImplementedError):
-            self.m_current_state = self.setting_state().copy()
+            self.m_current_state = <State?> self.setting_state().copy()
         self.m_n_steps = self.m_setting_n_steps
         self.m_n_steps_elapsed = 0
         
@@ -278,7 +281,7 @@ cdef class RoverDomain:
             history_state = <State?> self.m_state_history.view[-1]
             history_state[...] = self.m_current_state
         except (TypeError, NotImplementedError):
-            self.m_state_history.view[-1] = self.m_current_state.copy()
+            self.m_state_history.view[-1] = <State?> self.m_current_state.copy()
         
         
         # Put current rover actions in rover actions history.
@@ -291,7 +294,7 @@ cdef class RoverDomain:
             
         except (TypeError, NotImplementedError):
             self.m_rover_actions_history.view[-1] = (
-                self.m_rover_actions_history.copy())
+                <DoubleArray2?> rover_actions.copy())
         
                 
         # Update state
