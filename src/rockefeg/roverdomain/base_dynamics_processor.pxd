@@ -7,8 +7,9 @@ from rockefeg.ndarray.double_array_2 cimport DoubleArray2
 cdef class BaseDynamicsProcessor:
     cpdef State next_state(self, 
         State state, 
-        DoubleArray2 rover_actions,
-        object store) 
+        DoubleArray2 rover_actions) 
     # double[n_rovers, n_rover_action_dims]
     
-    cpdef object copy(self, object store)
+    cpdef object copy(self)
+    
+    cpdef object copy_to(self, object obj)

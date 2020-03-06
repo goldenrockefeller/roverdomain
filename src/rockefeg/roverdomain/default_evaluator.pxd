@@ -9,6 +9,7 @@ from .base_evaluator cimport BaseEvaluator
 
 from rockefeg.ndarray.double_array_1 cimport DoubleArray1
 from rockefeg.ndarray.double_array_2 cimport DoubleArray2
+from rockefeg.ndarray.object_array_1 cimport ObjectArray1
 
 
 cdef class DefaultEvaluator(BaseEvaluator):
@@ -17,7 +18,8 @@ cdef class DefaultEvaluator(BaseEvaluator):
     
     cdef vector[double] r_sqr_rover_dists_to_poi
     cdef DoubleArray1 r_sub_evals_given_poi
-    cdef DoubleArray2 r_rover_positions
+    
+    cdef DoubleArray1 o_rover_evals
     
     
     cpdef Py_ssize_t n_req(self) except *
@@ -25,6 +27,8 @@ cdef class DefaultEvaluator(BaseEvaluator):
     
     cpdef double capture_dist(self) except *
     cpdef void set_capture_dist(self, double capture_dist) except *
+    
+    cpdef void check_state_history(self, ObjectArray1 state_history) except *
     
     cpdef double step_eval_from_poi(
         self, 

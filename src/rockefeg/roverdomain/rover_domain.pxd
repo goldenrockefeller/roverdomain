@@ -11,10 +11,10 @@ from rockefeg.ndarray.object_array_1 cimport ObjectArray1
 
 cdef class RoverDomain:
     cdef public State m_current_state
-    cdef public State m_setting_state_ref
-    cdef public BaseEvaluator m_evaluator_ref
-    cdef public BaseDynamicsProcessor m_dynamics_processor_ref
-    cdef public BaseRoverObservationsCalculator m_rover_observations_calculator_ref
+    cdef public State m_setting_state
+    cdef public BaseEvaluator m_evaluator
+    cdef public BaseDynamicsProcessor m_dynamics_processor
+    cdef public BaseRoverObservationsCalculator m_rover_observations_calculator
     cdef public Py_ssize_t m_n_steps_elapsed
     cdef public Py_ssize_t m_n_steps
     cdef public Py_ssize_t m_setting_n_steps
@@ -25,34 +25,35 @@ cdef class RoverDomain:
     cdef public ObjectArray1 m_rover_actions_history
     # double[n_steps, n_rovers, n_rover_action_dims]
         
-    cpdef object copy(self, object store)
+    cpdef object copy(self)
+    cpdef object copy_to(self, object obj)
         
-    cpdef State current_state(self, object store)
+    cpdef State current_state(self)
     cpdef void set_current_state(self, State state) except *
     
-    cpdef State setting_state_ref(self)
-    cpdef void set_setting_state_ref(self, State state) except *
+    cpdef State setting_state(self)
+    cpdef void set_setting_state(self, State state) except *
     
-    cpdef BaseEvaluator evaluator_ref(self)
-    cpdef void set_evaluator_ref(self, BaseEvaluator evaluator) except *
+    cpdef BaseEvaluator evaluator(self)
+    cpdef void set_evaluator(self, BaseEvaluator evaluator) except *
     
-    cpdef BaseDynamicsProcessor dynamics_processor_ref(self)
-    cpdef void set_dynamics_processor_ref(
+    cpdef BaseDynamicsProcessor dynamics_processor(self)
+    cpdef void set_dynamics_processor(
         self, 
         BaseDynamicsProcessor dynamics_processor
         ) except *
         
-    cpdef BaseRoverObservationsCalculator rover_observations_calculator_ref(
+    cpdef BaseRoverObservationsCalculator rover_observations_calculator(
         self
         )
-    cpdef void set_rover_observations_calculator_ref(
+    cpdef void set_rover_observations_calculator(
         self,
         BaseRoverObservationsCalculator rover_observations_calculator
         ) except *
     
     cpdef Py_ssize_t n_steps_elapsed(self) except *
     
-    cpdef ObjectArray1 state_history(self, object store)
+    cpdef ObjectArray1 state_history(self)
     # State[n_steps_elapsed]
         
     cpdef Py_ssize_t n_steps(self) except *
@@ -62,15 +63,15 @@ cdef class RoverDomain:
     
     cpdef bint episode_is_done(self) except *
         
-    cpdef ObjectArray1 rover_actions_history(self, object store)
+    cpdef ObjectArray1 rover_actions_history(self)
     # double[n_steps_elapsed, n_rovers, n_rover_action_dims]
      
-    cpdef DoubleArray2 rover_observations(self, object store)
+    cpdef DoubleArray2 rover_observations(self)
     # double[n_rovers, n_rover_observation_dims]
     
     cpdef double eval(self) except *
     
-    cpdef DoubleArray1 rover_evals(self, object store)
+    cpdef DoubleArray1 rover_evals(self)
     # double[n_rovers]
     
     cpdef void reset(self) except *

@@ -14,9 +14,11 @@ cdef class BaseEvaluator:
             self,
             ObjectArray1 state_history,
             ObjectArray1 rover_actions_history, 
-            bint episode_is_done,
-            object store):
+            bint episode_is_done):
         raise NotImplementedError()
     
-    cpdef object copy(self, object store):
+    cpdef object copy(self):
+        raise NotImplementedError()
+        
+    cpdef object copy_to(self, object obj):
         raise NotImplementedError()

@@ -1,6 +1,5 @@
 from libcpp.algorithm cimport partial_sort
 from numpy.math cimport INFINITY
-from rockefeg.ndarray.object_array_1 cimport ObjectArray1
 
 from rockefeg.ndarray.double_array_1 import DoubleArray1
 from rockefeg.ndarray.double_array_2 import DoubleArray2
@@ -17,29 +16,54 @@ cdef class DefaultEvaluator(BaseEvaluator):
         self.r_sqr_rover_dists_to_poi.resize(1)
         
         self.r_sub_evals_given_poi = DoubleArray1(None)
-        self.r_rover_positions = DoubleArray2(None)
+        self.o_rover_evals = DoubleArray1(None)
         
-    cpdef object copy(self, object store):
-        cdef DefaultEvaluator new_evaluator
-        cdef object store_type
+    cpdef object copy(self):
+        return self.copy_to(None)
         
-        if store is None or store is ...:
-            new_evaluator = DefaultEvaluator() 
-        elif type(store) is not self.__class__:
-            store_type = type(store)
+    def __setitem__(self, index, obj):
+        cdef DefaultEvaluator other
+        cdef object other_type
+        
+        if index is not ...:
+            raise TypeError("The index (index) must be Ellipsis ('...')")
+        
+        if obj is None:        
+            other = DefaultEvaluator()  
+        elif type(obj) is type(self):
+            other = <DefaultEvaluator?> obj
+        else:
+            other_type = type(obj)
             raise (
                 TypeError(
-                    "The type of the store object "
-                    "(store_type = {store_type}) is not "
-                    "{self.__class__}, None, or Ellipsis ('...')."
+                    "The type of the other object "
+                    "(other_type = {other_type}) is not "
+                    "{self.__class__}, or None"
                     .format(**locals())))
+            
+        other.copy_to(self)
+            
+    cpdef object copy_to(self, object obj):
+        cdef DefaultEvaluator other
+        cdef object other_type
+        
+        if obj is None:        
+            other = DefaultEvaluator() 
+        elif type(obj) is type(self):
+            other = <DefaultEvaluator?> obj
         else:
-            new_evaluator = <DefaultEvaluator?> store
+            other_type = type(obj)
+            raise (
+                TypeError(
+                    "The type of the other object "
+                    "(other_type = {other_type}) is not "
+                    "{self.__class__}, None"
+                    .format(**locals())))
         
-        new_evaluator.m_capture_dist = self.m_capture_dist
-        new_evaluator.m_n_req = self.m_n_req
+        other.m_capture_dist = self.m_capture_dist
+        other.m_n_req = self.m_n_req
         
-        return new_evaluator
+        return other
         
     cpdef Py_ssize_t n_req(self) except *:
         return self.m_n_req
@@ -78,15 +102,16 @@ cdef class DefaultEvaluator(BaseEvaluator):
         cdef Py_ssize_t n_req
         cdef Py_ssize_t rover_id
         
+        if state is None:
+            raise (
+                TypeError(
+                    "(state) can not be None"))   
+        
         n_rovers = state.n_rovers()
         n_pois = state.n_pois()
         n_req = self.n_req()
         capture_dist = self.capture_dist()
         
-        self.r_rover_positions = (
-            state.rover_positions(
-                self.r_rover_positions)) #store
-
         self.r_sqr_rover_dists_to_poi.resize(n_rovers)
         
         # If there isn't enough rovers to satify the coupling constraint 
@@ -97,11 +122,11 @@ cdef class DefaultEvaluator(BaseEvaluator):
         # Get the rover square distances to POI.
         for rover_id in range(n_rovers):
             displ_x = (
-                self.r_rover_positions.view[rover_id, 0]
-                - state.m_poi_positions.view[poi_id, 0]) # Direct read
+                state.rover_positions().view[rover_id, 0]
+                - state.poi_positions().view[poi_id, 0]) 
             displ_y = (
-                self.r_rover_positions.view[rover_id, 1]
-                - state.m_poi_positions.view[poi_id, 1])  # Direct read
+                state.rover_positions().view[rover_id, 1]
+                - state.poi_positions().view[poi_id, 1])  
             self.r_sqr_rover_dists_to_poi[rover_id] = (
                 displ_x*displ_x + displ_y*displ_y)
             
@@ -124,21 +149,67 @@ cdef class DefaultEvaluator(BaseEvaluator):
             return 0.
         
         # Close enough! Return evaluation.
-        return state.m_poi_values.view[poi_id]  # Direct read 
+        return state.poi_values().view[poi_id]  
+        
+    cpdef void check_state_history(self, ObjectArray1 state_history) except *:
+        cdef State state
+        cdef Py_ssize_t step_id
+        cdef Py_ssize_t n_pois 
+        cdef Py_ssize_t n_rovers
+        cdef Py_ssize_t n_steps
+        
+        cdef Py_ssize_t state_n_rovers
+        cdef Py_ssize_t state_n_pois
+        
+        if state_history is None:
+            raise (
+                TypeError(
+                    "(state_history) can not be None"))
+        
+        state = <State?> state_history.view[0]
+        n_pois = state.n_pois()
+        n_rovers = state.n_rovers()
+        n_steps = state_history.view.shape[0]
+        
+        for step_id in range(n_steps):
+            state = <State?> state_history.view[step_id]
+            state_n_rovers = state.n_rovers() 
+            state_n_pois = state.n_pois()
+            
+            if state_n_pois != n_pois:
+                raise ValueError(
+                    "The number of POIs for all states in the state history "
+                    " must match. State {step_id}'s number of POIs "
+                    "(state_history.view[step_id].n_pois() = "
+                    "{state_n_pois}) "
+                    "does not equal state 0's number of POIs "
+                    "(state_history.view[0].n_pois() = "
+                    "{n_pois}) "
+                    .format(**locals()))
+                    
+            if state_n_rovers!= n_rovers:
+                raise ValueError(
+                    "The number of rovers for all states in the state history "
+                    " must match. State {step_id}'s number of rovers "
+                    "(state_history.view[step_id].n_rovers() = "
+                    "{state_n_rovers}) "
+                    "does not equal state 0's number of rovers "
+                    "(state_history.view[0].n_rovers() = "
+                    "{n_rovers}) "
+                    .format(**locals()))
 
     cpdef DoubleArray1 rover_evals(
             self,
             ObjectArray1 state_history,
             ObjectArray1 rover_actions_history, 
-            bint episode_is_done,
-            object store):
-        cdef DoubleArray1 rover_evals  
+            bint episode_is_done):
         cdef Py_ssize_t n_rovers  
         
         if state_history is None:
             raise (
                 TypeError(
                     "(state_history) can not be None"))    
+        self.check_state_history(state_history)
                     
         if rover_actions_history is None:
             raise (
@@ -147,19 +218,15 @@ cdef class DefaultEvaluator(BaseEvaluator):
         
         n_rovers = rover_actions_history.view.shape[1]
         
-        if store is None or store is ...:
-            rover_evals = DoubleArray1(np.zeros(n_rovers))
-        else:
-            rover_evals = <DoubleArray1?> store
-            rover_evals.repurpose(n_rovers)
+        self.o_rover_evals.repurpose(n_rovers)
         
-        rover_evals.set_all_to(
+        self.o_rover_evals.set_all_to(
             self.eval(
                 state_history,
                 rover_actions_history,
                 episode_is_done))
                 
-        return rover_evals
+        return self.o_rover_evals
         
     cpdef double eval(
             self,
@@ -179,7 +246,8 @@ cdef class DefaultEvaluator(BaseEvaluator):
         if state_history is None:
             raise (
                 TypeError(
-                    "(state_history) can not be None"))    
+                    "(state_history) can not be None")) 
+        self.check_state_history(state_history)
                     
         if rover_actions_history is None:
             raise (

@@ -13,11 +13,11 @@ from rockefeg.ndarray.object_array_1 import ObjectArray1
 @cython.warn.undeclared(True)
 cdef class RoverDomain:
     def __init__(self):
-        self.m_setting_state_ref = State()
-        self.m_current_state = self.m_setting_state_ref.copy(...)
-        self.m_dynamics_processor_ref = DefaultDynamicsProcessor()
-        self.m_evaluator_ref = DefaultEvaluator()
-        self.m_rover_observations_calculator_ref = (
+        self.m_setting_state = State()
+        self.m_current_state = self.m_setting_state.copy()
+        self.m_dynamics_processor = DefaultDynamicsProcessor()
+        self.m_evaluator = DefaultEvaluator()
+        self.m_rover_observations_calculator = (
             DefaultRoverObservationsCalculator())
         self.m_n_steps = 1
         self.m_setting_n_steps = self.m_n_steps
@@ -26,122 +26,180 @@ cdef class RoverDomain:
         
         self.m_state_history = ObjectArray1(None)
         self.m_rover_actions_history = ObjectArray1(None)
-                
-    cpdef object copy(self, object store):
-        cdef RoverDomain new_domain
-        cdef Py_ssize_t state_id
-        cdef Py_ssize_t actions_id
-        cdef State state
-        cdef DoubleArray2 rover_actions
-        cdef object store_type
         
-        if store is None or store is ...:
-            new_domain = RoverDomain() 
-        elif type(store) is not self.__class__:
-            store_type = type(store)
+    cpdef object copy(self):
+        return self.copy_to(None)
+        
+    def __setitem__(self, index, obj):
+        cdef RoverDomain other
+        cdef object other_type
+        
+        if index is not ...:
+            raise TypeError("The index (index) must be Ellipsis ('...')")
+        
+        if obj is None:        
+            other = RoverDomain()  
+        elif type(obj) is type(self):
+            other = <RoverDomain?> obj
+        else:
+            other_type = type(obj)
             raise (
                 TypeError(
-                    "The type of the store object "
-                    "(store_type = {store_type}) is not "
-                    "{self.__class__}, None, or Ellipsis ('...')."
-                    .format(**locals())))        
+                    "The type of the other object "
+                    "(other_type = {other_type}) is not "
+                    "{self.__class__}, or None"
+                    .format(**locals())))
+            
+        other.copy_to(self)
+            
+    cpdef object copy_to(self, object obj):
+        cdef RoverDomain other
+        cdef State state
+        cdef DoubleArray2 rover_actions
+        cdef Py_ssize_t state_id
+        cdef Py_ssize_t actions_id
+        cdef object other_type
+        
+        if obj is None:        
+            other = RoverDomain()
+        elif type(obj) is type(self):
+            other = <RoverDomain?> obj
         else:
-            new_domain = <RoverDomain?> store
-            
-        new_domain.m_current_state = (
-            self.m_current_state.copy(
-                new_domain.m_current_state)) # store
+            other_type = type(obj)
+            raise (
+                TypeError(
+                    "The type of the other object "
+                    "(other_type = {other_type}) is not "
+                    "{self.__class__}, None"
+                    .format(**locals())))
                 
-        new_domain.m_setting_state_ref = self.m_setting_state_ref
-        new_domain.m_evaluator_ref = self.m_evaluator_ref
-        new_domain.m_dynamics_processor_ref = self.m_dynamics_processor_ref
+        other.m_current_state[...] = self.m_current_state
+                
+        other.m_setting_state[...] = self.m_setting_state
+        other.m_evaluator[...] = self.m_evaluator
+        other.m_dynamics_processor[...] = self.m_dynamics_processor
         
-        new_domain.m_rover_observations_calculator_ref = (
-            self.m_rover_observations_calculator_ref)
+        other.m_rover_observations_calculator[...] = (
+            self.m_rover_observations_calculator)
         
-        new_domain.m_n_steps_elapsed = self.m_n_steps_elapsed
+        other.m_n_steps_elapsed = self.m_n_steps_elapsed
             
-        new_domain.m_n_steps = self.m_n_steps
-        new_domain.m_setting_n_steps = self.m_setting_n_steps
-        new_domain.m_n_rovers = self.m_n_rovers
-        new_domain.m_n_rover_observation_dims = self.m_n_rover_observation_dims
+        other.m_n_steps = self.m_n_steps
+        other.m_setting_n_steps = self.m_setting_n_steps
+        other.m_n_rovers = self.m_n_rovers
+        other.m_n_rover_observation_dims = self.m_n_rover_observation_dims
         
-        new_domain.m_state_history.repurpose(self.m_state_history.view.shape[0]) 
+        other.m_state_history.repurpose_like(self.m_state_history) 
         for state_id in range(self.m_state_history.view.shape[0]):
-            state = <State?> self.m_state_history.view[state_id]
-            new_domain.m_state_history.view[state_id] = (
-                state.copy(new_domain.m_state_history.view[state_id])) # store
+            try:
+                state = <State?> other.m_state_history.view[state_id]
+                state[...] = self.m_state_history.view[state_id]
+            except (TypeError, NotImplementedError):
+                other.m_state_history.view[state_id] = (
+                    self.m_state_history.view[state_id].copy())
         
-        new_domain.m_rover_actions_history.repurpose(
-            self.m_rover_actions_history.view.shape[0]) 
+        
+        other.m_rover_actions_history.repurpose_like(
+            self.m_rover_actions_history) 
             
         for actions_id in range(self.m_rover_actions_history.view.shape[0]):
-            rover_actions = (
-                <DoubleArray2?> self.m_rover_actions_history.view[actions_id])
-            new_domain.m_rover_actions_history.view[actions_id] = (
-                rover_actions.copy(
-                    new_domain.m_rover_actions_history.view[actions_id])) # store
-        
-        return new_domain
-
-    cpdef State current_state(self, object store):
-        return self.m_current_state.copy(store) # store
+            try:
+                rover_actions = (
+                    <DoubleArray2?> other.m_rover_actions_history.view[
+                        actions_id])
+                        
+                rover_actions[...] = (
+                    self.m_rover_actions_history.view[actions_id])
+                    
+            except (TypeError, NotImplementedError):
+                other.m_rover_actions_history.view[actions_id] = (
+                    self.m_rover_actions_history.view[actions_id].copy())
+                    
+        return other
+                
+    cpdef State current_state(self):
+        return self.m_current_state
         
     cpdef void set_current_state(self, State state) except *:
-        self.m_current_state = state.copy(self.m_current_state) # store
+        if state is None:
+            raise (
+                TypeError(
+                    "(state) can not be None")) 
+        try:
+            self.m_current_state[...] = state
+        except (TypeError, NotImplementedError):
+            self.m_current_state = state.copy()
         
-    cpdef State setting_state_ref(self):
-        return self.m_setting_state_ref
+    cpdef State setting_state(self):
+        return self.m_setting_state
         
-    cpdef void set_setting_state_ref(self, State state) except *:
-        self.m_setting_state_ref = state
+    cpdef void set_setting_state(self, State state) except *:
+        if state is None:
+            raise (
+                TypeError(
+                    "(state) can not be None")) 
+        try:
+            self.m_setting_state[...] = state
+        except (TypeError, NotImplementedError):
+            self.m_setting_state = state.copy()
         
-    cpdef BaseEvaluator evaluator_ref(self):
-        return self.m_evaluator_ref
+    cpdef BaseEvaluator evaluator(self):
+        return self.m_evaluator
         
-    cpdef void set_evaluator_ref(self, BaseEvaluator evaluator) except *:
-        self.m_evaluator_ref = evaluator
+    cpdef void set_evaluator(self, BaseEvaluator evaluator) except *:
+        if evaluator is None:
+            raise (
+                TypeError(
+                    "(evaluator) can not be None")) 
+                    
+        try:
+            self.m_evaluator[...] = evaluator
+        except (TypeError, NotImplementedError):
+            self.m_evaluator = evaluator.copy()
     
-    cpdef BaseDynamicsProcessor dynamics_processor_ref(self):
-        return self.m_dynamics_processor_ref
+    cpdef BaseDynamicsProcessor dynamics_processor(self):
+        return self.m_dynamics_processor
         
-    cpdef void set_dynamics_processor_ref(
+    cpdef void set_dynamics_processor(
             self, 
             BaseDynamicsProcessor dynamics_processor
             ) except *:
-        self.m_dynamics_processor_ref = dynamics_processor
+        if dynamics_processor is None:
+            raise (
+                TypeError(
+                    "(dynamics_processor) can not be None")) 
+        try:
+            self.m_dynamics_processor[...] = dynamics_processor
+        except (TypeError, NotImplementedError):
+            self.m_dynamics_processor = dynamics_processor.copy()
         
-    cpdef BaseRoverObservationsCalculator rover_observations_calculator_ref(
+        
+        
+    cpdef BaseRoverObservationsCalculator rover_observations_calculator(
             self):
-        return self.m_rover_observations_calculator_ref
+        return self.m_rover_observations_calculator
         
-    cpdef void set_rover_observations_calculator_ref(
+    cpdef void set_rover_observations_calculator(
             self,
             BaseRoverObservationsCalculator rover_observations_calculator
             ) except *:
-        self.m_rover_observations_calculator_ref = (
-            rover_observations_calculator)
+        if rover_observations_calculator is None:
+            raise (
+                TypeError(
+                    "(rover_observations_calculator) can not be None")) 
+              
+        try:
+            self.m_rover_observations_calculator[...] = (
+                rover_observations_calculator)
+        except (TypeError, NotImplementedError):
+            self.m_rover_observations_calculator = (
+                rover_observations_calculator.copy())
         
     cpdef Py_ssize_t n_steps_elapsed(self) except *:
         return self.m_n_steps_elapsed
         
-    cpdef ObjectArray1 state_history(self, object store):
-        cdef ObjectArray1 state_history
-        cdef Py_ssize_t state_id
-        cdef State state
-        
-        if store is None or store is ...:
-            state_history = ObjectArray1(None)
-        else:
-            state_history = <ObjectArray1?> store
-        
-        state_history.repurpose(self.m_state_history.view.shape[0]) 
-        for state_id in range(self.m_state_history.view.shape[0]):
-            state = <State?> self.m_state_history.view[state_id]
-            state_history.view[state_id] = (
-                state.copy(state_history.view[state_id])) # store
-                        
-        return state_history
+    cpdef ObjectArray1 state_history(self):
+        return self.state_history
     
     cpdef Py_ssize_t n_steps(self) except *:
         return self.m_n_steps
@@ -160,92 +218,51 @@ cdef class RoverDomain:
     cpdef bint episode_is_done(self) except *:
         return self.n_steps_elapsed() >= self.n_steps()
 
-    cpdef ObjectArray1 rover_actions_history(self, object store):
-        cdef ObjectArray1 rover_actions_history
-        cdef Py_ssize_t actions_id
-        cdef DoubleArray2 rover_actions
-        
-        if store is None or store is ...:
-            rover_actions_history = ObjectArray1(None)
-        else:
-            rover_actions_history = <ObjectArray1?> store
-        
-        rover_actions_history.repurpose(
-            self.m_rover_actions_history.view.shape[0]) 
-            
-        for actions_id in range(self.m_rover_actions_history.view.shape[0]):
-            rover_actions = (
-                <DoubleArray2?> self.m_rover_actions_history.view[actions_id])
-            rover_actions_history.view[actions_id] = (
-                rover_actions.copy(
-                    rover_actions_history.view[actions_id])) # store
-                
-        return rover_actions_history
+    cpdef ObjectArray1 rover_actions_history(self):
+        return self.m_rover_actions_history
 
-    cpdef DoubleArray2 rover_observations(self, object store):
-        if self.rover_observations_calculator_ref() is None:
-            raise (
-                TypeError(
-                    "(self.rover_observations_calculator_ref()) "
-                    "can not be None"))
+    cpdef DoubleArray2 rover_observations(self):
         return (
-            self.rover_observations_calculator_ref().observations(
-                self.m_current_state, 
-                store))
+            self.rover_observations_calculator().observations(
+                self.m_current_state))
                 
                 
     cpdef double eval(self) except *:
-        if self.evaluator_ref() is None:
-            raise (
-                TypeError(
-                    "(self.evaluator_ref()) can not be None"))
-        
         return (
-            self.evaluator_ref().eval(
+            self.evaluator().eval(
                 self.m_state_history, 
                 self.m_rover_actions_history,
                 self.episode_is_done()))
         
     
-    cpdef DoubleArray1 rover_evals(self, object store):
-        if self.evaluator_ref() is None:
-            raise (
-                TypeError(
-                    "(self.evaluator_ref()) can not be None"))
-            
+    cpdef DoubleArray1 rover_evals(self):
         return (
-            self.evaluator_ref().rover_evals(
+            self.evaluator().rover_evals(
                 self.m_state_history, 
                 self.m_rover_actions_history,
-                self.episode_is_done(),
-                store = store))
+                self.episode_is_done()))
         
     
     
     cpdef void reset(self) except *:
-        if self.setting_state_ref() is None:
-            raise (
-                TypeError(
-                    "(self.setting_state_ref()) can not be None"))
-        
-        self.m_current_state = self.setting_state_ref().copy(...)
+        try:
+            self.m_current_state[...] = self.setting_state()
+        except (TypeError, NotImplementedError):
+            self.m_current_state = self.setting_state().copy()
         self.m_n_steps = self.m_setting_n_steps
         self.m_n_steps_elapsed = 0
         
-        self.m_state_history.clear()
-        self.m_rover_actions_history.clear()
+        self.m_state_history.empty()
+        self.m_rover_actions_history.empty()
 
         
     cpdef void step(self, DoubleArray2 rover_actions) except *:
         cdef BaseDynamicsProcessor dynamics_processor
+        cdef State history_state
+        cdef DoubleArray2 history_rover_actions
         cdef Py_ssize_t step_id
         
-        if self.dynamics_processor_ref() is None:
-            raise (
-                TypeError(
-                    "(self.dynamics_processor_ref()) can not be None"))
-        
-        dynamics_processor = self.dynamics_processor_ref()
+        dynamics_processor = self.dynamics_processor()
                     
         step_id = self.m_n_steps_elapsed
         
@@ -257,22 +274,29 @@ cdef class RoverDomain:
 
         # Put current state in state history.
         self.m_state_history.extend(1)
-        self.m_state_history.view[-1] = (
-            self.m_current_state.copy(
-                self.m_state_history.view[-1])) # store
+        try:
+            history_state = <State?> self.m_state_history.view[-1]
+            history_state[...] = self.m_current_state
+        except (TypeError, NotImplementedError):
+            self.m_state_history.view[-1] = self.m_current_state.copy()
+        
         
         # Put current rover actions in rover actions history.
         self.m_rover_actions_history.extend(1)
-        self.m_rover_actions_history.view[-1] = (
-            rover_actions.copy(
-                self.m_rover_actions_history.view[-1]))
+        try:
+            history_rover_actions = (
+                <DoubleArray2?> self.m_rover_actions_history.view[-1])
+                
+            history_rover_actions[...] = rover_actions
+            
+        except (TypeError, NotImplementedError):
+            self.m_rover_actions_history.view[-1] = (
+                self.m_rover_actions_history.copy())
+        
                 
         # Update state
-        self.m_current_state = (
-            dynamics_processor.next_state(
-                self.m_current_state,
-                rover_actions,
-                self.m_current_state)) # store
+        self.m_current_state[...] = (
+            dynamics_processor.next_state(self.m_current_state, rover_actions)) 
         
         self.m_n_steps_elapsed += 1
         

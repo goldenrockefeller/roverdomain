@@ -13,7 +13,7 @@ if __name__ == "__main__":
     
     setup(
         name = "{namespace}.{pkg}".format(**locals()),
-        version='0.0.5',
+        version='0.0.6',
         ext_modules =  (
             cythonize(
                 "src/{namespace}/{pkg}/*.pyx".format(**locals()), 

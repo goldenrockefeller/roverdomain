@@ -21,11 +21,12 @@ cdef class BaseEvaluator:
         self,
         ObjectArray1 state_history,
         ObjectArray1 rover_actions_history, 
-        bint episode_is_done,
-        object store)
+        bint episode_is_done)
     # double[n_rovers]
     # State[n_steps_elapsed]
     # double[n_steps_elapsed, n_rovers, n_rover_actions_history]
     
-    cpdef object copy(self, object store)
+    cpdef object copy(self)
+    
+    cpdef object copy_to(self, object obj)
     

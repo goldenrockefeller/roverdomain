@@ -13,6 +13,9 @@ cdef class State:
     # double[n_pois]
     cdef public DoubleArray2 m_poi_positions
     # double[n_pois, 2]
+
+    cpdef object copy(self)
+    cpdef object copy_to(self, object obj)
     
     cpdef Py_ssize_t n_rovers(self) except *
     cpdef void set_n_rovers(self, Py_ssize_t n_rovers) except *
@@ -20,24 +23,24 @@ cdef class State:
     cpdef Py_ssize_t n_pois(self) except *
     cpdef void set_n_pois(self, Py_ssize_t n_pois) except *
     
-    cpdef DoubleArray2 rover_positions(self, object store)
+    
+    cpdef DoubleArray2 rover_positions(self)
     cpdef void set_rover_positions(
         self, 
         DoubleArray2 rover_positions
         ) except *
                 
-    cpdef DoubleArray2 rover_orientations(self, object store)
+    cpdef DoubleArray2 rover_orientations(self)
     cpdef void set_rover_orientations(
         self, 
         DoubleArray2 rover_orientations
         ) except *
         
-    cpdef DoubleArray1 poi_values(self, object store)
+    cpdef DoubleArray1 poi_values(self)
     cpdef void set_poi_values(self, DoubleArray1 poi_values) except *
     
-    cpdef DoubleArray2 poi_positions(self, object store)
+    cpdef DoubleArray2 poi_positions(self)
     cpdef void set_poi_positions(self, DoubleArray2 poi_positions) except *
 
-    cpdef object copy(self, object store)
         
         

@@ -24,48 +24,62 @@ cdef class State:
         
         # Make orientations valid (i.e. magnitude = 1).
         for rover_id in range(n_rovers):
-            self.m_rover_orientations[rover_id, 0] = 1.
+            self.m_rover_orientations.view[rover_id, 0] = 1.
             
         self.m_poi_positions = DoubleArray2(np.zeros((n_pois, 2)))
         self.m_poi_values = DoubleArray1(np.zeros(n_pois))
         
-    cpdef object copy(self, object store):
-        cdef State new_state
-        cdef object store_type
+    cpdef object copy(self):
+        return self.copy_to(None)
         
-        if store is None or store is ...:
-            new_state = State()
-        elif type(store) is not self.__class__:
-            store_type = type(store)
+    def __setitem__(self, index, obj):
+        cdef State other
+        cdef object other_type
+        
+        if index is not ...:
+            raise TypeError("The index (index) must be Ellipsis ('...')")
+        
+        if obj is None:        
+            other = State()  
+        elif type(obj) is type(self):
+            other = <State?> obj
+        else:
+            other_type = type(obj)
             raise (
                 TypeError(
-                    "The type of the store object "
-                    "(store_type = {store_type}) is not "
-                    "{self.__class__}, None, or Ellipsis ('...')."
+                    "The type of the other object "
+                    "(other_type = {other_type}) is not "
+                    "{self.__class__}, or None"
                     .format(**locals())))
-        else:
-            new_state = <State?> store
-        
-        new_state.m_rover_positions = (
-            self.m_rover_positions.copy(
-                new_state.m_rover_positions)) # store
             
-        new_state.m_rover_orientations = (
-            self.m_rover_orientations.copy(
-                new_state.m_rover_orientations)) # store
-                
-        new_state.m_poi_positions = (
-            self.m_poi_positions.copy(
-                new_state.m_poi_positions)) # store
-                
-        new_state.m_poi_values = (
-            self.m_poi_values.copy(
-                new_state.m_poi_values)) # store
-                
-        new_state.m_n_rovers = self.m_n_rovers
-        new_state.m_n_pois = self.m_n_pois
+        other.copy_to(self)
+            
+    cpdef object copy_to(self, object obj):
+        cdef State other
+        cdef object other_type
         
-        return new_state
+        if obj is None:        
+            other = State() 
+        elif type(obj) is type(self):
+            other = <State?> obj
+        else:
+            other_type = type(obj)
+            raise (
+                TypeError(
+                    "The type of the other object "
+                    "(other_type = {other_type}) is not "
+                    "{self.__class__}, None"
+                    .format(**locals())))
+                
+        other.m_rover_positions[...] = self.m_rover_positions
+        other.m_rover_orientations[...] = self.m_rover_orientations
+        other.m_poi_positions[...] = self.m_poi_positions
+        other.m_poi_values[...] = self.m_poi_values
+                
+        other.m_n_rovers = self.m_n_rovers
+        other.m_n_pois = self.m_n_pois
+                
+        return other
         
     cpdef Py_ssize_t n_rovers(self) except *:
         return self.m_n_rovers
@@ -90,7 +104,7 @@ cdef class State:
             
             # Make orientations valid (i.e. magnitude = 1).
             for rover_id in range(n_rovers):
-                self.m_rover_orientations[rover_id, 0] = 1.
+                self.m_rover_orientations.view[rover_id, 0] = 1.
         
     cpdef Py_ssize_t n_pois(self) except *:
         return self.m_n_pois
@@ -104,31 +118,52 @@ cdef class State:
         if self.m_n_pois != n_pois:
             self.m_n_pois = n_pois
             
-            self.m_poi_position.repurpose(n_pois, 2)
-            self.m_poi_position.set_all_to(0.) 
+            self.m_poi_positions.repurpose(n_pois, 2)
+            self.m_poi_positions.set_all_to(0.) 
             
-            self.m_poi_position.repurpose(n_pois)
-            self.m_poi_position.set_all_to(0.) 
+            self.m_poi_values.repurpose(n_pois)
+            self.m_poi_values.set_all_to(0.) 
         
-    cpdef DoubleArray2 rover_positions(self, object store): 
-        return self.m_rover_positions.copy(store)
+    cpdef DoubleArray2 rover_positions(self): 
+        return self.m_rover_positions
         
     cpdef void set_rover_positions(
             self, 
             DoubleArray2 rover_positions
             ) except * :
-                
+        cdef Py_ssize_t n_rovers
+        
+        
         if rover_positions is None:
             raise (
                 TypeError(
-                    "(rover_positions) can not be None"))        
-                
-        self.m_rover_positions = (
-            rover_positions.copy(
-                self.m_rover_positions)) # store
+                    "(rover_positions) can not be None")) 
         
-    cpdef DoubleArray2 rover_orientations(self, object store): 
-        return self.m_rover_orientations.copy(store) 
+        n_rovers = self.n_rovers()
+        if rover_positions.view.shape[0] != n_rovers:
+            raise (
+                TypeError(
+                    "Can not accept (rover_positions) shape"
+                    "(rover_positions.view.shape = "
+                    "{rover_positions.view.shape}) "
+                    "if rover_positions.view.shape[0] != "
+                    "the number of rovers "
+                    "(self.n_rovers()  = {n_rovers})."
+                    .format(**locals())))  
+                
+        if rover_positions.view.shape[1] != 2:
+            raise (
+                TypeError(
+                    "Can not accept (rover_positions) shape"
+                    "(rover_positions.view.shape = "
+                    "{rover_positions.view.shape}) "
+                    "if rover_positions.view.shape[1] != 2"
+                    .format(**locals())))   
+                
+        self.m_rover_positions[...] = rover_positions
+        
+    cpdef DoubleArray2 rover_orientations(self): 
+        return self.m_rover_orientations
         
     cpdef void set_rover_orientations(
             self, 
@@ -141,6 +176,27 @@ cdef class State:
             raise (
                 TypeError(
                     "(rover_orientations) can not be None"))
+                    
+        n_rovers = self.n_rovers()
+        if rover_orientations.view.shape[0] != n_rovers:
+            raise (
+                TypeError(
+                    "Can not accept (rover_orientations) shape"
+                    "(rover_orientations.view.shape = "
+                    "{rover_orientations.view.shape}) "
+                    "if rover_orientations.view.shape[0] != "
+                    "the number of rovers "
+                    "(self.n_rovers()  = {n_rovers})."
+                    .format(**locals())))  
+                    
+        if rover_orientations.view.shape[1] != 2:
+            raise (
+                TypeError(
+                    "Can not accept (rover_orientations) shape"
+                    "(rover_orientations.view.shape = "
+                    "{rover_orientations.view.shape}) "
+                    "if rover_orientations.view.shape[1] != 2"
+                    .format(**locals())))    
         
         n_rovers = self.n_rovers()
     
@@ -157,27 +213,61 @@ cdef class State:
                 self.m_rover_orientations.view[rover_id, 1] = 0.   
         
     
-    cpdef DoubleArray1 poi_values(self, object store):
-        return self.m_poi_values.copy(store)
+    cpdef DoubleArray1 poi_values(self):
+        return self.m_poi_values
         
     cpdef void set_poi_values(self, DoubleArray1 poi_values) except *:
+        cdef Py_ssize_t n_pois
         if poi_values is None:
             raise (
                 TypeError(
                     "(poi_values) can not be None"))
-                    
-        self.m_poi_values = poi_values.copy(self.m_poi_values) # store
         
-    cpdef DoubleArray2 poi_positions(self, object store): 
-        return self.m_poi_positions.copy(store)
+        n_pois = self.n_pois()           
+        if poi_values.view.shape[0] != self.n_pois():
+            raise (
+                TypeError(
+                    "Can not accept (poi_values) shape"
+                    "(poi_values.view.shape = "
+                    "{poi_values.view.shape}) "
+                    "if poi_values.view.shape[0] != "
+                    "the number of POIs (self.n_pois()  = {n_pois})."
+                    .format(**locals())))  
+                    
+        self.m_poi_values[...] = poi_values
+        
+    cpdef DoubleArray2 poi_positions(self): 
+        return self.m_poi_positions
         
     cpdef void set_poi_positions(self, DoubleArray2 poi_positions) except *:
+        cdef Py_ssize_t n_pois
+        
         if poi_positions is None:
             raise (
                 TypeError(
                     "(poi_positions) can not be None"))
                     
-        self.m_poi_positions = poi_positions.copy(self.m_poi_positions) # store
+        n_pois = self.n_pois()
+        if poi_positions.view.shape[0] != n_pois:
+            raise (
+                TypeError(
+                    "Can not accept (poi_positions) shape"
+                    "(poi_positions.view.shape = "
+                    "{poi_positions.view.shape}) "
+                    "if poi_positions.view.shape[0] != "
+                    "the number of POIs (self.n_pois()  = {n_pois})."
+                    .format(**locals())))  
+        
+        if poi_positions.view.shape[1] != 2:
+            raise (
+                TypeError(
+                    "Can not accept (poi_positions) shape"
+                    "(poi_positions.view.shape = "
+                    "{poi_positions.view.shape}) "
+                    "if poi_positions.view.shape[1] != 2"
+                    .format(**locals())))    
+                    
+        self.m_poi_positions[...] = poi_positions
 
 
         
