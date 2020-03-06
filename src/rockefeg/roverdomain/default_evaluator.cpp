@@ -2100,6 +2100,7 @@ extern int __pyx_module_is_main_rockefeg__roverdomain__default_evaluator;
 int __pyx_module_is_main_rockefeg__roverdomain__default_evaluator = 0;
 
 /* Implementation of 'rockefeg.roverdomain.default_evaluator' */
+static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_range;
@@ -2107,7 +2108,6 @@ static PyObject *__pyx_builtin_MemoryError;
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_Ellipsis;
 static PyObject *__pyx_builtin_id;
-static PyObject *__pyx_builtin_IndexError;
 static const char __pyx_k_O[] = "O";
 static const char __pyx_k_c[] = "c";
 static const char __pyx_k_id[] = "id";
@@ -2762,7 +2762,7 @@ static int __pyx_pf_8rockefeg_11roverdomain_17default_evaluator_16DefaultEvaluat
  *         cdef object other_type
  * 
  *         if index is not ...:             # <<<<<<<<<<<<<<
- *             raise TypeError("The index (index) must be Ellipsis ('...')")
+ *             raise IndexError("The index (index) must be Ellipsis ('...')")
  * 
  */
   __pyx_t_1 = (__pyx_v_index != Py_Ellipsis);
@@ -2772,11 +2772,11 @@ static int __pyx_pf_8rockefeg_11roverdomain_17default_evaluator_16DefaultEvaluat
     /* "rockefeg/roverdomain/default_evaluator.pyx":29
  * 
  *         if index is not ...:
- *             raise TypeError("The index (index) must be Ellipsis ('...')")             # <<<<<<<<<<<<<<
+ *             raise IndexError("The index (index) must be Ellipsis ('...')")             # <<<<<<<<<<<<<<
  * 
  *         if obj is None:
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2786,13 +2786,13 @@ static int __pyx_pf_8rockefeg_11roverdomain_17default_evaluator_16DefaultEvaluat
  *         cdef object other_type
  * 
  *         if index is not ...:             # <<<<<<<<<<<<<<
- *             raise TypeError("The index (index) must be Ellipsis ('...')")
+ *             raise IndexError("The index (index) must be Ellipsis ('...')")
  * 
  */
   }
 
   /* "rockefeg/roverdomain/default_evaluator.pyx":31
- *             raise TypeError("The index (index) must be Ellipsis ('...')")
+ *             raise IndexError("The index (index) must be Ellipsis ('...')")
  * 
  *         if obj is None:             # <<<<<<<<<<<<<<
  *             other = DefaultEvaluator()
@@ -2815,7 +2815,7 @@ static int __pyx_pf_8rockefeg_11roverdomain_17default_evaluator_16DefaultEvaluat
     __pyx_t_3 = 0;
 
     /* "rockefeg/roverdomain/default_evaluator.pyx":31
- *             raise TypeError("The index (index) must be Ellipsis ('...')")
+ *             raise IndexError("The index (index) must be Ellipsis ('...')")
  * 
  *         if obj is None:             # <<<<<<<<<<<<<<
  *             other = DefaultEvaluator()
@@ -21046,14 +21046,14 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 38, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 73, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 123, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 148, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(2, 151, __pyx_L1_error)
   __pyx_builtin_Ellipsis = __Pyx_GetBuiltinName(__pyx_n_s_Ellipsis); if (!__pyx_builtin_Ellipsis) __PYX_ERR(2, 404, __pyx_L1_error)
   __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) __PYX_ERR(2, 613, __pyx_L1_error)
-  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(2, 832, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -21077,7 +21077,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "rockefeg/roverdomain/default_evaluator.pyx":29
  * 
  *         if index is not ...:
- *             raise TypeError("The index (index) must be Ellipsis ('...')")             # <<<<<<<<<<<<<<
+ *             raise IndexError("The index (index) must be Ellipsis ('...')")             # <<<<<<<<<<<<<<
  * 
  *         if obj is None:
  */

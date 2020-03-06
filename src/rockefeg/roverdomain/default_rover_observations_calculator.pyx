@@ -23,7 +23,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         cdef object other_type
         
         if index is not ...:
-            raise TypeError("The index (index) must be Ellipsis ('...')")
+            raise IndexError("The index (index) must be Ellipsis ('...')")
         
         if obj is None:        
             other = DefaultRoverObservationsCalculator()  
