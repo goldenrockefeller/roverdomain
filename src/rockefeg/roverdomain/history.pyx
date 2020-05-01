@@ -47,7 +47,7 @@ cdef class StateHistory:
     cpdef State pop(self, Py_ssize_t entry_id):
         return self.__history.pop(entry_id)
 
-    cpdef void insert_entry(self, Py_ssize_t entry_id, State state) except *:
+    cpdef void insert_entry_at(self, Py_ssize_t entry_id, State state) except *:
         if state is None:
             raise TypeError("The state (state) must not be None.")
 
@@ -168,7 +168,11 @@ cdef class ActionsHistory:
     cpdef list pop(self, Py_ssize_t entry_id):
         return self.__history.pop(entry_id)
 
-    cpdef void insert_entry(self, Py_ssize_t entry_id, list actions) except *:
+    cpdef void insert_entry_at(
+            self,
+            Py_ssize_t entry_id,
+            list actions
+            ) except *:
         self.check_actions(actions)
         self.__history.insert(
             entry_id,
