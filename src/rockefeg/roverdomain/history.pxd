@@ -13,7 +13,7 @@ cdef class StateHistory:
 
     cpdef State entry(self, Py_ssize_t entry_id)
     cpdef State pop(self, Py_ssize_t entry_id)
-    cpdef void insert_entry_at(self, Py_ssize_t entry_id, State state) except *
+    cpdef void insert(self, Py_ssize_t entry_id, State state) except *
     cpdef void overwrite(self, Py_ssize_t entry_id, State state) except *
     cpdef void record(self, State state) except *
 
@@ -40,7 +40,7 @@ cdef class ActionsHistory:
 
     cpdef list entry(self, Py_ssize_t entry_id)
     cpdef list pop(self, Py_ssize_t entry_id)
-    cpdef void insert_entry_at(self, Py_ssize_t entry_id, list actions) except *
+    cpdef void insert(self, Py_ssize_t entry_id, list actions) except *
     cpdef void overwrite(self, Py_ssize_t entry_id, list actions) except *
     cpdef void record(self, list actions) except *
 
