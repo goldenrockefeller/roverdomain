@@ -1,46 +1,103 @@
-# cython: language_level=3
-from rockefeg.ndarray.double_array_1 cimport DoubleArray1
-from rockefeg.ndarray.double_array_2 cimport DoubleArray2
+cdef RoverDatum new_RoverDatum()
+cdef void init_RoverDatum(RoverDatum datum) except *
+
+cdef class RoverDatum:
+    cdef double __position_x
+    cdef double __position_y
+    cdef double __direction
+    
+    cpdef object copy(self)
+    
+    cpdef double position_x(self) except *
+    cpdef void set_position_x(self, double position_x) except *
+    
+    cpdef double position_y(self) except *
+    cpdef void set_position_y(self, double position_x) except *
+    
+    cpdef double direction(self) except *
+    cpdef void set_direction(self, double direction) except *
+
+cdef PoiDatum new_PoiDatum()
+cdef void init_PoiDatum(PoiDatum datum) except *    
+    
+cdef class PoiDatum:
+    cdef double __position_x
+    cdef double __position_y
+    cdef double __value
+    
+    cpdef object copy(self)
+    
+    cpdef double position_x(self) except *
+    cpdef void set_position_x(self, double position_x) except *
+    
+    cpdef double position_y(self) except *
+    cpdef void set_position_y(self, double position_x) except *
+    
+    cpdef double value(self) except *
+    cpdef void set_value(self, double value) except *
+    
+cdef RoverData new_RoverData()
+cdef void init_RoverData(RoverData data) except *
+
+cdef class RoverData:
+    cdef list __data
+    # list<RoverDatum>[n_rovers]
+    
+    cpdef object copy(self)
+    
+    #def __len__(self)
+    
+    cpdef void append(self, RoverDatum datum) except *
+    cpdef RoverDatum pop(self, Py_ssize_t index)
+    cpdef void insert(self, Py_ssize_t index, RoverDatum datum) except *
+    
+    cpdef RoverDatum datum(self, Py_ssize_t index)
+    cpdef void set_datum(self, Py_ssize_t index, RoverDatum datum) except *
+    
+    cpdef list _data(self)
+    cpdef void set_data(self, list data) except *
+    # list<RoverDatum>[n_rovers]
+
+cdef PoiData new_PoiData()
+cdef void init_PoiData(PoiData data) except *    
+    
+cdef class PoiData:
+    cdef list __data
+    # list<PoiDatum>[n_pois]
+    
+    cpdef object copy(self)
+    
+    #def __len__(self)
+    
+    cpdef void append(self, PoiDatum datum) except *
+    cpdef PoiDatum pop(self, Py_ssize_t index)
+    cpdef void insert(self, Py_ssize_t index, PoiDatum datum) except *
+    
+    cpdef PoiDatum datum(self, Py_ssize_t index)
+    cpdef void set_datum(self, Py_ssize_t index, PoiDatum datum) except *
+    
+    cpdef list _data(self)
+    cpdef void set_data(self, list data) except *
+    # list<PoiDatum>[n_pois]
+    
+cdef State new_State()
+cdef void init_State(State state) except *
 
 cdef class State:
-    cdef public Py_ssize_t m_n_rovers
-    cdef public Py_ssize_t m_n_pois
-    cdef public DoubleArray2 m_rover_positions
-    # double[n_rovers, 2]
-    cdef public DoubleArray2 m_rover_orientations
-    # double[n_rovers, 2]
-    cdef public DoubleArray1 m_poi_values
-    # double[n_pois]
-    cdef public DoubleArray2 m_poi_positions
-    # double[n_pois, 2]
-
+    cdef RoverData __rover_data
+    cdef PoiData __poi_data
+    
     cpdef object copy(self)
-    cpdef object copy_to(self, object obj)
     
-    cpdef Py_ssize_t n_rovers(self) except *
-    cpdef void set_n_rovers(self, Py_ssize_t n_rovers) except *
+    cpdef RoverData rover_data(self)
+    cpdef void set_rover_data(self, RoverData rover_data) except *
     
-    cpdef Py_ssize_t n_pois(self) except *
-    cpdef void set_n_pois(self, Py_ssize_t n_pois) except *
+    cpdef PoiData poi_data(self)
+    cpdef void set_poi_data(self, PoiData poi_data) except *
     
     
-    cpdef DoubleArray2 rover_positions(self)
-    cpdef void set_rover_positions(
-        self, 
-        DoubleArray2 rover_positions
-        ) except *
-                
-    cpdef DoubleArray2 rover_orientations(self)
-    cpdef void set_rover_orientations(
-        self, 
-        DoubleArray2 rover_orientations
-        ) except *
-        
-    cpdef DoubleArray1 poi_values(self)
-    cpdef void set_poi_values(self, DoubleArray1 poi_values) except *
     
-    cpdef DoubleArray2 poi_positions(self)
-    cpdef void set_poi_positions(self, DoubleArray2 poi_positions) except *
+    
 
         
         

@@ -1,274 +1,327 @@
-from libc cimport math as cmath
-import numpy as np
-import inspect
-
 cimport cython
 
-from rockefeg.ndarray.double_array_1 import DoubleArray1
-from rockefeg.ndarray.double_array_2 import DoubleArray2
+from libc cimport math as cmath
+
+cdef double TAU = 2 * cmath.pi
+
+
+cdef RoverDatum new_RoverDatum():
+    cdef RoverDatum new_rover_datum
+    
+    new_rover_datum = RoverDatum.__new__(RoverDatum)
+    init_RoverDatum(new_rover_datum)
+    
+    return new_rover_datum
+
+cdef void init_RoverDatum(RoverDatum rover_datum) except *:
+    if rover_datum is None:
+        raise TypeError("The rover datum (rover_datum) cannot be None.")
+
 
 @cython.warn.undeclared(True)
-cdef class State:
+@cython.auto_pickle(True)
+cdef class RoverDatum:
     def __init__(self):
-        cdef Py_ssize_t n_rovers
-        cdef Py_ssize_t n_pois
-        cdef Py_ssize_t rover_id
-        
-        n_rovers = 1
-        n_pois = 1
-        
-        self.m_n_rovers = n_rovers
-        self.m_n_pois = n_pois
-        self.m_rover_positions = DoubleArray2(np.zeros((n_rovers, 2)))
-        self.m_rover_orientations = DoubleArray2(np.zeros((n_rovers, 2)))
-        
-        # Make orientations valid (i.e. magnitude = 1).
-        for rover_id in range(n_rovers):
-            self.m_rover_orientations.view[rover_id, 0] = 1.
-            
-        self.m_poi_positions = DoubleArray2(np.zeros((n_pois, 2)))
-        self.m_poi_values = DoubleArray1(np.zeros(n_pois))
+        init_RoverDatum(self)
         
     cpdef object copy(self):
-        return self.copy_to(None)
+        cdef RoverDatum new_rover_datum
         
-    def __setitem__(self, index, obj):
-        cdef State other
-        cdef object other_type
+        new_rover_datum = self.__class__.__new__(self.__class__)
+        new_rover_datum.__position_x = self.__position_x
+        new_rover_datum.__position_y = self.__position_y
+        new_rover_datum.__direction = self.__direction
         
-        if index is not ...:
-            raise IndexError("The index (index) must be Ellipsis ('...')")
-        
-        if obj is None:        
-            other = State()  
-        elif type(obj) is type(self):
-            other = <State?> obj
-        else:
-            other_type = type(obj)
-            raise (
-                TypeError(
-                    "The type of the other object "
-                    "(other_type = {other_type}) is not "
-                    "{self.__class__}, or None"
-                    .format(**locals())))
-            
-        other.copy_to(self)
-            
-    cpdef object copy_to(self, object obj):
-        cdef State other
-        cdef object other_type
-        
-        if obj is None:        
-            other = State() 
-        elif type(obj) is type(self):
-            other = <State?> obj
-        else:
-            other_type = type(obj)
-            raise (
-                TypeError(
-                    "The type of the other object "
-                    "(other_type = {other_type}) is not "
-                    "{self.__class__}, None"
-                    .format(**locals())))
-                
-        other.m_rover_positions[...] = self.m_rover_positions
-        other.m_rover_orientations[...] = self.m_rover_orientations
-        other.m_poi_positions[...] = self.m_poi_positions
-        other.m_poi_values[...] = self.m_poi_values
-                
-        other.m_n_rovers = self.m_n_rovers
-        other.m_n_pois = self.m_n_pois
-                
-        return other
-        
-    cpdef Py_ssize_t n_rovers(self) except *:
-        return self.m_n_rovers
-        
-        
-    cpdef void set_n_rovers(self, Py_ssize_t n_rovers) except *:
-        cdef Py_ssize_t rover_id
-        
-        if n_rovers < 0:
-            raise ValueError(
-                "The number of rovers (n_rovers = {n_rovers}) must be "
-                "non-negative. "
-                .format(**locals()))
-            
-        if self.m_n_rovers != n_rovers:
-            self.m_n_rovers = n_rovers
-            self.m_rover_positions.repurpose(n_rovers, 2)
-            self.m_rover_positions.set_all_to(0.)
-            
-            self.m_rover_orientations.repurpose(n_rovers, 2)
-            self.m_rover_orientations.set_all_to(0.) 
-            
-            # Make orientations valid (i.e. magnitude = 1).
-            for rover_id in range(n_rovers):
-                self.m_rover_orientations.view[rover_id, 0] = 1.
-        
-    cpdef Py_ssize_t n_pois(self) except *:
-        return self.m_n_pois
-        
-    cpdef void set_n_pois(self, Py_ssize_t n_pois) except *:
-        if n_pois < 0:
-            raise ValueError(
-                "The number of POIs (n_pois = {n_pois}) must be non-negative. "
-                .format(**locals()))
-                
-        if self.m_n_pois != n_pois:
-            self.m_n_pois = n_pois
-            
-            self.m_poi_positions.repurpose(n_pois, 2)
-            self.m_poi_positions.set_all_to(0.) 
-            
-            self.m_poi_values.repurpose(n_pois)
-            self.m_poi_values.set_all_to(0.) 
-        
-    cpdef DoubleArray2 rover_positions(self): 
-        return self.m_rover_positions
-        
-    cpdef void set_rover_positions(
-            self, 
-            DoubleArray2 rover_positions
-            ) except * :
-        cdef Py_ssize_t n_rovers
-        
-        
-        if rover_positions is None:
-            raise (
-                TypeError(
-                    "(rover_positions) can not be None")) 
-        
-        n_rovers = self.n_rovers()
-        if rover_positions.view.shape[0] != n_rovers:
-            raise (
-                TypeError(
-                    "Can not accept (rover_positions) shape"
-                    "(rover_positions.view.shape = "
-                    "{rover_positions.view.shape}) "
-                    "if rover_positions.view.shape[0] != "
-                    "the number of rovers "
-                    "(self.n_rovers()  = {n_rovers})."
-                    .format(**locals())))  
-                
-        if rover_positions.view.shape[1] != 2:
-            raise (
-                TypeError(
-                    "Can not accept (rover_positions) shape"
-                    "(rover_positions.view.shape = "
-                    "{rover_positions.view.shape}) "
-                    "if rover_positions.view.shape[1] != 2"
-                    .format(**locals())))   
-                
-        self.m_rover_positions[...] = rover_positions
-        
-    cpdef DoubleArray2 rover_orientations(self): 
-        return self.m_rover_orientations
-        
-    cpdef void set_rover_orientations(
-            self, 
-            DoubleArray2 rover_orientations
-            ) except * :
-        cdef double x, y, norm
-        cdef Py_ssize_t n_rovers, rover_id 
-        
-        if rover_orientations is None:
-            raise (
-                TypeError(
-                    "(rover_orientations) can not be None"))
-                    
-        n_rovers = self.n_rovers()
-        if rover_orientations.view.shape[0] != n_rovers:
-            raise (
-                TypeError(
-                    "Can not accept (rover_orientations) shape"
-                    "(rover_orientations.view.shape = "
-                    "{rover_orientations.view.shape}) "
-                    "if rover_orientations.view.shape[0] != "
-                    "the number of rovers "
-                    "(self.n_rovers()  = {n_rovers})."
-                    .format(**locals())))  
-                    
-        if rover_orientations.view.shape[1] != 2:
-            raise (
-                TypeError(
-                    "Can not accept (rover_orientations) shape"
-                    "(rover_orientations.view.shape = "
-                    "{rover_orientations.view.shape}) "
-                    "if rover_orientations.view.shape[1] != 2"
-                    .format(**locals())))    
-        
-        n_rovers = self.n_rovers()
+        return new_rover_datum
     
-        # Set normalized orientation. 
-        for rover_id in range(n_rovers):
-            x = rover_orientations.view[rover_id, 0]
-            y = rover_orientations.view[rover_id, 1]
-            norm = cmath.sqrt(x*x +  y*y)
-            if norm != 0.:
-                self.m_rover_orientations.view[rover_id, 0] = x/norm
-                self.m_rover_orientations.view[rover_id, 1] = y/norm
-            else:
-                self.m_rover_orientations.view[rover_id, 0] = 1.
-                self.m_rover_orientations.view[rover_id, 1] = 0.   
+    cpdef double position_x(self) except *:
+        return self.__position_x
         
+    cpdef void set_position_x(self, double position_x) except *:
+        self.__position_x = position_x
     
-    cpdef DoubleArray1 poi_values(self):
-        return self.m_poi_values
+    cpdef double position_y(self) except *:
+        return self.__position_y
         
-    cpdef void set_poi_values(self, DoubleArray1 poi_values) except *:
-        cdef Py_ssize_t n_pois
-        if poi_values is None:
-            raise (
-                TypeError(
-                    "(poi_values) can not be None"))
+    cpdef void set_position_y(self, double position_y) except *:
+        self.__position_y = position_y
+    
+    cpdef double direction(self) except *:
+        return self.__direction
         
-        n_pois = self.n_pois()           
-        if poi_values.view.shape[0] != self.n_pois():
-            raise (
-                TypeError(
-                    "Can not accept (poi_values) shape"
-                    "(poi_values.view.shape = "
-                    "{poi_values.view.shape}) "
-                    "if poi_values.view.shape[0] != "
-                    "the number of POIs (self.n_pois()  = {n_pois})."
-                    .format(**locals())))  
-                    
-        self.m_poi_values[...] = poi_values
+    cpdef void set_direction(self, double direction) except *:
+        cdef bint direction_is_neg
         
-    cpdef DoubleArray2 poi_positions(self): 
-        return self.m_poi_positions
-        
-    cpdef void set_poi_positions(self, DoubleArray2 poi_positions) except *:
-        cdef Py_ssize_t n_pois
-        
-        if poi_positions is None:
-            raise (
-                TypeError(
-                    "(poi_positions) can not be None"))
-                    
-        n_pois = self.n_pois()
-        if poi_positions.view.shape[0] != n_pois:
-            raise (
-                TypeError(
-                    "Can not accept (poi_positions) shape"
-                    "(poi_positions.view.shape = "
-                    "{poi_positions.view.shape}) "
-                    "if poi_positions.view.shape[0] != "
-                    "the number of POIs (self.n_pois()  = {n_pois})."
-                    .format(**locals())))  
-        
-        if poi_positions.view.shape[1] != 2:
-            raise (
-                TypeError(
-                    "Can not accept (poi_positions) shape"
-                    "(poi_positions.view.shape = "
-                    "{poi_positions.view.shape}) "
-                    "if poi_positions.view.shape[1] != 2"
-                    .format(**locals())))    
-                    
-        self.m_poi_positions[...] = poi_positions
+        # Wrap the direction around (-pi, pi]
+        direction_is_neg = direction < 0
+        #
+        if direction_is_neg:
+            direction = -direction
+            
+            direction = cmath.fmod(direction, TAU)
+            if direction >= cmath.pi:
+                direction -= TAU
+            
+            direction = -direction
+        else:
+            direction = cmath.fmod(direction, TAU)
+            
+            if direction > cmath.pi:
+                direction -= TAU
+                
+        self.__direction = direction
 
+        
+cdef PoiDatum new_PoiDatum():
+    cdef PoiDatum new_poi_datum
+    
+    new_poi_datum = PoiDatum.__new__(PoiDatum)
+    init_PoiDatum(new_poi_datum)
+    
+    return new_poi_datum
+
+cdef void init_PoiDatum(PoiDatum poi_datum) except *:
+    if poi_datum is None:
+        raise TypeError("The POI datum (poi_datum) cannot be None.")
+        
+
+@cython.warn.undeclared(True)
+@cython.auto_pickle(True)
+cdef class PoiDatum:
+    def __init__(self):
+        init_PoiDatum(self)
+
+    cpdef object copy(self):
+        cdef PoiDatum new_poi_datum
+        
+        new_poi_datum = self.__class__.__new__(self.__class__)
+        new_poi_datum.__position_x = self.__position_x
+        new_poi_datum.__position_y = self.__position_y
+        new_poi_datum.__value = self.__value
+        
+        return new_poi_datum
+    
+    cpdef double position_x(self) except *:
+        return self.__position_x
+        
+    cpdef void set_position_x(self, double position_x) except *:
+        self.__position_x = position_x
+    
+    cpdef double position_y(self) except *:
+        return self.__position_y
+        
+    cpdef void set_position_y(self, double position_y) except *:
+        self.__position_y = position_y
+        
+    cpdef double value(self) except *:
+        return self.__value
+        
+    cpdef void set_value(self, double value) except *:
+        self.__value = value
+    
+cdef RoverData new_RoverData():
+    cdef RoverData data
+    
+    data = RoverData.__new__(RoverData)
+    init_RoverData(data)
+    
+    return data
+
+cdef void init_RoverData(RoverData data) except *:
+    if data is None:
+        raise TypeError("The rover data (data) cannot be None.")
+
+    data.__data = []
+        
+    
+@cython.warn.undeclared(True)
+@cython.auto_pickle(True)
+cdef class RoverData:
+    def __init__(self):
+        init_RoverData(self)
+        
+    cpdef object copy(self):
+        cdef RoverData new_data
+        cdef Py_ssize_t datum_id
+        
+        new_data = self.__class__.__new__(self.__class__)
+        new_data.__data = [None] * len(self)
+        
+        for datum_id in range(len(self)):
+            new_data.__data[datum_id] = self.__data[datum_id].copy()
+        
+        return new_data
+    
+    def __len__(self):
+        return len(self.__data)
+    
+    cpdef void append(self, RoverDatum datum) except *:
+        if datum is None:
+            raise TypeError("The rover datum (datum) must not be None.")
+            
+        self.__data.append(datum)
+        
+    cpdef RoverDatum pop(self, Py_ssize_t index):
+        return self.__data.pop(index)
+        
+    cpdef void insert(self, Py_ssize_t index, RoverDatum datum) except *:
+        self.__data.insert(index, datum)
+        
+    cpdef RoverDatum datum(self, Py_ssize_t index):
+        return self.__data[index]
+        
+    cpdef void set_datum(self, Py_ssize_t index, RoverDatum datum) except *:
+        if datum is None:
+            raise TypeError("The rover datum (datum) must not be None.")
+            
+        self.__data[index] = datum
+    
+    cpdef list _data(self):
+        return self.__data
+        
+    cpdef void set_data(self, list data) except *:
+        cdef Py_ssize_t datum_id
+        cdef object datum
+        
+        if data is None:
+            raise TypeError("The data (data) must not be None.")
+        
+        for datum_id in range(len(data)):
+            datum = data[datum_id]
+            if not isinstance(datum, RoverDatum):
+                raise (
+                    TypeError(
+                        "All objects in data (data) must be instances of "
+                        "RoverDatum. type(data[{datum_id}]) is "
+                        "{datum.__class__}."
+                        .format(**locals()) ))
+        
+        self.__data = data
+    
+cdef PoiData new_PoiData():
+    cdef PoiData data
+    
+    data = PoiData.__new__(PoiData)
+    init_PoiData(data)
+    
+    return data
+
+cdef void init_PoiData(PoiData data) except *:
+    if data is None:
+        raise TypeError("The poi data (data) cannot be None.")
+
+    data.__data = []
+    
+@cython.warn.undeclared(True)
+@cython.auto_pickle(True)
+cdef class PoiData:
+    def __init__(self):
+        init_PoiData(self)
+        
+    cpdef object copy(self):
+        cdef PoiData new_data
+        cdef Py_ssize_t datum_id
+        
+        new_data = self.__class__.__new__(self.__class__)
+        new_data.__data = [None] * len(self)
+        
+        for datum_id in range(len(self)):
+            new_data.__data[datum_id] = self.__data[datum_id].copy()
+        
+        return new_data
+    
+    def __len__(self):
+        return len(self.__data)
+    
+    cpdef void append(self, PoiDatum datum) except *:
+        if datum is None:
+            raise TypeError("The POI datum (datum) must not be None.")
+            
+        self.__data.append(datum)
+        
+    cpdef PoiDatum pop(self, Py_ssize_t index):
+        return self.__data.pop(index)
+        
+    cpdef void insert(self, Py_ssize_t index, PoiDatum datum) except *:
+        self.__data.insert(index, datum)
+        
+    cpdef PoiDatum datum(self, Py_ssize_t index):
+        return self.__data[index]
+        
+    cpdef void set_datum(self, Py_ssize_t index, PoiDatum datum) except *:
+        if datum is None:
+            raise TypeError("The POI datum (datum) must not be None.")
+            
+        self.__data[index] = datum
+    
+    cpdef list _data(self):
+        return self.__data
+        
+    cpdef void set_data(self, list data) except *:
+        cdef Py_ssize_t datum_id
+        cdef object datum
+        
+        if data is None:
+            raise TypeError("The data (data) must not be None.")
+        
+        for datum_id in range(len(data)):
+            datum = data[datum_id]
+            if not isinstance(datum, PoiDatum):
+                raise (
+                    TypeError(
+                        "All objects in data (data) must be instances of "
+                        "PoiDatum. (type(data[{datum_id}]) = "
+                        "{datum.__class__})."
+                        .format(**locals()) ))
+        
+        self.__data = data
+    
+cdef State new_State():
+    cdef State state
+    
+    state = State.__new__(State)
+    init_State(state)
+    
+    return state
+
+cdef void init_State(State state) except *:
+    if state is None:
+        raise TypeError("The state (state) cannot be None.")
+        
+    state.__rover_data = RoverData()
+    state.__poi_data = PoiData()
+
+@cython.warn.undeclared(True)
+@cython.auto_pickle(True)
+cdef class State:
+    def __init__(self):
+        init_State(self)
+        
+    cpdef object copy(self):
+        cdef State new_state
+        
+        new_state = self.__class__.__new__(self.__class__)
+        new_state.__rover_data = self.__rover_data.copy()
+        new_state.__poi_data = self.__poi_data.copy()
+        
+        return new_state
+    
+    cpdef RoverData rover_data(self):
+        return self.__rover_data
+        
+    cpdef void set_rover_data(self, RoverData rover_data) except *:
+        if rover_data is None:
+            raise TypeError("The rover data (rover_data) must not be None")
+        self.__rover_data = rover_data
+    
+    cpdef PoiData poi_data(self):
+        return self.__poi_data
+        
+    cpdef void set_poi_data(self, PoiData poi_data) except *:
+        if poi_data is None:
+            raise TypeError("The poi data (poi_data) must not be None")
+            
+        self.__poi_data = poi_data
 
         
 
