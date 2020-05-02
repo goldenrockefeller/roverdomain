@@ -3,7 +3,7 @@ from .state cimport State
 
 
 cdef class BaseRoverObservationsCalculator:
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
 
     cpdef list observations(self, State state)
     # list<DoubleArray>[n_rovers][n_obs_dims]

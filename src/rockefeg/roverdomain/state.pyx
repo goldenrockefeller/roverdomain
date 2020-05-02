@@ -24,10 +24,14 @@ cdef class RoverDatum:
     def __init__(self):
         init_RoverDatum(self)
         
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef RoverDatum new_rover_datum
         
-        new_rover_datum = self.__class__.__new__(self.__class__)
+        if copy_obj is None:
+            new_rover_datum = RoverDatum.__new__(RoverDatum)
+        else:
+            new_rover_datum = copy_obj
+            
         new_rover_datum.__position_x = self.__position_x
         new_rover_datum.__position_y = self.__position_y
         new_rover_datum.__direction = self.__direction
@@ -91,10 +95,14 @@ cdef class PoiDatum:
     def __init__(self):
         init_PoiDatum(self)
 
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef PoiDatum new_poi_datum
         
-        new_poi_datum = self.__class__.__new__(self.__class__)
+        if copy_obj is None:
+            new_poi_datum = PoiDatum.__new__(PoiDatum)
+        else:
+            new_poi_datum = copy_obj
+            
         new_poi_datum.__position_x = self.__position_x
         new_poi_datum.__position_y = self.__position_y
         new_poi_datum.__value = self.__value
@@ -140,11 +148,15 @@ cdef class RoverData:
     def __init__(self):
         init_RoverData(self)
         
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef RoverData new_data
         cdef Py_ssize_t datum_id
         
-        new_data = self.__class__.__new__(self.__class__)
+        if copy_obj is None:
+            new_data = RoverData.__new__(RoverData)
+        else:
+            new_data = copy_obj
+            
         new_data.__data = [None] * len(self)
         
         for datum_id in range(len(self)):
@@ -218,11 +230,16 @@ cdef class PoiData:
     def __init__(self):
         init_PoiData(self)
         
-    cpdef object copy(self):
+        
+    cpdef object copy(self, object copy_obj = None):
         cdef PoiData new_data
         cdef Py_ssize_t datum_id
         
-        new_data = self.__class__.__new__(self.__class__)
+        if copy_obj is None:
+            new_data = PoiData.__new__(PoiData)
+        else:
+            new_data = copy_obj
+        
         new_data.__data = [None] * len(self)
         
         for datum_id in range(len(self)):
@@ -297,10 +314,14 @@ cdef class State:
     def __init__(self):
         init_State(self)
         
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef State new_state
         
-        new_state = self.__class__.__new__(self.__class__)
+        if copy_obj is None:
+            new_state = State.__new__(State)
+        else:
+            new_state = copy_obj
+            
         new_state.__rover_data = self.__rover_data.copy()
         new_state.__poi_data = self.__poi_data.copy()
         

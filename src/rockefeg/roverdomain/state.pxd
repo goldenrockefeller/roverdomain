@@ -6,7 +6,7 @@ cdef class RoverDatum:
     cdef double __position_y
     cdef double __direction
     
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
     
     cpdef double position_x(self) except *
     cpdef void set_position_x(self, double position_x) except *
@@ -25,7 +25,7 @@ cdef class PoiDatum:
     cdef double __position_y
     cdef double __value
     
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
     
     cpdef double position_x(self) except *
     cpdef void set_position_x(self, double position_x) except *
@@ -43,7 +43,7 @@ cdef class RoverData:
     cdef list __data
     # list<RoverDatum>[n_rovers]
     
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
     
     #def __len__(self)
     
@@ -65,7 +65,7 @@ cdef class PoiData:
     cdef list __data
     # list<PoiDatum>[n_pois]
     
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
     
     #def __len__(self)
     
@@ -87,7 +87,7 @@ cdef class State:
     cdef RoverData __rover_data
     cdef PoiData __poi_data
     
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
     
     cpdef RoverData rover_data(self)
     cpdef void set_rover_data(self, RoverData rover_data) except *

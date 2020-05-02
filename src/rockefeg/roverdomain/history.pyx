@@ -21,12 +21,16 @@ cdef class StateHistory:
     def __init__(self):
         init_StateHistory(self)
 
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef StateHistory new_history
         cdef Py_ssize_t state_id
         cdef State state
 
-        new_history = self.__class__.__new__(self.__class__)
+        if copy_obj is None:
+            new_history = StateHistory.__new__(StateHistory)
+        else:
+            new_history = copy_obj
+
         new_history.__history = [None] * len(self)
 
         for state_id in range(len(self)):
@@ -144,12 +148,16 @@ cdef class ActionsHistory:
 
         return new_actions
 
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef ActionsHistory new_history
         cdef Py_ssize_t entry_id
         cdef list actions
 
-        new_history = self.__class__.__new__(self.__class__)
+        if copy_obj is None:
+            new_history = ActionsHistory.__new__(ActionsHistory)
+        else:
+            new_history = copy_obj
+
         new_history.__history = [None] * len(self)
 
         for entry_id in range(len(self)):

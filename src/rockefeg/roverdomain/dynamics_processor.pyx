@@ -6,7 +6,7 @@ from .state cimport RoverDatum, RoverData
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
 cdef class BaseDynamicsProcessor:
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         raise NotImplementedError("Abstract method.")
 
     cpdef void process_state(self, State state, list actions) except *:
@@ -36,11 +36,13 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
     def __init__(self):
         init_DefaultDynamicsProcessor(self)
 
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef DefaultDynamicsProcessor new_processor
 
-        new_processor = self.__class__.__new__(self.__class__)
-
+        if copy_obj is None:
+            new_processor = DefaultDynamicsProcessor.__new__(DefaultDynamicsProcessor)
+        else:
+            new_processor = copy_obj
         return new_processor
 
     cpdef void process_state(self, State state, list actions) except *:

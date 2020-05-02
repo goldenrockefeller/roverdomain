@@ -42,11 +42,14 @@ cdef class RoverDomain:
     def __init__(self):
         init_RoverDomain(self)
     
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef RoverDomain new_domain
         
-        new_domain = self.__class__.__new__(self.__class__)
-        
+        if copy_obj is None:
+            new_domain = RoverDomain.__new__(RoverDomain)
+        else:
+            new_domain = copy_obj
+
         new_domain.__current_state = self.__current_state.copy()
         new_domain.__setting_state = self.__setting_state.copy()
         new_domain.__evaluator = self.__evaluator.copy()

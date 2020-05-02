@@ -5,7 +5,7 @@ from rockefeg.cyutil.array cimport DoubleArray
 from .state cimport State
 
 cdef class BaseEvaluator:
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
 
     cpdef double eval(
         self,

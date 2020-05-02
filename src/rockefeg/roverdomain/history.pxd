@@ -7,7 +7,7 @@ cdef class StateHistory:
     cdef list __history
     #list<State>[n_steps]
 
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
 
     #def __len__(self)
 
@@ -34,7 +34,7 @@ cdef class ActionsHistory:
     cpdef list copy_actions(self, list actions)
 
 
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
 
     #def __len__(self)
 

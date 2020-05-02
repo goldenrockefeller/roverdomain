@@ -6,7 +6,7 @@ from .state cimport RoverData, RoverDatum, PoiData, PoiDatum
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
 cdef class BaseRoverObservationsCalculator:
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         raise NotImplementedError("Abstract method.")
 
     cpdef list observations(self, State state):
@@ -41,11 +41,15 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     def __init__(self):
         init_DefaultRoverObservationsCalculator(self)
 
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef DefaultRoverObservationsCalculator new_observations_calculator
 
-        new_observations_calculator = (
-            self.__class__.__new__(self.__class__))
+        if copy_obj is None:
+            new_observations_calculator = (
+                DefaultRoverObservationsCalculator.__new__(
+                    DefaultRoverObservationsCalculator))
+        else:
+            new_observations_calculator = copy_obj
 
         new_observations_calculator.__min_dist = self.__min_dist
         new_observations_calculator.__n_observation_sections = (

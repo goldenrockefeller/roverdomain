@@ -25,7 +25,7 @@ cdef class RoverDomain:
     cdef ActionsHistory __actions_history
     # list<list<DoubleArray>>[n_steps, n_rovers, n_action_dims]
         
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
     
     cpdef bint episode_is_done(self) except *
      

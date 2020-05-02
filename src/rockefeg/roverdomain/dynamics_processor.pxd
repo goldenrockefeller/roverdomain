@@ -1,7 +1,7 @@
 from .state cimport State
 
 cdef class BaseDynamicsProcessor:
-    cpdef object copy(self)
+    cpdef object copy(self, object copy_obj = ?)
 
     cpdef void process_state(self, State state, list actions) except *
     # list<DoubleArray>[n_rovers][n_action_dims]

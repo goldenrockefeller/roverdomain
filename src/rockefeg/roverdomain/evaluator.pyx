@@ -10,7 +10,7 @@ from rockefeg.cyutil.array cimport new_DoubleArray
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
 cdef class BaseEvaluator:
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         raise NotImplementedError("Abstract method.")
 
     cpdef double eval(
@@ -96,10 +96,13 @@ cdef class DefaultEvaluator(BaseEvaluator):
                         "= {step_n_pois})."
                         .format(**locals())))
 
-    cpdef object copy(self):
+    cpdef object copy(self, object copy_obj = None):
         cdef DefaultEvaluator new_evaluator
 
-        new_evaluator = self.__class__.__new__(self.__class__)
+        if copy_obj is None:
+            new_evaluator = DefaultEvaluator.__new__(DefaultEvaluator)
+        else:
+            new_evaluator = copy_obj
 
         new_evaluator.__capture_dist = self.__capture_dist
         new_evaluator.__n_req = self.__n_req
