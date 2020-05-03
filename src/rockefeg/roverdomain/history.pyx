@@ -1,5 +1,7 @@
 cimport cython
 from rockefeg.cyutil.array cimport DoubleArray
+from .state cimport State
+
 
 cdef StateHistory new_StateHistory():
     cdef StateHistory history
@@ -21,7 +23,7 @@ cdef class StateHistory:
     def __init__(self):
         init_StateHistory(self)
 
-    cpdef object copy(self, object copy_obj = None):
+    cpdef copy(self, copy_obj = None):
         cdef StateHistory new_history
         cdef Py_ssize_t state_id
         cdef State state
@@ -42,35 +44,47 @@ cdef class StateHistory:
     def __len__(self):
         return len(self.__history)
 
-    cpdef State entry(self, Py_ssize_t entry_id):
+    cpdef entry(self, Py_ssize_t entry_id):
         cdef State state
 
         state = self.__history[entry_id]
         return state.copy()
 
-    cpdef State pop(self, Py_ssize_t entry_id):
+    cpdef pop(self, Py_ssize_t entry_id):
         return self.__history.pop(entry_id)
 
-    cpdef void insert_entry_at(self, Py_ssize_t entry_id, State state) except *:
-        if state is None:
-            raise TypeError("The state (state) must not be None.")
+    cpdef void insert_entry_at(self, Py_ssize_t entry_id, state) except *:
+        cdef State cy_state = <State?> state
 
-        self.__history.insert(entry_id, state.copy())
+        self.__history.insert(entry_id, cy_state.copy())
 
-    cpdef void overwrite(self, Py_ssize_t entry_id, State state) except *:
-        if state is None:
-            raise TypeError("The state (state) must not be None.")
+    cpdef void overwrite(self, Py_ssize_t entry_id, state) except *:
+        cdef State cy_state = <State?> state
 
-        self.__history[entry_id] = state.copy()
+        self.__history[entry_id] = cy_state.copy()
 
-    cpdef void record(self, State state) except *:
-        self.__history.append(state.copy())
+    cpdef void record(self, state) except *:
+        cdef State cy_state = <State?> state
+
+        self.__history.append(cy_state.copy())
 
     cpdef void clear(self):
         self.__history = []
 
     cpdef list _history(self):
         return self.__history
+
+    cpdef list history_shallow_copy(self):
+        cdef list history_copy
+        cdef Py_ssize_t entry_id
+
+        history_copy = [None] * len(self)
+
+        for entry_id in range(len(self.__history)):
+            history_copy[entry_id] = self.__history[entry_id]
+
+        return history_copy
+
 
     cpdef void set_history(self, list history) except *:
         cdef Py_ssize_t state_id
@@ -118,7 +132,7 @@ cdef class ActionsHistory:
 
     cpdef void check_actions(self, list actions) except *:
         cdef Py_ssize_t action_id
-        cdef object action
+        cdef DoubleArray action
 
         if actions is None:
             raise TypeError("The actions (actions) must not be None.")
@@ -148,7 +162,7 @@ cdef class ActionsHistory:
 
         return new_actions
 
-    cpdef object copy(self, object copy_obj = None):
+    cpdef copy(self, copy_obj = None):
         cdef ActionsHistory new_history
         cdef Py_ssize_t entry_id
         cdef list actions
@@ -201,9 +215,19 @@ cdef class ActionsHistory:
     cpdef list _history(self):
         return self.__history
 
+    cpdef list history_shallow_copy(self):
+        cdef list history_copy
+        cdef Py_ssize_t entry_id
+
+        history_copy = [None] * len(self)
+
+        for entry_id in range(len(self.__history)):
+            history_copy[entry_id] = self.__history[entry_id]
+
+        return history_copy
+
     cpdef void set_history(self, list history) except *:
         cdef Py_ssize_t actions_id
-        cdef object exc
 
         if history is None:
             raise TypeError("The history (history) must not be None.")

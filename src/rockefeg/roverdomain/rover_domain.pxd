@@ -1,31 +1,22 @@
 # cython: language_level=3
-
-from .state cimport State
-from .rover_observations_calculator cimport BaseRoverObservationsCalculator
-from .dynamics_processor cimport BaseDynamicsProcessor
-from .evaluator cimport BaseEvaluator
-from .history cimport StateHistory, ActionsHistory
-
-from rockefeg.cyutil.array cimport DoubleArray
-
 cdef RoverDomain new_RoverDomain()
 cdef void init_RoverDomain(RoverDomain domain) except *
 
 cdef class RoverDomain:
-    cdef State __current_state
-    cdef State __setting_state
-    cdef BaseEvaluator __evaluator
-    cdef BaseDynamicsProcessor __dynamics_processor
-    cdef BaseRoverObservationsCalculator __rover_observations_calculator
+    cdef __current_state
+    cdef __setting_state
+    cdef __evaluator
+    cdef __dynamics_processor
+    cdef __rover_observations_calculator
     cdef Py_ssize_t __n_steps_elapsed
     cdef Py_ssize_t __n_steps
     cdef Py_ssize_t __setting_n_steps
-    cdef StateHistory __state_history
+    cdef __state_history
     # list<State>[n_steps]
-    cdef ActionsHistory __actions_history
+    cdef __actions_history
     # list<list<DoubleArray>>[n_steps, n_rovers, n_action_dims]
         
-    cpdef object copy(self, object copy_obj = ?)
+    cpdef copy(self, copy_obj = ?)
     
     cpdef bint episode_is_done(self) except *
      
@@ -34,7 +25,7 @@ cdef class RoverDomain:
     
     cpdef double eval(self) except *
     
-    cpdef DoubleArray rover_evals(self)
+    cpdef rover_evals(self)
     # DoubleArray[n_rovers]
     
     cpdef void reset(self) except *
@@ -42,25 +33,22 @@ cdef class RoverDomain:
     cpdef void step(self, list rover_actions) except *
     # list<DoubleArray>[n_rovers, n_observation_dims]
     
-    cpdef State current_state(self)
-    cpdef void set_current_state(self, State state) except *
+    cpdef current_state(self)
+    cpdef void set_current_state(self, state) except *
     
-    cpdef State setting_state(self)    
-    cpdef void set_setting_state(self, State state) except *
+    cpdef setting_state(self)    
+    cpdef void set_setting_state(self, state) except *
         
-    cpdef BaseEvaluator evaluator(self)        
-    cpdef void set_evaluator(self, BaseEvaluator evaluator) except *
+    cpdef evaluator(self)        
+    cpdef void set_evaluator(self, evaluator) except *
     
-    cpdef BaseDynamicsProcessor dynamics_processor(self)    
-    cpdef void set_dynamics_processor(
-        self, 
-        BaseDynamicsProcessor dynamics_processor 
-        ) except *
+    cpdef dynamics_processor(self)    
+    cpdef void set_dynamics_processor(self, dynamics_processor) except *
     
-    cpdef BaseRoverObservationsCalculator rover_observations_calculator(self)    
+    cpdef rover_observations_calculator(self)    
     cpdef void set_rover_observations_calculator(
         self,
-        BaseRoverObservationsCalculator rover_observations_calculator
+        rover_observations_calculator
         ) except *
     
     cpdef Py_ssize_t setting_n_steps(self)
@@ -76,17 +64,14 @@ cdef class RoverDomain:
     cpdef void _set_n_steps(self, Py_ssize_t n_steps) except *
     # Protected
     
-    cpdef StateHistory state_history(self)
+    cpdef state_history(self)
     
-    cpdef void _set_state_history(self, StateHistory state_history) except *
+    cpdef void _set_state_history(self, state_history) except *
     # Protected
     
-    cpdef ActionsHistory actions_history(self)
+    cpdef actions_history(self)
     
-    cpdef void _set_actions_history(
-        self,
-        ActionsHistory actions_history
-        ) except *
+    cpdef void _set_actions_history(self, actions_history) except *
     # Protected
     
     

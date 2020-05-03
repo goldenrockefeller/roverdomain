@@ -1,5 +1,3 @@
-from .state cimport State
-
 cdef StateHistory new_StateHistory()
 cdef void init_StateHistory(StateHistory history) except *
 
@@ -7,19 +5,20 @@ cdef class StateHistory:
     cdef list __history
     #list<State>[n_steps]
 
-    cpdef object copy(self, object copy_obj = ?)
+    cpdef copy(self, copy_obj = ?)
 
     #def __len__(self)
 
-    cpdef State entry(self, Py_ssize_t entry_id)
-    cpdef State pop(self, Py_ssize_t entry_id)
-    cpdef void insert_entry_at(self, Py_ssize_t entry_id, State state) except *
-    cpdef void overwrite(self, Py_ssize_t entry_id, State state) except *
-    cpdef void record(self, State state) except *
+    cpdef entry(self, Py_ssize_t entry_id)
+    cpdef pop(self, Py_ssize_t entry_id)
+    cpdef void insert_entry_at(self, Py_ssize_t entry_id, state) except *
+    cpdef void overwrite(self, Py_ssize_t entry_id, state) except *
+    cpdef void record(self, state) except *
 
     cpdef void clear(self)
 
     cpdef list _history(self)
+    cpdef list history_shallow_copy(self)
     cpdef void set_history(self, list history) except *
 
 cdef ActionsHistory new_ActionsHistory()
@@ -34,7 +33,7 @@ cdef class ActionsHistory:
     cpdef list copy_actions(self, list actions)
 
 
-    cpdef object copy(self, object copy_obj = ?)
+    cpdef copy(self, copy_obj = ?)
 
     #def __len__(self)
 
@@ -47,4 +46,5 @@ cdef class ActionsHistory:
     cpdef void clear(self)
 
     cpdef list _history(self)
+    cpdef list history_shallow_copy(self)
     cpdef void set_history(self, list history) except *

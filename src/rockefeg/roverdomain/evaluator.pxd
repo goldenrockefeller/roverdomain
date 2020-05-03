@@ -1,23 +1,19 @@
 # distutils: language = c++
 
-from .history cimport StateHistory, ActionsHistory
-from rockefeg.cyutil.array cimport DoubleArray
-from .state cimport State
-
 cdef class BaseEvaluator:
-    cpdef object copy(self, object copy_obj = ?)
+    cpdef copy(self, copy_obj = ?)
 
     cpdef double eval(
         self,
-        StateHistory state_history,
-        ActionsHistory actions_history,
+        state_history,
+        actions_history,
         bint episode_is_done
         ) except *
 
-    cpdef DoubleArray rover_evals(
+    cpdef rover_evals(
         self,
-        StateHistory state_history,
-        ActionsHistory actions_history,
+        state_history,
+        actions_history,
         bint episode_is_done)
     # DoubleArray[n_rovers]
 
@@ -32,11 +28,11 @@ cdef class DefaultEvaluator(BaseEvaluator):
     cdef double __capture_dist
     cdef Py_ssize_t __n_req
 
-    cpdef void check_state_history(self, StateHistory state_history) except *
+    cpdef void check_state_history(self, state_history) except *
 
     cpdef double step_eval_from_poi(
         self,
-        State state,
+        state,
         Py_ssize_t poi_id
         ) except *
 
@@ -55,7 +51,7 @@ cdef void init_DifferenceEvaluator(
 cdef class DifferenceEvaluator(DefaultEvaluator):
     cpdef double cfact_step_eval_from_poi(
         self,
-        State state,
+        state,
         Py_ssize_t excluded_rover_id,
         Py_ssize_t poi_id
         )  except *
@@ -63,8 +59,8 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
 
     cpdef double cfact_eval(
         self,
-        StateHistory state_history,
-        ActionsHistory actions_history,
+        state_history,
+        actions_history,
         bint episode_is_done,
         Py_ssize_t excluded_rover_id
         ) except *

@@ -1,11 +1,9 @@
 cimport cython
-from .state cimport State
-
 
 cdef class BaseRoverObservationsCalculator:
-    cpdef object copy(self, object copy_obj = ?)
+    cpdef copy(self, copy_obj = ?)
 
-    cpdef list observations(self, State state)
+    cpdef list observations(self, state)
     # list<DoubleArray>[n_rovers][n_obs_dims]
 
 cdef DefaultRoverObservationsCalculator new_DefaultRoverObservationsCalculator()

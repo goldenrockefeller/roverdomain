@@ -3,13 +3,15 @@ from libc cimport math as cmath
 from rockefeg.cyutil.array cimport DoubleArray, new_DoubleArray
 from .state cimport RoverData, RoverDatum, PoiData, PoiDatum
 
+from .state cimport State
+
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
 cdef class BaseRoverObservationsCalculator:
-    cpdef object copy(self, object copy_obj = None):
+    cpdef copy(self, opy_obj = None):
         raise NotImplementedError("Abstract method.")
 
-    cpdef list observations(self, State state):
+    cpdef list observations(self, state):
         raise NotImplementedError("Abstract method.")
 
 
@@ -41,7 +43,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     def __init__(self):
         init_DefaultRoverObservationsCalculator(self)
 
-    cpdef object copy(self, object copy_obj = None):
+    cpdef copy(self, copy_obj = None):
         cdef DefaultRoverObservationsCalculator new_observations_calculator
 
         if copy_obj is None:
@@ -57,7 +59,8 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
         return new_observations_calculator
 
-    cpdef list observations(self, State state):
+    cpdef list observations(self, state):
+        cdef State cy_state = <State?>state
         cdef list observations
         cdef RoverData rover_data
         cdef RoverDatum rover_datum
@@ -74,14 +77,8 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         cdef double dist
         cdef double rf_displ_angle
 
-        if state is None:
-            raise (
-                TypeError(
-                    "The state (state) cannot be None"))
-
-
-        rover_data = state.rover_data()
-        poi_data = state.poi_data()
+        rover_data = cy_state.rover_data()
+        poi_data = cy_state.poi_data()
 
         n_rovers = len(rover_data)
         n_pois = len(poi_data)

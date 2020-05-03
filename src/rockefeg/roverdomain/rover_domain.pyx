@@ -1,4 +1,11 @@
 cimport cython
+
+from .state cimport State
+from .rover_observations_calculator cimport BaseRoverObservationsCalculator
+from .dynamics_processor cimport BaseDynamicsProcessor
+from .evaluator cimport BaseEvaluator
+from .history cimport StateHistory, ActionsHistory
+
 from .rover_observations_calculator cimport DefaultRoverObservationsCalculator
 from .dynamics_processor cimport DefaultDynamicsProcessor
 from .evaluator cimport DefaultEvaluator
@@ -8,6 +15,8 @@ from .dynamics_processor cimport new_DefaultDynamicsProcessor
 from .evaluator cimport new_DefaultEvaluator
 from .rover_observations_calculator cimport new_DefaultRoverObservationsCalculator
 from .history cimport new_StateHistory, new_ActionsHistory
+
+from rockefeg.cyutil.array cimport DoubleArray
 
 cdef RoverDomain new_RoverDomain():
     cdef RoverDomain new_domain
@@ -50,16 +59,20 @@ cdef class RoverDomain:
         else:
             new_domain = copy_obj
 
-        new_domain.__current_state = self.__current_state.copy()
-        new_domain.__setting_state = self.__setting_state.copy()
-        new_domain.__evaluator = self.__evaluator.copy()
-        new_domain.__dynamics_processor = self.__dynamics_processor.copy()
+        new_domain.__current_state = (<State?>self.__current_state).copy()
+        new_domain.__setting_state = (<State?>self.__setting_state).copy()
+        new_domain.__evaluator = (<BaseEvaluator?>self.__evaluator).copy()
+        new_domain.__dynamics_processor = (
+            (<BaseDynamicsProcessor?>self.__dynamics_processor).copy())
     
         new_domain.__rover_observations_calculator = (
-            self.__rover_observations_calculator.copy())
+            (<BaseRoverObservationsCalculator?>self.__rover_observations_calculator)
+            .copy())
             
-        new_domain.__state_history = self.__state_history.copy()
-        new_domain.__actions_history = self.__actions_history.copy()
+        new_domain.__state_history = (
+            <StateHistory?>self.__state_history).copy()
+        new_domain.__actions_history = (
+            <ActionsHistory?>self.__actions_history).copy()
     
         new_domain.__n_steps_elapsed = self.__n_steps_elapsed
         new_domain.__n_steps = self.__n_steps
@@ -72,21 +85,22 @@ cdef class RoverDomain:
 
     cpdef list rover_observations(self):
         return (
-            self.__rover_observations_calculator.observations(
+            (<BaseRoverObservationsCalculator?>self.__rover_observations_calculator)
+            .observations(
                 self.__current_state))
                 
                 
     cpdef double eval(self) except *:
         return (
-            self.__evaluator.eval(
+            (<BaseEvaluator?>self.__evaluator).eval(
                 self.__state_history, 
                 self.__actions_history,
                 self.episode_is_done()))
         
     
-    cpdef DoubleArray rover_evals(self):
+    cpdef rover_evals(self):
         return (
-            self.__evaluator.rover_evals(
+            (<BaseEvaluator?>self.__evaluator).rover_evals(
                 self.__state_history, 
                 self.__actions_history,
                 self.episode_is_done()))
@@ -94,13 +108,13 @@ cdef class RoverDomain:
     
     
     cpdef void reset(self) except *:
-        self.set_current_state(self.__setting_state.copy())
+        self.set_current_state((<State?>self.__setting_state).copy())
         self._set_n_steps(self.__setting_n_steps)
         self._set_n_steps_elapsed(0)
         
-        self.__state_history.clear()
+        (<StateHistory?>self.__state_history).clear()
             
-        self.__actions_history.clear()
+        (<ActionsHistory?>self.__actions_history).clear()
 
         
     cpdef void step(self, list rover_actions) except *:
@@ -110,70 +124,51 @@ cdef class RoverDomain:
                 "resetting the domain.")
 
         # Put current state in state history.
-        self.__state_history.record(self.__current_state)
+        (<StateHistory?>self.__state_history).record(self.__current_state)
         
         # Put current actions in actions history.
-        self.__actions_history.record(rover_actions)
+        (<ActionsHistory?>self.__actions_history).record(rover_actions)
                 
         # Update state
-        self.__dynamics_processor.process_state(
+        (<BaseDynamicsProcessor?>self.__dynamics_processor).process_state(
             self.__current_state, 
             rover_actions)
         
         self._set_n_steps_elapsed(self.__n_steps_elapsed + 1)
         
-    cpdef State current_state(self):
+    cpdef current_state(self):
         return self.__current_state
         
-    cpdef void set_current_state(self, State state) except *:
-        if state is None:
-            raise TypeError("The current state (state) must not be None.")
-            
-        self.__current_state = state
+    cpdef void set_current_state(self, state) except *:
+        self.__current_state = <State?>state
     
-    cpdef State setting_state(self):
+    cpdef setting_state(self):
         return self.__setting_state
     
-    cpdef void set_setting_state(self, State state) except *:
-        if state is None:
-            raise TypeError("The setting state (state) must not be None.")
-        self.__setting_state = state
+    cpdef void set_setting_state(self, state) except *:
+        self.__setting_state = <State?>state
         
-    cpdef BaseEvaluator evaluator(self):
+    cpdef evaluator(self):
         return self.__evaluator
     
-    cpdef void set_evaluator(self, BaseEvaluator evaluator) except *:
-        if evaluator is None:
-            raise TypeError("The evaluator (evaluator) must not be None.")
-        self.__evaluator = evaluator
+    cpdef void set_evaluator(self, evaluator) except *:
+        self.__evaluator = <BaseEvaluator?>evaluator
     
-    cpdef BaseDynamicsProcessor dynamics_processor(self):
+    cpdef dynamics_processor(self):
         return self.__dynamics_processor
     
-    cpdef void set_dynamics_processor(
-            self, 
-            BaseDynamicsProcessor dynamics_processor 
-            ) except *:
-        if dynamics_processor is None:
-            raise (
-                TypeError(
-                    "The dynamics processor (dynamics_processor) must "
-                    "not be None."))
-        self.__dynamics_processor = dynamics_processor
+    cpdef void set_dynamics_processor(self, dynamics_processor) except *:
+        self.__dynamics_processor = <BaseDynamicsProcessor?>dynamics_processor
         
-    cpdef BaseRoverObservationsCalculator rover_observations_calculator(self):
+    cpdef rover_observations_calculator(self):
         return self.__rover_observations_calculator
     
     cpdef void set_rover_observations_calculator(
             self,
-            BaseRoverObservationsCalculator rover_observations_calculator
+            rover_observations_calculator
             ) except *:
-        if rover_observations_calculator is None:
-            raise (
-                TypeError(
-                    "The rover observations calculator "
-                    "(rover_observations_calculator) must not be None."))
-        self.__rover_observations_calculator = rover_observations_calculator
+        self.__rover_observations_calculator = (
+            <BaseRoverObservationsCalculator?>rover_observations_calculator)
     
     cpdef Py_ssize_t setting_n_steps(self):
         return self.__setting_n_steps
@@ -215,29 +210,15 @@ cdef class RoverDomain:
                     
         self.__n_steps = n_steps
     
-    cpdef StateHistory state_history(self):
+    cpdef state_history(self):
         return self.__state_history
     
-    cpdef void _set_state_history(self, StateHistory state_history) except *:
-        if state_history is None:
-            raise (
-                TypeError( 
-                    "The state history (state_history) must not be None."))
-        self.__state_history = state_history
+    cpdef void _set_state_history(self, state_history) except *:
+        self.__state_history = <StateHistory?>state_history
     
-    cpdef ActionsHistory actions_history(self):
+    cpdef actions_history(self):
         return self.__actions_history
     
-    cpdef void _set_actions_history(
-            self,
-            ActionsHistory actions_history
-            ) except *:
-        if actions_history is None:
-            raise (
-                TypeError(
-                    "The actions history (actions_history) must "
-                    "not be None."))
-        self.__actions_history = actions_history
-
-        
-#    
+    cpdef void _set_actions_history(self, actions_history) except *:
+        self.__actions_history = <ActionsHistory?>actions_history
+ 
