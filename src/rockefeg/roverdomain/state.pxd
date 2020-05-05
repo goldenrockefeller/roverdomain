@@ -1,5 +1,4 @@
-cdef RoverDatum new_RoverDatum()
-cdef void init_RoverDatum(RoverDatum datum) except *
+
 
 cdef class RoverDatum:
     cdef double __position_x
@@ -16,9 +15,10 @@ cdef class RoverDatum:
     
     cpdef double direction(self) except *
     cpdef void set_direction(self, double direction) except *
-
-cdef PoiDatum new_PoiDatum()
-cdef void init_PoiDatum(PoiDatum datum) except *    
+    
+cdef RoverDatum new_RoverDatum()
+cdef void init_RoverDatum(RoverDatum datum) except *
+  
     
 cdef class PoiDatum:
     cdef double __position_x
@@ -36,68 +36,42 @@ cdef class PoiDatum:
     cpdef double value(self) except *
     cpdef void set_value(self, double value) except *
     
-cdef RoverData new_RoverData()
-cdef void init_RoverData(RoverData data) except *
 
-cdef class RoverData:
-    cdef list __data
-    # list<RoverDatum>[n_rovers]
-    
-    cpdef copy(self, copy_obj = ?)
-    
-    #def __len__(self)
-    
-    cpdef void append(self, datum) except *
-    cpdef pop(self, Py_ssize_t index)
-    cpdef void insert(self, Py_ssize_t index, datum) except *
-    
-    cpdef datum(self, Py_ssize_t index)
-    cpdef void set_datum(self, Py_ssize_t index, datum) except *
-    
-    cpdef list _data(self)
-    cpdef list data_shallow_copy(self)
-    cpdef void set_data(self, list data) except *
-    # list<RoverDatum>[n_rovers]
+cdef PoiDatum new_PoiDatum()
+cdef void init_PoiDatum(PoiDatum datum) except *  
 
-cdef PoiData new_PoiData()
-cdef void init_PoiData(PoiData data) except *    
-    
-cdef class PoiData:
-    cdef list __data
-    # list<PoiDatum>[n_pois]
-    
-    cpdef copy(self, copy_obj = ?)
-    
-    #def __len__(self)
-    
-    cpdef void append(self, datum) except *
-    cpdef pop(self, Py_ssize_t index)
-    cpdef void insert(self, Py_ssize_t index, datum) except *
-    
-    cpdef datum(self, Py_ssize_t index)
-    cpdef void set_datum(self, Py_ssize_t index, datum) except *
-    
-    cpdef list _data(self)
-    cpdef list data_shallow_copy(self)
-    cpdef void set_data(self, list data) except *
-    # list<PoiDatum>[n_pois]
-    
-cdef State new_State()
-cdef void init_State(State state) except *
 
 cdef class State:
     cdef __rover_data
     cdef __poi_data
     
-    cpdef object copy(self, object copy_obj = ?)
+    cpdef copy(self, copy_obj = ?)
     
-    cpdef rover_data(self)
-    cpdef void set_rover_data(self, rover_data) except *
+    cpdef Py_ssize_t n_rovers(self) except *
+    cpdef void append_rover_datum(self, rover_datum) except *
+    cpdef pop_rover_datum(self, Py_ssize_t index)
+    cpdef void insert_rover_datum(self, Py_ssize_t index, rover_datum) except *
+    cpdef rover_datum(self, Py_ssize_t index)
+    cpdef void set_rover_datum(self, Py_ssize_t index, rover_datum) except *
+    cpdef list _rover_data(self)
+    cpdef list rover_data_shallow_copy(self)
+    cpdef list rover_data_deep_copy(self)
+    cpdef void set_rover_data(self, list rover_data) except *
     
-    cpdef poi_data(self)
-    cpdef void set_poi_data(self, poi_data) except *
+    cpdef Py_ssize_t n_pois(self) except *
+    cpdef void append_poi_datum(self, poi_datum) except *
+    cpdef pop_poi_datum(self, Py_ssize_t index)
+    cpdef void insert_poi_datum(self, Py_ssize_t index, poi_datum) except *
+    cpdef poi_datum(self, Py_ssize_t index)
+    cpdef void set_poi_datum(self, Py_ssize_t index, poi_datum) except *
+    cpdef list _poi_data(self)
+    cpdef list poi_data_shallow_copy(self)
+    cpdef list poi_data_deep_copy(self)
+    cpdef void set_poi_data(self, list poi_data) except *
     
-    
+cdef State new_State()
+cdef void init_State(State state) except *
+
     
     
 

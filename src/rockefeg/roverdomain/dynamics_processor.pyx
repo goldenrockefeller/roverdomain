@@ -1,7 +1,7 @@
 cimport cython
 from rockefeg.cyutil.array cimport DoubleArray
 from libc cimport math as cmath
-from .state cimport State, RoverDatum, RoverData
+from .state cimport State, RoverDatum
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -14,21 +14,6 @@ cdef class BaseDynamicsProcessor:
     # list<DoubleArray>[n_rovers][n_action_dims]
 
 
-cdef DefaultDynamicsProcessor new_DefaultDynamicsProcessor():
-    cdef DefaultDynamicsProcessor processor
-
-    processor = DefaultDynamicsProcessor.__new__(DefaultDynamicsProcessor)
-    init_DefaultDynamicsProcessor(processor)
-
-    return processor
-
-cdef void init_DefaultDynamicsProcessor(
-        DefaultDynamicsProcessor processor
-        ) except *:
-    if processor is None:
-        raise (
-            TypeError(
-                "The dynamics processor (processor) cannot be None." ))
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -52,7 +37,6 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
         cdef Py_ssize_t n_actions
         cdef Py_ssize_t n_action_dims
         cdef DoubleArray action
-        cdef RoverData rover_data
         cdef RoverDatum rover_datum
         cdef double clipped_action_0, clipped_action_1
         cdef double gf_rover_unit_direction_x, gf_rover_unit_direction_y
@@ -76,14 +60,14 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
                 TypeError(
                     "(cy_actions) can not be None"))
 
-        rover_data = cy_state.rover_data()
-        n_rovers = len(rover_data)
+
+        n_rovers = cy_state.n_rovers()
         n_actions = len(cy_actions)
 
         if n_rovers != len(cy_actions):
             raise (
                 TypeError(
-                    "The number of rover (len(state.rover_data()) = "
+                    "The number of rover (state.n_rovers() = "
                     "{n_rovers}) must be equal to the number of actions "
                     "(len(actions) = {n_actions})."
                     .format(**locals())))
@@ -109,7 +93,7 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
         for rover_id in range(n_rovers):
             action = cy_actions[rover_id]
 
-            rover_datum = rover_data.datum(rover_id)
+            rover_datum = cy_state.rover_datum(rover_id)
 
             # action_norm = (
             #     cmath.sqrt(
@@ -156,6 +140,22 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
             rover_datum.set_direction(
                 rover_datum.direction() + delta_direction)
 
+@cython.warn.undeclared(True)
+cdef DefaultDynamicsProcessor new_DefaultDynamicsProcessor():
+    cdef DefaultDynamicsProcessor processor
 
+    processor = DefaultDynamicsProcessor.__new__(DefaultDynamicsProcessor)
+    init_DefaultDynamicsProcessor(processor)
+
+    return processor
+
+@cython.warn.undeclared(True)
+cdef void init_DefaultDynamicsProcessor(
+        DefaultDynamicsProcessor processor
+        ) except *:
+    if processor is None:
+        raise (
+            TypeError(
+                "The dynamics processor (processor) cannot be None." ))
 
 

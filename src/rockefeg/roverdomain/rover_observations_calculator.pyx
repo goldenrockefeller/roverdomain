@@ -1,41 +1,18 @@
 cimport cython
 from libc cimport math as cmath
 from rockefeg.cyutil.array cimport DoubleArray, new_DoubleArray
-from .state cimport RoverData, RoverDatum, PoiData, PoiDatum
+from .state cimport RoverDatum, PoiDatum
 
 from .state cimport State
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
 cdef class BaseRoverObservationsCalculator:
-    cpdef copy(self, opy_obj = None):
+    cpdef copy(self, copy_obj = None):
         raise NotImplementedError("Abstract method.")
 
     cpdef list observations(self, state):
         raise NotImplementedError("Abstract method.")
-
-
-cdef DefaultRoverObservationsCalculator new_DefaultRoverObservationsCalculator():
-    cdef DefaultRoverObservationsCalculator observations_calculator
-
-    observations_calculator = (
-        DefaultRoverObservationsCalculator.__new__(
-            DefaultRoverObservationsCalculator ))
-    init_DefaultRoverObservationsCalculator(observations_calculator)
-
-    return observations_calculator
-
-cdef void init_DefaultRoverObservationsCalculator(
-        DefaultRoverObservationsCalculator observations_calculator
-        ) except *:
-    if observations_calculator is None:
-        raise (
-            TypeError(
-                "The observations calculator "
-                "(observations_calculator) cannot be None." ))
-
-    observations_calculator.__min_dist = 1.
-    observations_calculator.__n_observation_sections = 4
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -62,10 +39,8 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     cpdef list observations(self, state):
         cdef State cy_state = <State?>state
         cdef list observations
-        cdef RoverData rover_data
         cdef RoverDatum rover_datum
         cdef RoverDatum other_rover_datum
-        cdef PoiData poi_data
         cdef PoiDatum poi_datum
         cdef DoubleArray observation
         cdef Py_ssize_t rover_id, poi_id, other_rover_id, sec_id, obs_id
@@ -77,11 +52,8 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         cdef double dist
         cdef double rf_displ_angle
 
-        rover_data = cy_state.rover_data()
-        poi_data = cy_state.poi_data()
-
-        n_rovers = len(rover_data)
-        n_pois = len(poi_data)
+        n_rovers = cy_state.n_rovers()
+        n_pois = cy_state.n_pois()
         n_observation_dims = 2 * self.n_observation_sections()
 
         # Allocate observation arrays.
@@ -93,16 +65,14 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
         # Calculate observation for each rover.
         for rover_id in range(n_rovers):
-            rover_datum = rover_data.datum(rover_id)
+            rover_datum = cy_state.rover_datum(rover_id)
             observation = observations[rover_id]
 
             # Update rover type observations
-            for other_rover_id in range(n_rovers):
+            for other_rover_datum in cy_state.rover_data_shallow_copy():
                 # Agents should not sense self, ergo skip self comparison.
-                if rover_id == other_rover_id:
+                if rover_datum is other_rover_datum:
                     continue
-
-                other_rover_datum = rover_data.datum(other_rover_id)
 
                 # Get global frame (gf) displacement between the two rovers.
                 gf_displ_x = (
@@ -149,9 +119,9 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                 observation.view[obs_id] += 1. / (dist*dist)
 
 
+
             # Update POI type observations.
-            for poi_id in range(n_pois):
-                poi_datum = poi_data.datum(poi_id)
+            for poi_datum in cy_state.poi_data_shallow_copy():
 
                 # Get global frame (gf) displacement between the rover and POI.
                 gf_displ_x = (
@@ -197,6 +167,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
                 observation.view[obs_id] += poi_datum.value() / (dist*dist)
 
+
         return observations
 
     cpdef double min_dist(self) except *:
@@ -229,3 +200,27 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                     .format(**locals()) ))
 
         self.__n_observation_sections = n_observation_sections
+
+@cython.warn.undeclared(True)
+cdef DefaultRoverObservationsCalculator new_DefaultRoverObservationsCalculator():
+    cdef DefaultRoverObservationsCalculator observations_calculator
+
+    observations_calculator = (
+        DefaultRoverObservationsCalculator.__new__(
+            DefaultRoverObservationsCalculator ))
+    init_DefaultRoverObservationsCalculator(observations_calculator)
+
+    return observations_calculator
+
+@cython.warn.undeclared(True)
+cdef void init_DefaultRoverObservationsCalculator(
+        DefaultRoverObservationsCalculator observations_calculator
+        ) except *:
+    if observations_calculator is None:
+        raise (
+            TypeError(
+                "The observations calculator "
+                "(observations_calculator) cannot be None." ))
+
+    observations_calculator.__min_dist = 1.
+    observations_calculator.__n_observation_sections = 4

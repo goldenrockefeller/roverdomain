@@ -2,20 +2,41 @@ cimport cython
 from rockefeg.cyutil.array cimport DoubleArray
 from .state cimport State
 
+@cython.warn.undeclared(True)
+cpdef void ensure_all_is_DoubleArray(list arr_list) except *:
+    cdef Py_ssize_t id
+    cdef DoubleArray arr
 
-cdef StateHistory new_StateHistory():
-    cdef StateHistory history
+    if arr_list is None:
+        raise TypeError("The arr_list (arr_list) must not be None.")
 
-    history = StateHistory.__new__(StateHistory)
-    init_StateHistory(history)
+    for id in range(len(arr_list)):
+        arr = arr_list[id]
+        if not isinstance(arr, DoubleArray):
+            raise (
+                TypeError(
+                    "All objects in the list of arr_list (arr_list) must be "
+                    "instances of DoubleArray. type(arr_list[{id}]) "
+                    "is {arr.__class__}."
+                    .format(**locals()) ))
 
-    return history
+@cython.warn.undeclared(True)
+cpdef list deep_copy_DoubleArray_list(list arr_list):
+    cdef DoubleArray arr
+    cdef list new_list
+    cdef Py_ssize_t id
 
-cdef void init_StateHistory(StateHistory history) except *:
-    if history is None:
-        raise TypeError("The state history (history) cannot be None.")
+    ensure_all_is_DoubleArray(arr_list)
 
-    history.__history = []
+    new_list = [None] * len(arr_list)
+
+    for id in range(len(arr_list)):
+        arr = arr_list[id]
+        new_list[id] = arr.copy()
+
+    return new_list
+
+
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -33,11 +54,7 @@ cdef class StateHistory:
         else:
             new_history = copy_obj
 
-        new_history.__history = [None] * len(self)
-
-        for state_id in range(len(self)):
-            state = self.__history[state_id]
-            new_history.__history[state_id] = state.copy()
+        new_history.__history = self.history_deep_copy()
 
         return new_history
 
@@ -76,52 +93,59 @@ cdef class StateHistory:
 
     cpdef list history_shallow_copy(self):
         cdef list history_copy
-        cdef Py_ssize_t entry_id
+        cdef Py_ssize_t state_id
 
-        history_copy = [None] * len(self)
+        history_copy = [None] * len(self.__history)
 
-        for entry_id in range(len(self.__history)):
-            history_copy[entry_id] = self.__history[entry_id]
+        for state_id in range(len(self.__history)):
+            history_copy[state_id] = self.__history[state_id]
 
         return history_copy
 
+    cpdef list history_deep_copy(self):
+        cdef list history_copy
+        cdef Py_ssize_t state_id
+        cdef State state
+
+        history_copy = [None] * len(self.__history)
+
+        for state_id in range(len(self.__history)):
+            state = self.__history[state_id]
+            history_copy[state_id] = state.copy()
+
+        return history_copy
 
     cpdef void set_history(self, list history) except *:
         cdef Py_ssize_t state_id
         cdef State state
 
-        if history is None:
-            raise TypeError("The history (history) must not be None.")
-
-        for state_id in range(history):
+        for state_id in range(len(history)):
             state = history[state_id]
-            if not isinstance(history[state_id], State):
+            if not isinstance(state, State):
                 raise (
                     TypeError(
-                        "All objects in the history (history) must be "
-                        "instances of State. type(history[{state_id}]) is "
-                        "{state.__class__}."
+                        "All objects in (history) must be instances of "
+                        "State. (type(history[{state_id}]) = "
+                        "{state.__class__})."
                         .format(**locals()) ))
 
         self.__history = history
+@cython.warn.undeclared(True)
+cdef StateHistory new_StateHistory():
+    cdef StateHistory history
 
-
-cdef ActionsHistory new_ActionsHistory():
-    cdef ActionsHistory history
-
-    history = ActionsHistory.__new__(ActionsHistory)
-    init_ActionsHistory(history)
+    history = StateHistory.__new__(StateHistory)
+    init_StateHistory(history)
 
     return history
 
-
-cdef void init_ActionsHistory(ActionsHistory history) except *:
+@cython.warn.undeclared(True)
+cdef void init_StateHistory(StateHistory history) except *:
     if history is None:
-        raise (
-            TypeError(
-                "The rover actions history (history) cannot be None." ))
+        raise TypeError("The state history (history) cannot be None.")
 
     history.__history = []
+
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -130,54 +154,17 @@ cdef class ActionsHistory:
         init_ActionsHistory(self)
 
 
-    cpdef void check_actions(self, list actions) except *:
-        cdef Py_ssize_t action_id
-        cdef DoubleArray action
-
-        if actions is None:
-            raise TypeError("The actions (actions) must not be None.")
-
-        for action_id in range(len(actions)):
-            action = actions[action_id]
-            if not isinstance(action, DoubleArray):
-                raise (
-                    TypeError(
-                        "All objects in the list of actions (actions) must be "
-                        "instances of DoubleArray. type(actions[{action_id}]) "
-                        "is {action.__class__}."
-                        .format(**locals()) ))
-
-    cpdef list copy_actions(self, list actions):
-        cdef list new_actions
-        cdef Py_ssize_t action_id
-        cdef DoubleArray action
-
-        self.check_actions(actions)
-
-        new_actions = [None] * len(actions)
-
-        for action_id in range(len(actions)):
-            action = actions[action_id]
-            new_actions[action_id] = action.copy()
-
-        return new_actions
 
     cpdef copy(self, copy_obj = None):
         cdef ActionsHistory new_history
         cdef Py_ssize_t entry_id
-        cdef list actions
 
         if copy_obj is None:
             new_history = ActionsHistory.__new__(ActionsHistory)
         else:
             new_history = copy_obj
 
-        new_history.__history = [None] * len(self)
-
-        for entry_id in range(len(self)):
-            actions = self.__history[entry_id]
-            new_history.__history[entry_id] = (
-                self.copy_actions(actions))
+        new_history.__history = self.history_deep_copy()
 
         return new_history
 
@@ -185,7 +172,7 @@ cdef class ActionsHistory:
         return len(self.__history)
 
     cpdef list entry(self, Py_ssize_t entry_id):
-        return self.copy_actions(self.__history[entry_id])
+        return deep_copy_DoubleArray_list(self.__history[entry_id])
 
     cpdef list pop(self, Py_ssize_t entry_id):
         return self.__history.pop(entry_id)
@@ -193,21 +180,21 @@ cdef class ActionsHistory:
     cpdef void insert_entry_at(
             self,
             Py_ssize_t entry_id,
-            list actions
+            list joint_action
             ) except *:
-        self.check_actions(actions)
+        ensure_all_is_DoubleArray(joint_action)
         self.__history.insert(
             entry_id,
-            self.copy_actions(actions) )
+            deep_copy_DoubleArray_list(joint_action) )
 
-    cpdef void overwrite(self, Py_ssize_t entry_id, list actions) except *:
-        self.check_actions(actions)
+    cpdef void overwrite(self, Py_ssize_t entry_id, list joint_action) except *:
+        ensure_all_is_DoubleArray(joint_action)
 
-        self.__history[entry_id] = self.copy_actions(actions)
+        self.__history[entry_id] = deep_copy_DoubleArray_list(joint_action)
 
-    cpdef void record(self, list actions) except *:
-        self.check_actions(actions)
-        self.__history.append(self.copy_actions(actions))
+    cpdef void record(self, list joint_action) except *:
+        ensure_all_is_DoubleArray(joint_action)
+        self.__history.append(deep_copy_DoubleArray_list(joint_action))
 
     cpdef void clear(self):
         self.__history = []
@@ -217,22 +204,52 @@ cdef class ActionsHistory:
 
     cpdef list history_shallow_copy(self):
         cdef list history_copy
-        cdef Py_ssize_t entry_id
+        cdef Py_ssize_t action_id
 
-        history_copy = [None] * len(self)
+        history_copy = [None] * len(self.__history)
 
-        for entry_id in range(len(self.__history)):
-            history_copy[entry_id] = self.__history[entry_id]
+        for action_id in range(len(self.__history)):
+            history_copy[action_id] = self.__history[action_id]
+
+        return history_copy
+
+    cpdef list history_deep_copy(self):
+        cdef list history_copy
+        cdef Py_ssize_t action_id
+        cdef list joint_action
+
+        history_copy = [None] * len(self.__history)
+
+        for action_id in range(len(self.__history)):
+            joint_action = self.__history[action_id]
+            history_copy[action_id] = deep_copy_DoubleArray_list(joint_action)
 
         return history_copy
 
     cpdef void set_history(self, list history) except *:
-        cdef Py_ssize_t actions_id
+        cdef Py_ssize_t joint_action_id
+        cdef list joint_action
 
-        if history is None:
-            raise TypeError("The history (history) must not be None.")
-
-        for actions_id in range(history):
-            self.check_actions(history[actions_id])
+        for joint_action_id in range(len(history)):
+            ensure_all_is_DoubleArray(history[joint_action_id])
 
         self.__history = history
+
+@cython.warn.undeclared(True)
+cdef ActionsHistory new_ActionsHistory():
+    cdef ActionsHistory history
+
+    history = ActionsHistory.__new__(ActionsHistory)
+    init_ActionsHistory(history)
+
+    return history
+
+@cython.warn.undeclared(True)
+cdef void init_ActionsHistory(ActionsHistory history) except *:
+    if history is None:
+        raise (
+            TypeError(
+                "The rover actions history (history) cannot be None." ))
+
+    history.__history = []
+

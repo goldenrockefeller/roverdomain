@@ -1,5 +1,9 @@
-cdef StateHistory new_StateHistory()
-cdef void init_StateHistory(StateHistory history) except *
+
+
+cpdef void ensure_all_is_DoubleArray(list arr_list) except *
+
+cpdef list deep_copy_DoubleArray_list(list arr_list)
+
 
 cdef class StateHistory:
     cdef list __history
@@ -19,19 +23,14 @@ cdef class StateHistory:
 
     cpdef list _history(self)
     cpdef list history_shallow_copy(self)
+    cpdef list history_deep_copy(self)
     cpdef void set_history(self, list history) except *
-
-cdef ActionsHistory new_ActionsHistory()
-cdef void init_ActionsHistory(ActionsHistory history) except *
+cdef StateHistory new_StateHistory()
+cdef void init_StateHistory(StateHistory history) except *
 
 cdef class ActionsHistory:
     cdef list __history
     #list<list<DoubleArray>>>[n_steps][n_rovers][n_action_dims]
-
-    cpdef void check_actions(self, list actions) except *
-
-    cpdef list copy_actions(self, list actions)
-
 
     cpdef copy(self, copy_obj = ?)
 
@@ -47,4 +46,9 @@ cdef class ActionsHistory:
 
     cpdef list _history(self)
     cpdef list history_shallow_copy(self)
+    cpdef list history_deep_copy(self)
     cpdef void set_history(self, list history) except *
+
+
+cdef ActionsHistory new_ActionsHistory()
+cdef void init_ActionsHistory(ActionsHistory history) except *

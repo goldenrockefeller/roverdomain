@@ -5,17 +5,6 @@ from libc cimport math as cmath
 cdef double TAU = 2 * cmath.pi
 
 
-cdef RoverDatum new_RoverDatum():
-    cdef RoverDatum new_rover_datum
-    
-    new_rover_datum = RoverDatum.__new__(RoverDatum)
-    init_RoverDatum(new_rover_datum)
-    
-    return new_rover_datum
-
-cdef void init_RoverDatum(RoverDatum rover_datum) except *:
-    if rover_datum is None:
-        raise TypeError("The rover datum (rover_datum) cannot be None.")
 
 
 @cython.warn.undeclared(True)
@@ -75,20 +64,20 @@ cdef class RoverDatum:
                 
         self.__direction = direction
 
-        
-cdef PoiDatum new_PoiDatum():
-    cdef PoiDatum new_poi_datum
+@cython.warn.undeclared(True)
+cdef RoverDatum new_RoverDatum():
+    cdef RoverDatum new_rover_datum
     
-    new_poi_datum = PoiDatum.__new__(PoiDatum)
-    init_PoiDatum(new_poi_datum)
+    new_rover_datum = RoverDatum.__new__(RoverDatum)
+    init_RoverDatum(new_rover_datum)
     
-    return new_poi_datum
+    return new_rover_datum
 
-cdef void init_PoiDatum(PoiDatum poi_datum) except *:
-    if poi_datum is None:
-        raise TypeError("The POI datum (poi_datum) cannot be None.")
-        
-
+@cython.warn.undeclared(True)
+cdef void init_RoverDatum(RoverDatum rover_datum) except *:
+    if rover_datum is None:
+        raise TypeError("The rover datum (rover_datum) cannot be None.")
+ 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
 cdef class PoiDatum:
@@ -126,179 +115,166 @@ cdef class PoiDatum:
         
     cpdef void set_value(self, double value) except *:
         self.__value = value
-    
-cdef RoverData new_RoverData():
-    cdef RoverData data
-    
-    data = RoverData.__new__(RoverData)
-    init_RoverData(data)
-    
-    return data
-
-cdef void init_RoverData(RoverData data) except *:
-    if data is None:
-        raise TypeError("The rover data (data) cannot be None.")
-
-    data.__data = []
         
+cdef PoiDatum new_PoiDatum():
+    cdef PoiDatum new_poi_datum
     
+    new_poi_datum = PoiDatum.__new__(PoiDatum)
+    init_PoiDatum(new_poi_datum)
+    
+    return new_poi_datum
+
+cdef void init_PoiDatum(PoiDatum poi_datum) except *:
+    if poi_datum is None:
+        raise TypeError("The POI datum (poi_datum) cannot be None.")
+        
+
+
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
-cdef class RoverData:
+cdef class State:
     def __init__(self):
-        init_RoverData(self)
+        init_State(self)
         
     cpdef copy(self, copy_obj = None):
-        cdef RoverData new_data
+        cdef State new_state
         cdef Py_ssize_t datum_id
+        cdef RoverDatum rover_datum
+        cdef PoiDatum poi_datum
         
         if copy_obj is None:
-            new_data = RoverData.__new__(RoverData)
+            new_state = State.__new__(State)
         else:
-            new_data = copy_obj
+            new_state = copy_obj
             
-        new_data.__data = [None] * len(self)
+        new_state.__rover_data = self.rover_data_deep_copy()
+        new_state.__poi_data = self.poi_data_deep_copy()
         
-        for datum_id in range(len(self)):
-            new_data.__data[datum_id] = self.__data[datum_id].copy()
+        return new_state
+     
+    cpdef Py_ssize_t n_rovers(self) except *:
+          return len(self.__rover_data)
         
-        return new_data
-    
-    def __len__(self):
-        return len(self.__data)
-    
-    cpdef void append(self, datum) except *:
-        self.__data.append(<RoverDatum?>datum)
+    cpdef void append_rover_datum(self, rover_datum) except *:
+        self.__rover_data.append(<RoverDatum?>rover_datum)
         
-    cpdef pop(self, Py_ssize_t index):
-        return self.__data.pop(index)
+    cpdef pop_rover_datum(self, Py_ssize_t index):
+        return self.__rover_data.pop(index)
         
-    cpdef void insert(self, Py_ssize_t index, datum) except *:
-        self.__data.insert(index, <RoverDatum?>datum)
+    cpdef void insert_rover_datum(self, Py_ssize_t index, rover_datum) except *:
+        self.__rover_data.insert(index, <RoverDatum?>rover_datum)
         
-    cpdef datum(self, Py_ssize_t index):
-        return self.__data[index]
+    cpdef rover_datum(self, Py_ssize_t index):
+        return self.__rover_data[index]
         
-    cpdef void set_datum(self, Py_ssize_t index, datum) except *:
-        self.__data[index] = <RoverDatum?>datum
-    
-    cpdef list _data(self):
-        return self.__data
+    cpdef void set_rover_datum(self, Py_ssize_t index, rover_datum) except *:
+        self.__rover_data[index] = <RoverDatum?>rover_datum
+ 
+    cpdef list _rover_data(self):
+        return self.__rover_data
         
-    cpdef list data_shallow_copy(self):
-        cdef list data_copy = [None] * len(self.__data)
-        cdef Py_ssize_t datum_id
+    cpdef list rover_data_shallow_copy(self):
+        cdef list rover_data_copy
+        cdef Py_ssize_t rover_datum_id
         
-        for datum_id in range(len(self.__data)):
-            data_copy[datum_id] =self.__data[datum_id]
+        rover_data_copy = [None] * len(self.__rover_data)
         
-        return data_copy
+        for rover_datum_id in range(len(self.__rover_data)):
+            rover_data_copy[rover_datum_id] = self.__rover_data[rover_datum_id]
+            
+        return rover_data_copy
         
-    cpdef void set_data(self, list data) except *:
-        cdef Py_ssize_t datum_id
-        cdef object datum
+    cpdef list rover_data_deep_copy(self):
+        cdef list rover_data_copy
+        cdef Py_ssize_t rover_datum_id
+        cdef RoverDatum rover_datum
         
-        if data is None:
-            raise TypeError("The data (data) must not be None.")
+        rover_data_copy = [None] * len(self.__rover_data)
         
-        for datum_id in range(len(data)):
-            datum = data[datum_id]
-            if not isinstance(datum, RoverDatum):
+        for rover_datum_id in range(len(self.__rover_data)):
+            rover_datum = self.__rover_data[rover_datum_id]
+            rover_data_copy[rover_datum_id] = rover_datum.copy()
+            
+        return rover_data_copy
+        
+    cpdef void set_rover_data(self, list rover_data) except *:
+        cdef Py_ssize_t rover_datum_id
+        cdef RoverDatum rover_datum
+        
+        for rover_datum_id in range(len(rover_data)):
+            rover_datum = rover_data[rover_datum_id]
+            if not isinstance(rover_datum, RoverDatum):
                 raise (
                     TypeError(
-                        "All objects in data (data) must be instances of "
-                        "RoverDatum. type(data[{datum_id}]) is "
-                        "{datum.__class__}."
+                        "All objects in (rover_data) must be instances of "
+                        "RoverDatum. (type(rover_data[{rover_datum_id}]) = "
+                        "{rover_datum.__class__})."
                         .format(**locals()) ))
         
-        self.__data = data
-    
-cdef PoiData new_PoiData():
-    cdef PoiData data
-    
-    data = PoiData.__new__(PoiData)
-    init_PoiData(data)
-    
-    return data
-
-cdef void init_PoiData(PoiData data) except *:
-    if data is None:
-        raise TypeError("The poi data (data) cannot be None.")
-
-    data.__data = []
-    
-@cython.warn.undeclared(True)
-@cython.auto_pickle(True)
-cdef class PoiData:
-    def __init__(self):
-        init_PoiData(self)
+        self.__rover_data = rover_data
         
+    cpdef Py_ssize_t n_pois(self) except *:
+          return len(self.__poi_data)
         
-    cpdef copy(self, copy_obj = None):
-        cdef PoiData new_data
-        cdef Py_ssize_t datum_id
+    cpdef void append_poi_datum(self, poi_datum) except *:
+        self.__poi_data.append(<PoiDatum?>poi_datum)
         
-        if copy_obj is None:
-            new_data = PoiData.__new__(PoiData)
-        else:
-            new_data = copy_obj
+    cpdef pop_poi_datum(self, Py_ssize_t index):
+        return self.__poi_data.pop(index)
         
-        new_data.__data = [None] * len(self)
+    cpdef void insert_poi_datum(self, Py_ssize_t index, poi_datum) except *:
+        self.__poi_data.insert(index, <PoiDatum?>poi_datum)
         
-        for datum_id in range(len(self)):
-            new_data.__data[datum_id] = self.__data[datum_id].copy()
+    cpdef poi_datum(self, Py_ssize_t index):
+        return self.__poi_data[index]
         
-        return new_data
-    
-    def __len__(self):
-        return len(self.__data)
-    
-    cpdef void append(self, datum) except *:
-        self.__data.append(<PoiData?>datum)
+    cpdef void set_poi_datum(self, Py_ssize_t index, poi_datum) except *:
+        self.__poi_data[index] = <PoiDatum?>poi_datum
+ 
+    cpdef list _poi_data(self):
+        return self.__poi_data
         
-    cpdef pop(self, Py_ssize_t index):
-        return self.__data.pop(index)
+    cpdef list poi_data_shallow_copy(self):
+        cdef list poi_data_copy
+        cdef Py_ssize_t poi_datum_id
         
-    cpdef void insert(self, Py_ssize_t index, datum) except *:
-        self.__data.insert(index, <PoiData?>datum)
+        poi_data_copy = [None] * len(self.__poi_data)
         
-    cpdef datum(self, Py_ssize_t index):
-        return self.__data[index]
+        for poi_datum_id in range(len(self.__poi_data)):
+            poi_data_copy[poi_datum_id] = self.__poi_data[poi_datum_id]
+            
+        return poi_data_copy
         
-    cpdef void set_datum(self, Py_ssize_t index, datum) except *:
-        self.__data[index] = <PoiData?>datum
-    
-    cpdef list _data(self):
-        return self.__data
+    cpdef list poi_data_deep_copy(self):
+        cdef list poi_data_copy
+        cdef Py_ssize_t poi_datum_id
+        cdef PoiDatum poi_datum
         
-    cpdef list data_shallow_copy(self):
-        cdef list data_copy = [None] * len(self.__data)
-        cdef Py_ssize_t datum_id
+        poi_data_copy = [None] * len(self.__poi_data)
         
-        for datum_id in range(len(self.__data)):
-            data_copy[datum_id] =self.__data[datum_id]
+        for poi_datum_id in range(len(self.__poi_data)):
+            poi_datum = self.__poi_data[poi_datum_id]
+            poi_data_copy[poi_datum_id] = poi_datum.copy()
+            
+        return poi_data_copy
         
-        return data_copy
+    cpdef void set_poi_data(self, list poi_data) except *:
+        cdef Py_ssize_t poi_datum_id
+        cdef PoiDatum poi_datum
         
-    cpdef void set_data(self, list data) except *:
-        cdef Py_ssize_t datum_id
-        cdef object datum
-        
-        if data is None:
-            raise TypeError("The data (data) must not be None.")
-        
-        for datum_id in range(len(data)):
-            datum = data[datum_id]
-            if not isinstance(datum, PoiDatum):
+        for poi_datum_id in range(len(poi_data)):
+            poi_datum = poi_data[poi_datum_id]
+            if not isinstance(poi_datum, PoiDatum):
                 raise (
                     TypeError(
-                        "All objects in data (data) must be instances of "
-                        "PoiDatum. (type(data[{datum_id}]) = "
-                        "{datum.__class__})."
+                        "All objects in (poi_data) must be instances of "
+                        "PoiDatum. (type(poi_data[{poi_datum_id}]) = "
+                        "{poi_datum.__class__})."
                         .format(**locals()) ))
         
-        self.__data = data
-    
+        self.__poi_data = poi_data
+
+
 cdef State new_State():
     cdef State state
     
@@ -311,40 +287,8 @@ cdef void init_State(State state) except *:
     if state is None:
         raise TypeError("The state (state) cannot be None.")
         
-    state.__rover_data = new_RoverData()
-    state.__poi_data = new_PoiData()
-
-@cython.warn.undeclared(True)
-@cython.auto_pickle(True)
-cdef class State:
-    def __init__(self):
-        init_State(self)
-        
-    cpdef copy(self, copy_obj = None):
-        cdef State new_state
-        
-        if copy_obj is None:
-            new_state = State.__new__(State)
-        else:
-            new_state = copy_obj
-            
-        new_state.__rover_data = self.__rover_data.copy()
-        new_state.__poi_data = self.__poi_data.copy()
-        
-        return new_state
-    
-    cpdef RoverData rover_data(self):
-        return self.__rover_data
-        
-    cpdef void set_rover_data(self, rover_data) except *:
-        self.__rover_data = <RoverData?>rover_data
-    
-    cpdef PoiData poi_data(self):
-        return self.__poi_data
-        
-    cpdef void set_poi_data(self, PoiData poi_data) except *:
-        self.__poi_data = <PoiData?>poi_data
-
+    state.__rover_data = []
+    state.__poi_data = []
         
 
         

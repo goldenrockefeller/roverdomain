@@ -1,15 +1,9 @@
-cimport cython
-
 cdef class BaseRoverObservationsCalculator:
     cpdef copy(self, copy_obj = ?)
 
     cpdef list observations(self, state)
     # list<DoubleArray>[n_rovers][n_obs_dims]
 
-cdef DefaultRoverObservationsCalculator new_DefaultRoverObservationsCalculator()
-cdef void init_DefaultRoverObservationsCalculator(
-    DefaultRoverObservationsCalculator observations_calculator
-    ) except *
 
 cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     cdef Py_ssize_t __n_observation_sections
@@ -24,6 +18,9 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         self,
         Py_ssize_t n_observation_sections
         ) except *
-
+cdef DefaultRoverObservationsCalculator new_DefaultRoverObservationsCalculator()
+cdef void init_DefaultRoverObservationsCalculator(
+    DefaultRoverObservationsCalculator observations_calculator
+    ) except *
 
 
