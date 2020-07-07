@@ -14,7 +14,7 @@ cdef class StateHistory:
     #def __len__(self)
 
     cpdef entry(self, Py_ssize_t entry_id)
-    cpdef pop(self, Py_ssize_t entry_id)
+    cpdef pop(self, Py_ssize_t entry_id = ?)
     cpdef void insert_entry_at(self, Py_ssize_t entry_id, state) except *
     cpdef void overwrite(self, Py_ssize_t entry_id, state) except *
     cpdef void record(self, state) except *
@@ -37,7 +37,7 @@ cdef class ActionsHistory:
     #def __len__(self)
 
     cpdef list entry(self, Py_ssize_t entry_id)
-    cpdef list pop(self, Py_ssize_t entry_id)
+    cpdef list pop(self, Py_ssize_t entry_id = ?)
     cpdef void insert_entry_at(self, Py_ssize_t entry_id, list actions) except *
     cpdef void overwrite(self, Py_ssize_t entry_id, list actions) except *
     cpdef void record(self, list actions) except *

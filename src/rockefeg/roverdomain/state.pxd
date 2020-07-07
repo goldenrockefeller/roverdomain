@@ -49,7 +49,7 @@ cdef class State:
     
     cpdef Py_ssize_t n_rovers(self) except *
     cpdef void append_rover_datum(self, rover_datum) except *
-    cpdef pop_rover_datum(self, Py_ssize_t index)
+    cpdef pop_rover_datum(self, Py_ssize_t index = ?)
     cpdef void insert_rover_datum(self, Py_ssize_t index, rover_datum) except *
     cpdef rover_datum(self, Py_ssize_t index)
     cpdef void set_rover_datum(self, Py_ssize_t index, rover_datum) except *
@@ -60,7 +60,7 @@ cdef class State:
     
     cpdef Py_ssize_t n_pois(self) except *
     cpdef void append_poi_datum(self, poi_datum) except *
-    cpdef pop_poi_datum(self, Py_ssize_t index)
+    cpdef pop_poi_datum(self, Py_ssize_t index = ?)
     cpdef void insert_poi_datum(self, Py_ssize_t index, poi_datum) except *
     cpdef poi_datum(self, Py_ssize_t index)
     cpdef void set_poi_datum(self, Py_ssize_t index, poi_datum) except *

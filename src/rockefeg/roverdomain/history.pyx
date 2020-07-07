@@ -67,7 +67,7 @@ cdef class StateHistory:
         state = self.__history[entry_id]
         return state.copy()
 
-    cpdef pop(self, Py_ssize_t entry_id):
+    cpdef pop(self, Py_ssize_t entry_id = -1):
         return self.__history.pop(entry_id)
 
     cpdef void insert_entry_at(self, Py_ssize_t entry_id, state) except *:
@@ -174,7 +174,7 @@ cdef class ActionsHistory:
     cpdef list entry(self, Py_ssize_t entry_id):
         return deep_copy_DoubleArray_list(self.__history[entry_id])
 
-    cpdef list pop(self, Py_ssize_t entry_id):
+    cpdef list pop(self, Py_ssize_t entry_id = -1):
         return self.__history.pop(entry_id)
 
     cpdef void insert_entry_at(
