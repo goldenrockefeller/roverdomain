@@ -1,7 +1,7 @@
 cdef class BaseRoverObservationsCalculator:
     cpdef copy(self, copy_obj = ?)
 
-    cpdef list observations(self, state)
+    cpdef observations(self, state)
     # list<DoubleArray>[n_rovers][n_obs_dims]
 
 
@@ -18,6 +18,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         self,
         Py_ssize_t n_observation_sections
         ) except *
+
 cdef DefaultRoverObservationsCalculator new_DefaultRoverObservationsCalculator()
 cdef void init_DefaultRoverObservationsCalculator(
     DefaultRoverObservationsCalculator observations_calculator

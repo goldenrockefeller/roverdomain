@@ -2,6 +2,8 @@ cimport cython
 from libc cimport math as cmath
 from rockefeg.cyutil.array cimport DoubleArray, new_DoubleArray
 from .state cimport RoverDatum, PoiDatum
+from rockefeg.cyutil.typed_list cimport BaseReadableTypedList, new_TypedList
+from rockefeg.cyutil.typed_list cimport TypedList
 
 from .state cimport State
 
@@ -9,9 +11,9 @@ from .state cimport State
 @cython.auto_pickle(True)
 cdef class BaseRoverObservationsCalculator:
     cpdef copy(self, copy_obj = None):
-        raise NotImplementedError("Abstract method.")
+        pass
 
-    cpdef list observations(self, state):
+    cpdef observations(self, state):
         raise NotImplementedError("Abstract method.")
 
 @cython.warn.undeclared(True)
@@ -36,13 +38,15 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
         return new_observations_calculator
 
-    cpdef list observations(self, state):
+    cpdef observations(self, state):
         cdef State cy_state = <State?>state
         cdef list observations
+        cdef TypedList observations_typed_list
         cdef RoverDatum rover_datum
         cdef RoverDatum other_rover_datum
         cdef PoiDatum poi_datum
         cdef DoubleArray observation
+        cdef BaseReadableTypedList rover_data
         cdef Py_ssize_t rover_id, poi_id, other_rover_id, sec_id, obs_id
         cdef Py_ssize_t n_rovers, n_pois
         cdef Py_ssize_t n_observation_dims
@@ -51,10 +55,15 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         cdef double rotation_vector_x, rotation_vector_y
         cdef double dist
         cdef double rf_displ_angle
+        cdef double min_dist
+        cdef Py_ssize_t n_observation_sections
 
-        n_rovers = cy_state.n_rovers()
-        n_pois = cy_state.n_pois()
+        rover_data = cy_state.rover_data()
+        n_rovers = len(rover_data)
+        n_pois = len(cy_state.poi_data())
         n_observation_dims = 2 * self.n_observation_sections()
+        min_dist = self.min_dist()
+        n_observation_sections = self.n_observation_sections()
 
         # Allocate observation arrays.
         observations = [None] * n_rovers
@@ -65,11 +74,11 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
         # Calculate observation for each rover.
         for rover_id in range(n_rovers):
-            rover_datum = cy_state.rover_datum(rover_id)
+            rover_datum = rover_data.item(rover_id)
             observation = observations[rover_id]
 
             # Update rover type observations
-            for other_rover_datum in cy_state.rover_data_shallow_copy():
+            for other_rover_datum in rover_data:
                 # Agents should not sense self, ergo skip self comparison.
                 if rover_datum is other_rover_datum:
                     continue
@@ -98,8 +107,8 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                 # By bounding distance value we
                 # implicitly bound sensor values (1/dist^2) so that they
                 # don't explode when dist = 0.
-                if dist < self.__min_dist:
-                    dist = self.__min_dist
+                if dist < min_dist:
+                    dist = min_dist
 
                 # Get arc tangent (angle) of displacement.
                 rf_displ_angle = cmath.atan2(rf_displ_y, rf_displ_x)
@@ -108,20 +117,18 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                 sec_id = <Py_ssize_t>cmath.floor(
                     (rf_displ_angle + cmath.pi)
                     / (2 * cmath.pi)
-                    * self.__n_observation_sections)
+                    * n_observation_sections)
 
                 # Clip section index for pointer safety.
                 obs_id = (
                     min(
                         max(0, sec_id),
-                        self.__n_observation_sections - 1))
+                        n_observation_sections - 1))
 
                 observation.view[obs_id] += 1. / (dist*dist)
 
-
-
             # Update POI type observations.
-            for poi_datum in cy_state.poi_data_shallow_copy():
+            for poi_datum in cy_state.poi_data():
 
                 # Get global frame (gf) displacement between the rover and POI.
                 gf_displ_x = (
@@ -145,8 +152,8 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                 # By bounding distance value we
                 # implicitly bound sensor values (1/dist^2) so that they
                 # don't explode when dist = 0.
-                if dist < self.__min_dist:
-                    dist = self.__min_dist
+                if dist < min_dist:
+                    dist = min_dist
 
                 # Get arc tangent (angle) of displacement.
                 rf_displ_angle = cmath.atan2(rf_displ_y, rf_displ_x)
@@ -155,20 +162,23 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                 sec_id = <Py_ssize_t>cmath.floor(
                     (rf_displ_angle + cmath.pi)
                     / (2 * cmath.pi)
-                    * self.__n_observation_sections)
+                    * n_observation_sections)
 
                 # Clip section index for pointer safety and offset observations
                 # index for POIs.
                 obs_id = (
                     min(
                         max(0, sec_id),
-                        self.__n_observation_sections - 1)
-                    + self.__n_observation_sections)
+                        n_observation_sections - 1)
+                    + n_observation_sections)
 
                 observation.view[obs_id] += poi_datum.value() / (dist*dist)
 
 
-        return observations
+        observations_typed_list = new_TypedList(DoubleArray)
+        observations_typed_list.set_items(observations)
+
+        return observations_typed_list
 
     cpdef double min_dist(self) except *:
         return self.__min_dist

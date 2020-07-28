@@ -4,7 +4,6 @@ from .state cimport State
 from .rover_observations_calculator cimport BaseRoverObservationsCalculator
 from .dynamics_processor cimport BaseDynamicsProcessor
 from .evaluator cimport BaseEvaluator
-from .history cimport StateHistory, ActionsHistory
 
 from .rover_observations_calculator cimport DefaultRoverObservationsCalculator
 from .dynamics_processor cimport DefaultDynamicsProcessor
@@ -14,10 +13,10 @@ from .state cimport new_State
 from .dynamics_processor cimport new_DefaultDynamicsProcessor
 from .evaluator cimport new_DefaultEvaluator
 from .rover_observations_calculator cimport new_DefaultRoverObservationsCalculator
-from .history cimport new_StateHistory, new_ActionsHistory
 
 from rockefeg.cyutil.array cimport DoubleArray
-
+from rockefeg.cyutil.typed_list cimport TypedList, new_TypedList
+from rockefeg.cyutil.typed_list cimport is_sub_full_type
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -27,27 +26,41 @@ cdef class RoverDomain:
     
     cpdef object copy(self, object copy_obj = None):
         cdef RoverDomain new_domain
+        cdef State state
+        cdef BaseEvaluator evaluator
+        cdef BaseDynamicsProcessor dynamics_processor
+        cdef BaseRoverObservationsCalculator rover_observations_calculator
+        cdef TypedList state_history
+        cdef TypedList actions_history
         
         if copy_obj is None:
             new_domain = RoverDomain.__new__(RoverDomain)
         else:
             new_domain = copy_obj
 
-        new_domain.__current_state = (<State?>self.__current_state).copy()
-        new_domain.__setting_state = (<State?>self.__setting_state).copy()
-        new_domain.__evaluator = (<BaseEvaluator?>self.__evaluator).copy()
+        state = self.__current_state
+        new_domain.__current_state = state.copy()
+        
+        state = self.__setting_state
+        new_domain.__setting_state = state.copy()
+        
+        evaluator = self.__evaluator
+        new_domain.__evaluator = evaluator.copy()
+        
+        dynamics_processor = self.__dynamics_processor
         new_domain.__dynamics_processor = (
-            (<BaseDynamicsProcessor?>self.__dynamics_processor).copy())
-    
+            dynamics_processor.copy())
+        
+        rover_observations_calculator = self.__rover_observations_calculator
         new_domain.__rover_observations_calculator = (
-            (<BaseRoverObservationsCalculator?>
-            self.__rover_observations_calculator)
-            .copy())
+            rover_observations_calculator.copy())
             
-        new_domain.__state_history = (
-            <StateHistory?>self.__state_history).copy()
-        new_domain.__actions_history = (
-            <ActionsHistory?>self.__actions_history).copy()
+            
+        state_history = self.__state_history
+        new_domain.__state_history = state_history.shallow_copy()
+        
+        actions_history = self.__actions_history
+        new_domain.__actions_history = actions_history.shallow_copy()
     
         new_domain.__n_steps_elapsed = self.__n_steps_elapsed
         new_domain.__max_n_steps = self.__max_n_steps
@@ -56,61 +69,83 @@ cdef class RoverDomain:
         return new_domain
 
     cpdef bint episode_is_done(self) except *:
-        return self.__n_steps_elapsed >= self.__max_n_steps
+        return self.n_steps_elapsed() >= self.max_n_steps()
 
-    cpdef list rover_observations(self):
-        return (
-            (<BaseRoverObservationsCalculator?>
-            self.__rover_observations_calculator)
-            .observations(
-                self.__current_state))
+    cpdef rover_observations(self):
+        cdef BaseRoverObservationsCalculator rover_observations_calculator
+        
+        rover_observations_calculator = self.rover_observations_calculator()
+        
+        return rover_observations_calculator.observations(self.current_state())
                 
                 
     cpdef double eval(self) except *:
+        cdef BaseEvaluator evaluator
+        
+        evaluator = self.evaluator()
         return (
-            (<BaseEvaluator?>self.__evaluator).eval(
-                self.__state_history, 
-                self.__actions_history,
+            evaluator.eval(
+                self.state_history(), 
+                self.actions_history(),
                 self.episode_is_done()))
         
     
     cpdef rover_evals(self):
+        cdef BaseEvaluator evaluator
+        
+        evaluator = self.evaluator()
         return (
-            (<BaseEvaluator?>self.__evaluator).rover_evals(
-                self.__state_history, 
-                self.__actions_history,
+            evaluator.rover_evals(
+                self.state_history(), 
+                self.actions_history(),
                 self.episode_is_done()))
         
     
-    
     cpdef void reset(self) except *:
-        self.set_current_state((<State?>self.__setting_state).copy())
-        self._set_max_n_steps(self.__setting_max_n_steps)
+        cdef State setting_state
+        cdef TypedList state_history 
+        cdef TypedList actions_history
+        
+        setting_state = self.setting_state()
+        
+        self.set_current_state(setting_state.copy())
+        self._set_max_n_steps(self.setting_max_n_steps())
         self._set_n_steps_elapsed(0)
         
-        (<StateHistory?>self.__state_history).clear()
+        
+        state_history = self.state_history()
+        state_history.set_items([])
             
-        (<ActionsHistory?>self.__actions_history).clear()
+        actions_history = self.actions_history()
+        actions_history.set_items([])
 
         
-    cpdef void step(self, list rover_actions) except *:
+    cpdef void step(self, rover_actions) except *:
+        cdef State current_state
+        cdef TypedList state_history 
+        cdef TypedList actions_history
+        cdef BaseDynamicsProcessor dynamics_processor
+        
         if self.episode_is_done():
             raise ValueError(
                 "The rover domain's episode is done, so it cannot step. Try "
                 "resetting the domain.")
 
+        current_state = self.current_state()
+
         # Put current state in state history.
-        (<StateHistory?>self.__state_history).record(self.__current_state)
+        state_history = self.state_history()
+        state_history.append(current_state.copy())
         
         # Put current actions in actions history.
-        (<ActionsHistory?>self.__actions_history).record(rover_actions)
+        actions_history = self.actions_history()
+        actions_history.append(rover_actions)
                 
         # Update state
-        (<BaseDynamicsProcessor?>self.__dynamics_processor).process_state(
-            self.__current_state, 
-            rover_actions)
+        dynamics_processor = self.dynamics_processor()
+        dynamics_processor.process_state(current_state, rover_actions)
         
-        self._set_n_steps_elapsed(self.__n_steps_elapsed + 1)
+        self._set_n_steps_elapsed(self.n_steps_elapsed() + 1)
         
     cpdef current_state(self):
         return self.__current_state
@@ -190,14 +225,24 @@ cdef class RoverDomain:
         return self.__state_history
     
     cpdef void _set_state_history(self, state_history) except *:
-        self.__state_history = <StateHistory?>state_history
-    
+        cdef TypedList setting_state_history = <TypedList?> state_history
+        
+        if not is_sub_full_type(setting_state_history.item_type(), State):
+            raise (
+                TypeError(
+                    "The state history's item type "
+                    "(state_history.item_type() = {state_history_item_type}) "
+                    "must be State."
+                    .format(**locals())))
+
+        self.__state_history = setting_state_history
+     
     cpdef actions_history(self):
         return self.__actions_history
     
     cpdef void _set_actions_history(self, actions_history) except *:
-        self.__actions_history = <ActionsHistory?>actions_history
-
+        self.__actions_history = <TypedList?>actions_history
+  
 @cython.warn.undeclared(True)        
 cdef RoverDomain new_RoverDomain():
     cdef RoverDomain new_domain
@@ -209,11 +254,14 @@ cdef RoverDomain new_RoverDomain():
 
 @cython.warn.undeclared(True)
 cdef void init_RoverDomain(RoverDomain domain) except *:
+    cdef State setting_state
+    
     if domain is None:
         raise TypeError("The domain (domain) cannot be None.")
         
     domain.__setting_state = new_State()
-    domain.__current_state = domain.__setting_state.copy()
+    setting_state = domain.__setting_state
+    domain.__current_state = setting_state.copy()
     domain.__dynamics_processor = new_DefaultDynamicsProcessor()
     domain.__evaluator = new_DefaultEvaluator()
     domain.__rover_observations_calculator = (
@@ -222,6 +270,6 @@ cdef void init_RoverDomain(RoverDomain domain) except *:
     domain.__setting_max_n_steps = domain.__max_n_steps
     domain.__n_steps_elapsed = 0
 
-    domain.__state_history = new_StateHistory()
-    domain.__actions_history = new_ActionsHistory()
+    domain.__state_history = new_TypedList(State)
+    domain.__actions_history = new_TypedList(object)
  

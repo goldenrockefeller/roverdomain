@@ -18,7 +18,7 @@ cdef class RoverDomain:
     
     cpdef bint episode_is_done(self) except *
      
-    cpdef list rover_observations(self)
+    cpdef rover_observations(self)
     # list<DoubleArray>[n_observation_dims, n_rovers]
     
     cpdef double eval(self) except *
@@ -28,7 +28,7 @@ cdef class RoverDomain:
     
     cpdef void reset(self) except *
         
-    cpdef void step(self, list rover_actions) except *
+    cpdef void step(self, rover_actions) except *
     # list<DoubleArray>[n_rovers, n_observation_dims]
     
     cpdef current_state(self)
@@ -66,7 +66,7 @@ cdef class RoverDomain:
     
     cpdef void _set_state_history(self, state_history) except *
     # Protected
-    
+    # 
     cpdef actions_history(self)
     
     cpdef void _set_actions_history(self, actions_history) except *

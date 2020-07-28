@@ -1,6 +1,5 @@
 # distutils: language = c++
 
-cpdef void ensure_state_history_is_not_empty(state_history) except *
 cpdef void ensure_consistent_n_rovers_in_state_history(state_history) except *
 cpdef void ensure_consistent_n_pois_in_state_history(state_history) except *
 
@@ -20,9 +19,6 @@ cdef class BaseEvaluator:
         actions_history,
         bint episode_is_done)
     # DoubleArray[n_rovers]
-
-
-
 
 cdef class DefaultEvaluator(BaseEvaluator):
     cdef double __capture_dist

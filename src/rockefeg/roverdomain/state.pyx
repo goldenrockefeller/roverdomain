@@ -2,8 +2,11 @@ cimport cython
 
 from libc cimport math as cmath
 
+
 cdef double TAU = 2 * cmath.pi
 
+from rockefeg.cyutil.typed_list cimport TypedList, new_TypedList
+from rockefeg.cyutil.typed_list cimport BaseWritableTypedList, is_sub_full_type 
 
 
 
@@ -138,7 +141,12 @@ cdef class State:
         
     cpdef copy(self, copy_obj = None):
         cdef State new_state
-        cdef Py_ssize_t datum_id
+        cdef Py_ssize_t rover_datum_id
+        cdef Py_ssize_t poi_datum_id
+        cdef BaseWritableTypedList rover_data
+        cdef BaseWritableTypedList poi_data
+        cdef BaseWritableTypedList new_rover_data
+        cdef BaseWritableTypedList new_poi_data
         cdef RoverDatum rover_datum
         cdef PoiDatum poi_datum
         
@@ -147,133 +155,64 @@ cdef class State:
         else:
             new_state = copy_obj
             
-        new_state.__rover_data = self.rover_data_deep_copy()
-        new_state.__poi_data = self.poi_data_deep_copy()
+        # Deep Copy.
+        rover_data = self.__rover_data
+        new_rover_data = rover_data.shallow_copy()
+        for rover_datum_id in range(len(rover_data)):
+            rover_datum = rover_data.item(rover_datum_id)
+            new_rover_data.set_item(rover_datum_id, rover_datum.copy())
+        new_state.__rover_data = new_rover_data   
+        
+        # Deep Copy.
+        poi_data = self.__poi_data
+        new_poi_data = poi_data.shallow_copy()
+        for poi_datum_id in range(len(poi_data)):
+            poi_datum = poi_data.item(poi_datum_id)
+            new_poi_data.set_item(poi_datum_id, poi_datum.copy())
+        new_state.__poi_data = new_poi_data   
         
         return new_state
      
-    cpdef Py_ssize_t n_rovers(self) except *:
-          return len(self.__rover_data)
-        
-    cpdef void append_rover_datum(self, rover_datum) except *:
-        self.__rover_data.append(<RoverDatum?>rover_datum)
-        
-    cpdef pop_rover_datum(self, Py_ssize_t index = -1):
-        return self.__rover_data.pop(index)
-        
-    cpdef void insert_rover_datum(self, Py_ssize_t index, rover_datum) except *:
-        self.__rover_data.insert(index, <RoverDatum?>rover_datum)
-        
-    cpdef rover_datum(self, Py_ssize_t index):
-        return self.__rover_data[index]
-        
-    cpdef void set_rover_datum(self, Py_ssize_t index, rover_datum) except *:
-        self.__rover_data[index] = <RoverDatum?>rover_datum
- 
-    cpdef list _rover_data(self):
+    cpdef rover_data(self):
         return self.__rover_data
         
-    cpdef list rover_data_shallow_copy(self):
-        cdef list rover_data_copy
-        cdef Py_ssize_t rover_datum_id
-        
-        rover_data_copy = [None] * len(self.__rover_data)
-        
-        for rover_datum_id in range(len(self.__rover_data)):
-            rover_data_copy[rover_datum_id] = self.__rover_data[rover_datum_id]
-            
-        return rover_data_copy
-        
-    cpdef list rover_data_deep_copy(self):
-        cdef list rover_data_copy
-        cdef Py_ssize_t rover_datum_id
-        cdef RoverDatum rover_datum
-        
-        rover_data_copy = [None] * len(self.__rover_data)
-        
-        for rover_datum_id in range(len(self.__rover_data)):
-            rover_datum = self.__rover_data[rover_datum_id]
-            rover_data_copy[rover_datum_id] = rover_datum.copy()
-            
-        return rover_data_copy
-        
-    cpdef void set_rover_data(self, list rover_data) except *:
-        cdef Py_ssize_t rover_datum_id
-        cdef RoverDatum rover_datum
-        
-        for rover_datum_id in range(len(rover_data)):
-            rover_datum = rover_data[rover_datum_id]
-            if not isinstance(rover_datum, RoverDatum):
-                raise (
-                    TypeError(
-                        "All objects in (rover_data) must be instances of "
-                        "RoverDatum. (type(rover_data[{rover_datum_id}]) = "
-                        "{rover_datum.__class__})."
-                        .format(**locals()) ))
-        
-        self.__rover_data = rover_data
-        
-    cpdef Py_ssize_t n_pois(self) except *:
-          return len(self.__poi_data)
-        
-    cpdef void append_poi_datum(self, poi_datum) except *:
-        self.__poi_data.append(<PoiDatum?>poi_datum)
-        
-    cpdef pop_poi_datum(self, Py_ssize_t index = -1):
-        return self.__poi_data.pop(index)
-        
-    cpdef void insert_poi_datum(self, Py_ssize_t index, poi_datum) except *:
-        self.__poi_data.insert(index, <PoiDatum?>poi_datum)
-        
-    cpdef poi_datum(self, Py_ssize_t index):
-        return self.__poi_data[index]
-        
-    cpdef void set_poi_datum(self, Py_ssize_t index, poi_datum) except *:
-        self.__poi_data[index] = <PoiDatum?>poi_datum
- 
-    cpdef list _poi_data(self):
+    cpdef void set_rover_data(self, rover_data) except *:
+        cdef BaseWritableTypedList setting_rover_data = (
+            <BaseWritableTypedList?> rover_data)
+        cdef object rover_data_item_type
+
+        rover_data_item_type = setting_rover_data.item_type()
+
+        if not is_sub_full_type(rover_data_item_type, RoverDatum):
+            raise (
+                TypeError(
+                    "The rover data list's item type "
+                    "(rover_data.item_type() = {rover_data_item_type}) "
+                    "must be RoverDatum."
+                    .format(**locals())))
+
+        self.__rover_data = setting_rover_data
+    
+    cpdef poi_data(self):
         return self.__poi_data
         
-    cpdef list poi_data_shallow_copy(self):
-        cdef list poi_data_copy
-        cdef Py_ssize_t poi_datum_id
-        
-        poi_data_copy = [None] * len(self.__poi_data)
-        
-        for poi_datum_id in range(len(self.__poi_data)):
-            poi_data_copy[poi_datum_id] = self.__poi_data[poi_datum_id]
-            
-        return poi_data_copy
-        
-    cpdef list poi_data_deep_copy(self):
-        cdef list poi_data_copy
-        cdef Py_ssize_t poi_datum_id
-        cdef PoiDatum poi_datum
-        
-        poi_data_copy = [None] * len(self.__poi_data)
-        
-        for poi_datum_id in range(len(self.__poi_data)):
-            poi_datum = self.__poi_data[poi_datum_id]
-            poi_data_copy[poi_datum_id] = poi_datum.copy()
-            
-        return poi_data_copy
-        
-    cpdef void set_poi_data(self, list poi_data) except *:
-        cdef Py_ssize_t poi_datum_id
-        cdef PoiDatum poi_datum
-        
-        for poi_datum_id in range(len(poi_data)):
-            poi_datum = poi_data[poi_datum_id]
-            if not isinstance(poi_datum, PoiDatum):
-                raise (
-                    TypeError(
-                        "All objects in (poi_data) must be instances of "
-                        "PoiDatum. (type(poi_data[{poi_datum_id}]) = "
-                        "{poi_datum.__class__})."
-                        .format(**locals()) ))
-        
-        self.__poi_data = poi_data
+    cpdef void set_poi_data(self, poi_data) except *:
+        cdef BaseWritableTypedList setting_poi_data = (
+            <BaseWritableTypedList?> poi_data)
+        cdef object poi_data_item_type
 
+        poi_data_item_type = setting_poi_data.item_type()
+
+        if not is_sub_full_type(poi_data_item_type, PoiDatum):
+            raise (
+                TypeError(
+                    "The POI data list's item type "
+                    "(poi_data.item_type() = {poi_data_item_type}) "
+                    "must be PoiDatum."
+                    .format(**locals())))
+
+        self.__poi_data = setting_poi_data
+        
 
 cdef State new_State():
     cdef State state
@@ -287,8 +226,8 @@ cdef void init_State(State state) except *:
     if state is None:
         raise TypeError("The state (state) cannot be None.")
         
-    state.__rover_data = []
-    state.__poi_data = []
+    state.__rover_data = new_TypedList(RoverDatum)
+    state.__poi_data = new_TypedList(PoiDatum)
         
 
         
