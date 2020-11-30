@@ -3,17 +3,16 @@ from libc cimport math as cmath
 from rockefeg.cyutil.array cimport DoubleArray, new_DoubleArray
 from .state cimport RoverDatum, PoiDatum
 from rockefeg.cyutil.typed_list cimport BaseReadableTypedList, new_TypedList
-from rockefeg.cyutil.typed_list cimport TypedList
 
-from .state cimport State
+
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
 cdef class BaseRoverObservationsCalculator:
-    cpdef copy(self, copy_obj = None):
+    cpdef BaseRoverObservationsCalculator copy(self, copy_obj = None):
         pass
 
-    cpdef observations(self, state):
+    cpdef TypedList observations(self, State state):
         raise NotImplementedError("Abstract method.")
 
 @cython.warn.undeclared(True)
@@ -22,7 +21,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     def __init__(self):
         init_DefaultRoverObservationsCalculator(self)
 
-    cpdef copy(self, copy_obj = None):
+    cpdef DefaultRoverObservationsCalculator copy(self, copy_obj = None):
         cdef DefaultRoverObservationsCalculator new_observations_calculator
 
         if copy_obj is None:
@@ -38,8 +37,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
         return new_observations_calculator
 
-    cpdef observations(self, state):
-        cdef State cy_state = <State?>state
+    cpdef TypedList observations(self, State state):
         cdef list observations
         cdef TypedList observations_typed_list
         cdef RoverDatum rover_datum
@@ -58,9 +56,9 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         cdef double min_dist
         cdef Py_ssize_t n_observation_sections
 
-        rover_data = cy_state.rover_data()
+        rover_data = state.rover_data()
         n_rovers = len(rover_data)
-        n_pois = len(cy_state.poi_data())
+        n_pois = len(state.poi_data())
         n_observation_dims = 2 * self.n_observation_sections()
         min_dist = self.min_dist()
         n_observation_sections = self.n_observation_sections()
@@ -128,7 +126,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                 observation.view[obs_id] += 1. / (dist*dist)
 
             # Update POI type observations.
-            for poi_datum in cy_state.poi_data():
+            for poi_datum in state.poi_data():
 
                 # Get global frame (gf) displacement between the rover and POI.
                 gf_displ_x = (

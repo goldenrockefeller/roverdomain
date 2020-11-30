@@ -1,18 +1,19 @@
 cimport cython
-from .state cimport State, RoverDatum, PoiDatum
+
 from libc.math cimport INFINITY
-from rockefeg.cyutil.array cimport DoubleArray, new_DoubleArray
-from rockefeg.cyutil.typed_list cimport BaseReadableTypedList, is_sub_full_type
+from rockefeg.cyutil.array cimport  new_DoubleArray
+from rockefeg.cyutil.typed_list cimport is_sub_full_type
 
 @cython.warn.undeclared(True)
-cpdef void ensure_consistent_n_rovers_in_state_history(state_history) except *:
-    cdef BaseReadableTypedList cy_state_history = (
-        <BaseReadableTypedList?> state_history)
+cpdef void ensure_consistent_n_rovers_in_state_history(
+        BaseReadableTypedList state_history
+        ) except *:
+
     cdef State state
     cdef Py_ssize_t n_rovers
     cdef Py_ssize_t step_n_rovers
 
-    if not is_sub_full_type(cy_state_history.item_type(), State):
+    if not is_sub_full_type(state_history.item_type(), State):
         raise (
             TypeError(
                 "The state history list's item type "
@@ -20,13 +21,13 @@ cpdef void ensure_consistent_n_rovers_in_state_history(state_history) except *:
                 "must be State."
                 .format(**locals())))
 
-    if len(cy_state_history) == 0:
+    if len(state_history) == 0:
         return
 
-    state = cy_state_history.item(0)
+    state = state_history.item(0)
     n_rovers = len(state.rover_data())
 
-    for state in cy_state_history:
+    for state in state_history:
         step_n_rovers = len(state.rover_data())
 
         if n_rovers != step_n_rovers:
@@ -41,14 +42,15 @@ cpdef void ensure_consistent_n_rovers_in_state_history(state_history) except *:
                     .format(**locals())))
 
 @cython.warn.undeclared(True)
-cpdef void ensure_consistent_n_pois_in_state_history(state_history) except *:
-    cdef BaseReadableTypedList cy_state_history = (
-        <BaseReadableTypedList?> state_history)
+cpdef void ensure_consistent_n_pois_in_state_history(
+        BaseReadableTypedList state_history
+        ) except *:
+
     cdef State state
     cdef Py_ssize_t n_pois
     cdef Py_ssize_t step_n_pois
 
-    if not is_sub_full_type(cy_state_history.item_type(), State):
+    if not is_sub_full_type(state_history.item_type(), State):
         raise (
             TypeError(
                 "The state history list's item type "
@@ -56,13 +58,13 @@ cpdef void ensure_consistent_n_pois_in_state_history(state_history) except *:
                 "must be State."
                 .format(**locals())))
 
-    if len(cy_state_history) == 0:
+    if len(state_history) == 0:
         return
 
-    state = cy_state_history.item(0)
+    state = state_history.item(0)
     n_pois = len(state.poi_data())
 
-    for state in cy_state_history:
+    for state in state_history:
         step_n_pois = len(state.poi_data())
 
         if n_pois != step_n_pois:
@@ -79,21 +81,21 @@ cpdef void ensure_consistent_n_pois_in_state_history(state_history) except *:
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
 cdef class BaseEvaluator:
-    cpdef copy(self, copy_obj = None):
+    cpdef BaseEvaluator copy(self, copy_obj = None):
         pass
 
     cpdef double eval(
             self,
-            state_history,
-            actions_history,
+            BaseReadableTypedList state_history,
+            BaseReadableTypedList actions_history,
             bint episode_is_done
             ) except *:
         raise NotImplementedError("Abstract method.")
 
-    cpdef rover_evals(
+    cpdef DoubleArray rover_evals(
             self,
-            state_history,
-            actions_history,
+            BaseReadableTypedList state_history,
+            BaseReadableTypedList actions_history,
             bint episode_is_done):
         raise NotImplementedError("Abstract method.")
 
@@ -107,7 +109,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
     def __init__(self):
         init_DefaultEvaluator(self)
 
-    cpdef object copy(self, object copy_obj = None):
+    cpdef DefaultEvaluator copy(self, copy_obj = None):
         cdef DefaultEvaluator new_evaluator
 
         if copy_obj is None:
@@ -122,34 +124,34 @@ cdef class DefaultEvaluator(BaseEvaluator):
 
     cpdef double eval(
             self,
-            state_history,
-            actions_history,
+            BaseReadableTypedList state_history,
+            BaseReadableTypedList actions_history,
             bint episode_is_done
             ) except *:
-        cdef BaseReadableTypedList cy_state_history = (
-            <BaseReadableTypedList?> state_history)
+
         cdef State state
         cdef Py_ssize_t step_id, poi_id
         cdef Py_ssize_t n_steps
         cdef Py_ssize_t n_pois
         cdef double eval
         cdef DoubleArray sub_evals_given_poi
+        cdef PoiDatum poi_datum
 
         # Return reward only at the end of the episode
         if not episode_is_done:
             return 0.
 
-
+        # More (expensive) error checking.
         ensure_consistent_n_rovers_in_state_history(state_history)
         ensure_consistent_n_pois_in_state_history(state_history)
 
-        if len(cy_state_history) == 0:
+        if len(state_history) == 0:
             raise (
                 ValueError(
                     "The length of the state history (len(state_history) = 0) "
                     "must be positive." ))
 
-        if not is_sub_full_type(cy_state_history.item_type(), State):
+        if not is_sub_full_type(state_history.item_type(), State):
             raise (
                 TypeError(
                     "The state history's item type "
@@ -159,9 +161,9 @@ cdef class DefaultEvaluator(BaseEvaluator):
 
 
 
-        state = cy_state_history.item(0)
+        state = state_history.item(0)
         n_pois = len(state.poi_data())
-        n_steps = len(cy_state_history)
+        n_steps = len(state_history)
 
         sub_evals_given_poi = new_DoubleArray(n_pois)
         sub_evals_given_poi.set_all_to(-INFINITY)
@@ -171,16 +173,17 @@ cdef class DefaultEvaluator(BaseEvaluator):
 
         # Get evaluation for poi, for each step, storing the max.
         for step_id in range(n_steps):
-            state = cy_state_history.item(step_id)
+            state = state_history.item(step_id)
             # Keep best step evaluation for each poi.
             for poi_id in range(n_pois):
+                poi_datum = state.poi_data().item(poi_id)
                 sub_evals_given_poi.view[poi_id] = (
                     max(
                         sub_evals_given_poi.view[poi_id],
                         step_eval_from_poi_for_DefaultEvaluator(
                             self,
-                            state,
-                            poi_id)))
+                            poi_datum,
+                            state.rover_data() )))
 
         # Set evaluation to the sum of all POI-specific evaluations.
         for poi_id in range(n_pois):
@@ -189,30 +192,27 @@ cdef class DefaultEvaluator(BaseEvaluator):
         return eval
 
 
-    cpdef rover_evals(
+    cpdef DoubleArray rover_evals(
             self,
-            state_history,
-            actions_history,
+            BaseReadableTypedList state_history,
+            BaseReadableTypedList actions_history,
             bint episode_is_done):
-        cdef BaseReadableTypedList cy_state_history = (
-            <BaseReadableTypedList?> state_history)
-        cdef State state
+        cdef State starting_state
         cdef Py_ssize_t n_rovers
         cdef DoubleArray rover_evals
 
-
-        if cy_state_history is None:
+        if state_history is None:
             raise (
                 TypeError(
                     "The state history (state_history) must not be None" ))
 
-        if len(cy_state_history) == 0:
+        if len(state_history) == 0:
             raise (
                 ValueError(
                     "The length of the state history (len(state_history) = 0) "
                     "must be positive." ))
 
-        if not is_sub_full_type(cy_state_history.item_type(), State):
+        if not is_sub_full_type(state_history.item_type(), State):
             raise (
                 TypeError(
                     "The state history's item type "
@@ -220,13 +220,14 @@ cdef class DefaultEvaluator(BaseEvaluator):
                     "must be State."
                     .format(**locals())))
 
-        state = cy_state_history.item(0)
-        n_rovers = len(state.rover_data())
+
+        starting_state = state_history.item(0)
+        n_rovers = len(starting_state.rover_data())
         rover_evals = new_DoubleArray(n_rovers)
 
         rover_evals.set_all_to(
             self.eval(
-                cy_state_history,
+                state_history,
                 actions_history,
                 episode_is_done))
 
@@ -275,29 +276,23 @@ cdef void init_DefaultEvaluator(DefaultEvaluator evaluator) except *:
 
 @cython.warn.undeclared(True)
 cpdef double step_eval_from_poi_for_DefaultEvaluator(
-        evaluator,
-        state,
-        Py_ssize_t poi_id
+        DefaultEvaluator evaluator,
+        PoiDatum poi_datum,
+        BaseReadableTypedList rover_data
         ) except *:
-    cdef DefaultEvaluator cy_evaluator = <DefaultEvaluator?>evaluator
-    cdef State cy_state = <State?>state
     cdef double displ_x, displ_y
     cdef double sqr_dist
     cdef double capture_dist
     cdef RoverDatum rover_datum
-    cdef PoiDatum poi_datum
-    cdef BaseReadableTypedList poi_data
     cdef Py_ssize_t n_rovers
     cdef Py_ssize_t n_req
     cdef Py_ssize_t n_rovers_at_poi
     cdef bint poi_is_captured
 
-    capture_dist = cy_evaluator.capture_dist()
-    n_req = cy_evaluator.n_req()
+    capture_dist = evaluator.capture_dist()
+    n_req = evaluator.n_req()
 
-    poi_data = cy_state.poi_data()
-    poi_datum = poi_data.item(poi_id)
-    n_rovers = len(cy_state.rover_data())
+    n_rovers = len(rover_data)
 
     # If there isn't enough rovers to satify the coupling constraint
     # (n_req), then return 0.
@@ -310,7 +305,7 @@ cpdef double step_eval_from_poi_for_DefaultEvaluator(
     # See if the rovers capture the POIs if the number of rovers at the POI
     # (n_rovers_at_poi) is greater than or equal to the number of rovers
     # required to capture the POI (n_req).
-    for rover_datum in cy_state.rover_data():
+    for rover_datum in rover_data:
         displ_x = rover_datum.position_x() - poi_datum.position_x()
         displ_y = rover_datum.position_y() - poi_datum.position_y()
         sqr_dist = displ_x*displ_x + displ_y*displ_y
@@ -331,33 +326,23 @@ cpdef double step_eval_from_poi_for_DefaultEvaluator(
 
 @cython.warn.undeclared(True)
 cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
-        evaluator,
-        state,
-        Py_ssize_t excluded_rover_id,
-        Py_ssize_t poi_id
+        DifferenceEvaluator evaluator,
+        PoiDatum poi_datum,
+        BaseReadableTypedList rover_data,
+        RoverDatum factual_rover_datum
         )  except *:
-    cdef DefaultEvaluator cy_evaluator = <DifferenceEvaluator?>evaluator
-    cdef State cy_state = <State?>state
     cdef double displ_x, displ_y
     cdef double sqr_dist
     cdef double capture_dist
     cdef RoverDatum rover_datum
-    cdef RoverDatum excluded_rover_datum
-    cdef BaseReadableTypedList rover_data
-    cdef BaseReadableTypedList poi_data
-    cdef PoiDatum poi_datum
     cdef Py_ssize_t n_rovers
     cdef Py_ssize_t n_req
     cdef Py_ssize_t n_rovers_at_poi
     cdef bint poi_is_captured
 
-    capture_dist = cy_evaluator.capture_dist()
-    n_req = cy_evaluator.n_req()
+    capture_dist = evaluator.capture_dist()
+    n_req = evaluator.n_req()
 
-    rover_data = cy_state.rover_data()
-    poi_data = cy_state.poi_data()
-    poi_datum = poi_data.item(poi_id)
-    excluded_rover_datum = rover_data.item(excluded_rover_id)
     n_rovers = len(rover_data)
 
     # If there isn't enough rovers to satify the coupling constraint
@@ -372,7 +357,7 @@ cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
     # (n_rovers_at_poi) is greater than or equal to the number of rovers
     # required to capture the POI (n_req).
     for rover_datum in rover_data:
-        if rover_datum is not excluded_rover_datum:
+        if rover_datum is not factual_rover_datum:
             displ_x = rover_datum.position_x() - poi_datum.position_x()
             displ_y = rover_datum.position_y() - poi_datum.position_y()
             sqr_dist = displ_x*displ_x + displ_y*displ_y
@@ -408,21 +393,32 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
     def __init__(self):
         init_DifferenceEvaluator(self)
 
+    cpdef DifferenceEvaluator copy(self, copy_obj = None):
+        cdef DifferenceEvaluator new_evaluator
+
+        if copy_obj is None:
+            new_evaluator = DifferenceEvaluator.__new__(DifferenceEvaluator)
+        else:
+            new_evaluator = copy_obj
+
+        DefaultEvaluator.copy(self, new_evaluator)
+
+        return new_evaluator
+
     cpdef double cfact_eval(
             self,
-            state_history,
-            actions_history,
+            BaseReadableTypedList state_history,
+            BaseReadableTypedList actions_history,
             bint episode_is_done,
-            Py_ssize_t excluded_rover_id
+            RoverDatum factual_rover_datum
             ) except *:
         """
         Returns counterfactual evaluation (cfact: evaluation without excluded
         rover contribution).
         """
-        cdef BaseReadableTypedList cy_state_history = (
-            <BaseReadableTypedList?> state_history)
 
         cdef State state
+        cdef PoiDatum poi_datum
         cdef Py_ssize_t poi_id
         cdef Py_ssize_t n_steps
         cdef Py_ssize_t n_pois
@@ -436,13 +432,13 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         ensure_consistent_n_rovers_in_state_history(state_history)
         ensure_consistent_n_pois_in_state_history(state_history)
 
-        if len(cy_state_history) == 0:
+        if len(state_history) == 0:
             raise (
                 ValueError(
                     "The length of the state history (len(state_history) = 0) "
                     "must be positive." ))
 
-        if not is_sub_full_type(cy_state_history.item_type(), State):
+        if not is_sub_full_type(state_history.item_type(), State):
             raise (
                 TypeError(
                     "The state history's item type "
@@ -450,9 +446,9 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                     "must be State."
                     .format(**locals())))
 
-        state = cy_state_history.item(0)
+        state = state_history.item(0)
         n_pois = len(state.poi_data())
-        n_steps = len(cy_state_history)
+        n_steps = len(state_history)
 
         sub_evals_given_poi = new_DoubleArray(n_pois)
         sub_evals_given_poi.set_all_to(-INFINITY)
@@ -469,17 +465,18 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
             cfact_eval += sub_evals_given_poi.view[poi_id]
 
         # Get evaluation for poi, for each step, storing the max
-        for state in cy_state_history:
+        for state in state_history:
             # Keep best step evalualtion for each poi
             for poi_id in range(n_pois):
+                poi_datum = state.poi_data().item(poi_id)
                 sub_evals_given_poi.view[poi_id] = (
                     max(
                         sub_evals_given_poi.view[poi_id],
                         cfact_step_eval_from_poi_for_DifferenceEvaluator(
                             self,
-                            state,
-                            excluded_rover_id,
-                            poi_id)))
+                            poi_datum,
+                            state.rover_data(),
+                            factual_rover_datum)))
 
         # Set evaluation to the sum of all POI-specific evaluations
         for poi_id in range(n_pois):
@@ -488,27 +485,26 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         return cfact_eval
 
 
-    cpdef rover_evals(
+    cpdef DoubleArray rover_evals(
             self,
-            state_history,
-            actions_history,
+            BaseReadableTypedList state_history,
+            BaseReadableTypedList actions_history,
             bint episode_is_done):
 
-        cdef BaseReadableTypedList cy_state_history = (
-            <BaseReadableTypedList?> state_history)
         cdef Py_ssize_t n_rovers
         cdef Py_ssize_t rover_id
         cdef DoubleArray rover_evals
-        cdef State state
+        cdef State starting_state
+        cdef RoverDatum factual_rover_datum
 
 
-        if len(cy_state_history) == 0:
+        if len(state_history) == 0:
             raise (
                 ValueError(
                     "The length of the state history (len(state_history) = 0) "
                     "must be positive." ))
 
-        if not is_sub_full_type(cy_state_history.item_type(), State):
+        if not is_sub_full_type(state_history.item_type(), State):
             raise (
                 TypeError(
                     "The state history's item type "
@@ -516,24 +512,25 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                     "must be State."
                     .format(**locals())))
 
-        state = cy_state_history.item(0)
-        n_rovers = len(state.rover_data())
+        starting_state = state_history.item(0)
+        n_rovers = len(starting_state.rover_data())
         rover_evals = new_DoubleArray(n_rovers)
 
         rover_evals.set_all_to(
             self.eval(
-                cy_state_history,
+                state_history,
                 actions_history,
                 episode_is_done))
 
         # Subtract counterfactual evalution to get difference evaluation.
         for rover_id in range(n_rovers):
+            factual_rover_datum = starting_state.rover_data().item(rover_id)
             rover_evals.view[rover_id] -= (
                 self.cfact_eval(
-                    cy_state_history,
+                    state_history,
                     actions_history,
                     episode_is_done,
-                    rover_id))
+                    factual_rover_datum))
 
         return rover_evals
 

@@ -1,11 +1,18 @@
-cdef class BaseDynamicsProcessor:
-    cpdef copy(self, copy_obj = ?)
+from .state cimport State
+from rockefeg.cyutil.typed_list cimport BaseReadableTypedList
 
-    cpdef void process_state(self, state, actions) except *
+cdef class BaseDynamicsProcessor:
+    cpdef BaseDynamicsProcessor copy(self, copy_obj = ?)
+
+    cpdef void process_state(
+        self,
+        State state,
+        BaseReadableTypedList actions
+        ) except *
 
 
 cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
-    pass
+    cpdef DefaultDynamicsProcessor copy(self, copy_obj = ?)
 
 cdef DefaultDynamicsProcessor new_DefaultDynamicsProcessor()
 cdef void init_DefaultDynamicsProcessor(

@@ -5,8 +5,8 @@ from libc cimport math as cmath
 
 cdef double TAU = 2 * cmath.pi
 
-from rockefeg.cyutil.typed_list cimport TypedList, new_TypedList
-from rockefeg.cyutil.typed_list cimport BaseWritableTypedList, is_sub_full_type 
+from rockefeg.cyutil.typed_list cimport new_TypedList
+from rockefeg.cyutil.typed_list cimport is_sub_full_type 
 
 
 
@@ -14,6 +14,7 @@ from rockefeg.cyutil.typed_list cimport BaseWritableTypedList, is_sub_full_type
 @cython.auto_pickle(True)
 cdef class RoverDatum:
     def __init__(self):
+         
         init_RoverDatum(self)
         
     cpdef copy(self, copy_obj = None):
@@ -139,14 +140,12 @@ cdef class State:
     def __init__(self):
         init_State(self)
         
-    cpdef copy(self, copy_obj = None):
+    cpdef State copy(self, object copy_obj = None):
         cdef State new_state
         cdef Py_ssize_t rover_datum_id
         cdef Py_ssize_t poi_datum_id
-        cdef BaseWritableTypedList rover_data
-        cdef BaseWritableTypedList poi_data
-        cdef BaseWritableTypedList new_rover_data
-        cdef BaseWritableTypedList new_poi_data
+        cdef TypedList new_rover_data
+        cdef TypedList new_poi_data
         cdef RoverDatum rover_datum
         cdef PoiDatum poi_datum
         
@@ -156,32 +155,28 @@ cdef class State:
             new_state = copy_obj
             
         # Deep Copy.
-        rover_data = self.__rover_data
-        new_rover_data = rover_data.shallow_copy()
-        for rover_datum_id in range(len(rover_data)):
-            rover_datum = rover_data.item(rover_datum_id)
+        new_rover_data = self.__rover_data.shallow_copy()
+        for rover_datum_id in range(len(new_rover_data)):
+            rover_datum = self.__rover_data.item(rover_datum_id)
             new_rover_data.set_item(rover_datum_id, rover_datum.copy())
         new_state.__rover_data = new_rover_data   
         
         # Deep Copy.
-        poi_data = self.__poi_data
-        new_poi_data = poi_data.shallow_copy()
-        for poi_datum_id in range(len(poi_data)):
-            poi_datum = poi_data.item(poi_datum_id)
+        new_poi_data = self.__poi_data.shallow_copy()
+        for poi_datum_id in range(len(new_poi_data)):
+            poi_datum = self.__poi_data.item(poi_datum_id)
             new_poi_data.set_item(poi_datum_id, poi_datum.copy())
         new_state.__poi_data = new_poi_data   
         
         return new_state
      
-    cpdef rover_data(self):
+    cpdef TypedList rover_data(self):
         return self.__rover_data
         
-    cpdef void set_rover_data(self, rover_data) except *:
-        cdef BaseWritableTypedList setting_rover_data = (
-            <BaseWritableTypedList?> rover_data)
+    cpdef void set_rover_data(self, TypedList rover_data) except *:
         cdef object rover_data_item_type
 
-        rover_data_item_type = setting_rover_data.item_type()
+        rover_data_item_type = rover_data.item_type()
 
         if not is_sub_full_type(rover_data_item_type, RoverDatum):
             raise (
@@ -191,17 +186,15 @@ cdef class State:
                     "must be RoverDatum."
                     .format(**locals())))
 
-        self.__rover_data = setting_rover_data
+        self.__rover_data = rover_data
     
-    cpdef poi_data(self):
+    cpdef TypedList poi_data(self):
         return self.__poi_data
         
-    cpdef void set_poi_data(self, poi_data) except *:
-        cdef BaseWritableTypedList setting_poi_data = (
-            <BaseWritableTypedList?> poi_data)
+    cpdef void set_poi_data(self, TypedList poi_data) except *:
         cdef object poi_data_item_type
 
-        poi_data_item_type = setting_poi_data.item_type()
+        poi_data_item_type = poi_data.item_type()
 
         if not is_sub_full_type(poi_data_item_type, PoiDatum):
             raise (
@@ -211,7 +204,7 @@ cdef class State:
                     "must be PoiDatum."
                     .format(**locals())))
 
-        self.__poi_data = setting_poi_data
+        self.__poi_data = poi_data
         
 
 cdef State new_State():

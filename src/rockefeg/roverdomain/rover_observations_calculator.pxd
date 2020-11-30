@@ -1,7 +1,10 @@
-cdef class BaseRoverObservationsCalculator:
-    cpdef copy(self, copy_obj = ?)
+from .state cimport State
+from rockefeg.cyutil.typed_list cimport TypedList
 
-    cpdef observations(self, state)
+cdef class BaseRoverObservationsCalculator:
+    cpdef BaseRoverObservationsCalculator copy(self, copy_obj = ?)
+
+    cpdef TypedList observations(self, State state)
     # list<DoubleArray>[n_rovers][n_obs_dims]
 
 
@@ -9,6 +12,8 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
     cdef Py_ssize_t __n_observation_sections
     cdef Py_ssize_t __n_rovers
     cdef double __min_dist
+
+    cpdef DefaultRoverObservationsCalculator copy(self, copy_obj = ?)
 
     cpdef double min_dist(self) except *
     cpdef void set_min_dist(self, double min_dist) except *
