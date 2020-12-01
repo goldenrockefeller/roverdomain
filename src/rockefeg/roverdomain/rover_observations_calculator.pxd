@@ -1,11 +1,10 @@
 from .state cimport State
-from rockefeg.cyutil.typed_list cimport TypedList
 
 cdef class BaseRoverObservationsCalculator:
     cpdef BaseRoverObservationsCalculator copy(self, copy_obj = ?)
 
-    cpdef TypedList observations(self, State state)
-    # list<DoubleArray>[n_rovers][n_obs_dims]
+    cpdef list observations(self, State state)
+    # type: (...) -> List[DoubleArray]
 
 
 cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):

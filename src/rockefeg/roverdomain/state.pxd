@@ -1,4 +1,4 @@
-from rockefeg.cyutil.typed_list cimport TypedList
+import cython
 
 cdef class RoverDatum:
     cdef double __position_x
@@ -42,16 +42,22 @@ cdef void init_PoiDatum(PoiDatum datum) except *
 
 
 cdef class State:
-    cdef TypedList __rover_data
-    cdef TypedList __poi_data
+    cdef list __rover_data
+    cdef list __poi_data
     
     cpdef State copy(self, object copy_obj = ?)
     
-    cpdef TypedList rover_data(self)
-    cpdef void set_rover_data(self, TypedList rover_data) except *
     
-    cpdef TypedList poi_data(self)
-    cpdef void set_poi_data(self, TypedList poi_data) except *
+    cpdef list rover_data(self) 
+    # type: (...) -> List[RoverDatum]
+    
+    cpdef void set_rover_data(self, rover_data: List[RoverDatum]) except *
+    
+    
+    cpdef list poi_data(self)
+    # type: (...) -> List[PoiDatum]
+    
+    cpdef void set_poi_data(self, poi_data: List[PoiDatum]) except *
     
 cdef State new_State()
 cdef void init_State(State state) except *

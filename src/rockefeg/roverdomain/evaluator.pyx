@@ -1,30 +1,25 @@
 cimport cython
+import cython
 
 from libc.math cimport INFINITY
-from rockefeg.cyutil.array cimport  new_DoubleArray
-from rockefeg.cyutil.typed_list cimport is_sub_full_type
+from rockefeg.cyutil.array cimport new_DoubleArray
 
+from typing import Sequence
+
+@cython.locals(state_history=list)
 @cython.warn.undeclared(True)
 cpdef void ensure_consistent_n_rovers_in_state_history(
-        BaseReadableTypedList state_history
+        state_history: Sequence[State]
         ) except *:
 
     cdef State state
     cdef Py_ssize_t n_rovers
     cdef Py_ssize_t step_n_rovers
 
-    if not is_sub_full_type(state_history.item_type(), State):
-        raise (
-            TypeError(
-                "The state history list's item type "
-                "(state_history.item_type() = state_history_item_type}) "
-                "must be State."
-                .format(**locals())))
-
     if len(state_history) == 0:
         return
 
-    state = state_history.item(0)
+    state = state_history[0]
     n_rovers = len(state.rover_data())
 
     for state in state_history:
@@ -35,33 +30,27 @@ cpdef void ensure_consistent_n_rovers_in_state_history(
                 ValueError(
                     "All states in the state history (state_history) must "
                     "have the same number of rovers. "
-                    "(len(state_history.item(0).rover_data()) "
+                    "(len(state_history[0].rover_data()) "
                     "= {n_rovers}) and "
-                    "(len(state_history.item(step_id).rover_data()) "
+                    "(len(state_history[step_id].rover_data()) "
                     "= {step_n_rovers})."
                     .format(**locals())))
 
 @cython.warn.undeclared(True)
+@cython.locals(state_history=list)
 cpdef void ensure_consistent_n_pois_in_state_history(
-        BaseReadableTypedList state_history
+        state_history: Sequence[State]
         ) except *:
 
     cdef State state
     cdef Py_ssize_t n_pois
     cdef Py_ssize_t step_n_pois
 
-    if not is_sub_full_type(state_history.item_type(), State):
-        raise (
-            TypeError(
-                "The state history list's item type "
-                "(state_history.item_type() = {state_history_item_type}) "
-                "must be State."
-                .format(**locals())))
 
     if len(state_history) == 0:
         return
 
-    state = state_history.item(0)
+    state = state_history[0]
     n_pois = len(state.poi_data())
 
     for state in state_history:
@@ -72,9 +61,9 @@ cpdef void ensure_consistent_n_pois_in_state_history(
                 ValueError(
                     "All states in the state history (state_history) must "
                     "have the same number of POIs. "
-                    "(len(state_history.item(0).poi_data()) "
+                    "(len(state_history[0].poi_data()) "
                     "= {n_pois}) and "
-                    "(len(state_history.item(step_id).poi_data()) "
+                    "(len(state_history[step_id].poi_data()) "
                     "= {step_n_pois})."
                     .format(**locals())))
 
@@ -84,24 +73,22 @@ cdef class BaseEvaluator:
     cpdef BaseEvaluator copy(self, copy_obj = None):
         pass
 
+    @cython.locals(state_history = list, actions_history = list)
     cpdef double eval(
             self,
-            BaseReadableTypedList state_history,
-            BaseReadableTypedList actions_history,
+            state_history: Sequence[State],
+            actions_history: Sequence[Sequence[DoubleArray]],
             bint episode_is_done
             ) except *:
         raise NotImplementedError("Abstract method.")
 
+    @cython.locals(state_history = list, actions_history = list)
     cpdef DoubleArray rover_evals(
             self,
-            BaseReadableTypedList state_history,
-            BaseReadableTypedList actions_history,
+            state_history: Sequence[State],
+            actions_history: Sequence[Sequence[DoubleArray]],
             bint episode_is_done):
         raise NotImplementedError("Abstract method.")
-
-
-
-
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -122,10 +109,11 @@ cdef class DefaultEvaluator(BaseEvaluator):
 
         return new_evaluator
 
+    @cython.locals(state_history = list, actions_history = list)
     cpdef double eval(
             self,
-            BaseReadableTypedList state_history,
-            BaseReadableTypedList actions_history,
+            state_history: Sequence[State],
+            actions_history: Sequence[Sequence[DoubleArray]],
             bint episode_is_done
             ) except *:
 
@@ -151,17 +139,8 @@ cdef class DefaultEvaluator(BaseEvaluator):
                     "The length of the state history (len(state_history) = 0) "
                     "must be positive." ))
 
-        if not is_sub_full_type(state_history.item_type(), State):
-            raise (
-                TypeError(
-                    "The state history's item type "
-                    "(state_history.item_type() = {state_history_item_type}) "
-                    "must be State."
-                    .format(**locals())))
 
-
-
-        state = state_history.item(0)
+        state = state_history[0]
         n_pois = len(state.poi_data())
         n_steps = len(state_history)
 
@@ -173,10 +152,10 @@ cdef class DefaultEvaluator(BaseEvaluator):
 
         # Get evaluation for poi, for each step, storing the max.
         for step_id in range(n_steps):
-            state = state_history.item(step_id)
+            state = state_history[step_id]
             # Keep best step evaluation for each poi.
             for poi_id in range(n_pois):
-                poi_datum = state.poi_data().item(poi_id)
+                poi_datum = state.poi_data()[poi_id]
                 sub_evals_given_poi.view[poi_id] = (
                     max(
                         sub_evals_given_poi.view[poi_id],
@@ -191,11 +170,11 @@ cdef class DefaultEvaluator(BaseEvaluator):
 
         return eval
 
-
+    @cython.locals(state_history = list, actions_history = list)
     cpdef DoubleArray rover_evals(
             self,
-            BaseReadableTypedList state_history,
-            BaseReadableTypedList actions_history,
+            state_history: Sequence[State],
+            actions_history: Sequence[Sequence[DoubleArray]],
             bint episode_is_done):
         cdef State starting_state
         cdef Py_ssize_t n_rovers
@@ -212,16 +191,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
                     "The length of the state history (len(state_history) = 0) "
                     "must be positive." ))
 
-        if not is_sub_full_type(state_history.item_type(), State):
-            raise (
-                TypeError(
-                    "The state history's item type "
-                    "(state_history.item_type() = state_history_item_type}) "
-                    "must be State."
-                    .format(**locals())))
-
-
-        starting_state = state_history.item(0)
+        starting_state = state_history[0]
         n_rovers = len(starting_state.rover_data())
         rover_evals = new_DoubleArray(n_rovers)
 
@@ -275,10 +245,11 @@ cdef void init_DefaultEvaluator(DefaultEvaluator evaluator) except *:
     evaluator.__n_req = 1
 
 @cython.warn.undeclared(True)
+@cython.locals(rover_data = list)
 cpdef double step_eval_from_poi_for_DefaultEvaluator(
         DefaultEvaluator evaluator,
         PoiDatum poi_datum,
-        BaseReadableTypedList rover_data
+        rover_data: Sequence[RoverDatum]
         ) except *:
     cdef double displ_x, displ_y
     cdef double sqr_dist
@@ -325,10 +296,11 @@ cpdef double step_eval_from_poi_for_DefaultEvaluator(
 
 
 @cython.warn.undeclared(True)
+@cython.locals(rover_data =list)
 cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
         DifferenceEvaluator evaluator,
         PoiDatum poi_datum,
-        BaseReadableTypedList rover_data,
+        rover_data: Sequence[RoverDatum],
         RoverDatum factual_rover_datum
         )  except *:
     cdef double displ_x, displ_y
@@ -405,10 +377,11 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
 
         return new_evaluator
 
+    @cython.locals(state_history = list, actions_history = list)
     cpdef double cfact_eval(
             self,
-            BaseReadableTypedList state_history,
-            BaseReadableTypedList actions_history,
+            state_history: Sequence[State],
+            actions_history: Sequence[Sequence[DoubleArray]],
             bint episode_is_done,
             RoverDatum factual_rover_datum
             ) except *:
@@ -438,15 +411,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                     "The length of the state history (len(state_history) = 0) "
                     "must be positive." ))
 
-        if not is_sub_full_type(state_history.item_type(), State):
-            raise (
-                TypeError(
-                    "The state history's item type "
-                    "(state_history.item_type() = state_history_item_type}) "
-                    "must be State."
-                    .format(**locals())))
-
-        state = state_history.item(0)
+        state = state_history[0]
         n_pois = len(state.poi_data())
         n_steps = len(state_history)
 
@@ -468,7 +433,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
         for state in state_history:
             # Keep best step evalualtion for each poi
             for poi_id in range(n_pois):
-                poi_datum = state.poi_data().item(poi_id)
+                poi_datum = state.poi_data()[poi_id]
                 sub_evals_given_poi.view[poi_id] = (
                     max(
                         sub_evals_given_poi.view[poi_id],
@@ -484,11 +449,11 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
 
         return cfact_eval
 
-
+    @cython.locals(state_history=list, actions_history=list)
     cpdef DoubleArray rover_evals(
             self,
-            BaseReadableTypedList state_history,
-            BaseReadableTypedList actions_history,
+            state_history: Sequence[State],
+            actions_history: Sequence[Sequence[DoubleArray]],
             bint episode_is_done):
 
         cdef Py_ssize_t n_rovers
@@ -504,15 +469,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                     "The length of the state history (len(state_history) = 0) "
                     "must be positive." ))
 
-        if not is_sub_full_type(state_history.item_type(), State):
-            raise (
-                TypeError(
-                    "The state history's item type "
-                    "(state_history.item_type() = state_history_item_type}) "
-                    "must be State."
-                    .format(**locals())))
-
-        starting_state = state_history.item(0)
+        starting_state = state_history[0]
         n_rovers = len(starting_state.rover_data())
         rover_evals = new_DoubleArray(n_rovers)
 
@@ -524,7 +481,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
 
         # Subtract counterfactual evalution to get difference evaluation.
         for rover_id in range(n_rovers):
-            factual_rover_datum = starting_state.rover_data().item(rover_id)
+            factual_rover_datum = starting_state.rover_data()[rover_id]
             rover_evals.view[rover_id] -= (
                 self.cfact_eval(
                     state_history,

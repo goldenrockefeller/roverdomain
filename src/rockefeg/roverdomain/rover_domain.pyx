@@ -1,4 +1,5 @@
 cimport cython
+import cython
 
 from .rover_observations_calculator cimport DefaultRoverObservationsCalculator
 from .dynamics_processor cimport DefaultDynamicsProcessor
@@ -9,8 +10,7 @@ from .dynamics_processor cimport new_DefaultDynamicsProcessor
 from .evaluator cimport new_DefaultEvaluator
 from .rover_observations_calculator cimport new_DefaultRoverObservationsCalculator
 
-from rockefeg.cyutil.typed_list cimport new_TypedList
-from rockefeg.cyutil.typed_list cimport is_sub_full_type
+from typing import Sequence
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -18,12 +18,12 @@ cdef class RoverDomain:
     def __init__(self):
         init_RoverDomain(self)
     
+    @cython.locals(state_history=list, actions_history=list)
     cpdef RoverDomain copy(self, copy_obj = None):
 
-        
         cdef RoverDomain new_domain
-        cdef TypedList state_history
-        cdef TypedList actions_history
+        state_history: List[State]
+        actions_history: List[Sequence[DoubleArray]]
         
         if copy_obj is None:
             new_domain = RoverDomain.__new__(RoverDomain)
@@ -42,8 +42,8 @@ cdef class RoverDomain:
             self.__rover_observations_calculator.copy())
             
             
-        new_domain.__state_history = self.__state_history.shallow_copy()
-        new_domain.__actions_history = self.__state_history.shallow_copy()
+        new_domain.__state_history = self.__state_history.copy()
+        new_domain.__actions_history = self.__actions_history.copy()
     
         new_domain.__n_steps_elapsed = self.__n_steps_elapsed
         new_domain.__max_n_steps = self.__max_n_steps
@@ -54,7 +54,8 @@ cdef class RoverDomain:
     cpdef bint episode_is_done(self) except *:
         return self.n_steps_elapsed() >= self.max_n_steps()
 
-    cpdef TypedList rover_observations(self):
+    cpdef list rover_observations(self):
+    # type: (...) -> List[DoubleArray]
         return (
             self.rover_observations_calculator().observations(
                 self.current_state() ))
@@ -77,8 +78,6 @@ cdef class RoverDomain:
     
     cpdef void reset(self) except *:
         cdef State setting_state
-        cdef TypedList state_history 
-        cdef TypedList actions_history
         
         setting_state = self.setting_state()
         
@@ -86,15 +85,11 @@ cdef class RoverDomain:
         self._set_max_n_steps(self.setting_max_n_steps())
         self._set_n_steps_elapsed(0)
         
-        
-        state_history = self.state_history()
-        state_history.set_items([])
-            
-        actions_history = self.actions_history()
-        actions_history.set_items([])
+        self._set_state_history([])
+        self._set_actions_history([])
 
-        
-    cpdef void step(self, BaseReadableTypedList rover_actions) except *:
+    @cython.locals(rover_actions = list)
+    cpdef void step(self, rover_actions: Sequence[DoubleArray]) except *:
         cdef State current_state
         
         if self.episode_is_done():
@@ -105,10 +100,10 @@ cdef class RoverDomain:
         current_state = self.current_state()
 
         # Put current state in state history.
-        self.state_history().append(current_state.copy())
+        self._state_history().append(current_state.copy())
         
         # Put current actions in actions history.
-        self.actions_history().append(rover_actions)
+        self._actions_history().append(rover_actions)
                 
         # Update state
         self.dynamics_processor().process_state(current_state, rover_actions)
@@ -191,28 +186,33 @@ cdef class RoverDomain:
                     
         self.__max_n_steps = max_n_steps
     
-    cpdef BaseReadableTypedList state_history(self):
+    cpdef list state_history(self):
+        # type: (...) -> Sequence[State]
         return self.__state_history
     
+    cpdef list _state_history(self):
+        # type: (...) -> List[State]
+        return self.__state_history
+    
+    @cython.locals(setting_state_history = list)
     cpdef void _set_state_history(
             self, 
-            TypedList setting_state_history
+            setting_state_history: Sequence[State]
             ) except *:
-        
-        if not is_sub_full_type(setting_state_history.item_type(), State):
-            raise (
-                TypeError(
-                    "The state history's item type "
-                    "(state_history.item_type() = {state_history_item_type}) "
-                    "must be State."
-                    .format(**locals())))
-
         self.__state_history = setting_state_history
      
-    cpdef BaseReadableTypedList actions_history(self):
+    cpdef list actions_history(self):
+        #type: (...) -> Sequence[Sequence[DoubleArray]]
+        return self.__actions_history
+        
+    cpdef list _actions_history(self):
+        #type: (...) -> List[Sequence[DoubleArray]]
         return self.__actions_history
     
-    cpdef void _set_actions_history(self, TypedList actions_history) except *:
+    @cython.locals(actions_history = list)
+    cpdef void _set_actions_history(
+            self, 
+            actions_history: Sequence[Sequence[DoubleArray]]) except *:
         self.__actions_history = actions_history
   
   
@@ -243,8 +243,8 @@ cdef void init_RoverDomain(RoverDomain domain) except *:
     domain.__setting_max_n_steps = domain.__max_n_steps
     domain.__n_steps_elapsed = 0
 
-    domain.__state_history = new_TypedList(State)
-    domain.__actions_history = new_TypedList(object)
+    domain.__state_history = []
+    domain.__actions_history = []
     
 
  

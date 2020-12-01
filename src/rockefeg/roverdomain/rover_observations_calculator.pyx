@@ -1,10 +1,10 @@
 cimport cython
+import cython
 from libc cimport math as cmath
 from rockefeg.cyutil.array cimport DoubleArray, new_DoubleArray
 from .state cimport RoverDatum, PoiDatum
-from rockefeg.cyutil.typed_list cimport BaseReadableTypedList, new_TypedList
 
-
+from typing import List, Sequence
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -12,7 +12,8 @@ cdef class BaseRoverObservationsCalculator:
     cpdef BaseRoverObservationsCalculator copy(self, copy_obj = None):
         pass
 
-    cpdef TypedList observations(self, State state):
+    cpdef list observations(self, State state):
+        # type: (...) -> List[DoubleArray]
         raise NotImplementedError("Abstract method.")
 
 @cython.warn.undeclared(True)
@@ -37,14 +38,15 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
         return new_observations_calculator
 
-    cpdef TypedList observations(self, State state):
-        cdef list observations
-        cdef TypedList observations_typed_list
+    @cython.locals(observations=list, rover_data=list)
+    cpdef list observations(self, State state):
+        # type: (...) -> List[DoubleArray]
+        observations: List[DoubleArray]
         cdef RoverDatum rover_datum
         cdef RoverDatum other_rover_datum
         cdef PoiDatum poi_datum
         cdef DoubleArray observation
-        cdef BaseReadableTypedList rover_data
+        rover_data: Sequence[RoverDatum]
         cdef Py_ssize_t rover_id, poi_id, other_rover_id, sec_id, obs_id
         cdef Py_ssize_t n_rovers, n_pois
         cdef Py_ssize_t n_observation_dims
@@ -72,7 +74,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
         # Calculate observation for each rover.
         for rover_id in range(n_rovers):
-            rover_datum = rover_data.item(rover_id)
+            rover_datum = rover_data[rover_id]
             observation = observations[rover_id]
 
             # Update rover type observations
@@ -172,11 +174,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
 
                 observation.view[obs_id] += poi_datum.value() / (dist*dist)
 
-
-        observations_typed_list = new_TypedList(DoubleArray)
-        observations_typed_list.set_items(observations)
-
-        return observations_typed_list
+        return observations
 
     cpdef double min_dist(self) except *:
         return self.__min_dist

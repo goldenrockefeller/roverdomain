@@ -2,7 +2,8 @@ cimport cython
 from rockefeg.cyutil.array cimport DoubleArray
 from libc cimport math as cmath
 from .state cimport RoverDatum
-from rockefeg.cyutil.typed_list cimport is_sub_full_type
+
+from typing import Sequence
 
 @cython.warn.undeclared(True)
 @cython.auto_pickle(True)
@@ -10,14 +11,14 @@ cdef class BaseDynamicsProcessor:
     cpdef BaseDynamicsProcessor copy(self, copy_obj = None):
         pass
 
+    @cython.locals(actions=list)
     cpdef void process_state(
             self,
             State state,
-            BaseReadableTypedList actions
+            actions: Sequence[DoubleArray]
             ) except *:
         raise NotImplementedError("Abstract method.")
     # list<DoubleArray>[n_rovers][n_action_dims]
-
 
 
 @cython.warn.undeclared(True)
@@ -35,15 +36,16 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
             new_processor = copy_obj
         return new_processor
 
+    @cython.locals(actions=list, rover_data=list)
     cpdef void process_state(
             self,
             State state,
-            BaseReadableTypedList actions) except *:
+            actions: Sequence[DoubleArray]) except *:
         cdef Py_ssize_t n_rovers, rover_id
         cdef Py_ssize_t n_actions
         cdef Py_ssize_t n_action_dims
         cdef DoubleArray action
-        cdef BaseReadableTypedList rover_data
+        rover_data: Seqeunce[RoverDatum]
         cdef RoverDatum rover_datum
         cdef double clipped_action_0, clipped_action_1
         cdef double gf_rover_unit_direction_x, gf_rover_unit_direction_y
@@ -53,7 +55,6 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
         cdef double rf_movement_x, rf_movement_y # rf rover frame
         cdef double gf_movement_x, gf_movement_y # gf global frame
         cdef double position_x, position_y
-        cdef object actions_item_type
 
         state = state
         actions = actions
@@ -69,16 +70,6 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
                 TypeError(
                     "(actions) can not be None"))
 
-        actions_item_type = actions.item_type()
-
-        if not is_sub_full_type(actions_item_type, DoubleArray):
-            raise (
-                TypeError(
-                    "The action list's item type "
-                    "(actions.item_type() = {actions_item_type}) "
-                    "must be a sub type of DoubleArray."
-                    .format(**locals())))
-
         n_rovers = len(rover_data)
         n_actions = len(actions)
 
@@ -91,7 +82,7 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
                     .format(**locals())))
 
         for rover_id in range(n_actions):
-            action = actions.item(rover_id)
+            action = actions[rover_id]
             n_action_dims = len(action)
             if n_action_dims != 2:
                 raise (
@@ -103,9 +94,9 @@ cdef class DefaultDynamicsProcessor(BaseDynamicsProcessor):
 
         # Translate then reorient all rovers based on their actions.
         for rover_id in range(n_rovers):
-            action = actions.item(rover_id)
+            action = actions[rover_id]
 
-            rover_datum = rover_data.item(rover_id)
+            rover_datum = rover_data[rover_id]
 
             # action_norm = (
             #     cmath.sqrt(

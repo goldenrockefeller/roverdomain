@@ -1,13 +1,12 @@
 cimport cython
+import cython
 
 from libc cimport math as cmath
 
 
 cdef double TAU = 2 * cmath.pi
 
-from rockefeg.cyutil.typed_list cimport new_TypedList
-from rockefeg.cyutil.typed_list cimport is_sub_full_type 
-
+from typing import List
 
 
 @cython.warn.undeclared(True)
@@ -139,13 +138,13 @@ cdef void init_PoiDatum(PoiDatum poi_datum) except *:
 cdef class State:
     def __init__(self):
         init_State(self)
-        
-    cpdef State copy(self, object copy_obj = None):
+    
+    cpdef State copy(self, copy_obj = None):
         cdef State new_state
         cdef Py_ssize_t rover_datum_id
         cdef Py_ssize_t poi_datum_id
-        cdef TypedList new_rover_data
-        cdef TypedList new_poi_data
+        new_rover_data : List[RoverDaturm]
+        new_poi_data : List[PoiDatum]
         cdef RoverDatum rover_datum
         cdef PoiDatum poi_datum
         
@@ -155,55 +154,32 @@ cdef class State:
             new_state = copy_obj
             
         # Deep Copy.
-        new_rover_data = self.__rover_data.shallow_copy()
-        for rover_datum_id in range(len(new_rover_data)):
-            rover_datum = self.__rover_data.item(rover_datum_id)
-            new_rover_data.set_item(rover_datum_id, rover_datum.copy())
-        new_state.__rover_data = new_rover_data   
+        new_state.__rover_data  = [None] * len(self.__rover_data)
+        for rover_datum_id in range(len(self.__rover_data)):
+            rover_datum = self.__rover_data[rover_datum_id]
+            new_state.__rover_data[rover_datum_id] =  rover_datum.copy()
+         
         
         # Deep Copy.
-        new_poi_data = self.__poi_data.shallow_copy()
-        for poi_datum_id in range(len(new_poi_data)):
-            poi_datum = self.__poi_data.item(poi_datum_id)
-            new_poi_data.set_item(poi_datum_id, poi_datum.copy())
-        new_state.__poi_data = new_poi_data   
+        new_state.__poi_data = [None] * len(self.__poi_data)
+        for poi_datum_id in range(len(self.__poi_data)):
+            poi_datum = self.__poi_data[poi_datum_id]
+            new_state.__poi_data[poi_datum_id] =  poi_datum.copy()
         
         return new_state
-     
-    cpdef TypedList rover_data(self):
+    
+    cpdef list rover_data(self):
+        # type: (...) -> List[RoverDatum]
         return self.__rover_data
         
-    cpdef void set_rover_data(self, TypedList rover_data) except *:
-        cdef object rover_data_item_type
-
-        rover_data_item_type = rover_data.item_type()
-
-        if not is_sub_full_type(rover_data_item_type, RoverDatum):
-            raise (
-                TypeError(
-                    "The rover data list's item type "
-                    "(rover_data.item_type() = {rover_data_item_type}) "
-                    "must be RoverDatum."
-                    .format(**locals())))
-
+    cpdef void set_rover_data(self, rover_data : List[RoverDatum]) except *:
         self.__rover_data = rover_data
     
-    cpdef TypedList poi_data(self):
+    cpdef list poi_data(self):
+        # type: (...) -> List[PoiDatum]
         return self.__poi_data
         
-    cpdef void set_poi_data(self, TypedList poi_data) except *:
-        cdef object poi_data_item_type
-
-        poi_data_item_type = poi_data.item_type()
-
-        if not is_sub_full_type(poi_data_item_type, PoiDatum):
-            raise (
-                TypeError(
-                    "The POI data list's item type "
-                    "(poi_data.item_type() = {poi_data_item_type}) "
-                    "must be PoiDatum."
-                    .format(**locals())))
-
+    cpdef void set_poi_data(self, poi_data : List[PoiDatum]) except *:
         self.__poi_data = poi_data
         
 
@@ -219,8 +195,8 @@ cdef void init_State(State state) except *:
     if state is None:
         raise TypeError("The state (state) cannot be None.")
         
-    state.__rover_data = new_TypedList(RoverDatum)
-    state.__poi_data = new_TypedList(PoiDatum)
+    state.__rover_data = []
+    state.__poi_data = []
         
 
         

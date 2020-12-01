@@ -1,13 +1,14 @@
 from .state cimport State
-from rockefeg.cyutil.typed_list cimport BaseReadableTypedList
+import cython
 
 cdef class BaseDynamicsProcessor:
     cpdef BaseDynamicsProcessor copy(self, copy_obj = ?)
 
+    @cython.locals(actions=list)
     cpdef void process_state(
         self,
         State state,
-        BaseReadableTypedList actions
+        actions: Sequence[DoubleArray]
         ) except *
 
 

@@ -1,33 +1,36 @@
 # distutils: language = c++
+import cython
 
-from rockefeg.cyutil.typed_list cimport BaseReadableTypedList
 from rockefeg.cyutil.array cimport DoubleArray
 from .state cimport State, RoverDatum, PoiDatum
 
+@cython.locals(state_history=list)
 cpdef void ensure_consistent_n_rovers_in_state_history(
-    BaseReadableTypedList state_history
+    state_history: Sequence[State]
     ) except *
 
+@cython.locals(state_history=list)
 cpdef void ensure_consistent_n_pois_in_state_history(
-    BaseReadableTypedList state_history
+    state_history: Sequence[State]
     ) except *
 
 cdef class BaseEvaluator:
     cpdef BaseEvaluator copy(self, copy_obj = ?)
 
+    @cython.locals(state_history = list, actions_history = list)
     cpdef double eval(
         self,
-        BaseReadableTypedList state_history,
-        BaseReadableTypedList actions_history,
+        state_history: Sequence[State],
+        actions_history: Seqence[Sequence[DoubleArray]],
         bint episode_is_done
         ) except *
 
+    @cython.locals(state_history = list, actions_history = list)
     cpdef DoubleArray rover_evals(
         self,
-        BaseReadableTypedList state_history,
-        BaseReadableTypedList actions_history,
+        state_history: Sequence[State],
+        actions_history: Seqence[Sequence[DoubleArray]],
         bint episode_is_done)
-    # DoubleArray[n_rovers]
 
 cdef class DefaultEvaluator(BaseEvaluator):
     cdef double __capture_dist
@@ -46,19 +49,21 @@ cdef void init_DefaultEvaluator(
     DefaultEvaluator evaluator
     ) except *
 
+@cython.locals(rover_data = list)
 cpdef double step_eval_from_poi_for_DefaultEvaluator(
     DefaultEvaluator evaluator,
     PoiDatum poi_datum,
-    BaseReadableTypedList rover_data
+    rover_data: Sequence[RoverDatum]
     ) except *
 
 cdef class DifferenceEvaluator(DefaultEvaluator):
     cpdef DifferenceEvaluator copy(self, copy_obj = ?)
 
+    @cython.locals(state_history = list, actions_history = list)
     cpdef double cfact_eval(
         self,
-        BaseReadableTypedList state_history,
-        BaseReadableTypedList actions_history,
+        state_history: Sequence[RoverDatum],
+        actions_history: Seqence[Sequence[DoubleArray]],
         bint episode_is_done,
         RoverDatum factual_rover_datum
         ) except *
@@ -68,10 +73,11 @@ cdef void init_DifferenceEvaluator(
     DifferenceEvaluator evaluator
     ) except *
 
+@cython.locals(rover_data = list)
 cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
     DifferenceEvaluator evaluator,
     PoiDatum poi_datum,
-    BaseReadableTypedList rover_data,
+    rover_data: Sequence[RoverDatum],
     RoverDatum factual_rover_datum
     )  except *
 
