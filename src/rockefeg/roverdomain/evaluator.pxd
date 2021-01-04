@@ -62,10 +62,10 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
     @cython.locals(state_history = list, actions_history = list)
     cpdef double cfact_eval(
         self,
-        state_history: Sequence[RoverDatum],
-        actions_history: Seqence[Sequence[DoubleArray]],
+        state_history: Sequence[State],
+        actions_history: Sequence[Sequence[DoubleArray]],
         bint episode_is_done,
-        RoverDatum factual_rover_datum
+        Py_ssize_t factual_rover_id
         ) except *
 
 cdef DifferenceEvaluator new_DifferenceEvaluator()
@@ -78,6 +78,6 @@ cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
     DifferenceEvaluator evaluator,
     PoiDatum poi_datum,
     rover_data: Sequence[RoverDatum],
-    RoverDatum factual_rover_datum
+    Py_ssize_t factual_rover_id
     )  except *
 

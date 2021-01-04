@@ -301,7 +301,7 @@ cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
         DifferenceEvaluator evaluator,
         PoiDatum poi_datum,
         rover_data: Sequence[RoverDatum],
-        RoverDatum factual_rover_datum
+        Py_ssize_t factual_rover_id
         )  except *:
     cdef double displ_x, displ_y
     cdef double sqr_dist
@@ -310,6 +310,7 @@ cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
     cdef Py_ssize_t n_rovers
     cdef Py_ssize_t n_req
     cdef Py_ssize_t n_rovers_at_poi
+    cdef Py_ssize_t other_rover_id
     cdef bint poi_is_captured
 
     capture_dist = evaluator.capture_dist()
@@ -328,8 +329,9 @@ cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
     # See if the rovers capture the POIs if the number of rovers at the POI
     # (n_rovers_at_poi) is greater than or equal to the number of rovers
     # required to capture the POI (n_req).
+    other_rover_id = 0
     for rover_datum in rover_data:
-        if rover_datum is not factual_rover_datum:
+        if other_rover_id != factual_rover_id:
             displ_x = rover_datum.position_x() - poi_datum.position_x()
             displ_y = rover_datum.position_y() - poi_datum.position_y()
             sqr_dist = displ_x*displ_x + displ_y*displ_y
@@ -340,6 +342,7 @@ cpdef double cfact_step_eval_from_poi_for_DifferenceEvaluator(
             if n_rovers_at_poi >= n_req:
                 poi_is_captured = True
                 break
+        other_rover_id += 1
 
     if poi_is_captured:
         return poi_datum.value()
@@ -383,7 +386,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
             state_history: Sequence[State],
             actions_history: Sequence[Sequence[DoubleArray]],
             bint episode_is_done,
-            RoverDatum factual_rover_datum
+            Py_ssize_t factual_rover_id
             ) except *:
         """
         Returns counterfactual evaluation (cfact: evaluation without excluded
@@ -441,7 +444,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                             self,
                             poi_datum,
                             state.rover_data(),
-                            factual_rover_datum)))
+                            factual_rover_id)))
 
         # Set evaluation to the sum of all POI-specific evaluations
         for poi_id in range(n_pois):
@@ -487,7 +490,7 @@ cdef class DifferenceEvaluator(DefaultEvaluator):
                     state_history,
                     actions_history,
                     episode_is_done,
-                    factual_rover_datum))
+                    rover_id))
 
         return rover_evals
 
