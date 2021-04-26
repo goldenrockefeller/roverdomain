@@ -8,7 +8,7 @@ from .rover_observations_calculator cimport BaseRoverObservationsCalculator
 from .dynamics_processor cimport BaseDynamicsProcessor
 from .evaluator cimport BaseEvaluator
 
-from rockefeg.cyutil.array cimport DoubleArray
+from goldenrockefeller.cyutil.array cimport DoubleArray
 
 cdef class RoverDomain:
     cdef State _current_state

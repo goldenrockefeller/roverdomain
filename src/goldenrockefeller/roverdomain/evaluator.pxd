@@ -1,7 +1,7 @@
 # distutils: language = c++
 import cython
 
-from rockefeg.cyutil.array cimport DoubleArray
+from goldenrockefeller.cyutil.array cimport DoubleArray
 from .state cimport State, RoverDatum, PoiDatum
 
 @cython.locals(state_history=list)

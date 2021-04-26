@@ -1,7 +1,7 @@
 cimport cython
 import cython
 from libc cimport math as cmath
-from rockefeg.cyutil.array cimport DoubleArray, new_DoubleArray
+from goldenrockefeller.cyutil.array cimport DoubleArray, new_DoubleArray
 from .state cimport RoverDatum, PoiDatum
 
 from typing import List, Sequence

@@ -1,5 +1,5 @@
 cimport cython
-from rockefeg.cyutil.array cimport DoubleArray
+from goldenrockefeller.cyutil.array cimport DoubleArray
 from libc cimport math as cmath
 from .state cimport RoverDatum
 

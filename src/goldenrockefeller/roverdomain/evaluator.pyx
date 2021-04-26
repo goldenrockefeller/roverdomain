@@ -2,7 +2,7 @@ cimport cython
 import cython
 
 from libc.math cimport INFINITY
-from rockefeg.cyutil.array cimport new_DoubleArray
+from goldenrockefeller.cyutil.array cimport new_DoubleArray
 
 from typing import Sequence
 
