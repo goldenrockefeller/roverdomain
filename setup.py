@@ -5,7 +5,7 @@ import sys
 
 if __name__ == "__main__":
 
-    namespace = "rockefeg"
+    namespace = "goldenrockefeller"
     pkg = "roverdomain"
     name = "{namespace}.{pkg}".format(**locals())
 
