@@ -9,8 +9,6 @@ if __name__ == "__main__":
     pkg = "roverdomain"
     name = "{namespace}.{pkg}".format(**locals())
 
-    if len(sys.argv) == 1:
-        sys.argv.append("develop")
 
     setup(
         name = name,
