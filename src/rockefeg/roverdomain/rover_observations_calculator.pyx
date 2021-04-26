@@ -32,9 +32,9 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         else:
             new_observations_calculator = copy_obj
 
-        new_observations_calculator.__min_dist = self.__min_dist
-        new_observations_calculator.__n_observation_sections = (
-            self.__n_observation_sections)
+        new_observations_calculator._min_dist = self._min_dist
+        new_observations_calculator._n_observation_sections = (
+            self._n_observation_sections)
 
         return new_observations_calculator
 
@@ -177,7 +177,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
         return observations
 
     cpdef double min_dist(self) except *:
-        return self.__min_dist
+        return self._min_dist
 
     cpdef void set_min_dist(self, double min_dist) except *:
         if min_dist <= 0.:
@@ -187,10 +187,10 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                     "positive. "
                     .format(**locals()) ))
 
-        self.__min_dist = min_dist
+        self._min_dist = min_dist
 
     cpdef Py_ssize_t n_observation_sections(self) except *:
-        return self.__n_observation_sections
+        return self._n_observation_sections
 
 
     cpdef void set_n_observation_sections(
@@ -205,7 +205,7 @@ cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
                     "must be positive."
                     .format(**locals()) ))
 
-        self.__n_observation_sections = n_observation_sections
+        self._n_observation_sections = n_observation_sections
 
 @cython.warn.undeclared(True)
 cdef DefaultRoverObservationsCalculator new_DefaultRoverObservationsCalculator():
@@ -228,5 +228,5 @@ cdef void init_DefaultRoverObservationsCalculator(
                 "The observations calculator "
                 "(observations_calculator) cannot be None." ))
 
-    observations_calculator.__min_dist = 1.
-    observations_calculator.__n_observation_sections = 4
+    observations_calculator._min_dist = 1.
+    observations_calculator._n_observation_sections = 4

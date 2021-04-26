@@ -33,8 +33,8 @@ cdef class BaseEvaluator:
         bint episode_is_done)
 
 cdef class DefaultEvaluator(BaseEvaluator):
-    cdef double __capture_dist
-    cdef Py_ssize_t __n_req
+    cdef double _capture_dist
+    cdef Py_ssize_t _n_req
 
     cpdef DefaultEvaluator copy(self, copy_obj = ?)
 

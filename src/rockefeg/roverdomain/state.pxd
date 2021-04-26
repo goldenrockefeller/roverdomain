@@ -1,9 +1,9 @@
 import cython
 
 cdef class RoverDatum:
-    cdef double __position_x
-    cdef double __position_y
-    cdef double __direction
+    cdef double _position_x
+    cdef double _position_y
+    cdef double _direction
     
     cpdef copy(self, copy_obj = ?)
     
@@ -21,9 +21,9 @@ cdef void init_RoverDatum(RoverDatum datum) except *
   
     
 cdef class PoiDatum:
-    cdef double __position_x
-    cdef double __position_y
-    cdef double __value
+    cdef double _position_x
+    cdef double _position_y
+    cdef double _value
     
     cpdef copy(self, copy_obj = ?)
     
@@ -42,8 +42,8 @@ cdef void init_PoiDatum(PoiDatum datum) except *
 
 
 cdef class State:
-    cdef list __rover_data
-    cdef list __poi_data
+    cdef list _rover_data
+    cdef list _poi_data
     
     cpdef State copy(self, object copy_obj = ?)
     

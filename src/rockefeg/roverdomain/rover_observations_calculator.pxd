@@ -8,9 +8,9 @@ cdef class BaseRoverObservationsCalculator:
 
 
 cdef class DefaultRoverObservationsCalculator(BaseRoverObservationsCalculator):
-    cdef Py_ssize_t __n_observation_sections
-    cdef Py_ssize_t __n_rovers
-    cdef double __min_dist
+    cdef Py_ssize_t _n_observation_sections
+    cdef Py_ssize_t _n_rovers
+    cdef double _min_dist
 
     cpdef DefaultRoverObservationsCalculator copy(self, copy_obj = ?)
 

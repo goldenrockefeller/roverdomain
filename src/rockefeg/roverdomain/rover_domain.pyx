@@ -31,23 +31,23 @@ cdef class RoverDomain:
             new_domain = copy_obj
         
          
-        new_domain.__current_state = self.__current_state.copy()
-        new_domain.__setting_state = self.__setting_state.copy()
-        new_domain.__evaluator = self.__evaluator.copy()
+        new_domain._current_state = self._current_state.copy()
+        new_domain._setting_state = self._setting_state.copy()
+        new_domain._evaluator = self._evaluator.copy()
         
-        new_domain.__dynamics_processor = (
-            self.__dynamics_processor.copy())
+        new_domain._dynamics_processor = (
+            self._dynamics_processor.copy())
         
-        new_domain.__rover_observations_calculator = (
-            self.__rover_observations_calculator.copy())
+        new_domain._rover_observations_calculator = (
+            self._rover_observations_calculator.copy())
             
             
-        new_domain.__state_history = self.__state_history.copy()
-        new_domain.__actions_history = self.__actions_history.copy()
+        new_domain._state_history = self._state_history.copy()
+        new_domain._actions_history = self._actions_history.copy()
     
-        new_domain.__n_steps_elapsed = self.__n_steps_elapsed
-        new_domain.__max_n_steps = self.__max_n_steps
-        new_domain.__setting_max_n_steps = self.__setting_max_n_steps
+        new_domain._n_steps_elapsed = self._n_steps_elapsed
+        new_domain._max_n_steps = self._max_n_steps
+        new_domain._setting_max_n_steps = self._setting_max_n_steps
                     
         return new_domain
 
@@ -111,43 +111,43 @@ cdef class RoverDomain:
         self._set_n_steps_elapsed(self.n_steps_elapsed() + 1)
         
     cpdef State current_state(self):
-        return self.__current_state
+        return self._current_state
         
     cpdef void set_current_state(self, State state) except *:
-        self.__current_state = state
+        self._current_state = state
     
     cpdef State setting_state(self):
-        return self.__setting_state
+        return self._setting_state
     
     cpdef void set_setting_state(self, State state) except *:
-        self.__setting_state = state
+        self._setting_state = state
         
     cpdef BaseEvaluator evaluator(self):
-        return self.__evaluator
+        return self._evaluator
     
     cpdef void set_evaluator(self, BaseEvaluator evaluator) except *:
-        self.__evaluator = evaluator
+        self._evaluator = evaluator
     
     cpdef BaseDynamicsProcessor dynamics_processor(self):
-        return self.__dynamics_processor
+        return self._dynamics_processor
     
     cpdef void set_dynamics_processor(
             self, 
             BaseDynamicsProcessor dynamics_processor
             ) except *:
-        self.__dynamics_processor = dynamics_processor
+        self._dynamics_processor = dynamics_processor
         
     cpdef BaseRoverObservationsCalculator rover_observations_calculator(self):
-        return self.__rover_observations_calculator
+        return self._rover_observations_calculator
     
     cpdef void set_rover_observations_calculator(
             self,
             BaseRoverObservationsCalculator rover_observations_calculator
             ) except *:
-        self.__rover_observations_calculator = rover_observations_calculator
+        self._rover_observations_calculator = rover_observations_calculator
     
     cpdef Py_ssize_t setting_max_n_steps(self):
-        return self.__setting_max_n_steps
+        return self._setting_max_n_steps
         
     cpdef void set_setting_max_n_steps(self, Py_ssize_t max_n_steps) except *:
         if max_n_steps <= 0:
@@ -157,10 +157,10 @@ cdef class RoverDomain:
                     "{max_n_steps}) must be positive. "
                     .format(**locals())))
                 
-        self.__setting_max_n_steps = max_n_steps
+        self._setting_max_n_steps = max_n_steps
     
     cpdef Py_ssize_t n_steps_elapsed(self):
-        return self.__n_steps_elapsed
+        return self._n_steps_elapsed
     
     cpdef void _set_n_steps_elapsed(self, Py_ssize_t n_steps_elapsed) except *:
         if n_steps_elapsed < 0:
@@ -171,10 +171,10 @@ cdef class RoverDomain:
                     "must be non-negative. "
                     .format(**locals())))
                     
-        self.__n_steps_elapsed = n_steps_elapsed
+        self._n_steps_elapsed = n_steps_elapsed
         
     cpdef Py_ssize_t max_n_steps(self):
-        return self.__max_n_steps
+        return self._max_n_steps
     
     cpdef void _set_max_n_steps(self, Py_ssize_t max_n_steps) except *:
         if max_n_steps < 0:
@@ -184,36 +184,29 @@ cdef class RoverDomain:
                     "(max_n_steps = {max_n_steps}) must be positive. "
                     .format(**locals())))
                     
-        self.__max_n_steps = max_n_steps
+        self._max_n_steps = max_n_steps
     
     cpdef list state_history(self):
         # type: (...) -> Sequence[State]
-        return self.__state_history
-    
-    cpdef list _state_history(self):
-        # type: (...) -> List[State]
-        return self.__state_history
+        return self._state_history
     
     @cython.locals(setting_state_history = list)
     cpdef void _set_state_history(
             self, 
             setting_state_history: Sequence[State]
             ) except *:
-        self.__state_history = setting_state_history
+        self._state_history = setting_state_history
      
     cpdef list actions_history(self):
         #type: (...) -> Sequence[Sequence[DoubleArray]]
-        return self.__actions_history
-        
-    cpdef list _actions_history(self):
-        #type: (...) -> List[Sequence[DoubleArray]]
-        return self.__actions_history
+        return self._actions_history
+
     
     @cython.locals(actions_history = list)
     cpdef void _set_actions_history(
             self, 
             actions_history: Sequence[Sequence[DoubleArray]]) except *:
-        self.__actions_history = actions_history
+        self._actions_history = actions_history
   
   
 @cython.warn.undeclared(True)        
@@ -232,19 +225,19 @@ cdef void init_RoverDomain(RoverDomain domain) except *:
     if domain is None:
         raise TypeError("The domain (domain) cannot be None.")
         
-    domain.__setting_state = new_State()
-    setting_state = domain.__setting_state
-    domain.__current_state = setting_state.copy()
-    domain.__dynamics_processor = new_DefaultDynamicsProcessor()
-    domain.__evaluator = new_DefaultEvaluator()
-    domain.__rover_observations_calculator = (
+    domain._setting_state = new_State()
+    setting_state = domain._setting_state
+    domain._current_state = setting_state.copy()
+    domain._dynamics_processor = new_DefaultDynamicsProcessor()
+    domain._evaluator = new_DefaultEvaluator()
+    domain._rover_observations_calculator = (
         new_DefaultRoverObservationsCalculator())
-    domain.__max_n_steps = 1
-    domain.__setting_max_n_steps = domain.__max_n_steps
-    domain.__n_steps_elapsed = 0
+    domain._max_n_steps = 1
+    domain._setting_max_n_steps = domain._max_n_steps
+    domain._n_steps_elapsed = 0
 
-    domain.__state_history = []
-    domain.__actions_history = []
+    domain._state_history = []
+    domain._actions_history = []
     
 
  

@@ -11,17 +11,17 @@ from .evaluator cimport BaseEvaluator
 from rockefeg.cyutil.array cimport DoubleArray
 
 cdef class RoverDomain:
-    cdef State __current_state
-    cdef State __setting_state
-    cdef BaseEvaluator __evaluator
-    cdef BaseDynamicsProcessor __dynamics_processor
-    cdef BaseRoverObservationsCalculator __rover_observations_calculator
-    cdef Py_ssize_t __n_steps_elapsed
-    cdef Py_ssize_t __max_n_steps
-    cdef Py_ssize_t __setting_max_n_steps
-    cdef list __state_history
+    cdef State _current_state
+    cdef State _setting_state
+    cdef BaseEvaluator _evaluator
+    cdef BaseDynamicsProcessor _dynamics_processor
+    cdef BaseRoverObservationsCalculator _rover_observations_calculator
+    cdef Py_ssize_t _n_steps_elapsed
+    cdef Py_ssize_t _max_n_steps
+    cdef Py_ssize_t _setting_max_n_steps
+    cdef list _state_history
     # list<State>[max_n_steps]
-    cdef list __actions_history
+    cdef list _actions_history
     # list<list<DoubleArray>>[max_n_steps, n_rovers, n_action_dims]
         
     cpdef RoverDomain copy(self, copy_obj = ?)
@@ -78,18 +78,13 @@ cdef class RoverDomain:
     
     cpdef list state_history(self)
     # type: (...) -> Seqeunce[State]
-    
-    cpdef list _state_history(self)
-    # type: (...) -> List[State]
+
     
     @cython.locals(setting_state_history = list)
     cpdef void _set_state_history(self, setting_state_history: List[State]) except *
 
     cpdef list actions_history(self)
     # type: (...) -> Seqeunce[Seqeunce[DoubleArray]]
-    
-    cpdef list _actions_history(self)
-    # type: (...) -> List[Seqeunce[DoubleArray]]
     
     @cython.locals(actions_history = list)
     cpdef void _set_actions_history(

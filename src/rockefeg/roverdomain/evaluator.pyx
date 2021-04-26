@@ -104,8 +104,8 @@ cdef class DefaultEvaluator(BaseEvaluator):
         else:
             new_evaluator = copy_obj
 
-        new_evaluator.__capture_dist = self.__capture_dist
-        new_evaluator.__n_req = self.__n_req
+        new_evaluator._capture_dist = self._capture_dist
+        new_evaluator._n_req = self._n_req
 
         return new_evaluator
 
@@ -204,7 +204,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
         return rover_evals
 
     cpdef Py_ssize_t n_req(self) except *:
-        return self.__n_req
+        return self._n_req
 
     cpdef void set_n_req(self, Py_ssize_t n_req) except *:
         if n_req <= 0:
@@ -213,10 +213,10 @@ cdef class DefaultEvaluator(BaseEvaluator):
                 " (n_req = {n_req}) must be positive."
                 .format(**locals()))
 
-        self.__n_req = n_req
+        self._n_req = n_req
 
     cpdef double capture_dist(self) except *:
-        return self.__capture_dist
+        return self._capture_dist
 
     cpdef void set_capture_dist(self, double capture_dist) except *:
         if capture_dist < 0.:
@@ -225,7 +225,7 @@ cdef class DefaultEvaluator(BaseEvaluator):
                 "must be non-negative."
                 .format(**locals()))
 
-        self.__capture_dist = capture_dist
+        self._capture_dist = capture_dist
 
 @cython.warn.undeclared(True)
 cdef DefaultEvaluator new_DefaultEvaluator():
@@ -241,8 +241,8 @@ cdef void init_DefaultEvaluator(DefaultEvaluator evaluator) except *:
     if evaluator is None:
         raise TypeError("The evaluator (evaluator) cannot be None.")
 
-    evaluator.__capture_dist = 1.
-    evaluator.__n_req = 1
+    evaluator._capture_dist = 1.
+    evaluator._n_req = 1
 
 @cython.warn.undeclared(True)
 @cython.locals(rover_data = list)
