@@ -100,10 +100,10 @@ cdef class RoverDomain:
         current_state = self.current_state()
 
         # Put current state in state history.
-        self._state_history().append(current_state.copy())
+        self._state_history.append(current_state.copy())
         
         # Put current actions in actions history.
-        self._actions_history().append(rover_actions)
+        self._actions_history.append(rover_actions)
                 
         # Update state
         self.dynamics_processor().process_state(current_state, rover_actions)
